@@ -15,6 +15,7 @@ export const StyledHashTag = styled.div<HashTagProps>`
     width: auto;
     padding: 7px 16px;
     color: white;
+    font-size: 12px;
 
     background-color: ${(props) => props.$bgColor};
 `;
