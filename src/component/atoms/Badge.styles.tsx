@@ -1,9 +1,5 @@
 import styled, { css } from 'styled-components';
-import { type BadgeTheme }  from './Badge';
-
-interface BadgeProps {
-    $theme: BadgeTheme;
-}
+import { type BadgeTheme, type BadgeProps }  from './Badge';
 
 const themeStyles = {
     info: css`

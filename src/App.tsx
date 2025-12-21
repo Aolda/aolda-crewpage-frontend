@@ -1,5 +1,6 @@
 import './App.css'
 import Badge from './component/atoms/Badge'
+import HashTag from './component/atoms/HashTag'
 
 function App() {
 
@@ -12,7 +13,8 @@ function App() {
       </div>
 
       <div>
-        
+        <HashTag completed $bgColor='#1A8EE5'>#</HashTag>
+        <HashTag date='2025.08.15' $bgColor='black'>#</HashTag>
       </div>
     </>
   )
