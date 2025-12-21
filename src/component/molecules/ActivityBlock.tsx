@@ -3,7 +3,7 @@ import HashTag from "../atoms/HashTag";
 import { StyledActivityBlock } from "./ActivityBlock.styles";
 
 /*
-* Home page Activity Section의 카드(내부 요소로는 Badge, 텍스트)
+* Home page Activity Section의 block(내부 요소로는 Badge, 텍스트)
 * @params {boolean} [completed] 활동 완료 여부(완료가 아닐때는 어떤지 디자인팀에게 물어보기)
 * @params {string} [date] 활동 시작 날짜
 * @params {string} title 제목(variant='h3' color='balck')
