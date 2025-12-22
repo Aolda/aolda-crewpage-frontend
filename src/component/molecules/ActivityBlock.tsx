@@ -34,12 +34,12 @@ const ActivityBlock: React.FC<ActivityBlockProps> = ({
 			        <HashTag date={date} $bgColor="black"/>
                 </section>
 			    <section className="titleContainer">
-                    <h2 color='blue'>{title}</h2>
-			        <span color='gray'>{subtitle}</span>
+                    <h2>{title}</h2>
+			        <span style={{"color":"#777777"}}>{subtitle}</span>
                 </section>
             </section>
 			<section className="bottomContainer">
-                <p color='gray'>{description}</p>
+                <p style={{"color":"#777777"}}>{description}</p>
             </section>
 		</StyledActivityBlock>
 	);
