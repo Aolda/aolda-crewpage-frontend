@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { type BadgeTheme, type BadgeProps }  from './Badge';
+import { type BadgeProps }  from './Badge';
 
 const themeStyles = {
     info: css`
@@ -20,7 +20,7 @@ export const StyledBadge = styled.div<BadgeProps>`
     text-align: center;
     font-weight: bold;
     border-radius: 7px;
-    width: auto;
+    width: fit-content;
     padding: 7px 16px;
 
     ${(props: BadgeProps) => themeStyles[props.$theme]}

@@ -1,25 +1,13 @@
 import React from "react";
 import { StyledCrewBlock } from "./CrewBlock.styles";
 import Badge from "../atoms/Badge";
+import { type Member } from "../../assets/Types";
 /*
 * CrewBook page 크루원의 정보를 보여주는 block
 * @params {Member} member 크루 정보를 담은 객체
 * @params {boolean} isHomepage 홈페이지 크루, 크루북 크루 구분을 위한 인자(true -> homepage)
 * @params {string} className 홈페이지 크루, 크루북 크루 스타일 구분 클래스
 */
-
-export interface Member {
-    src: string;
-    name: string;
-    position: string;
-    major: string;
-    studentNumber: string;
-    generation: number;
-    active: boolean;
-    to: string;
-    activityCount?: number;
-    blogCount?: number;
-}
 
 interface CrewBlockProps {
     member: Member;
@@ -51,7 +39,6 @@ const CrewBlock: React.FC<CrewBlockProps> = ({
                         <span>{position}</span>
                     </section>
 
-                    {/* 분기 1: Homepage가 아닐 때만 뱃지 그룹 노출 */}
                     {!isHomepage && (
                         <section className="badgeContainer">
                             <Badge $theme="status">{active ? "활동중" : "비활동"}</Badge>
@@ -61,7 +48,6 @@ const CrewBlock: React.FC<CrewBlockProps> = ({
                     )}
                 </section>
 
-                {/* 분기 2: 하단 정보 표시 (전공/학번 vs 활동 통계) */}
                 {isHomepage ? (
                     <span className="majorInfo">{major} {studentNumber}</span>
                 ) : (
