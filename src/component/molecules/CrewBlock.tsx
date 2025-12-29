@@ -2,6 +2,8 @@ import React from "react";
 import { StyledCrewBlock } from "./CrewBlock.styles";
 import Badge from "../atoms/Badge";
 import { type Member } from "../../assets/Types";
+import CategoryImg from "../../assets/CategoryImg.png"
+import BlogingImg from "../../assets/BlogingImg.png"
 /*
 * CrewBook page 크루원의 정보를 보여주는 block
 * @params {Member} member 크루 정보를 담은 객체
@@ -52,8 +54,15 @@ const CrewBlock: React.FC<CrewBlockProps> = ({
                     <span className="majorInfo">{major} {studentNumber}</span>
                 ) : (
                     <section className="statsContainer">
-                        <span>활동 수 {member.activityCount || 0}</span>
-                        <span>블로깅 수 {member.blogCount || 0}</span>
+                        <section style={{"display":"inline-flex", "gap":"12px", "alignItems":"center"}}>
+                            <img src={CategoryImg} alt="categoryimg"/>
+                            <span style={{"color":"#A0A0A0"}}>{member.activityCount || 0}</span>
+                        </section>
+                        <section>·</section>
+                        <section style={{"display":"inline-flex", "gap":"12px", "alignItems":"center"}}>
+                            <img src={BlogingImg} alt="blogingimg" />
+                            <span style={{"color":"#A0A0A0"}}>{member.blogCount || 0}</span>
+                        </section>
                     </section>
                 )}
             </section>

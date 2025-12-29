@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, type ChangeEvent} from "react";
 import "./Test.css"
 import Badge from "../component/atoms/Badge";
 import HashTag from "../component/atoms/HashTag";
@@ -11,6 +11,7 @@ import OverviewCard from "../component/molecules/OverviewCard";
 import ProjectBlock from "../component/molecules/ProjectBlock";
 import { type Member, type Project, type BadgeTheme} from "../assets/Types";
 import Select from "../component/molecules/Select";
+import SearchBox from "../component/molecules/SearchBox";
 
 const theme: BadgeTheme = "status";
 
@@ -42,6 +43,24 @@ const mockProject: Project = {
 
 function Test() {
     const [selectedGeneration, setSelectedGeneration] = useState("0기");
+
+    const [searchTerm, setSearchTerm] = useState("");
+
+    // 2. 입력값이 바뀔 때 실행될 함수
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(e.target.value);
+    };
+
+    // 3. 실제 검색을 실행할 함수 (버튼 클릭이나 엔터 시)
+    const handleSearch = (query: string) => {
+        if (query.trim() === "") {
+            alert("검색어를 입력해주세요!");
+            return;
+        }
+        console.log(`"${query}"(으)로 크루원을 검색합니다...`);
+        // 여기에 실제 필터링 로직이나 API 호출 로직을 넣습니다.
+    };
+
     return (
         <>
             <div className='container'>
@@ -88,9 +107,9 @@ function Test() {
             </div>
 
             <div className="container">
-                <OverviewCard title="프로젝트 수" src="#" totalNum={20} onGoingNum={12} />
-                <OverviewCard title="참여 크루원" src="#" totalNum={100} onGoingNum={67} />
-                <OverviewCard title="대회 참석" src="#" totalNum={16} onGoingNum={14} />
+                <OverviewCard type={1} totalNum={20} onGoingNum={12} />
+                <OverviewCard type={2} totalNum={100} onGoingNum={67} />
+                <OverviewCard type={3} totalNum={16} onGoingNum={14} />
             </div>
 
             <div className="container">
@@ -119,6 +138,14 @@ function Test() {
                         console.log("선택된 값:", value);
                         setSelectedGeneration(value);
                     }}/>
+            </div>
+            <div className="container">
+                <SearchBox
+                    value={searchTerm}
+                    onChange={handleInputChange}
+                    onSearch={handleSearch}
+                    placeholder="크루원을 검색해보세요"
+                />
             </div>
         </>
     );

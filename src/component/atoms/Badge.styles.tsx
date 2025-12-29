@@ -15,12 +15,14 @@ const themeStyles = {
 
 export const StyledBadge = styled.div<BadgeProps>`
     display: inline-flex;
-    align-item: center;
+    align-items: center;
     justify-content: center;
     text-align: center;
     font-weight: bold;
+    font-size: 12px;
     border-radius: 7px;
     width: fit-content;
+    height: 15px;
     padding: 7px 16px;
 
     ${(props: BadgeProps) => themeStyles[props.$theme]}

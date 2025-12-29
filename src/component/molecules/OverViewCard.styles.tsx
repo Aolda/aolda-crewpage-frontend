@@ -23,10 +23,6 @@ export const StyledOverviewCard = styled.div`
         display: flex;
         align-items: center;
         gap: 8px;
-        img {
-            width: 24px;
-            height: 24px;
-        }
         h3 {
             margin: 0;
             font-size: 20px;
