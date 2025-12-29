@@ -12,6 +12,7 @@ import ProjectBlock from "../component/molecules/ProjectBlock";
 import { type Member, type Project, type BadgeTheme} from "../assets/Types";
 import Select from "../component/molecules/Select";
 import SearchBox from "../component/molecules/SearchBox";
+import MenuItem from "../component/molecules/MenuItem";
 
 const theme: BadgeTheme = "status";
 
@@ -31,6 +32,7 @@ const mockProject: Project = {
     src: ExBgIMG,
     title: "ACC",
     subtitle: "Aolda Cloud Console",
+    date: "2025.11.10 13:43",
     status: theme,
     crewNum: 5,
     bgColor: "#018CF1",
@@ -139,12 +141,21 @@ function Test() {
                         setSelectedGeneration(value);
                     }}/>
             </div>
+
             <div className="container">
                 <SearchBox
                     value={searchTerm}
                     onChange={handleInputChange}
                     onSearch={handleSearch}
                     placeholder="크루원을 검색해보세요"
+                />
+            </div>
+
+            <div className="container">
+                <MenuItem pageName="activity"
+                    title={`${mockProject.title} (${mockProject.subtitle})`}
+                    date={mockProject.date}
+                    description={mockProject.description}
                 />
             </div>
         </>

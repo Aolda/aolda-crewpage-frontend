@@ -19,7 +19,8 @@ export interface Project {
     src: string;            //주요활동 페이지에서 ProjectBlock에 들어가는 이미지 경로
     title: string;          //프로젝트 제목(ex. ACC)
     subtitle: string;       //프로젝트 부제목(ex. Aolda Cloud Console)
-    status: BadgeTheme;        //프로젝트 진행상황
+    date: string;
+    status: BadgeTheme;     //프로젝트 진행상황
     crewNum: number;        //활동에 참여한 사람 수
     bgColor: string;        //주요활동 페이지에서 ProjectBlock에 들어가는 배경 색
     description: string;    //프로젝트 한줄 소개(제품은 한줄 소개, 프로젝트는 기획 정보)
