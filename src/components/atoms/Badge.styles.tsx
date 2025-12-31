@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { type BadgeProps }  from './Badge';
+import { pxToRem } from '@/styles/utils';
 
 const themeStyles = {
     info: css`
