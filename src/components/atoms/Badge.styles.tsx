@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { type BadgeProps }  from './Badge';
 import { pxToRem } from '@/styles/utils';
+import { fontSize } from '@/styles/theme';
 
 const themeStyles = {
     info: css`
@@ -20,11 +21,11 @@ export const StyledBadge = styled.div<BadgeProps>`
     justify-content: center;
     text-align: center;
     font-weight: bold;
-    font-size: 12px;
-    border-radius: 7px;
+    font-size: ${fontSize.smaller};
+    border-radius: ${pxToRem(7)};
     width: fit-content;
-    height: 15px;
-    padding: 7px 16px;
+    height: ${pxToRem(15)};
+    padding: ${pxToRem(7)} ${pxToRem(16)};
 
     ${(props: BadgeProps) => themeStyles[props.$theme]}
 `;
