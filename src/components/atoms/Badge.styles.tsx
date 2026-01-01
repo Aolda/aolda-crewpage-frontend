@@ -24,7 +24,7 @@ export const StyledBadge = styled.div<BadgeProps>`
     font-size: ${fontSize.smaller};
     border-radius: ${pxToRem(10)};
     width: fit-content;
-    height: ${pxToRem(28)};
+    height: ${pxToRem(31)};
     padding: ${pxToRem(7)} ${pxToRem(16)};
 
     ${(props: BadgeProps) => themeStyles[props.$theme]}
