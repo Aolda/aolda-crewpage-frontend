@@ -1,8 +1,6 @@
 'use client';
 
-import Image from "next/image";
-import SearchBox from '@/components/molecules/SearchBox';
-import LinkSection from '@/components/organisms/LinkSection';
+import React, {useState, type ChangeEvent} from "react";
 import Badge from "@/components/atoms/Badge";
 import HashTag from "@/components/atoms/HashTag";
 import { pxToRem } from "@/styles/utils";
@@ -13,6 +11,7 @@ import { type Member } from "@/types/Types";
 import { type Project } from "@/types/Types";
 import MenuItem from "@/components/molecules/MenuItem";
 import ProjectBlock from "@/components/molecules/ProjectBlock";
+import SearchBox from '@/components/molecules/SearchBox';
 
 const mockMember: Member = {
   src: "/CrewImg.png",
@@ -42,6 +41,25 @@ const mockProject: Project = {
 }
 
 export default function Home() {
+
+  const [selectedGeneration, setSelectedGeneration] = useState("0기");
+
+    const [searchTerm, setSearchTerm] = useState("");
+
+    // 2. 입력값이 바뀔 때 실행될 함수
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(e.target.value);
+    };
+
+    // 3. 실제 검색을 실행할 함수 (버튼 클릭이나 엔터 시)
+    const handleSearch = (query: string) => {
+        if (query.trim() === "") {
+            alert("검색어를 입력해주세요!");
+            return;
+        }
+        console.log(`"${query}"(으)로 크루원을 검색합니다...`);
+        // 여기에 실제 필터링 로직이나 API 호출 로직을 넣습니다.
+    };
   return (
     <main style={{ padding: pxToRem(20) }}>
       <div>
@@ -74,6 +92,14 @@ export default function Home() {
       </div>
       <div>
         <ProjectBlock project={mockProject}/>
+      </div>
+      <div>
+        <SearchBox
+          value={searchTerm}
+          onChange={handleInputChange}
+          onSearch={handleSearch}
+          placeholder="크루원을 검색해보세요"
+        />
       </div>
     </main>
   );

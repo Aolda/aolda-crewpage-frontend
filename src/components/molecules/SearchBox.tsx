@@ -34,7 +34,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({
 		<StyledSearchBox>
 			<input
 				type="text"
-				value={value}
+				value={value ?? ""}
 				onChange={onChange}
 				onKeyDown={handleKeyDown}
                 placeholder={placeholder}

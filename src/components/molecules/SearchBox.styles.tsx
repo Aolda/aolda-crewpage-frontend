@@ -6,8 +6,8 @@ import { pxToRem } from "@/styles/utils";
 
 export const StyledSearchBox = styled.section`
     display: flex;
-    width: ${pxToRem(443)};
-    height: ${pxToRem(24)};
+    width: ${pxToRem(475)};
+    height: ${pxToRem(48)};
     justify-content: space-between;
     align-items: center;
     padding: ${pxToRem(12)} ${pxToRem(16)};
