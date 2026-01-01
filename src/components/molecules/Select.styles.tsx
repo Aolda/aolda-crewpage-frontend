@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { fontSize } from '@/styles/theme';
+import { pxToRem } from '@/styles/utils';
 
 export const SelectContainer = styled.div`
     position: relative;
@@ -6,12 +8,12 @@ export const SelectContainer = styled.div`
     align-items: center;
     justify-content: center;
     
-    width: 62px;
-    height: 24px;
-    padding: 12px 16px;
+    width: ${pxToRem(62)};
+    height: ${pxToRem(24)};
+    padding: ${pxToRem(12)} ${pxToRem(16)};
     
     border: 1.5px solid #888888;
-    border-radius: 12px;
+    border-radius: ${pxToRem(12)};
     background-color: white;
     cursor: pointer;
 
@@ -21,10 +23,10 @@ export const SelectContainer = styled.div`
 `;
 
 export const LabelText = styled.span`
-    font-size: 18px;
+    font-size: ${fontSize.body2};
     font-weight: 600;
     color: #555555;
-    margin-right: 8px;
+    margin-right: ${pxToRem(8)};
     pointer-events: none;
 `;
 
@@ -35,12 +37,12 @@ export const ArrowIcon = styled.div`
     
     &::after {
         content: '';
-        width: 10px;
-        height: 10px;
+        width: ${pxToRem(10)};
+        height: ${pxToRem(10)};
         border-right: 2px solid #888888;
         border-bottom: 2px solid #888888;
         transform: rotate(45deg);
-        margin-bottom: 4px;
+        margin-bottom: ${pxToRem(4)};
     }
 `;
 

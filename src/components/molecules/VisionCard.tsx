@@ -22,7 +22,7 @@ const VisionCard: React.FC<VisionCardProps> = ({
 }) => {
 	return (
 		<StyledVisionCard>
-			<Image src="/LightBulb.png" alt={title}/>
+			<Image src="/LightBulb.png" alt={title} width={120} height={120}/>
 			<h1>{title}</h1>
 			<span>{description}</span>
 		</StyledVisionCard>

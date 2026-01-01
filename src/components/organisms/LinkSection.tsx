@@ -48,7 +48,7 @@ const LinkSection: React.FC<LinkSectionProps> = ({
 	return (
 		<StyledLinkSection style={styles.offsetStyles}>
 			<section className="imgSection">
-				<Image src={src} alt={title}/>
+				<Image src={src} alt={title} width={588} height={441}/>
 			</section>
 			<section className="textSection" style={{"alignItems":align}}>
 				<h1 style={{"fontSize":"72px", "color":"#1A8EE5"}}>0{index+1}</h1>

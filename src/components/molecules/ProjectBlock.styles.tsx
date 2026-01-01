@@ -1,18 +1,20 @@
 import styled from "styled-components"
+import { pxToRem } from "@/styles/utils";
+import { fontSize } from "@/styles/theme";
 
 interface StyledProjectBlockProps {
-    bgColor: string;
+    bgcolor: string;
 }
 
 export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
     display: flex;
-    width: 273px;
-    height: 409.5px;
-    border-radius: 20px;
+    width: ${pxToRem(273)};
+    height: ${pxToRem(409.5)};
+    border-radius: ${pxToRem(20)};
     flex-direction: column;
     justify-content: space-between;
 
-    background-color: ${(props) => props.bgColor};
+    background-color: ${(props) => props.bgcolor};
 
     * {
         margin: 0;
@@ -24,28 +26,33 @@ export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 12px;
+        gap: ${pxToRem(12)};
         
-        padding: 20px 0 0 0;
+        padding: ${pxToRem(20)} 0 0 0;
     }
 
     .textSection {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        gap: 4px;
+        justify-content: center;
+        align-items: center;
+        gap: ${pxToRem(4)};
+
+        h1 {
+            font-size: ${pxToRem(36)};
+            font-weight: bold;
+        }
     }
 
     .imgSection {
         position: relative;
         width: auto;
-        height: 200px;
+        height: 50%;
         overflow: hidden;
         img {
             position: absolute;
-            width: 130%;
-            top: -100px;
-            left: -10%;
+            height: ${pxToRem(300)} !important;
+            bottom: 0;
         }
     }
 `;

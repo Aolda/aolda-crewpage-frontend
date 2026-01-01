@@ -22,9 +22,9 @@ export const StyledBadge = styled.div<BadgeProps>`
     text-align: center;
     font-weight: bold;
     font-size: ${fontSize.smaller};
-    border-radius: ${pxToRem(7)};
+    border-radius: ${pxToRem(10)};
     width: fit-content;
-    height: ${pxToRem(15)};
+    height: ${pxToRem(28)};
     padding: ${pxToRem(7)} ${pxToRem(16)};
 
     ${(props: BadgeProps) => themeStyles[props.$theme]}

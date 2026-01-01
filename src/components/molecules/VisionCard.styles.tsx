@@ -1,21 +1,22 @@
 import styled from "styled-components"
+import { pxToRem } from "@/styles/utils";
 
 export const StyledVisionCard = styled.div `
     display: flex;
-    width: 348px;
-    height: 358px;
+    width: ${pxToRem(348)};
+    height: ${pxToRem(358)};
     border: 2px solid #E2E2E2;
-    border-radius: 16px;
+    border-radius: ${pxToRem(16)};
 
     justify-content: center;
     align-items: center;
     flex-direction: column;
 
-    padding: 32px 36px;
+    padding: ${pxToRem(32)} ${pxToRem(36)};
 
     img {
-        width: 120px;
-        height: 120px;
+        width: ${pxToRem(120)};
+        height: ${pxToRem(120)};
     }
     
     h1 {

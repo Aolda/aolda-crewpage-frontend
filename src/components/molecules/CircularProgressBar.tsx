@@ -2,17 +2,21 @@
 
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { fontSize } from '@/styles/theme';
+import { pxToRem } from '@/styles/utils';
 
-const Container = styled.div<{ size: number }>`
+const Container = styled.div<{ $size: number }>`
     position: relative;
-    width: ${(props) => props.size}px;
-    height: ${(props) => props.size}px;
+    width: ${(props) => pxToRem(props.$size)};
+    height: ${(props) => pxToRem(props.$size)};
     display: flex;
     align-items: center;
     justify-content: center;
 `;
 
 const Svg = styled.svg`
+    width: 100%;
+    height: 100%;
     transform: rotate(90deg);
     transform-origin: center;
 `;
@@ -20,13 +24,13 @@ const Svg = styled.svg`
 const CircleBackground = styled.circle`
     fill: none;
     stroke: #e5e7eb;
-    stroke-width: 16;
+    stroke-width: ${pxToRem(17)};
 `;
 
 const CircleProgress = styled.circle<{ $offset: number; $circumference: number }>`
     fill: none;
     stroke: #1A8EE5;
-    stroke-width: 16;
+    stroke-width: ${pxToRem(17)};
     stroke-linecap: round;
     transition: stroke-dashoffset 1.5s ease-out; 
     stroke-dasharray: ${(props) => props.$circumference};
@@ -40,7 +44,7 @@ const CircleProgress = styled.circle<{ $offset: number; $circumference: number }
 
 const NumberLabel = styled.div`
     position: absolute;
-    font-size: 16px;
+    font-size: ${(fontSize.base)};
     font-weight: bold;
     color: #1A8EE5;
 `;
@@ -48,7 +52,7 @@ const NumberLabel = styled.div`
 const CircularProgressBar: React.FC<{ total: number; current: number; size?: number }> = ({
     total,
     current,
-    size = 101,
+    size = 110,
 }) => {
     const STROKE_WIDTH = 16;
     const center = size / 2;
@@ -75,28 +79,31 @@ const CircularProgressBar: React.FC<{ total: number; current: number; size?: num
     useEffect(() => {
         let start = 0;
         const end = current;
-        if (start === end) return;
+        if (start === end) {
+            setDisplayCount(end);
+            return;
+        }
 
         let timer = setInterval(() => {
         start += 1;
         setDisplayCount(start);
         if (start === end) clearInterval(timer);
-        }, 1000 / end); // 전체 1초 동안 균등하게 증가
+        }, 1000 / (end || 1)); // 전체 1초 동안 균등하게 증가
 
         return () => clearInterval(timer);
     }, [current]);
 
     return (
-        <Container size={size}>
-            <Svg width={size} height={size}>
+        <Container $size={size}>
+            <Svg viewBox={`0 0 ${size} ${size}`}>
                 <CircleBackground cx={center} cy={center} r={radius} />
                 <CircleProgress
-                cx={center}
-                cy={center}
-                r={radius}
-                $circumference={circumference}
-                $offset={offset}
-            />
+                    cx={center}
+                    cy={center}
+                    r={radius}
+                    $circumference={circumference}
+                    $offset={offset}
+                />
             </Svg>
             <NumberLabel>{displayCount}</NumberLabel>
         </Container>

@@ -5,6 +5,8 @@ import Image from "next/image";
 import { StyledCrewBlock } from "./CrewBlock.styles";
 import Badge from "../atoms/Badge";
 import { type Member } from "@/types/Types";
+import { fontSize } from "@/styles/theme";
+import { pxToRem } from "@/styles/utils";
 /*
 * CrewBook page 크루원의 정보를 보여주는 block
 * @params {Member} member 크루 정보를 담은 객체
@@ -32,7 +34,7 @@ const CrewBlock: React.FC<CrewBlockProps> = ({
             style={{ cursor: isHomepage ? 'default' : 'pointer' }}
         >
             <section className="imageContainer">
-                <Image src={src} alt={`${name} profile`} />
+                <Image src={src} alt={`${name} profile`}  width={120} height={120}/>
             </section>
 
             <section className="textContainer">
@@ -55,13 +57,13 @@ const CrewBlock: React.FC<CrewBlockProps> = ({
                     <span className="majorInfo">{major} {studentNumber}</span>
                 ) : (
                     <section className="statsContainer">
-                        <section style={{"display":"inline-flex", "gap":"12px", "alignItems":"center"}}>
-                            <Image src="/CategoryImg.png" alt="categoryimg"/>
+                        <section style={{"display":"inline-flex", "gap":pxToRem(12), "alignItems":"center"}}>
+                            <Image src="/CategoryImg.png" alt="categoryimg" width={18} height={18}/>
                             <span style={{"color":"#A0A0A0"}}>{member.activityCount || 0}</span>
                         </section>
                         <section>·</section>
-                        <section style={{"display":"inline-flex", "gap":"12px", "alignItems":"center"}}>
-                            <Image src="/BlogingImg.png" alt="blogingimg" />
+                        <section style={{"display":"inline-flex", "gap":pxToRem(12), "alignItems":"center"}}>
+                            <Image src="/BlogingImg.png" alt="blogingimg" width={18} height={18}/>
                             <span style={{"color":"#A0A0A0"}}>{member.blogCount || 0}</span>
                         </section>
                     </section>

@@ -1,12 +1,15 @@
+import { fontSize } from "@/styles/theme";
+import { pxToRem } from "@/styles/utils";
+
 import styled from "styled-components"
 
 export const StyledActivityBlock = styled.div`
     display: flex;
     border: 1px solid #E2E2E2;
-    border-radius: 20px;
-    width: 216px;
-    height: 296px;
-    padding: 24px;
+    border-radius: ${pxToRem(20)};
+    width: ${pxToRem(240)};
+    height: ${pxToRem(320)};
+    padding: ${pxToRem(24)};
 
     flex-direction: column;
     justify-content: space-between;
@@ -15,8 +18,13 @@ export const StyledActivityBlock = styled.div`
     .hashTagContainer {
         display: inline-flex;
         align-items: flex-start;
-        gap: 8px;
-        margin-bottom: 16px;
+        gap: ${pxToRem(8)};
+        margin-bottom: ${pxToRem(16)};
+    }
+
+    .topContainer {
+        display: flex;
+        flex-direction: column;
     }
 
     .titleContainer {
@@ -24,7 +32,17 @@ export const StyledActivityBlock = styled.div`
         width: auto;
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
+        gap: ${pxToRem(8)};
+
+        h2 {
+            font-size: ${fontSize.body1};
+            color: #1A8EE5;
+            font-weight: bold;
+        }
+
+        span {
+            font-size: ${fontSize.smaller};
+        }
 
         * {
             margin: 0;
@@ -39,10 +57,10 @@ export const StyledActivityBlock = styled.div`
 
         p {
             margin: 0;
-            width: 160px;
-            height: 54px;
+            width: ${pxToRem(160)};
+            height: ${pxToRem(54)};
             white-space: pre-wrap;
-            font-size: 12px;
+            font-size: ${fontSize.smaller};
             overflow: hidden;
             text-overflow: ellipsis;
         }

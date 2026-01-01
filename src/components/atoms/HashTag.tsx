@@ -12,6 +12,7 @@ import { StyledHashTag } from "./HashTag.styles";
 interface HashTagProps {
     completed?: boolean,
     date?: string,
+    color: string,
     $bgColor: string,
 }
 
@@ -19,6 +20,7 @@ interface HashTagProps {
 const HashTag: React.FC<HashTagProps> = ({
 	completed, //date와 completed는 둘중에 하나만 존재
 	date,
+    color,
 	$bgColor
 }) => {
     // 1. 날짜가 들어온 경우 (YYYY.MM.DD)
@@ -33,7 +35,7 @@ const HashTag: React.FC<HashTagProps> = ({
         else season = "겨울";
 
         return (
-            <StyledHashTag $bgColor={$bgColor} $date={date}>
+            <StyledHashTag $bgColor={$bgColor} $date={date} $color={color}>
                 #{dateArr[0]}-{season}
             </StyledHashTag>
         );
@@ -42,7 +44,7 @@ const HashTag: React.FC<HashTagProps> = ({
     const status = completed ? "완료" : "진행중";
     
     return (
-        <StyledHashTag $bgColor={$bgColor} $completed={completed}>
+        <StyledHashTag $bgColor={$bgColor} $completed={completed} $color={color}>
             #{status}
         </StyledHashTag>
     );

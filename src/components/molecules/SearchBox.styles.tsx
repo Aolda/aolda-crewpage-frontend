@@ -1,29 +1,31 @@
 'use client';
 
 import styled from "styled-components";
+import { fontSize } from "@/styles/theme";
+import { pxToRem } from "@/styles/utils";
 
 export const StyledSearchBox = styled.section`
     display: flex;
-    width: 443px;
-    height: 24px;
+    width: ${pxToRem(443)};
+    height: ${pxToRem(24)};
     justify-content: space-between;
     align-items: center;
-    padding: 12px 16px;
+    padding: ${pxToRem(12)} ${pxToRem(16)};
     border: solid #E2E2E2;
-    border-radius: 8px;
+    border-radius: ${pxToRem(8)};
     border-width: 1px;
 
 
     input {
         border: none;
         outline: none;
-        width: 145px;
-        height: 24px;
-        font-size: 16px;
+        width: ${pxToRem(145)};
+        height: ${pxToRem(24)};
+        font-size: ${fontSize.base};
 
         &::placeholder {
             color: #777777;
-            font-size: 16px;
+            font-size: ${fontSize.base};
             font-weight: 400;
         }
     }
@@ -38,8 +40,8 @@ export const StyledSearchBox = styled.section`
         align-items: center;
     
         img {
-            width: 20px;
-            height: 20px;
+            width: ${pxToRem(20)};
+            height: ${pxToRem(20)};
         }
     }
 `;

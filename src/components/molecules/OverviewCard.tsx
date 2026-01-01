@@ -27,25 +27,25 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
     let src="";
 	let totalText="";
 	let onGoingText="";
-    let imgSize : React.CSSProperties = {};
+    let imgSize = {"width": 0, "height":0};
 	
 	if(type == 3) {
         title="대회 참석";
 		totalText="참석";
 		onGoingText = "수상";
         src="/PrizeImg.png";
-        imgSize={"width":"16px", "height":"21.81px;"};
+        imgSize={"width":16, "height":21.81};
 	}else {
 		totalText="전체";
 		onGoingText="진행중";
         if (type == 1) {
             title="프로젝트 수";
             src="/CategoryBlueImg.png";
-            imgSize={"width":"18px", "height":"19px"};
+            imgSize={"width":18, "height":19};
         } else {
             title="참여 크루원";
             src="/CrewBlueImg.png";
-            imgSize={"width":"18px", "height":"18px"};
+            imgSize={"width":18, "height":18};
         }
 	}
 	
@@ -53,7 +53,7 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
 		<StyledOverviewCard>
             <section className="leftSection">
                 <section className="titleSection">
-                    <Image src={src} alt={title} style={imgSize}/>
+                    <Image src={src} alt={title} width={imgSize['width']} height={imgSize['height']}/>
                     <h3>{title}</h3>
                 </section>
                 <section className="legendSection">
