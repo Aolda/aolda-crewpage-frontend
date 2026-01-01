@@ -1,4 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import { fontSize } from '@/styles/theme';
+import { pxToRem } from '@/styles/utils';
 
 interface HashTagProps {
     $completed?: boolean,
