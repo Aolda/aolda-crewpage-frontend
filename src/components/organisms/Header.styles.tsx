@@ -3,7 +3,7 @@ import { pxToRem } from "@/styles/utils";
 import { fontSize } from "@/styles/theme";
 
 
-export const StyledHeader = styled.nav`
+export const StyledHeader = styled.header`
     display: flex;
     width: ${pxToRem(1360)};
     height: ${pxToRem(72)};
