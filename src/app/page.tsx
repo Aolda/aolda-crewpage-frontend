@@ -12,6 +12,8 @@ import { type Project } from "@/types/Types";
 import MenuItem from "@/components/molecules/MenuItem";
 import ProjectBlock from "@/components/molecules/ProjectBlock";
 import SearchBox from '@/components/molecules/SearchBox';
+import Select from "@/components/molecules/Select";
+import LinkSection from "@/components/organisms/LinkSection";
 
 const mockMember: Member = {
   src: "/CrewImg.png",
@@ -100,6 +102,25 @@ export default function Home() {
           onSearch={handleSearch}
           placeholder="크루원을 검색해보세요"
         />
+      </div>
+      <div>
+        <Select label="generation" options={["0", "1", "2", "3"]} onSelectChange={() => {}} />
+        <Select label="role" options={["개발", "디자인"]} onSelectChange={() => {}} />
+        <Select label="department" options={["소프트웨어", "사이버보안", "디지털미디어"]} onSelectChange={() => {}} />
+      </div>
+      <div>
+        <LinkSection
+          src="/LinkImg1.png"
+          index={0}
+          title="블로그"
+          description={"아올다 내 아주대학교 학생들이 단순히 소학회 내 스터디 내용을 정리하는 곳이 아니라, 학생들이 AWS, GCP, Kubernetes, CI/CD 등 복잡한 클라우드 인프라를 직접 구축하고 운영하며 얻은 생생한 지식과 시행착오를 공유하는 공간입니다."}
+          to="#"/>
+        <LinkSection
+          src="/LinkImg2.png"
+          index={1}
+          title="클라우드"
+          description={"아올다는 이론과 실습의 간극을 메우기 위해 실제 클라우드 환경을\n구축하고 운영하고 있습니다. 이 페이지는 우리 소학회원들이 자유롭게\n 서비스를 배포하고 테스트하며 클라우드 실무 역량을 키워나가는\n'개발 PlayGround'를 소개합니다."}
+          to="#"/>
       </div>
     </main>
   );

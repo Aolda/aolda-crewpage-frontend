@@ -6,14 +6,14 @@ export const SelectContainer = styled.div`
     position: relative;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     
-    width: ${pxToRem(62)};
-    height: ${pxToRem(24)};
+    width: ${pxToRem(94)};
+    height: ${pxToRem(48)};
     padding: ${pxToRem(12)} ${pxToRem(16)};
     
-    border: 1.5px solid #888888;
-    border-radius: ${pxToRem(12)};
+    border: 1px solid #888888;
+    border-radius: ${pxToRem(8)};
     background-color: white;
     cursor: pointer;
 
@@ -24,7 +24,7 @@ export const SelectContainer = styled.div`
 
 export const LabelText = styled.span`
     font-size: ${fontSize.body2};
-    font-weight: 600;
+    // font-weight: 600;
     color: #555555;
     margin-right: ${pxToRem(8)};
     pointer-events: none;

@@ -36,9 +36,9 @@ const Select: React.FC<SelectProps> = ({ label, options, onSelectChange, selecte
             {title} 선택
             </option>
             {options.map((option, index) => (
-            <option key={index} value={option}>
-                {option}
-            </option>
+                <option key={index} value={option}>
+                    {option}
+                </option>
             ))}
         </S.NativeSelect>
         </S.SelectContainer>
