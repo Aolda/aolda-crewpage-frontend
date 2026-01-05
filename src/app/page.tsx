@@ -15,6 +15,8 @@ import SearchBox from '@/components/molecules/SearchBox';
 import Select from "@/components/molecules/Select";
 import LinkSection from "@/components/organisms/LinkSection";
 
+import Header from "@/components/organisms/Header";
+
 const mockMember: Member = {
   src: "/CrewImg.png",
   name: "김아주",
@@ -64,6 +66,7 @@ export default function Home() {
     };
   return (
     <main style={{ padding: pxToRem(20) }}>
+      <Header />
       <div>
         <Badge $theme="status">진행중</Badge>
         <Badge $theme="info">소프트웨어</Badge>
