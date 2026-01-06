@@ -14,6 +14,7 @@ import ProjectBlock from "@/components/molecules/ProjectBlock";
 import SearchBox from '@/components/molecules/SearchBox';
 import Select from "@/components/molecules/Select";
 import LinkSection from "@/components/organisms/LinkSection";
+import Profile from "@/components/organisms/Profile";
 
 import Header from "@/components/organisms/Header";
 import Footer from "@/components/organisms/Footer";
@@ -22,13 +23,17 @@ const mockMember: Member = {
   src: "/CrewImg.png",
   name: "김아주",
   position: "회장",
-  major: "소프트웨어",
+  department: "소프트웨어",
   studentNumber: "22",
   generation: 0,
   active: true,
   to: "/crew/kim-ajou",
+  emailAddress: "example123@ajou.ac.kr",
+  description: "한 줄 소개입니다.",
   activityCount: 12,
-  blogCount: 5
+  blogCount: 5,
+  follower: 22,
+  following: 12,
 };
 const mockProject: Project = {
   src: "/ExBgIMG.png",
@@ -125,6 +130,9 @@ export default function Home() {
           title="클라우드"
           description={"아올다는 이론과 실습의 간극을 메우기 위해 실제 클라우드 환경을\n구축하고 운영하고 있습니다. 이 페이지는 우리 소학회원들이 자유롭게\n 서비스를 배포하고 테스트하며 클라우드 실무 역량을 키워나가는\n'개발 PlayGround'를 소개합니다."}
           to="#"/>
+      </div>
+      <div>
+        <Profile member={mockMember}/>
       </div>
       <Footer />
     </main>

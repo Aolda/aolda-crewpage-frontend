@@ -25,7 +25,7 @@ const CrewBlock: React.FC<CrewBlockProps> = ({
     isHomepage,
     onDetailClick,
 }) => {
-    const { src, name, position, major, studentNumber, generation, active, to } = member;
+    const { src, name, position, department, studentNumber, generation, active, to } = member;
 
     return (
         <StyledCrewBlock 
@@ -33,30 +33,30 @@ const CrewBlock: React.FC<CrewBlockProps> = ({
             onClick={!isHomepage ? () => onDetailClick?.(to) : undefined}
             style={{ cursor: isHomepage ? 'default' : 'pointer' }}
         >
-            <section className="imageContainer">
+            <section className="imageSection">
                 <Image src={src} alt={`${name} profile`}  width={120} height={120}/>
             </section>
 
-            <section className="textContainer">
-                <section className="infoContainer">
+            <section className="textSection">
+                <section className="infoSection">
                     <section className="nameInfo">
                         <h2>{name}</h2>
                         <span>{position}</span>
                     </section>
 
                     {!isHomepage && (
-                        <section className="badgeContainer">
+                        <section className="badgeSection">
                             <Badge $theme="status">{active ? "활동중" : "비활동"}</Badge>
                             <Badge $theme="info">{generation}기</Badge>
-                            <Badge $theme="info">{`${major} ${studentNumber}학번`}</Badge>
+                            <Badge $theme="info">{`${department} ${studentNumber}학번`}</Badge>
                         </section>
                     )}
                 </section>
 
                 {isHomepage ? (
-                    <span className="majorInfo">{major} {studentNumber}</span>
+                    <span className="majorInfo">{department} {studentNumber}</span>
                 ) : (
-                    <section className="statsContainer">
+                    <section className="statsSection">
                         <section style={{"display":"inline-flex", "gap":pxToRem(12), "alignItems":"center"}}>
                             <Image src="/CategoryImg.png" alt="categoryimg" width={18} height={18}/>
                             <span style={{"color":"#A0A0A0"}}>{member.activityCount || 0}</span>

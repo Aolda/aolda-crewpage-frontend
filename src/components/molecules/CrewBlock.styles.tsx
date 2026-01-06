@@ -20,7 +20,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
         border-radius: ${pxToRem(20)};
         gap: ${pxToRem(36)};
 
-        .textContainer {
+        .textSection {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -57,7 +57,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
         border-radius: ${pxToRem(20)};
         gap: ${pxToRem(36)};
 
-        .textContainer {
+        .textSection {
             display: flex;
             height: ${pxToRem(120)};
             flex-direction: column;
@@ -65,7 +65,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             align-items: flex-start;
         }
 
-        .infoContainer {
+        .infoSection {
             display: flex;
             flex-direction: column;
             height: ${pxToRem(78)};
@@ -83,13 +83,13 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             }
         }
 
-        .badgeContainer {
+        .badgeSection {
             display: inline-flex;
             gap: ${pxToRem(8)};
         }
     `}
 
-    .imageContainer {
+    .imageSection {
         width: ${pxToRem(120)};
         height: ${pxToRem(120)}; 
 
@@ -116,7 +116,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             }
     }
 
-    .statsContainer {
+    .statsSection {
         display: flex;
         align-items: center;
         gap: ${pxToRem(24)};

@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <StyledHeader>
             <section className="iconSection">
-                <Image src="/icon.png" alt="icon" width={35} height={36}/>
+                <Image src="/aoldaIcon.svg" alt="icon" width={35} height={36}/>
             </section>
             <nav className="linkSeciton">
                 <Link href="/crewbook">크루북</Link>
