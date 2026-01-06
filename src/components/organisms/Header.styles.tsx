@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { pxToRem } from "@/styles/utils";
-import { fontSize } from "@/styles/theme";
+import { fontSize, colors } from "@/styles/theme";
 
 
 export const StyledHeader = styled.header`
@@ -11,7 +11,7 @@ export const StyledHeader = styled.header`
     align-items: center;
 
     padding: ${pxToRem(16)};
-    border: solid 1px #E2E2E2;
+    border: solid 1px ${colors.border};
     border-radius: ${pxToRem(12)};
     background-color: white;
     
@@ -33,7 +33,7 @@ export const StyledHeader = styled.header`
             height: ${pxToRem(40)};
             text-align: center;
             padding: ${pxToRem(8)} ${pxToRem(20)};
-            color: #777777;
+            color: ${colors.gray600};
             font-size: ${fontSize.base};
             font-weight: 400;
         }

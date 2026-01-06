@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { fontSize } from "@/styles/theme";
+import { fontSize, colors } from "@/styles/theme";
 import { pxToRem } from "@/styles/utils";
 
 export const StyledMenuItem = styled.div`
@@ -9,7 +9,7 @@ export const StyledMenuItem = styled.div`
     width: ${pxToRem(844)};
     height: ${pxToRem(158)};
     padding-bottom: ${pxToRem(24)};
-    border-bottom: solid 1px #E2E2E2;
+    border-bottom: solid 1px ${colors.border};
     gap: ${pxToRem(20)};
 
     .infoSection {
@@ -33,7 +33,7 @@ export const StyledMenuItem = styled.div`
 
     .date {
         font-size: ${fontSize.base};
-        color: #777777;
+        color: ${colors.gray600};
     }
 
     .descriptionSection {
@@ -43,7 +43,7 @@ export const StyledMenuItem = styled.div`
 
         p {
             margin: 0;
-            color: #777777;
+            color: ${colors.gray600};
             font-size: ${fontSize.base};
             line-height: 1.5;
             text-align: left;

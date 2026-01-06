@@ -1,5 +1,5 @@
 import styled, {css} from "styled-components";
-import { fontSize } from "@/styles/theme";
+import { fontSize, colors } from "@/styles/theme";
 import { pxToRem } from "@/styles/utils";
 
 interface CrewBlockProps {
@@ -16,7 +16,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
         height: ${pxToRem(268)};
 
         padding: ${pxToRem(24)} ${pxToRem(36)};
-        border: 1px solid #E2E2E2;
+        border: 1px solid ${colors.border};
         border-radius: ${pxToRem(20)};
         gap: ${pxToRem(36)};
 
@@ -41,7 +41,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             .majorInfo {
                 font-size: ${fontSize.base};
                 font-weight: bold;
-                color: #777777;
+                color: ${colors.gray600};
             }
         }
 
@@ -53,7 +53,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
         height: ${pxToRem(168)};
 
         padding: ${pxToRem(24)} ${pxToRem(36)};
-        border: 1px solid #E2E2E2;
+        border: 1px solid ${colors.border};
         border-radius: ${pxToRem(20)};
         gap: ${pxToRem(36)};
 
@@ -108,7 +108,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             }
             span {
                 font-size: ${(props) => props.$isHomepage ? fontSize.base : fontSize.body1};
-                color: #777777;
+                color: ${colors.gray600};
             }
             
             * {

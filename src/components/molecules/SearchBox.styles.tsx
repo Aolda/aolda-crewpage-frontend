@@ -1,7 +1,7 @@
 'use client';
 
 import styled from "styled-components";
-import { fontSize } from "@/styles/theme";
+import { fontSize, colors } from "@/styles/theme";
 import { pxToRem } from "@/styles/utils";
 
 export const StyledSearchBox = styled.section`
@@ -11,9 +11,8 @@ export const StyledSearchBox = styled.section`
     justify-content: space-between;
     align-items: center;
     padding: ${pxToRem(12)} ${pxToRem(16)};
-    border: solid #E2E2E2;
+    border: solid 1px ${colors.border};
     border-radius: ${pxToRem(8)};
-    border-width: 1px;
 
 
     input {
@@ -24,7 +23,7 @@ export const StyledSearchBox = styled.section`
         font-size: ${fontSize.base};
 
         &::placeholder {
-            color: #777777;
+            color: ${colors.gray600};
             font-size: ${fontSize.base};
             font-weight: 400;
         }

@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { pxToRem } from "@/styles/utils";
-import { fontSize } from "@/styles/theme";
+import { fontSize, colors } from "@/styles/theme";
 
 export const StyledProfile = styled.div`
     display: flex;
@@ -17,7 +17,7 @@ export const StyledProfile = styled.div`
         height: ${pxToRem(320)};
 
         img {
-            border: solid 2px #E2E2E2;
+            border: solid 2px ${colors.border};
             border-radius: 50%;
         }
     }
@@ -57,7 +57,9 @@ export const StyledProfile = styled.div`
             width: 100%;
             height: ${pxToRem(47)};
             border-radius: ${pxToRem(8)};
-            background-color: #1572B8;
+            background-color: ${colors.primary600};
+
+            color: ${colors.white600};
         }
     }
 
@@ -69,7 +71,7 @@ export const StyledProfile = styled.div`
 
         font-size: ${fontSize.body1};
         font-weight: 400;
-        color: #777777;
+        color: ${colors.gray600};
     }
 
     .followerSection {
@@ -81,12 +83,12 @@ export const StyledProfile = styled.div`
         font-size: ${fontSize.body1};
 
         .variable {
-            color: black;
+            color: ${colors.black500};
             font-weight: 700;
         }
 
         .nonvariable {
-            color: #777777;
+            color: ${colors.gray600};
             font-weight: 400;
         }
     }

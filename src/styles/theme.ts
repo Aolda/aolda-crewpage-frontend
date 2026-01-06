@@ -9,3 +9,15 @@ export const fontSize = {
     small: '0.875rem',  // 14px
     smaller: '0.75rem', // 12px
 };
+
+export const colors = {
+    primary600: '#1572B8',  //버튼 색
+    primary500: '#1A8EE5',  //기본 테마 색
+    gray600: '#777777',     //
+    gray500: '#A0A0A0',     //블로깅, 활동 수 텍스트 색
+    white600: '#FFFFFF',    //
+    white500: '#FAFAFA',    //다크모드 텍스트 색
+    black600: '#181818',    //버튼 내 검은색
+    black500: '#232527',    //페이지내 기본 검은색
+    border: '#E2E2E2',
+}

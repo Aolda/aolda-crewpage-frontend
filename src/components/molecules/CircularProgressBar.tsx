@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { fontSize } from '@/styles/theme';
+import { fontSize, colors } from '@/styles/theme';
 import { pxToRem } from '@/styles/utils';
 
 const Container = styled.div<{ $size: number }>`
@@ -29,7 +29,7 @@ const CircleBackground = styled.circle`
 
 const CircleProgress = styled.circle<{ $offset: number; $circumference: number }>`
     fill: none;
-    stroke: #1A8EE5;
+    stroke: ${colors.primary500};
     stroke-width: ${pxToRem(17)};
     stroke-linecap: round;
     transition: stroke-dashoffset 1.5s ease-out; 
@@ -46,7 +46,7 @@ const NumberLabel = styled.div`
     position: absolute;
     font-size: ${(fontSize.base)};
     font-weight: bold;
-    color: #1A8EE5;
+    color: ${colors.primary500};
 `;
 
 const CircularProgressBar: React.FC<{ total: number; current: number; size?: number }> = ({

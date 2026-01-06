@@ -76,8 +76,8 @@ export default function Home() {
       <div>
         <Badge $theme="status">진행중</Badge>
         <Badge $theme="info">소프트웨어</Badge>
-        <HashTag completed $bgColor="#1A8EE5" color="white"/>
-        <HashTag date="2025.09.24" $bgColor="black" color="white" />
+        <HashTag completed color="white"/>
+        <HashTag date="2025.09.24" color="white" />
       </div>
         <ActivityBlock
           completed
