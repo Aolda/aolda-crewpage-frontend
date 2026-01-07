@@ -14,7 +14,7 @@ import ProjectBlock from "@/components/molecules/ProjectBlock";
 import SearchBox from '@/components/molecules/SearchBox';
 import Select from "@/components/molecules/Select";
 import LinkSection from "@/components/organisms/LinkSection";
-import Profile from "@/components/organisms/Profile";
+import Profile from "@/components/molecules/Profile";
 
 import Header from "@/components/organisms/Header";
 import Footer from "@/components/organisms/Footer";
