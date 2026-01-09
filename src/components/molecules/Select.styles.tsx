@@ -8,7 +8,8 @@ export const SelectContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     
-    width: ${pxToRem(94)};
+    min-width: ${pxToRem(94)}; 
+    width: auto;
     height: ${pxToRem(48)};
     padding: ${pxToRem(12)} ${pxToRem(16)};
     
