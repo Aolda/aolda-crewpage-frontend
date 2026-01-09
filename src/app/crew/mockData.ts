@@ -1,13 +1,12 @@
 import { CrewMember } from '@/types/crew';
-import { Project } from '@/types/project';
 
 export const MOCK_CREW_LIST: CrewMember[] = [
     {
         id: "crew_1",
         name: "김철수",
-        profileImage: "/images/profiles/sample1.png",
+        profileImage: "/CrewImg.png",
         position: 4, // 크루원
-        department: "소프트웨어전공",
+        department: "소프트웨어",
         studentNumber: "22",
         generation: 2,
         active: 'ACTIVE',
@@ -21,9 +20,9 @@ export const MOCK_CREW_LIST: CrewMember[] = [
     {
         id: "crew_2",
         name: "이영희",
-        profileImage: "/images/profiles/sample2.png",
+        profileImage: "/CrewImg.png",
         position: 1,
-        department: "사이버보안전공",
+        department: "사이버보안",
         studentNumber: "20",
         generation: 1,
         active: 'ACTIVE',
@@ -37,9 +36,9 @@ export const MOCK_CREW_LIST: CrewMember[] = [
     {
         id: "crew_3",
         name: "박지민",
-        profileImage: "/images/profiles/sample3.png",
+        profileImage: "/CrewImg.png",
         position: 2,
-        department: "컴퓨터공학전공",
+        department: "컴퓨터공학",
         studentNumber: "21",
         generation: 1,
 
@@ -51,29 +50,4 @@ export const MOCK_CREW_LIST: CrewMember[] = [
         activityCount: 10,
         blogCount: 5,
     },
-];
-
-export const MOCK_PROJECTS: Project[] = [
-    {
-        id: "proj_acc",
-        title: "ACC",
-        subtitle: "Aolda Cloud Console",
-        description: "아올다 크루를 위한 통합 클라우드 관리 콘솔입니다.",
-        date: "2024.01",
-        status: "ONGOING", // 진행 중
-        thumbnail: "/images/projects/acc-thumb.png",
-        bgcolor: "#1A8EE5",
-        memberIds: ["crew_1", "crew_2"],
-    },
-    {
-        id: "proj_new",
-        title: "Next Project",
-        subtitle: "새로운 기획",
-        description: "현재 아이디어 구상 및 요구사항 정의 단계에 있습니다.",
-        date: "2024.03",
-        status: "PLANNING", // 기획 중
-        thumbnail: "/images/projects/planning-thumb.png",
-        bgcolor: "#6B7280",
-        memberIds: ["crew_2"],
-    }
 ];

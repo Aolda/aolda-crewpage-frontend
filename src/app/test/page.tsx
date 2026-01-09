@@ -19,6 +19,10 @@ import Profile from "@/components/molecules/Profile";
 import Header from "@/components/organisms/Header";
 import Footer from "@/components/organisms/Footer";
 
+import { MOCK_CREW_LIST } from "@/app/crew/mockData";
+import { MOCK_PROJECTS } from "@/app/project/mockData";
+
+
 const mockMember: Member = {
   src: "/CrewImg.png",
   name: "김아주",
@@ -92,14 +96,14 @@ export default function Home() {
         <OverviewCard type={3} totalNum={20} onGoingNum={13}/>
       </div>
       <div>
-        <CrewBlock member={mockMember} isHomepage/>
-        <CrewBlock member={mockMember} isHomepage={false}/>
+        <CrewBlock member={MOCK_CREW_LIST[0]} isHomepage/>
+        <CrewBlock member={MOCK_CREW_LIST[1]} isHomepage={false}/>
       </div>
       <div style={{"display":"flex", "flexDirection":"column", "gap":"24px"}}>
-        <MenuItem pageName="bloging" title={mockProject.title} date={mockProject.date} description={mockProject.description}/>
-        <MenuItem pageName="bloging" title={mockProject.title} date={mockProject.date} description={mockProject.description}/>
-        <MenuItem pageName="activity" title={`${mockProject.title}(${mockProject.subtitle})`} date={mockProject.date} description={mockProject.description}/>
-        <MenuItem pageName="activity" title={`${mockProject.title}(${mockProject.subtitle})`} date={mockProject.date} description={mockProject.description}/>
+        <MenuItem pageName="bloging" title={MOCK_PROJECTS[0].title} date={MOCK_PROJECTS[0].date} description={MOCK_PROJECTS[0].description}/>
+        <MenuItem pageName="bloging" title={MOCK_PROJECTS[1].title} date={MOCK_PROJECTS[1].date} description={MOCK_PROJECTS[1].description}/>
+        <MenuItem pageName="activity" title={`${MOCK_PROJECTS[0].title}(${MOCK_PROJECTS[0].subtitle})`} date={MOCK_PROJECTS[0].date} description={MOCK_PROJECTS[0].description}/>
+        <MenuItem pageName="activity" title={`${MOCK_PROJECTS[1].title}(${MOCK_PROJECTS[1].subtitle})`} date={MOCK_PROJECTS[1].date} description={MOCK_PROJECTS[1].description}/>
       </div>
       <div>
         <ProjectBlock project={mockProject}/>
