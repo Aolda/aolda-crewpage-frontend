@@ -53,6 +53,7 @@ export default function CrewListPage() {
 
     return (
         <S.PageWrapper>
+            <Header />
             <S.HeaderBackground>
                 <S.HeaderContent>
                     <h1>아올다와 함께 성장하는<br /><strong>핵심 인재들</strong></h1>
@@ -109,6 +110,7 @@ export default function CrewListPage() {
                     )}
                 </S.CrewList>
             </S.ContentContainer>
+            <Footer />
         </S.PageWrapper>
     );
 }
