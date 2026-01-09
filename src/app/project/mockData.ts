@@ -8,7 +8,7 @@ export const MOCK_PROJECTS: Project[] = [
         description: "아올다 크루를 위한 통합 클라우드 관리 콘솔입니다.",
         date: "2024.01",
         status: "ONGOING", // 진행 중
-        thumbnail: "/images/projects/acc-thumb.png",
+        thumbnail: "/ExBgIMG.png",
         bgcolor: "#1A8EE5",
         memberIds: ["crew_1", "crew_2"],
     },

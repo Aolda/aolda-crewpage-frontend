@@ -106,7 +106,7 @@ export default function Home() {
         <MenuItem pageName="activity" title={`${MOCK_PROJECTS[1].title}(${MOCK_PROJECTS[1].subtitle})`} date={MOCK_PROJECTS[1].date} description={MOCK_PROJECTS[1].description}/>
       </div>
       <div>
-        <ProjectBlock project={mockProject}/>
+        <ProjectBlock project={MOCK_PROJECTS[0]} />
       </div>
       <div>
         <SearchBox
