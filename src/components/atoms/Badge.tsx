@@ -1,26 +1,27 @@
 'use client';
 
-import React from "react"
-import { StyledBadge } from "./Badge.styles"
-import { type BadgeTheme } from "@/types/Types";
+import React from "react";
+import { StyledBadge } from "./Badge.styles";
+import { ProjectStatus } from "@/types/project";
+import { MemberStatus } from "@/types/crew";
 
-/*
-* 카드에 뱃지처럼 붙여서 상태를 표현하는 컴포넌트
-* @params {BadgeTheme} theme
-*/
+// 배경이 있는 'solid'와 배경이 없는 'outline'으로 구분합니다.
+export type BadgeVariant = 'solid' | 'outline' | 'transparent';
 
 export interface BadgeProps {
-    children: React.ReactNode,
-	$theme: BadgeTheme,
+    children: React.ReactNode;
+    variant?: BadgeVariant;
+    // 상태값(프로젝트 혹은 멤버)이나 단순 정보(string)를 모두 받을 수 있게 합니다.
+    status?: ProjectStatus | MemberStatus; 
 }
-
 
 const Badge: React.FC<BadgeProps> = ({
     children,
-	$theme,
+    variant = 'solid', // 기본값은 배경 있음
+    status,
 }) => {
-	return (
-        <StyledBadge $theme={$theme}>
+    return (
+        <StyledBadge $variant={variant} $status={status}>
             {children}
         </StyledBadge>
     );

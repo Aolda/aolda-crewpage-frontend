@@ -74,8 +74,8 @@ export default function Home() {
     <main>
       <Header />
       <div>
-        <Badge $theme="status">진행중</Badge>
-        <Badge $theme="info">소프트웨어</Badge>
+        <Badge variant="solid" status="ONGOING">진행중</Badge>
+        <Badge variant="outline" status="INACTIVE">비활동</Badge>
         <HashTag completed color="white"/>
         <HashTag date="2025.09.24" color="white" />
       </div>
