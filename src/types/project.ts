@@ -1,12 +1,12 @@
 // src/types/project.ts
-// 프로젝트 상태 정의
+// 프로젝트 진행 상태 정의
 // PLANNING: 기획 중, ONGOING: 진행 중, DONE: 완료
 export type ProjectStatus = "PLANNING" | "ONGOING" | "DONE";
 
-// 상태별 한글 라벨 매핑
+// 프로젝트 진행 상태별 한글 라벨 매핑
 export const PROJECT_STATUS_LABEL: Record<ProjectStatus, string> = {
-    PLANNING: '기획 중',
-    ONGOING: '진행 중',
+    PLANNING: '기획중',
+    ONGOING: '진행중',
     DONE: '완료',
 };
 
@@ -33,5 +33,5 @@ export interface Project {
     
     // 인원 정보
     // Member 객체 대신 id 배열만 관리하여 데이터 무결성 유지
-    memberIds: string[];      
+    memberIds: string[];
 }

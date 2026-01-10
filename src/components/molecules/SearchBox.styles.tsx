@@ -8,6 +8,7 @@ export const StyledSearchBox = styled.section`
     display: flex;
     width: ${pxToRem(475)};
     height: ${pxToRem(48)};
+    background-color: white;
     justify-content: space-between;
     align-items: center;
     padding: ${pxToRem(12)} ${pxToRem(16)};
@@ -18,7 +19,7 @@ export const StyledSearchBox = styled.section`
     input {
         border: none;
         outline: none;
-        width: ${pxToRem(145)};
+        width: content-fit;
         height: ${pxToRem(24)};
         font-size: ${fontSize.base};
 
