@@ -95,25 +95,35 @@ export const HeaderSection = styled.header`
     }
 `;
 
+export const StatsSection = styled.section`
+    display: flex;
+    width: ${pxToRem(1200)};
+    margin: 0 auto;
+    justify-content: center;
+    gap: ${pxToRem(24)};
+    padding-top: ${pxToRem(60)};
+    z-index: 10;
+`;
+
 /* 필터 및 그리드 섹션 */
 export const FilterBar = styled.div`
-    max-width: ${pxToRem(1100)};
-    margin: 0 auto ${pxToRem(32)};
+    max-width: ${pxToRem(1200)};
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 ${pxToRem(20)};
+    padding-top: ${pxToRem(60)};
 `;
 
 export const FilterButton = styled.button<{ $isActive: boolean }>`
     /* 1. 기본 레이아웃 */
-    padding: ${pxToRem(8)} ${pxToRem(16)};
+    padding: ${pxToRem(12)} ${pxToRem(16)};
     border-radius: ${pxToRem(8)};
     border: none;
     
     /* 2. 폰트 설정 */
-    font-size: ${pxToRem(14)};
-    font-weight: 600;
+    font-size: ${fontSize.base};
+    font-weight: 700;
     line-height: 1.5;
     
     /* 3. 상태별 색상 (사용자님이 요청하신 크루 페이지 매커니즘) */
@@ -142,11 +152,12 @@ export const LeftButtonGroup = styled.div`
 `;
 
 export const ProjectGrid = styled.main`
-    max-width: ${pxToRem(1100)};
-    margin: 0 auto ${pxToRem(80)};
+    max-width: ${pxToRem(1200)};
+    margin: 0 auto;
     display: grid;
     /* 피그마 [A-5] 디자인: 4열 그리드 */
     grid-template-columns: repeat(4, 1fr);
     gap: ${pxToRem(24)};
-    padding: 0 ${pxToRem(20)};
+    padding-top: ${pxToRem(32)};
+    padding-bottom: ${pxToRem(160)}
 `;

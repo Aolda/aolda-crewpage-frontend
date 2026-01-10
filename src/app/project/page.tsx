@@ -8,6 +8,7 @@ import Header from '@/components/organisms/Header';
 import Footer from '@/components/organisms/Footer';
 import ProjectBlock from '@/components/molecules/ProjectBlock';
 import SearchBox from '@/components/molecules/SearchBox';
+import OverviewCard from '@/components/molecules/OverviewCard';
 import { MOCK_PROJECTS } from './mockData';
 import { ProjectStatus } from '@/types/project';
 
@@ -56,6 +57,12 @@ export default function ProjectListPage() {
                 <div className="ellipse3"></div>
             </S.HeaderSection>
 
+            <S.StatsSection>
+                <OverviewCard type={1} totalNum={20} onGoingNum={13}/>
+                <OverviewCard type={2} totalNum={20} onGoingNum={13}/>
+                <OverviewCard type={3} totalNum={20} onGoingNum={13}/>
+            </S.StatsSection>
+
             <S.FilterBar>
                 <S.LeftButtonGroup>
                     {/* 크루 페이지와 동일한 '#전체' 버튼 로직 */}
@@ -80,7 +87,7 @@ export default function ProjectListPage() {
                 
                 {/* ... Select 컴포넌트 생략 ... */}
             </S.FilterBar>
-
+            
             <S.ProjectGrid>
                 {filteredProjects.map((project) => (
                     <ProjectBlock key={project.id} project={project} />
