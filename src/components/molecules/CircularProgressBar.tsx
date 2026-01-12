@@ -6,8 +6,8 @@ import { fontSize } from '@/styles/theme';
 
 const Container = styled.div<{ $size: number }>`
     position: relative;
-    width: ${(props) => props.$size};
-    height: ${(props) => props.$size};
+    width: ${(props) => props.$size}rem;
+    height: ${(props) => props.$size}rem;
     display: flex;
     align-items: center;
     justify-content: center;
