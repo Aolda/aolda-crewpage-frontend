@@ -5,6 +5,7 @@ import Image from "next/image";
 import { StyledProjectBlock } from "./ProjectBlock.styles";
 import Badge from "../atoms/Badge";
 import { type Project } from "@/types/Types";
+import { fontSize } from "@/styles/theme";
 
 /*
 * 주요활동 페이지의 project 카드
@@ -23,14 +24,14 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
 		<StyledProjectBlock bgColor={project.bgColor}>
 			<section className="infoSection">
                 <section className="textSection">
-                    <span style={{"fontSize":"16px"}}>{project.crewNum}명 참여</span>
-                    <h1 style={{"fontSize": "36px"}}>{project.title}</h1>
-                    <span style={{"fontSize":"12px"}}>{project.subtitle}</span>
+                    <span style={{"fontSize":fontSize.base}}>{project.crewNum}명 참여</span>
+                    <h1 style={{"fontSize": "2.25rem"}}>{project.title}</h1>
+                    <span style={{"fontSize":fontSize.smaller}}>{project.subtitle}</span>
                 </section>
                 <Badge $theme={project.status}>진행중</Badge>
             </section>
 			<section className="imgSection">
-				<Image src={project.src} alt="projectBlock img" />
+				<Image src={project.src} alt="projectBlock img" width={300} height={300}/>
 			</section>
 		</StyledProjectBlock>
 	);

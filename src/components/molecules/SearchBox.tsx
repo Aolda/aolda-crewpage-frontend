@@ -34,7 +34,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({
 		<StyledSearchBox>
 			<input
 				type="text"
-				value={value}
+				value={value ?? ""}
 				onChange={onChange}
 				onKeyDown={handleKeyDown}
                 placeholder={placeholder}
@@ -44,7 +44,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({
 				type='button'
 				onClick={() => onSearch(value.trim())}
 			>
-				<Image src="/Search.png" alt="search" />
+				<Image src="/Search.png" alt="search" width={20} height={20}/>
 			</button>
 		</StyledSearchBox>
 	);

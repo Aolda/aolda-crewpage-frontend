@@ -29,34 +29,38 @@ const LinkSection: React.FC<LinkSectionProps> = ({
 }) => {
 	let flexDirection = "row";
 	let align="flex-start";
+	let textalign="left";
 	
 	if((index+1) % 2 == 1) {
 		flexDirection="row";
 		align="flex-start";
+		textalign="left";
 	}else {
 		flexDirection="row-reverse";
 		align="flex-end";
+		textalign="right";
 	}
 	const styles: Record<string, CSSProperties> = {
 	    "offsetStyles": {
 		    "display": "flex",
 	        "flexDirection": flexDirection as React.CSSProperties['flexDirection'],
-            "gap": "24px"
+            "gap": "1.5rem",
+			"textAlign": textalign as React.CSSProperties['textAlign'],
 	    }
 	};
 	
 	return (
 		<StyledLinkSection style={styles.offsetStyles}>
 			<section className="imgSection">
-				<Image src={src} alt={title}/>
+				<Image src={src} alt={title} width={588} height={441}/>
 			</section>
 			<section className="textSection" style={{"alignItems":align}}>
-				<h1 style={{"fontSize":"72px", "color":"#1A8EE5"}}>0{index+1}</h1>
-				<h1 style={{"fontSize": "32px"}}>
-					<span style={{"color":"#1A8EE5"}}>아올다</span>
+				<h1 style={{"fontSize":"4.5rem", "color":"#1A8EE5", "fontWeight":"700"}}>0{index+1}</h1>
+				<h1 style={{"fontSize": "2rem", "fontWeight":"700"}}>
+					<span style={{"color":"#1A8EE5"}}>아올다 </span>
 					{title}
 				</h1>
-				<span>{description}</span>
+				<p>{description}</p>
 				<button onClick={() => {}}>
 					아올다 {title} 이동하기
 				</button>

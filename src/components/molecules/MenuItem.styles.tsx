@@ -1,28 +1,29 @@
 import styled from "styled-components";
+import { fontSize } from "@/styles/theme";
 
 export const StyledMenuItem = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 844px;
-    height: 134px;
-    padding-bottom: 24px;
+    width: 52.75rem;
+    height: 9.875rem;
+    padding-bottom: 1.5rem;
     border-bottom: solid 1px #E2E2E2;
-    gap: 20px;
+    gap: 1.25rem;
 
     .infoSection {
         display: flex;
-        height: 66px;
+        height: 4.125rem;
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
+        // gap: 0.5rem;
     }
 
     .titleSection {
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        gap: 12px;
+        gap: 0.75rem;
 
         * {
             margin: 0;
@@ -30,7 +31,7 @@ export const StyledMenuItem = styled.div`
     }
 
     .date {
-        font-size: 16px;
+        font-size: ${fontSize.base};
         color: #777777;
     }
 
@@ -42,7 +43,7 @@ export const StyledMenuItem = styled.div`
         p {
             margin: 0;
             color: #777777;
-            font-size: 16px;
+            font-size: ${fontSize.base};
             line-height: 1.5;
             text-align: left;
 

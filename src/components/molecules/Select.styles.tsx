@@ -1,17 +1,18 @@
 import styled from 'styled-components';
+import { fontSize } from '@/styles/theme';
 
 export const SelectContainer = styled.div`
     position: relative;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     
-    width: 62px;
-    height: 24px;
-    padding: 12px 16px;
+    width: 5.875rem;
+    height: 3rem;
+    padding: 0.75rem 1rem;
     
-    border: 1.5px solid #888888;
-    border-radius: 12px;
+    border: 1px solid #888888;
+    border-radius: 0.5rem;
     background-color: white;
     cursor: pointer;
 
@@ -21,10 +22,10 @@ export const SelectContainer = styled.div`
 `;
 
 export const LabelText = styled.span`
-    font-size: 18px;
-    font-weight: 600;
+    font-size: ${fontSize.body2};
+    // font-weight: 600;
     color: #555555;
-    margin-right: 8px;
+    margin-right: 0.5rem;
     pointer-events: none;
 `;
 
@@ -35,12 +36,12 @@ export const ArrowIcon = styled.div`
     
     &::after {
         content: '';
-        width: 10px;
-        height: 10px;
+        width: 0.625rem;
+        height: 0.625rem;
         border-right: 2px solid #888888;
         border-bottom: 2px solid #888888;
         transform: rotate(45deg);
-        margin-bottom: 4px;
+        margin-bottom: 0.25rem;
     }
 `;
 

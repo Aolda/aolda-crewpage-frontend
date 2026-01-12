@@ -1,29 +1,30 @@
 'use client';
 
 import styled from "styled-components";
+import { fontSize } from "@/styles/theme";
 
 export const StyledSearchBox = styled.section`
     display: flex;
-    width: 443px;
-    height: 24px;
+    width: 29.6875rem;
+    height: 3rem;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 16px;
+    padding: 0.75rem 1rem;
     border: solid #E2E2E2;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     border-width: 1px;
 
 
     input {
         border: none;
         outline: none;
-        width: 145px;
-        height: 24px;
-        font-size: 16px;
+        width: 9.0625rem;
+        height: 1.5rem;
+        font-size: ${fontSize.base};
 
         &::placeholder {
             color: #777777;
-            font-size: 16px;
+            font-size: ${fontSize.base};
             font-weight: 400;
         }
     }
@@ -38,8 +39,8 @@ export const StyledSearchBox = styled.section`
         align-items: center;
     
         img {
-            width: 20px;
-            height: 20px;
+            width: 1.25rem;
+            height: 1.25rem;
         }
     }
 `;

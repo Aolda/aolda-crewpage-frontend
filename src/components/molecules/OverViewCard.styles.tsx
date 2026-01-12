@@ -1,45 +1,45 @@
 import styled from 'styled-components';
+import { fontSize } from '@/styles/theme';
 
 export const StyledOverviewCard = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 292px;
-    height: 85px;
-    padding: 31px; 46px;
+    width: 24rem;
+    height: 9.1875rem;
+    padding: 1.9375rem 2.875rem;
     background-color: white;
-    // 잎사귀 모양 border-radius (왼쪽 위, 오른쪽 아래만 둥글게)
-    border-radius: 60px 12px 60px 12px; 
-    box-shadow: 0px 4px 20px 0px #1A8EE54D;
-    gap: 55px;
+    border-radius: 3.75rem 0.75rem 3.75rem 0.75rem; 
+    box-shadow: 0px 0.25rem 1.25rem 0px #1A8EE54D;
+    gap: 3.4375rem;
 
     .leftSection {
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 1rem;
     }
 
     .titleSection {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 0.5rem;
         h3 {
             margin: 0;
-            font-size: 20px;
+            font-size: ${fontSize.body1};
             font-weight: bold;
         }
     }
 
     .legendSection {
         display: flex;
-        gap: 16px;
+        gap: 1rem;
     }
 
     .legendItem {
         display: flex;
         align-items: center;
-        gap: 6px;
-        font-size: 14px;
+        gap: 0.375rem;
+        font-size: ${fontSize.small};
         color: #555;
     }
 
@@ -51,8 +51,8 @@ export const StyledOverviewCard = styled.div`
 `;
 
 export const ColorBox = styled.div<{ $color: string }>`
-    width: 16px;
-    height: 16px;
-    border-radius: 4px;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.25rem;
     background-color: ${(props) => props.$color};
 `;

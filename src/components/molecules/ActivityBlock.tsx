@@ -32,8 +32,8 @@ const ActivityBlock: React.FC<ActivityBlockProps> = ({
 		<StyledActivityBlock>
 			<section className="topContainer">
                 <section className="hashTagContainer">
-                    <HashTag completed={completed} $bgColor="#1A8EE5"/>
-			        <HashTag date={date} $bgColor="black"/>
+                    <HashTag completed={completed} $bgColor="#1A8EE5" color="white"/>
+			        <HashTag date={date} $bgColor="black" color="white"/>
                 </section>
 			    <section className="titleContainer">
                     <h2>{title}</h2>
