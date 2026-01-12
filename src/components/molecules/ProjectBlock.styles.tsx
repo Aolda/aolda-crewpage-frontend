@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { fontSize } from "@/styles/theme";
 
 interface StyledProjectBlockProps {
-    bgcolor: string;
+    bgColor: string;
 }
 
 export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
@@ -13,7 +13,7 @@ export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
     flex-direction: column;
     justify-content: space-between;
 
-    background-color: ${(props) => props.bgcolor};
+    background-color: ${(props) => props.bgColor};
 
     * {
         margin: 0;

@@ -21,7 +21,7 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
 	project,
 }) => {
 	return (
-		<StyledProjectBlock bgcolor={project.bgcolor}>
+		<StyledProjectBlock bgColor={project.bgColor}>
 			<section className="infoSection">
                 <section className="textSection">
                     <span style={{"fontSize":fontSize.base}}>{project.crewNum}명 참여</span>
