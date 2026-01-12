@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { pxToRem } from "@/styles/utils";
 import { fontSize } from "@/styles/theme";
 
 interface StyledProjectBlockProps {
@@ -8,9 +7,9 @@ interface StyledProjectBlockProps {
 
 export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
     display: flex;
-    width: ${pxToRem(273)};
-    height: ${pxToRem(409.5)};
-    border-radius: ${pxToRem(20)};
+    width: 17.0625rem;
+    height: 25.59375rem;
+    border-radius: 1.25rem;
     flex-direction: column;
     justify-content: space-between;
 
@@ -26,9 +25,9 @@ export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: ${pxToRem(12)};
+        gap: 0.75rem;
         
-        padding: ${pxToRem(20)} 0 0 0;
+        padding: 1.25rem 0 0 0;
     }
 
     .textSection {
@@ -36,10 +35,10 @@ export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: ${pxToRem(4)};
+        gap: 0.25rem;
 
         h1 {
-            font-size: ${pxToRem(36)};
+            font-size: 2.25rem;
             font-weight: bold;
         }
     }
@@ -51,7 +50,7 @@ export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
         overflow: hidden;
         img {
             position: absolute;
-            height: ${pxToRem(300)} !important;
+            height: 18.75rem !important;
             bottom: 0;
         }
     }

@@ -3,7 +3,6 @@
 import React, {type CSSProperties} from "react";
 import Image from "next/image";
 import { StyledLinkSection } from "./LinkSection.styles";
-import { pxToRem } from "@/styles/utils";
 
 /*
 * 주요링크 페이지의 항목별 섹션
@@ -45,7 +44,7 @@ const LinkSection: React.FC<LinkSectionProps> = ({
 	    "offsetStyles": {
 		    "display": "flex",
 	        "flexDirection": flexDirection as React.CSSProperties['flexDirection'],
-            "gap": pxToRem(24),
+            "gap": "1.5rem",
 			"textAlign": textalign as React.CSSProperties['textAlign'],
 	    }
 	};
@@ -56,8 +55,8 @@ const LinkSection: React.FC<LinkSectionProps> = ({
 				<Image src={src} alt={title} width={588} height={441}/>
 			</section>
 			<section className="textSection" style={{"alignItems":align}}>
-				<h1 style={{"fontSize":pxToRem(72), "color":"#1A8EE5", "fontWeight":"700"}}>0{index+1}</h1>
-				<h1 style={{"fontSize": pxToRem(32), "fontWeight":"700"}}>
+				<h1 style={{"fontSize":"4.5rem", "color":"#1A8EE5", "fontWeight":"700"}}>0{index+1}</h1>
+				<h1 style={{"fontSize": "2rem", "fontWeight":"700"}}>
 					<span style={{"color":"#1A8EE5"}}>아올다 </span>
 					{title}
 				</h1>

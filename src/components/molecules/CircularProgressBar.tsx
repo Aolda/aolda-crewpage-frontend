@@ -3,12 +3,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { fontSize } from '@/styles/theme';
-import { pxToRem } from '@/styles/utils';
 
 const Container = styled.div<{ $size: number }>`
     position: relative;
-    width: ${(props) => pxToRem(props.$size)};
-    height: ${(props) => pxToRem(props.$size)};
+    width: ${(props) => props.$size};
+    height: ${(props) => props.$size};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,13 +23,13 @@ const Svg = styled.svg`
 const CircleBackground = styled.circle`
     fill: none;
     stroke: #e5e7eb;
-    stroke-width: ${pxToRem(17)};
+    stroke-width: 1.0625rem;
 `;
 
 const CircleProgress = styled.circle<{ $offset: number; $circumference: number }>`
     fill: none;
     stroke: #1A8EE5;
-    stroke-width: ${pxToRem(17)};
+    stroke-width: 1.0625rem;
     stroke-linecap: round;
     transition: stroke-dashoffset 1.5s ease-out; 
     stroke-dasharray: ${(props) => props.$circumference};
@@ -94,8 +93,8 @@ const CircularProgressBar: React.FC<{ total: number; current: number; size?: num
     }, [current]);
 
     return (
-        <Container $size={size}>
-            <Svg viewBox={`0 0 ${size} ${size}`}>
+        <Container $size={size / 16}>
+            <Svg viewBox={`0 0 ${size / 16} ${size / 16}`}>
                 <CircleBackground cx={center} cy={center} r={radius} />
                 <CircleProgress
                     cx={center}

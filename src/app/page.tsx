@@ -3,7 +3,6 @@
 import React, {useState, type ChangeEvent} from "react";
 import Badge from "@/components/atoms/Badge";
 import HashTag from "@/components/atoms/HashTag";
-import { pxToRem } from "@/styles/utils";
 import ActivityBlock from "@/components/molecules/ActivityBlock";
 import OverviewCard from "@/components/molecules/OverviewCard";
 import CrewBlock from "@/components/molecules/CrewBlock";
@@ -63,7 +62,7 @@ export default function Home() {
         // 여기에 실제 필터링 로직이나 API 호출 로직을 넣습니다.
     };
   return (
-    <main style={{ padding: pxToRem(20) }}>
+    <main style={{ padding: "1.25rem" }}>
       <div>
         <Badge $theme="status">진행중</Badge>
         <Badge $theme="info">소프트웨어</Badge>
