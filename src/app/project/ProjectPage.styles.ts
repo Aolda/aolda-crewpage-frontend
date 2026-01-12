@@ -148,7 +148,7 @@ export const FilterButton = styled.button<{ $isActive: boolean }>`
 
 export const LeftButtonGroup = styled.div`
     display: flex;
-    gap: ${pxToRem(12)};
+    gap: ${pxToRem(24)};
 `;
 
 export const ProjectGrid = styled.main`
@@ -157,7 +157,7 @@ export const ProjectGrid = styled.main`
     display: grid;
     /* 피그마 [A-5] 디자인: 4열 그리드 */
     grid-template-columns: repeat(4, 1fr);
-    gap: ${pxToRem(24)};
+    gap: ${pxToRem(36)};
     padding-top: ${pxToRem(32)};
     padding-bottom: ${pxToRem(160)}
 `;
