@@ -19,7 +19,7 @@ export const StyledSearchBox = styled.section`
     input {
         border: none;
         outline: none;
-        width: 9.0625rem;
+        width: fit-content;
         height: 1.5rem;
         font-size: ${fontSize.base};
 

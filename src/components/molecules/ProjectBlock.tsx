@@ -25,7 +25,7 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
 
 	return (
 		<StyledProjectBlock
-			bgColor={project.bgColor}
+			$bgColor={project.bgColor}
 			onClick={() => onDetailClick?.(project.id)}
 		>
 			<section className="infoSection">

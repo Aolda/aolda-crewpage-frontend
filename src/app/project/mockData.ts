@@ -19,7 +19,7 @@ export const MOCK_PROJECTS: Project[] = [
         description: "현재 아이디어 구상 및 요구사항 정의 단계에 있습니다.",
         date: "2024.03",
         status: "PLANNING", // 기획 중
-        thumbnail: "/images/projects/planning-thumb.png",
+        thumbnail: "/ExBgIMG.png",
         bgColor: "#6B7280",
         memberIds: ["crew_2"],
     }
