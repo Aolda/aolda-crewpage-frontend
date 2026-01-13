@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { fontSize } from '@/styles/theme';
-import { pxToRem } from '@/styles/utils';
 
 interface HashTagProps {
     $completed?: boolean,
@@ -14,9 +13,9 @@ export const StyledHashTag = styled.div<HashTagProps>`
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    border-radius: ${pxToRem(24)};
+    border-radius: 1.5rem;
     width: auto;
-    padding: ${pxToRem(7)} ${pxToRem(16)};
+    padding: 0.4375rem 1rem;
     color: ${(props) => props.$color};
     font-size: ${fontSize.smaller};
 

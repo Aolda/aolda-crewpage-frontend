@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import { fontSize } from "@/styles/theme";
-import { pxToRem } from "@/styles/utils";
 
 export const StyledLinkSection = styled.section`
     .imgSection {
-        width: ${pxToRem(588)};
-        height: ${pxToRem(441)};
+        width: 36.75rem;
+        height: 27.5625rem;
 
         img {
             width: 100%;
@@ -15,8 +14,8 @@ export const StyledLinkSection = styled.section`
     .textSection {
         display: flex;
         flex-direction: column;
-        width: ${pxToRem(588)};
-        gap: ${pxToRem(32)};
+        width: 36.75rem;
+        gap: 2rem;
 
         p {
             margin: 0;
@@ -32,7 +31,7 @@ export const StyledLinkSection = styled.section`
     button {
         background: none;
         border: solid 1px #777777;
-        border-radius: ${pxToRem(8)};
-        padding: ${pxToRem(12)} ${pxToRem(16)};
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
     }
 `;

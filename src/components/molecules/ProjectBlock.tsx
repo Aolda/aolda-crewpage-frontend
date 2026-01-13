@@ -6,7 +6,6 @@ import { StyledProjectBlock } from "./ProjectBlock.styles";
 import Badge from "../atoms/Badge";
 import { type Project, PROJECT_STATUS_LABEL } from "@/types/project";
 import { fontSize } from "@/styles/theme";
-import { pxToRem } from "@/styles/utils";
 
 /*
 * 주요활동 페이지의 project 카드
@@ -26,13 +25,13 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
 
 	return (
 		<StyledProjectBlock
-			bgcolor={project.bgcolor}
+			bgColor={project.bgColor}
 			onClick={() => onDetailClick?.(project.id)}
 		>
 			<section className="infoSection">
                 <section className="textSection">
                     <span style={{"fontSize":fontSize.base}}>{memberCount}명 참여</span>
-                    <h1 style={{"fontSize": pxToRem(36)}}>{project.title}</h1>
+                    <h1 style={{"fontSize": "2.25rem"}}>{project.title}</h1>
                     <span style={{"fontSize":fontSize.smaller}}>{project.subtitle}</span>
                 </section>
                 <Badge variant="transparent" status={project.status}>{PROJECT_STATUS_LABEL[project.status]}</Badge>

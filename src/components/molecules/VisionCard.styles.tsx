@@ -4,20 +4,20 @@ import { colors } from "@/styles/theme";
 
 export const StyledVisionCard = styled.div `
     display: flex;
-    width: ${pxToRem(348)};
-    height: ${pxToRem(358)};
-    border: 2px solid ${colors.border};
-    border-radius: ${pxToRem(16)};
+    width: 21.75rem;
+    height: 22.75rem;
+    border: 2px solid ${colors.border};;
+    border-radius: 1rem;
 
     justify-content: center;
     align-items: center;
     flex-direction: column;
 
-    padding: ${pxToRem(32)} ${pxToRem(36)};
+    padding: 2rem 2.25rem;
 
     img {
-        width: ${pxToRem(120)};
-        height: ${pxToRem(120)};
+        width: 7.5rem;
+        height: 7.5rem;
     }
     
     h1 {

@@ -1,30 +1,29 @@
 import styled from "styled-components";
 import { fontSize, colors } from "@/styles/theme";
-import { pxToRem } from "@/styles/utils";
 
 export const StyledMenuItem = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: ${pxToRem(844)};
-    height: ${pxToRem(158)};
-    padding-bottom: ${pxToRem(24)};
+    width: 52.75rem;
+    height: 9.875rem;
+    padding-bottom: 1.5rem;
     border-bottom: solid 1px ${colors.border};
-    gap: ${pxToRem(20)};
+    gap: 1.25rem;
 
     .infoSection {
         display: flex;
-        height: ${pxToRem(66)};
+        height: 4.125rem;
         flex-direction: column;
         align-items: flex-start;
-        // gap: ${pxToRem(8)};
+        // gap: 0.5rem;
     }
 
     .titleSection {
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        gap: ${pxToRem(12)};
+        gap: 0.75rem;
 
         * {
             margin: 0;

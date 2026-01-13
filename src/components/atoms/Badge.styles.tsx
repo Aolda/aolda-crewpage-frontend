@@ -11,10 +11,10 @@ export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: Proje
     justify-content: center;
     font-weight: bold;
     font-size: ${fontSize.smaller};
-    border-radius: ${pxToRem(10)};
+    border-radius: 0.625rem;
     width: fit-content;
-    height: ${pxToRem(31)};
-    padding: ${pxToRem(7)} ${pxToRem(16)};
+    height: 1.9375rem;
+    padding: 0.4375rem 1rem;
     white-space: nowrap;
 
     /* 1. Solid Variant (배경 있음 - [A-2] 활동중, [A-4] 진행중 등) */
