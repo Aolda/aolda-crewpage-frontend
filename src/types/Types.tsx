@@ -26,7 +26,7 @@ export interface Project {
     date: string;           //프로젝트 시작 날짜
     status: BadgeTheme;     //프로젝트 진행상황
     crewNum: number;        //활동에 참여한 사람 수
-    bgcolor: string;        //주요활동 페이지에서 ProjectBlock에 들어가는 배경 색
+    bgColor: string;        //주요활동 페이지에서 ProjectBlock에 들어가는 배경 색
     description: string;    //프로젝트 한줄 소개(제품은 한줄 소개, 프로젝트는 기획 정보)
     problems: string[];     //주요활동, 제품 소개 페이지에서 "문제점"에 들어가는 내용
     solutions: string[];    //주요활동, 제품 소개 페이지에서 "해결책"에 들어가는 내용
