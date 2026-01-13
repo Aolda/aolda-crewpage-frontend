@@ -13,23 +13,23 @@ export const HeaderSection = styled.header`
     position: relative;
     width: 100%;
     /* 전체 높이 설정 (디자인에 맞춰 조절 필요) */
-    height: ${pxToRem(616)}; 
+    height: 38.5rem; 
     background-color: #F9FAFB; /* 기본 배경색 */
     overflow: hidden; /* 배경 요소가 튀어나가지 않도록 */
     display: flex;
     justify-content: center;
     align-items: center;
 
-    padding-top: ${pxToRem(120)};
+    padding-top: 7.5rem;
 
     /* 배경 원형 그래픽 요소들 */
     .ellipse1 {
         position: absolute;
-        top: ${pxToRem(240)};
+        top: 15rem;
         left: 50%;
         transform: translateX(-50%);
-        width: ${pxToRem(975)}; /* 화면보다 넓게 잡아서 완만한 곡선 표현 */
-        height: ${pxToRem(975)};
+        width: 60.9375rem; /* 화면보다 넓게 잡아서 완만한 곡선 표현 */
+        height: 60.9375rem;
         border-radius: 50%;
         background: rgba(103, 132, 237, 0.8);
         z-index: 1; /* 콘텐츠보다 뒤에 */
@@ -37,10 +37,10 @@ export const HeaderSection = styled.header`
 
     .ellipse2 {
         position: absolute;
-        top: ${pxToRem(175)};
-        left: ${pxToRem(-187)};
-        width: ${pxToRem(584)};
-        height: ${pxToRem(584)};
+        top: 10.9375rem;
+        left: -11.6875rem;
+        width: 36.5rem;
+        height: 36.5rem;
         border-radius: 50%;
         background: rgba(239, 118, 187, 0.3);
         filter: blur(46.7px);
@@ -49,10 +49,10 @@ export const HeaderSection = styled.header`
 
     .ellipse3 {
         position: absolute;
-        top: ${pxToRem(-284)};
-        right: ${pxToRem(-150)};
-        width: ${pxToRem(680)};
-        height: ${pxToRem(680)};
+        top: -17.75rem;
+        right: -9.375rem;
+        width: 42.5rem;
+        height: 42.5rem;
         border-radius: 50%;
         background: rgba(118, 187, 239, 0.3);
         filter: blur(46.7px);
@@ -68,17 +68,17 @@ export const HeaderSection = styled.header`
         align-items: center;
         text-align: center;
         width: 100%;
-        max-width: ${pxToRem(800)};
-        padding: 0 ${pxToRem(20)};
+        max-width: 50rem;
+        padding: 0 1.25rem;
 
         /* 마스코트, 타이틀, 설명을 감싸는 내부 섹션 */
         .textSection {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: ${pxToRem(32)};
+            margin-bottom: 2rem;
             color: white;
-            gap: ${pxToRem(16)};
+            gap: 1rem;
 
             h1 {
                 font-size: ${fontSize.h2};
@@ -97,28 +97,28 @@ export const HeaderSection = styled.header`
 
 export const StatsSection = styled.section`
     display: flex;
-    width: ${pxToRem(1200)};
+    width: 75rem;
     margin: 0 auto;
     justify-content: center;
-    gap: ${pxToRem(24)};
-    padding-top: ${pxToRem(60)};
+    gap: 1.5rem;
+    padding-top: 3.75rem;
     z-index: 10;
 `;
 
 /* 필터 및 그리드 섹션 */
 export const FilterBar = styled.div`
-    max-width: ${pxToRem(1200)};
+    max-width: 75rem;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: ${pxToRem(60)};
+    padding-top: 3.75rem;
 `;
 
 export const FilterButton = styled.button<{ $isActive: boolean }>`
     /* 1. 기본 레이아웃 */
-    padding: ${pxToRem(12)} ${pxToRem(16)};
-    border-radius: ${pxToRem(8)};
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
     border: none;
     
     /* 2. 폰트 설정 */
@@ -148,16 +148,16 @@ export const FilterButton = styled.button<{ $isActive: boolean }>`
 
 export const LeftButtonGroup = styled.div`
     display: flex;
-    gap: ${pxToRem(24)};
+    gap: 1.5rem;
 `;
 
 export const ProjectGrid = styled.main`
-    max-width: ${pxToRem(1200)};
+    max-width: 75rem;
     margin: 0 auto;
     display: grid;
     /* 피그마 [A-5] 디자인: 4열 그리드 */
     grid-template-columns: repeat(4, 1fr);
-    gap: ${pxToRem(36)};
-    padding-top: ${pxToRem(32)};
-    padding-bottom: ${pxToRem(160)}
+    gap: 2.25rem;
+    padding-top: 2rem;
+    padding-bottom: 10rem;
 `;

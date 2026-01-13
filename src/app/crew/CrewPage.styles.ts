@@ -15,7 +15,7 @@ export const HeaderBackground = styled.header`
     justify-content: center;
     align-items: center;
     
-    background-image: url('/crewbookBG.png');
+    background-image: url('/crew/crewbookBG.png');
     background-repeat: no-repeat;
     background-position: right bottom;
     background-size: contain;

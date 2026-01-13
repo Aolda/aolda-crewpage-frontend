@@ -35,7 +35,7 @@ const Profile: React.FC<ProfileProps> = ({
                 <span>{member.description}</span>
             </section>
             <section className="followerSection">
-                <Image src="/infoLogo.svg" alt="infoLogo" width={20} height={20}/>
+                <Image src="/project/infoLogo.svg" alt="infoLogo" width={20} height={20}/>
                 <span className="variable">{member.follower}</span>
                 <span className="nonvariable">followers</span>
                 <span className="nonvariable" style={{"fontSize":fontSize.base}}>·</span>
@@ -48,11 +48,11 @@ const Profile: React.FC<ProfileProps> = ({
                     <span>Aolda {member.generation}기</span>
                 </section>
                 <section className="statContainer">
-                    <Image src="/ajouIcon.svg" alt="ajou logo" width={20} height={20}/>
+                    <Image src="/project/ajouIcon.svg" alt="ajou logo" width={20} height={20}/>
                     <span>{member.department + "학과 " + member.studentNumber + "학번"}</span>
                 </section>
                 <section className="statContainer">
-                    <Image src="/googleIcon.svg" alt="gmail logo" width={20} height={20}/>
+                    <Image src="/project/googleIcon.svg" alt="gmail logo" width={20} height={20}/>
                     <span>{member.emailAddress}</span>
                 </section>
             </section>
