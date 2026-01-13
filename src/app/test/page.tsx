@@ -3,7 +3,6 @@
 import React, {useState, type ChangeEvent} from "react";
 import Badge from "@/components/atoms/Badge";
 import HashTag from "@/components/atoms/HashTag";
-import { pxToRem } from "@/styles/utils";
 import ActivityBlock from "@/components/molecules/ActivityBlock";
 import OverviewCard from "@/components/molecules/OverviewCard";
 import CrewBlock from "@/components/molecules/CrewBlock";
@@ -46,7 +45,7 @@ const mockProject: Project = {
   date: "2025.11.10 13:43",
   status: "status",
   crewNum: 5,
-  bgcolor: "#018CF1",
+  bgColor: "#018CF1",
   description: '위와 같은 서비스로 발전할 수 있는 초석을 만드는 프로젝트입니다.\n즉 미래에 만들어질 다수의 서비스를 연결할 수 있는 하나의 통합 클라우드 콘솔을  만드는 것을 의미합니다.\n“콘솔에서 각 프로젝트들을 CSP의 제품단위로 쓸 수 있도록” 말이죠',
   problems:[""],
   solutions:[""],
@@ -136,7 +135,7 @@ export default function Home() {
           to="#"/>
       </div>
       <div>
-        <Profile member={mockMember}/>
+        <Profile member={MOCK_CREW_LIST[0]}/>
       </div>
       <Footer />
     </main>

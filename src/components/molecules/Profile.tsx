@@ -2,13 +2,13 @@
 
 import React from "react";
 import Image from "next/image";
-import { type Member } from "@/types/Types";
+import { CrewMember, POSITION_LABEL } from "@/types/crew"; 
 import { StyledProfile } from "./Profile.styles";
 import Badge from "../atoms/Badge";
 import { fontSize } from "@/styles/theme";
 
 interface ProfileProps {
-    member: Member;
+    member: CrewMember;
 }
 
 const Profile: React.FC<ProfileProps> = ({
@@ -17,12 +17,12 @@ const Profile: React.FC<ProfileProps> = ({
     return (
         <StyledProfile>
             <section className="imgSection">
-                <Image src={member.src} alt="crew image" width={320} height={320}/>
+                <Image src={member.profileImage} alt="crew image" width={320} height={320}/>
             </section>
             <section className="infoSection">
                 <section className="nameInfo">
                     <span className="name">{member.name}</span>
-                    <Badge $theme="status">활동중</Badge>
+                    <Badge status={member.active} variant="solid">{member.active ? "활동중" : "비활동"}</Badge>
                 </section>
                 <section className="positionInfo">
                     <span>{member.position}</span>

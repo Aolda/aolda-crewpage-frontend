@@ -21,7 +21,7 @@ export interface Project {
     date: string;             // 시작 날짜 또는 기간 (ex. "2024.01")
     
     // 상태 관리
-    status: ProjectStatus;        
+    status: ProjectStatus;       
     
     // 디자인 요소 (디자인상 프로젝트마다 다르므로 유지)
     thumbnail: string;        // 프로젝트 카드용 이미지 경로
