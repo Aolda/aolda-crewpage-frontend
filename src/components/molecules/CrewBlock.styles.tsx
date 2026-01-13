@@ -1,6 +1,5 @@
 import styled, {css} from "styled-components";
 import { fontSize, colors } from "@/styles/theme";
-import { pxToRem } from "@/styles/utils";
 
 interface CrewBlockProps {
     $isHomepage: boolean;
@@ -12,20 +11,20 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: ${pxToRem(220.8)};
-        height: ${pxToRem(268)};
+        width: 13.8rem;
+        height: 16.75rem;
 
-        padding: ${pxToRem(24)} ${pxToRem(36)};
+        padding: 1.5rem 2.25rem;
         border: 1px solid ${colors.border};
-        border-radius: ${pxToRem(20)};
-        gap: ${pxToRem(36)};
+        border-radius: 1.25rem;
+        gap: 2.25rem;
 
         .textSection {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: ${pxToRem(12)};
+            gap: 0.75rem;
 
             .nameInfo {
                 h2 {
@@ -49,17 +48,17 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
     ` : css`
         display: flex;
         align-items: center;
-        width: ${pxToRem(1200)};
-        height: ${pxToRem(168)};
+        width: 75rem;
+        height: 10.5rem;
 
-        padding: ${pxToRem(24)} ${pxToRem(36)};
-        border: 1px solid ${colors.border};
-        border-radius: ${pxToRem(20)};
-        gap: ${pxToRem(36)};
+        padding: 1.5rem 2.25rem;
+        border: 1px solid #E2E2E2;
+        border-radius: 1.25rem;
+        gap: 2.25rem;
 
         .textSection {
             display: flex;
-            height: ${pxToRem(120)};
+            height: 7.5rem;
             flex-direction: column;
             justify-content: space-between;
             align-items: flex-start;
@@ -68,8 +67,8 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
         .infoSection {
             display: flex;
             flex-direction: column;
-            height: ${pxToRem(78)};
-            gap: ${pxToRem(12)};
+            height: 4.875rem;
+            gap: 0.75rem;
 
             .nameInfo {
                 h2 {
@@ -85,13 +84,13 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
 
         .badgeSection {
             display: inline-flex;
-            gap: ${pxToRem(8)};
+            gap: 0.5rem;
         }
     `}
 
-    .imageSection {
-        width: ${pxToRem(120)};
-        height: ${pxToRem(120)}; 
+    .imageContainer {
+        width: 7.5rem;
+        height: 7.5rem; 
 
         img {
             width: 100%;
@@ -102,7 +101,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
     .nameInfo {
             display: inline-flex;
             align-items: center;
-            gap: ${pxToRem(12)};
+            gap: 0.75rem;
             h2 {
                 font-size: ${(props) => props.$isHomepage ? fontSize.body1 : fontSize.h3};
             }
@@ -119,10 +118,10 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
     .statsSection {
         display: flex;
         align-items: center;
-        gap: ${pxToRem(24)};
+        gap: 1.5rem;
         img {
-            width: ${pxToRem(18)}; !important
-            height: ${pxToRem(18)}; !important
+            width: 1.125rem; !important
+            height: 1.125rem; !important
         }
     }
 `;

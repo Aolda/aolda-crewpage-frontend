@@ -1,15 +1,14 @@
 import { fontSize } from "@/styles/theme";
-import { pxToRem } from "@/styles/utils";
 
 import styled from "styled-components"
 
 export const StyledActivityBlock = styled.div`
     display: flex;
     border: 1px solid #E2E2E2;
-    border-radius: ${pxToRem(20)};
-    width: ${pxToRem(240)};
-    height: ${pxToRem(320)};
-    padding: ${pxToRem(24)};
+    border-radius: 1.25rem;
+    width: 15rem;
+    height: 20rem;
+    padding: 1.5rem;
 
     flex-direction: column;
     justify-content: space-between;
@@ -18,8 +17,8 @@ export const StyledActivityBlock = styled.div`
     .hashTagSection {
         display: inline-flex;
         align-items: flex-start;
-        gap: ${pxToRem(8)};
-        margin-bottom: ${pxToRem(16)};
+        gap: 0.5rem;
+        margin-bottom: 1rem;
     }
 
     .topSection {
@@ -32,7 +31,7 @@ export const StyledActivityBlock = styled.div`
         width: auto;
         flex-direction: column;
         align-items: flex-start;
-        gap: ${pxToRem(8)};
+        gap: 0.5rem;
 
         h2 {
             font-size: ${fontSize.body1};
@@ -57,8 +56,8 @@ export const StyledActivityBlock = styled.div`
 
         p {
             margin: 0;
-            width: ${pxToRem(160)};
-            height: ${pxToRem(54)};
+            width: 10rem;
+            height: 3.375rem;
             white-space: pre-wrap;
             font-size: ${fontSize.smaller};
             overflow: hidden;

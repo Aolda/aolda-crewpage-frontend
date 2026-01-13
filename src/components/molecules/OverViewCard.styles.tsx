@@ -1,29 +1,28 @@
 import styled from 'styled-components';
 import { fontSize } from '@/styles/theme';
-import { pxToRem } from '@/styles/utils';
 
 export const StyledOverviewCard = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: ${pxToRem(384)};
-    height: ${pxToRem(147)};
-    padding: ${pxToRem(31)} ${pxToRem(46)};
+    width: 24rem;
+    height: 9.1875rem;
+    padding: 1.9375rem 2.875rem;
     background-color: white;
-    border-radius: ${pxToRem(60)} ${pxToRem(12)} ${pxToRem(60)} ${pxToRem(12)}; 
-    box-shadow: 0px ${pxToRem(4)} ${pxToRem(20)} 0px #1A8EE54D;
-    gap: ${pxToRem(55)};
+    border-radius: 3.75rem 0.75rem 3.75rem 0.75rem; 
+    box-shadow: 0px 0.25rem 1.25rem 0px #1A8EE54D;
+    gap: 3.4375rem;
 
     .leftSection {
         display: flex;
         flex-direction: column;
-        gap: ${pxToRem(16)};
+        gap: 1rem;
     }
 
     .titleSection {
         display: flex;
         align-items: center;
-        gap: ${pxToRem(8)};
+        gap: 0.5rem;
         h3 {
             margin: 0;
             font-size: ${fontSize.body1};
@@ -33,13 +32,13 @@ export const StyledOverviewCard = styled.div`
 
     .legendSection {
         display: flex;
-        gap: ${pxToRem(16)};
+        gap: 1rem;
     }
 
     .legendItem {
         display: flex;
         align-items: center;
-        gap: ${pxToRem(6)};
+        gap: 0.375rem;
         font-size: ${fontSize.small};
         color: #555;
     }
@@ -52,8 +51,8 @@ export const StyledOverviewCard = styled.div`
 `;
 
 export const ColorBox = styled.div<{ $color: string }>`
-    width: ${pxToRem(16)};
-    height: ${pxToRem(16)};
-    border-radius: ${pxToRem(4)};
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.25rem;
     background-color: ${(props) => props.$color};
 `;
