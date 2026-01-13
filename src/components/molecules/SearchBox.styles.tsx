@@ -2,24 +2,24 @@
 
 import styled from "styled-components";
 import { fontSize, colors } from "@/styles/theme";
-import { pxToRem } from "@/styles/utils";
 
 export const StyledSearchBox = styled.section`
     display: flex;
-    width: ${pxToRem(475)};
-    height: ${pxToRem(48)};
+    width: 29.6875rem;
+    height: 3rem;
     justify-content: space-between;
     align-items: center;
-    padding: ${pxToRem(12)} ${pxToRem(16)};
-    border: solid 1px ${colors.border};
-    border-radius: ${pxToRem(8)};
+    padding: 0.75rem 1rem;
+    border: solid ${colors.border};
+    border-radius: 0.5rem;
+    border-width: 1px;
 
 
     input {
         border: none;
         outline: none;
-        width: ${pxToRem(145)};
-        height: ${pxToRem(24)};
+        width: 9.0625rem;
+        height: 1.5rem;
         font-size: ${fontSize.base};
 
         &::placeholder {
@@ -39,8 +39,8 @@ export const StyledSearchBox = styled.section`
         align-items: center;
     
         img {
-            width: ${pxToRem(20)};
-            height: ${pxToRem(20)};
+            width: 1.25rem;
+            height: 1.25rem;
         }
     }
 `;
