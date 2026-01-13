@@ -25,7 +25,7 @@ const Profile: React.FC<ProfileProps> = ({
                     <Badge status={member.active} variant="solid">{member.active ? "활동중" : "비활동"}</Badge>
                 </section>
                 <section className="positionInfo">
-                    <span>{member.position}</span>
+                    <span>{POSITION_LABEL[member.position]}</span>
                 </section>
             </section>
             <section className="buttonSection">

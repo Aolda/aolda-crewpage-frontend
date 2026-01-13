@@ -6,6 +6,7 @@ import { fontSize, colors } from '@/styles/theme';
 
 const Container = styled.div<{ $size: number }>`
     position: relative;
+    /* 외부 컨테이너 크기는 rem으로 설정 */
     width: ${(props) => props.$size}rem;
     height: ${(props) => props.$size}rem;
     display: flex;
@@ -16,34 +17,29 @@ const Container = styled.div<{ $size: number }>`
 const Svg = styled.svg`
     width: 100%;
     height: 100%;
-    transform: rotate(90deg);
+    transform: rotate(-90deg); 
     transform-origin: center;
 `;
 
 const CircleBackground = styled.circle`
     fill: none;
     stroke: #e5e7eb;
-    stroke-width: 1.0625rem;
+    stroke-width: 16; 
 `;
 
 const CircleProgress = styled.circle<{ $offset: number; $circumference: number }>`
     fill: none;
     stroke: ${colors.primary500};
-    stroke-width: 1.0625rem;
+    stroke-width: 16;
     stroke-linecap: round;
     transition: stroke-dashoffset 1.5s ease-out; 
     stroke-dasharray: ${(props) => props.$circumference};
     stroke-dashoffset: ${(props) => props.$offset};
-
-    /* 핵심: X축 기준으로 반전시켜 반시계 방향처럼 보이게 함 */
-    transform: scaleX(-1);
-    /* 중요: 반전의 기준점을 원의 중심으로 설정 */
-    transform-origin: center;
 `;
 
 const NumberLabel = styled.div`
     position: absolute;
-    font-size: ${(fontSize.base)};
+    font-size: 1rem;
     font-weight: bold;
     color: ${colors.primary500};
 `;
@@ -51,29 +47,27 @@ const NumberLabel = styled.div`
 const CircularProgressBar: React.FC<{ total: number; current: number; size?: number }> = ({
     total,
     current,
-    size = 110,
+    size = 110, // 기본 px 값
 }) => {
     const STROKE_WIDTH = 16;
     const center = size / 2;
     const radius = center - (STROKE_WIDTH / 2) - 2;
     const circumference = 2 * Math.PI * radius;
     
-    // 1. 초기 상태는 원이 완전히 비어있는 상태(둘레 길이만큼 밀려남)로 설정합니다.
     const [offset, setOffset] = useState(circumference);
 
     useEffect(() => {
-        // 2. 컴포넌트가 마운트된 후, 아주 짧은 지연시간 뒤에 실제 목표 값으로 변경합니다.
         const percentage = total === 0 ? 0 : current / total;
+        // SVG 좌표계가 뒤집히지 않도록 기본 계산식 사용
         const targetOffset = circumference * (1 - percentage);
         
         const animationTimeout = setTimeout(() => {
             setOffset(targetOffset);
-        }, 100); // 0.1초 뒤에 애니메이션 시작
+        }, 100);
 
         return () => clearTimeout(animationTimeout);
     }, [current, total, circumference]);
 
-    // 숫자 카운팅 로직 (이전과 동일)
     const [displayCount, setDisplayCount] = useState(0);
     useEffect(() => {
         let start = 0;
@@ -84,17 +78,19 @@ const CircularProgressBar: React.FC<{ total: number; current: number; size?: num
         }
 
         let timer = setInterval(() => {
-        start += 1;
-        setDisplayCount(start);
-        if (start === end) clearInterval(timer);
-        }, 1000 / (end || 1)); // 전체 1초 동안 균등하게 증가
+            start += 1;
+            setDisplayCount(start);
+            if (start === end) clearInterval(timer);
+        }, 1000 / (end || 1));
 
         return () => clearInterval(timer);
     }, [current]);
 
     return (
+        // 외부 사이즈만 rem으로 변환 (110 / 16 = 6.875rem)
         <Container $size={size / 16}>
-            <Svg viewBox={`0 0 ${size / 16} ${size / 16}`}>
+            {/* viewBox는 내부 좌표계이므로 숫자로 유지해야 원이 보입니다! */}
+            <Svg viewBox={`0 0 ${size} ${size}`}>
                 <CircleBackground cx={center} cy={center} r={radius} />
                 <CircleProgress
                     cx={center}

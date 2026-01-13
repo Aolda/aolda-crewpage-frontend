@@ -4,6 +4,7 @@
 import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import * as S from './ProjectPage.styles';
+import BaseTemplate from '@/components/templates/BaseTemplate/BaseTemplate';
 import Header from '@/components/organisms/Header';
 import Footer from '@/components/organisms/Footer';
 import ProjectBlock from '@/components/molecules/ProjectBlock';
@@ -37,63 +38,63 @@ export default function ProjectListPage() {
 
     return (
         <S.PageWrapper>
-            <Header />
-            <S.HeaderSection>
-                <section className="contentsSection">
-                    <section className="textSection">
-                        <Image src="/mascot.png" alt="Mascot" width={160} height={160} className="mascot" />
-                        <h1>클라우드 실전 역량을 쌓는<br /><strong>핵심 Activity</strong></h1>
-                        <p>아올다는 기획, 개발, 운영 전반을 아우르는 활동들을 통해<br />클라우드 분야의 실질적인 전문가로 성장합니다.</p>
+            <BaseTemplate>
+                <S.HeaderSection>
+                    <section className="contentsSection">
+                        <section className="textSection">
+                            <Image src="/mascot.png" alt="Mascot" width={160} height={160} className="mascot" />
+                            <h1>클라우드 실전 역량을 쌓는<br /><strong>핵심 Activity</strong></h1>
+                            <p>아올다는 기획, 개발, 운영 전반을 아우르는 활동들을 통해<br />클라우드 분야의 실질적인 전문가로 성장합니다.</p>
+                        </section>
+                        <SearchBox 
+                            value={searchValue}
+                            onChange={(e) => setSearchValue(e.target.value)}
+                            onSearch={(query) => setActiveSearch(query)}
+                            placeholder="프로젝트를 검색해 보세요."
+                        />
                     </section>
-                    <SearchBox 
-                        value={searchValue}
-                        onChange={(e) => setSearchValue(e.target.value)}
-                        onSearch={(query) => setActiveSearch(query)}
-                        placeholder="프로젝트를 검색해 보세요."
-                    />
-                </section>
-                <div className="ellipse1"></div>
-                <div className="ellipse2"></div>
-                <div className="ellipse3"></div>
-            </S.HeaderSection>
+                    <div className="ellipse1"></div>
+                    <div className="ellipse2"></div>
+                    <div className="ellipse3"></div>
+                </S.HeaderSection>
 
-            <S.StatsSection>
-                <OverviewCard type={1} totalNum={20} onGoingNum={13}/>
-                <OverviewCard type={2} totalNum={20} onGoingNum={13}/>
-                <OverviewCard type={3} totalNum={20} onGoingNum={13}/>
-            </S.StatsSection>
+                <S.StatsSection>
+                    <OverviewCard type={1} totalNum={20} onGoingNum={13}/>
+                    <OverviewCard type={2} totalNum={20} onGoingNum={13}/>
+                    <OverviewCard type={3} totalNum={20} onGoingNum={13}/>
+                </S.StatsSection>
 
-            <S.FilterBar>
-                <S.LeftButtonGroup>
-                    {/* 크루 페이지와 동일한 '#전체' 버튼 로직 */}
-                    <S.FilterButton 
-                        $isActive={selectedStatus === ""} 
-                        onClick={() => setSelectedStatus("")}
-                    >
-                        #전체
-                    </S.FilterButton>
-
-                    {/* 나머지 상태 버튼들 */}
-                    {FILTER_OPTIONS.map((opt) => (
+                <S.FilterBar>
+                    <S.LeftButtonGroup>
+                        {/* 크루 페이지와 동일한 '#전체' 버튼 로직 */}
                         <S.FilterButton 
-                            key={opt.value}
-                            $isActive={selectedStatus === opt.value}
-                            onClick={() => setSelectedStatus(opt.value as ProjectStatus)}
+                            $isActive={selectedStatus === ""} 
+                            onClick={() => setSelectedStatus("")}
                         >
-                            {opt.label}
+                            #전체
                         </S.FilterButton>
-                    ))}
-                </S.LeftButtonGroup>
+
+                        {/* 나머지 상태 버튼들 */}
+                        {FILTER_OPTIONS.map((opt) => (
+                            <S.FilterButton 
+                                key={opt.value}
+                                $isActive={selectedStatus === opt.value}
+                                onClick={() => setSelectedStatus(opt.value as ProjectStatus)}
+                            >
+                                {opt.label}
+                            </S.FilterButton>
+                        ))}
+                    </S.LeftButtonGroup>
+                    
+                    {/* ... Select 컴포넌트 생략 ... */}
+                </S.FilterBar>
                 
-                {/* ... Select 컴포넌트 생략 ... */}
-            </S.FilterBar>
-            
-            <S.ProjectGrid>
-                {filteredProjects.map((project) => (
-                    <ProjectBlock key={project.id} project={project} />
-                ))}
-            </S.ProjectGrid>
-            <Footer />
+                <S.ProjectGrid>
+                    {filteredProjects.map((project) => (
+                        <ProjectBlock key={project.id} project={project} />
+                    ))}
+                </S.ProjectGrid>
+            </BaseTemplate>
         </S.PageWrapper>
     );
 }

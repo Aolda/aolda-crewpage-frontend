@@ -25,7 +25,7 @@ export interface Project {
     
     // 디자인 요소 (디자인상 프로젝트마다 다르므로 유지)
     thumbnail: string;        // 프로젝트 카드용 이미지 경로
-    bgcolor: string;          // 카드나 배경에 쓰일 고유 색상 코드
+    bgColor: string;          // 카드나 배경에 쓰일 고유 색상 코드
     
     // 콘텐츠 (문항 수정)
     //solutions는 필요한 경우 유지

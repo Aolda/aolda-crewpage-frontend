@@ -9,7 +9,7 @@ export const MOCK_PROJECTS: Project[] = [
         date: "2024.01",
         status: "ONGOING", // 진행 중
         thumbnail: "/ExBgIMG.png",
-        bgcolor: "#1A8EE5",
+        bgColor: "#1A8EE5",
         memberIds: ["crew_1", "crew_2"],
     },
     {
@@ -20,7 +20,7 @@ export const MOCK_PROJECTS: Project[] = [
         date: "2024.03",
         status: "PLANNING", // 기획 중
         thumbnail: "/images/projects/planning-thumb.png",
-        bgcolor: "#6B7280",
+        bgColor: "#6B7280",
         memberIds: ["crew_2"],
     }
 ];
