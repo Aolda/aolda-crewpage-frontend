@@ -5,8 +5,7 @@ import { useRouter } from 'next/navigation';
 import { MOCK_CREW_LIST } from './mockData';
 import { POSITION_LABEL, PositionValue } from '@/types/crew';
 import * as S from './CrewPage.styles';
-import Header from '@/components/organisms/Header';
-import Footer from '@/components/organisms/Footer';
+import BaseTemplate from '@/components/templates/BaseTemplate/BaseTemplate';
 import CrewBlock from '@/components/molecules/CrewBlock';
 import SearchBox from '@/components/molecules/SearchBox';
 import Select from '@/components/molecules/Select';
@@ -53,64 +52,64 @@ export default function CrewListPage() {
 
     return (
         <S.PageWrapper>
-            <Header />
-            <S.HeaderBackground>
-                <S.HeaderContent>
-                    <h1>아올다와 함께 성장하는<br /><strong>핵심 인재들</strong></h1>
-                    <SearchBox 
-                        value={searchValue}
-                        onChange={(e) => setSearchValue(e.target.value)}
-                        onSearch={(query) => setActiveSearch(query)}
-                        placeholder="크루를 검색해 보세요."
-                    />
-                </S.HeaderContent>
-            </S.HeaderBackground>
+            <BaseTemplate>
+                <S.HeaderBackground>
+                    <S.HeaderContent>
+                        <h1>아올다와 함께 성장하는<br /><strong>핵심 인재들</strong></h1>
+                        <SearchBox 
+                            value={searchValue}
+                            onChange={(e) => setSearchValue(e.target.value)}
+                            onSearch={(query) => setActiveSearch(query)}
+                            placeholder="크루를 검색해 보세요."
+                        />
+                    </S.HeaderContent>
+                </S.HeaderBackground>
 
-            <S.ContentContainer>
-                <S.FilterBar>
-                    <S.AllButton 
-                        $isActive={!filters.generation && !filters.role && !filters.department && !activeSearch}
-                        onClick={resetFilters}
-                    >
-                        #전체
-                    </S.AllButton>
+                <S.ContentContainer>
+                    <S.FilterBar>
+                        <S.AllButton 
+                            $isActive={!filters.generation && !filters.role && !filters.department && !activeSearch}
+                            onClick={resetFilters}
+                        >
+                            #전체
+                        </S.AllButton>
 
-                    <Select 
-                        label="generation" 
-                        options={genOptions} 
-                        selectedValue={filters.generation}
-                        onSelectChange={(val) => setFilters(p => ({ ...p, generation: val }))} 
-                    />
-                    <Select 
-                        label="role" 
-                        options={roleOptions}
-                        selectedValue={filters.role}
-                        onSelectChange={(val) => setFilters(p => ({ ...p, role: val }))} 
-                    />
-                    <Select 
-                        label="department" 
-                        options={deptOptions} 
-                        selectedValue={filters.department}
-                        onSelectChange={(val) => setFilters(p => ({ ...p, department: val }))} 
-                    />
-                
-                </S.FilterBar>
+                        <Select 
+                            label="generation" 
+                            options={genOptions} 
+                            selectedValue={filters.generation}
+                            onSelectChange={(val) => setFilters(p => ({ ...p, generation: val }))} 
+                        />
+                        <Select 
+                            label="role" 
+                            options={roleOptions}
+                            selectedValue={filters.role}
+                            onSelectChange={(val) => setFilters(p => ({ ...p, role: val }))} 
+                        />
+                        <Select 
+                            label="department" 
+                            options={deptOptions} 
+                            selectedValue={filters.department}
+                            onSelectChange={(val) => setFilters(p => ({ ...p, department: val }))} 
+                        />
+                    
+                    </S.FilterBar>
 
-                <S.CrewList>
-                    {filteredCrew.length > 0 ? (
-                        filteredCrew.map((member) => (
-                            <CrewBlock
-                                key={member.id}
-                                member={member}
-                                isHomepage={false}
-                                onDetailClick={handleDetailNavigation}/>
-                        ))
-                    ) : (
-                        <S.EmptyState>검색 결과가 없습니다. 😅</S.EmptyState>
-                    )}
-                </S.CrewList>
-            </S.ContentContainer>
-            <Footer />
+                    <S.CrewList>
+                        {filteredCrew.length > 0 ? (
+                            filteredCrew.map((member) => (
+                                <CrewBlock
+                                    key={member.id}
+                                    member={member}
+                                    isHomepage={false}
+                                    onDetailClick={handleDetailNavigation}/>
+                            ))
+                        ) : (
+                            <S.EmptyState>검색 결과가 없습니다. 😅</S.EmptyState>
+                        )}
+                    </S.CrewList>
+                </S.ContentContainer>
+            </BaseTemplate>
         </S.PageWrapper>
     );
 }
