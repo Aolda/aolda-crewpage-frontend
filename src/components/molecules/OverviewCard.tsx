@@ -31,9 +31,9 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
     let imgHeight=0;
 	
 	if(type == 3) {
-        title="대회 참석";
-		totalText="참석";
-		onGoingText = "수상";
+        title="파란학기 연계율";
+		totalText="전체";
+		onGoingText = "진행중";
         src="/project/PrizeImg.png";
         imgWidth=16;
         imgHeight=21.81;

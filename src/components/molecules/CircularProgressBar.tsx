@@ -17,7 +17,7 @@ const Container = styled.div<{ $size: number }>`
 const Svg = styled.svg`
     width: 100%;
     height: 100%;
-    transform: rotate(-90deg); 
+    transform: rotate(90deg) scaleX(-1); 
     transform-origin: center;
 `;
 
