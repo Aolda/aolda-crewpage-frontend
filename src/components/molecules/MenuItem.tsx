@@ -3,7 +3,7 @@
 import React from "react";
 import { StyledMenuItem } from "./MenuItem.styles";
 import Badge from "../atoms/Badge";
-import { type Project } from "@/types/project";
+import { PROJECT_STATUS_LABEL, type Project, type ProjectStatus } from "@/types/project";
 import { fontSize } from "@/styles/theme";
 /*
 * 크루북 detail 페이지 Menu Section 하위 컴포넌트로, 항목을 담당
@@ -17,7 +17,7 @@ interface MenuItemProps {
     title: Project["title"];
     date: Project["date"];
     description: Project["description"];
-    status?: Project["status"];
+    status?: ProjectStatus;
 }
 
 const MenuItem: React.FC<MenuItemProps> = ({
@@ -32,7 +32,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
 				<section className="infoSection">
                     <section className="titleSection">
 					    <h2 style={{"fontSize":fontSize.h3, "fontWeight":"bold"}}>{title}</h2>
-					    { (pageName=="activity") && <Badge variant="solid" status={status}>" "</Badge> }
+					    { (pageName==="activity") && status && <Badge variant="solid" status={status}>{PROJECT_STATUS_LABEL[status]}</Badge> }
 				    </section>
 				    <span className='date' color='gray' style={{"fontSize":fontSize.base}}>{date}</span>
                 </section>

@@ -99,10 +99,32 @@ export default function Home() {
         <CrewBlock member={MOCK_CREW_LIST[1]} isHomepage={false}/>
       </div>
       <div style={{"display":"flex", "flexDirection":"column", "gap":"24px"}}>
-        <MenuItem pageName="bloging" title={MOCK_PROJECTS[0].title} date={MOCK_PROJECTS[0].date} description={MOCK_PROJECTS[0].description}/>
-        <MenuItem pageName="bloging" title={MOCK_PROJECTS[1].title} date={MOCK_PROJECTS[1].date} description={MOCK_PROJECTS[1].description}/>
-        <MenuItem pageName="activity" title={`${MOCK_PROJECTS[0].title}(${MOCK_PROJECTS[0].subtitle})`} date={MOCK_PROJECTS[0].date} description={MOCK_PROJECTS[0].description}/>
-        <MenuItem pageName="activity" title={`${MOCK_PROJECTS[1].title}(${MOCK_PROJECTS[1].subtitle})`} date={MOCK_PROJECTS[1].date} description={MOCK_PROJECTS[1].description}/>
+        <MenuItem
+          pageName="bloging"
+          title={MOCK_PROJECTS[0].title}
+          date={MOCK_PROJECTS[0].date}
+          description={MOCK_PROJECTS[0].description} 
+        />
+        <MenuItem
+          pageName="bloging"
+          title={MOCK_PROJECTS[1].title}
+          date={MOCK_PROJECTS[1].date}
+          description={MOCK_PROJECTS[1].description}
+        />
+        <MenuItem
+          pageName="activity"
+          title={`${MOCK_PROJECTS[0].title}(${MOCK_PROJECTS[0].subtitle})`}
+          date={MOCK_PROJECTS[0].date}
+          description={MOCK_PROJECTS[0].description}
+          status={MOCK_PROJECTS[0].status}
+        />
+        <MenuItem
+          pageName="activity"
+          title={`${MOCK_PROJECTS[1].title}(${MOCK_PROJECTS[1].subtitle})`}
+          date={MOCK_PROJECTS[1].date}
+          description={MOCK_PROJECTS[1].description}
+          status={MOCK_PROJECTS[1].status}
+        />
       </div>
       <div>
         <ProjectBlock project={MOCK_PROJECTS[0]} />
