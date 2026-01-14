@@ -47,10 +47,13 @@ export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
         position: relative;
         width: auto;
         height: 50%;
+        border-radius: 1.25rem;
         overflow: hidden;
         img {
             position: absolute;
-            height: 18.75rem !important;
+            width: 100%;
+            height: auto;
+            // height: 18.75rem !important;
             bottom: 0;
         }
     }

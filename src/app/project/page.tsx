@@ -5,11 +5,10 @@ import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import * as S from './ProjectPage.styles';
 import BaseTemplate from '@/components/templates/BaseTemplate/BaseTemplate';
-import Header from '@/components/organisms/Header';
-import Footer from '@/components/organisms/Footer';
 import ProjectBlock from '@/components/molecules/ProjectBlock';
 import SearchBox from '@/components/molecules/SearchBox';
 import OverviewCard from '@/components/molecules/OverviewCard';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { MOCK_PROJECTS } from './mockData';
 import { ProjectStatus } from '@/types/project';
 
@@ -19,6 +18,32 @@ const FILTER_OPTIONS: { label: string; value: ProjectStatus | "" }[] = [
     { label: '진행중', value: 'ONGOING' },
     { label: '완료', value: 'DONE' },
 ];
+
+// 애니메이션 설정값
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1, // 자식 요소들이 0.1초 간격으로 나타남
+        },
+    },
+};
+
+const itemVariants: Variants = {
+    hidden: { 
+        opacity: 0, 
+        y: "1.25rem" // 20px -> 1.25rem (문자열로 명시)
+    },
+    visible: { 
+        opacity: 1, 
+        y: "0rem", 
+        transition: { 
+            duration: 0.5, 
+            ease: "easeOut" 
+        } 
+    },
+};
 
 export default function ProjectListPage() {
 
@@ -35,6 +60,29 @@ export default function ProjectListPage() {
             return matchesSearch && matchesStatus;
         });
     }, [activeSearch, selectedStatus]);
+
+    const stats = useMemo(() => {
+        // 1. 프로젝트 수 관련
+        const totalProjects = MOCK_PROJECTS.length;
+        const ongoingProjects = MOCK_PROJECTS.filter(p => p.status === 'ONGOING').length;
+    
+        // 2. 참여 크루원 관련 (중복 제거)
+        const allMemberIds = new Set(MOCK_PROJECTS.flatMap(p => p.memberIds));
+        const ongoingMemberIds = new Set(
+            MOCK_PROJECTS.filter(p => p.status === 'ONGOING').flatMap(p => p.memberIds)
+        );
+    
+        // 3. 대회 참석 관련 (임시 데이터 - 나중에 별도 Mock 분리 권장)
+        // 디자인상 수치인 13과 6을 기준으로 우선 세팅합니다.
+        const totalParan = 13; 
+        const onGoingParan = 6;
+    
+        return {
+            projects: { total: totalProjects, current: ongoingProjects },
+            crews: { total: allMemberIds.size, current: ongoingMemberIds.size },
+            parans: { total: totalParan, current: onGoingParan },
+        };
+    }, []);
 
     return (
         <S.PageWrapper>
@@ -59,16 +107,16 @@ export default function ProjectListPage() {
                 </S.HeaderSection>
 
                 <S.StatsSection>
-                    <OverviewCard type={1} totalNum={20} onGoingNum={13}/>
-                    <OverviewCard type={2} totalNum={20} onGoingNum={13}/>
-                    <OverviewCard type={3} totalNum={20} onGoingNum={13}/>
+                    <OverviewCard type={1} totalNum={stats.projects.total} onGoingNum={stats.projects.current}/>
+                    <OverviewCard type={2} totalNum={stats.crews.total} onGoingNum={stats.crews.current}/>
+                    <OverviewCard type={3} totalNum={stats.parans.total} onGoingNum={stats.parans.current}/>
                 </S.StatsSection>
 
                 <S.FilterBar>
                     <S.LeftButtonGroup>
                         {/* 크루 페이지와 동일한 '#전체' 버튼 로직 */}
                         <S.FilterButton 
-                            $isActive={selectedStatus === ""} 
+                            $isActive={selectedStatus === ""}
                             onClick={() => setSelectedStatus("")}
                         >
                             #전체
@@ -89,9 +137,24 @@ export default function ProjectListPage() {
                     {/* ... Select 컴포넌트 생략 ... */}
                 </S.FilterBar>
                 
-                <S.ProjectGrid>
+                <S.ProjectGrid
+                    as={motion.main} // Styled-components를 motion으로 확장
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                >
                     {filteredProjects.map((project) => (
-                        <ProjectBlock key={project.id} project={project} />
+                        <motion.div
+                            key={project.id}
+                            layout // 카드가 이동할 때 부드럽게 슬라이딩됨
+                            variants={itemVariants}
+                            initial="hidden"
+                            animate="visible"
+                            exit={{ opacity: 0, scale: 0.9 }} // 필터링 시 사라지는 효과
+                            transition={{ duration: 0.3 }}
+                        >
+                            <ProjectBlock key={project.id} project={project} />
+                        </motion.div>
                     ))}
                 </S.ProjectGrid>
             </BaseTemplate>
