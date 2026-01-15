@@ -1,12 +1,24 @@
-//src/app/page.tsx
 'use client';
-import React from 'react';
 
-export default function MainPage() {
+import BaseTemplate from '@/components/templates/BaseTemplate/BaseTemplate';
+import HeroSection from '@/components/templates/main/HeroSection/HeroSection';
+import MainSection from '@/components/templates/main/MainSection/MainSection';
+
+export default function HomePage() {
     return (
-        <div>
-        <h1>[A-1] 메인 페이지</h1>
-        <p>여기에서 모든 정보들을 볼 수 있습니다.</p>
-        </div>
+        <BaseTemplate>
+            {/* 1. 최상단 Hero 섹션 */}
+            <HeroSection />
+
+            {/* 2. Overview 섹션 (템플릿 활용) */}
+            <MainSection
+                label="Overview"
+                title={<>아주대 유일무이 <strong>클라우드 개발/운영 소학회</strong></>}
+                description="아올다는 클라우드 인프라에 관심 있는 아주대학교 학생들이..."
+                bgColor='white'
+            >
+                dd
+            </MainSection>
+        </BaseTemplate>
     );
 }
