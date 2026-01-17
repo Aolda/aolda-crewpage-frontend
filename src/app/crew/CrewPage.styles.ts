@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { pxToRem } from '@/styles/utils';
+import { colors, fontSize } from '@/styles/theme';
 
 export const HeaderBackground = styled.header`
     width: 100%;
@@ -7,7 +7,7 @@ export const HeaderBackground = styled.header`
     background: linear-gradient(108deg, #E0F2FE 0%, #DBEAFE 100%);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     
     background-image: url('/crew/crewbookBG.png');
     background-repeat: no-repeat;
@@ -18,14 +18,14 @@ export const HeaderBackground = styled.header`
 export const HeaderContent = styled.div`
     width: 100%;
     max-width: 68.75rem;
-    padding: 0 1.25rem;
+    padding-bottom: 5rem;
 
     h1 {
-        font-size: 2rem;
+        font-size: ${fontSize.h2};
         font-weight: 700;
         line-height: 1.4;
         margin-bottom: 1.5rem;
-        strong { color: #1E40AF; }
+        strong { color: ${colors.primary500}; }
     }
 `;
 
