@@ -28,7 +28,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
-, "src/components/templates/main/Overview/Overview.styles.tx"  ],
+    "**/*.mts",
+  ],
   "exclude": ["node_modules"]
 }
