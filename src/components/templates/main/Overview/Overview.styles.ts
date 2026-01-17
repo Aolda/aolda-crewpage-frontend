@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '@/styles/theme';
+import { colors, fontSize } from '@/styles/theme';
 
 export const OverviewWrapper = styled.div`
     display: flex;
@@ -77,30 +77,29 @@ export const InfoCard = styled.div`
 `;
 
 export const CardText = styled.div`
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
     h3 {
-        font-size: 1.75rem; /* 28px */
+        font-size: ${fontSize.h2};
         font-weight: 700;
         line-height: 1.4;
         color: #111827;
-        margin-bottom: 1.5rem; /* 24px */
         word-break: keep-all;
 
         strong {
-        color: #3B82F6;
+        color: ${colors.primary500};
         }
     }
     p {
-        font-size: 1rem; /* 16px */
+        font-size: ${fontSize.base};
         line-height: 1.6;
-        color: #6B7280;
+        color: ${colors.gray500};
         word-break: keep-all;
     }
 `;
 
 export const CardIllustration = styled.div`
-    flex: 0 0 20rem; /* 320px */
-    margin-left: 3.75rem; /* 60px */
     img {
         width: 100%;
         height: auto;

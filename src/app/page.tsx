@@ -3,6 +3,7 @@
 import BaseTemplate from '@/components/templates/BaseTemplate/BaseTemplate';
 import HeroSection from '@/components/templates/main/HeroSection/HeroSection';
 import Overview from '@/components/templates/main/Overview/Overview';
+import Vision from '@/components/templates/main/Vision/Vision';
 
 export default function HomePage() {
     return (
@@ -11,6 +12,8 @@ export default function HomePage() {
             <HeroSection />
 
             <Overview />
+
+            <Vision />
         </BaseTemplate>
     );
 }
