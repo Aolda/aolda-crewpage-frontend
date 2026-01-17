@@ -2,12 +2,6 @@ import styled from 'styled-components';
 import { fontSize } from '@/styles/theme';
 import { pxToRem } from '@/styles/utils';
 
-export const PageWrapper = styled.div`
-    width: 100%;
-    background-color: #FFFFFF;
-    min-height: 100vh;
-`;
-
 /* 헤더 섹션: 복합 그라데이션과 마스코트 배치 */
 export const HeaderSection = styled.header`
     position: relative;
