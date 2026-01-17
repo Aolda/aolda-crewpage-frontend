@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { fontSize, colors } from '@/styles/theme';
 
 export const SectionWrapper = styled.section<{ $bgColor?: string }>`
     width: 100%;
-    padding: 5rem 0;
+    padding-top: 10rem;
     background-color: ${(props) => props.$bgColor || '#FFFFFF'};
     display: flex;
     flex-direction: column;
@@ -18,25 +19,24 @@ export const Header = styled.div`
     padding: 0 1.25rem;
 `;
 
-/* 사용자님이 만드신 Graybar를 Styled Component로 변환 */
 export const GrayBar = styled.div`
     width: 3rem;
     height: 0;
     border: solid 0.1875rem #636363;
     border-radius: 4px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
 `;
 
 export const Label = styled.span`
     display: block;
-    font-size: 1rem; /* 16px */
+    font-size: ${fontSize.body1};
     font-weight: 600;
-    color: #6B7280;
-    margin-bottom: 0.5rem;
+    color: ${colors.black600};
+    margin-bottom: 1.5rem;
 `;
 
 export const Title = styled.h2`
-    font-size: 2.25rem;
+    font-size: ${fontSize.h2};
     font-weight: 700;
     line-height: 1.3;
     color: #111827;
@@ -44,14 +44,14 @@ export const Title = styled.h2`
     word-break: keep-all;
 
     strong {
-        color: #3B82F6;
+        color: ${colors.primary500};
     }
 `;
 
 export const Description = styled.p`
-    font-size: 1.125rem;
+    font-size: ${fontSize.base};
     line-height: 1.6;
-    color: #4B5563;
+    color: ${colors.gray500};
     max-width: 43.75rem;
     margin: 0 auto;
     word-break: keep-all;
@@ -59,6 +59,5 @@ export const Description = styled.p`
 
 export const Content = styled.div`
     width: 100%;
-    max-width: 75rem;
     margin: 0 auto;
 `;

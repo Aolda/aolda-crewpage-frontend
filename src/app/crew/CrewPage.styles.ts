@@ -1,12 +1,6 @@
 import styled from 'styled-components';
 import { pxToRem } from '@/styles/utils';
 
-export const PageWrapper = styled.div`
-    width: 100%;
-    background-color: #F9FAFB;
-    min-height: 100vh;
-`;
-
 export const HeaderBackground = styled.header`
     width: 100%;
     height: 30rem;
@@ -36,9 +30,11 @@ export const HeaderContent = styled.div`
 `;
 
 export const ContentContainer = styled.main`
-    max-width: 68.75rem;
+    display: flex;
+    width: 75rem;
+    flex-direction: column;
     margin: 0 auto;
-    padding: 2.5rem 1.25rem;
+    padding-top: 4.5rem;
 `;
 
 export const FilterBar = styled.section`

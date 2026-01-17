@@ -23,7 +23,7 @@ export const HeroWrapper = styled.section`
         height: 100%;
         
         /* 배경 이미지 설정 */
-        background-image: url('/heroImg.jpg'); 
+        background-image: url('/main/heroImg.jpg'); 
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;

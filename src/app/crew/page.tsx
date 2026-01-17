@@ -5,8 +5,7 @@ import { useRouter } from 'next/navigation';
 import { MOCK_CREW_LIST } from './mockData';
 import { POSITION_LABEL, PositionValue } from '@/types/crew';
 import * as S from './CrewPage.styles';
-import Header from '@/components/organisms/Header';
-import Footer from '@/components/organisms/Footer';
+import BaseTemplate from '@/components/templates/BaseTemplate/BaseTemplate';
 import CrewBlock from '@/components/molecules/CrewBlock';
 import SearchBox from '@/components/molecules/SearchBox';
 import Select from '@/components/molecules/Select';
@@ -52,8 +51,7 @@ export default function CrewListPage() {
     };
 
     return (
-        <S.PageWrapper>
-            <Header />
+        <BaseTemplate>
             <S.HeaderBackground>
                 <S.HeaderContent>
                     <h1>아올다와 함께 성장하는<br /><strong>핵심 인재들</strong></h1>
@@ -110,7 +108,6 @@ export default function CrewListPage() {
                     )}
                 </S.CrewList>
             </S.ContentContainer>
-            <Footer />
-        </S.PageWrapper>
+        </BaseTemplate>
     );
 }

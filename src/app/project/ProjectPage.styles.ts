@@ -159,5 +159,4 @@ export const ProjectGrid = styled.main`
     grid-template-columns: repeat(4, 1fr);
     gap: 2.25rem;
     padding-top: 2rem;
-    padding-bottom: 10rem;
 `;

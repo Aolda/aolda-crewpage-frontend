@@ -21,7 +21,6 @@ const MainSection: React.FC<MainSectionProps> = ({
     return (
         <S.SectionWrapper $bgColor={bgColor}>
             <S.Header>
-                {/* 사용자님이 만든 Graybar 디자인을 스타일 컴포넌트로 적용 */}
                 <S.GrayBar />
                 {label && <S.Label>{label}</S.Label>}
                 <S.Title>{title}</S.Title>
