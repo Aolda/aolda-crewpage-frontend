@@ -11,7 +11,7 @@ const Overview = () => {
             label="Overview"
             title={
                 <>
-                    <div style={{ fontSize: '0.875rem', color: '#9CA3AF', marginBottom: '0.5rem' }}>since 2023</div>
+                    <div style={{ fontSize: '1rem', fontWeight: 'normal', color: '#9CA3AF', marginBottom: '0.75rem' }}>since 2023</div>
                     아주대 유일무이 <strong>클라우드 개발/운영 소학회</strong>
                 </>
             }
