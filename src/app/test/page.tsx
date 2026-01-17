@@ -22,36 +22,36 @@ import { MOCK_CREW_LIST } from "@/app/crew/mockData";
 import { MOCK_PROJECTS } from "@/app/project/mockData";
 
 
-const mockMember: Member = {
-  src: "/CrewImg.png",
-  name: "김아주",
-  position: "회장",
-  department: "소프트웨어",
-  studentNumber: "22",
-  generation: 0,
-  active: true,
-  to: "/crew/kim-ajou",
-  emailAddress: "example123@ajou.ac.kr",
-  description: "한 줄 소개입니다.",
-  activityCount: 12,
-  blogCount: 5,
-  follower: 22,
-  following: 12,
-};
-const mockProject: Project = {
-  src: "/ExBgIMG.png",
-  title: "ACC",
-  subtitle: "Aolda Cloud Console",
-  date: "2025.11.10 13:43",
-  status: "status",
-  crewNum: 5,
-  bgColor: "#018CF1",
-  description: '위와 같은 서비스로 발전할 수 있는 초석을 만드는 프로젝트입니다.\n즉 미래에 만들어질 다수의 서비스를 연결할 수 있는 하나의 통합 클라우드 콘솔을  만드는 것을 의미합니다.\n“콘솔에서 각 프로젝트들을 CSP의 제품단위로 쓸 수 있도록” 말이죠',
-  problems:[""],
-  solutions:[""],
-  members:[mockMember, mockMember],
-  to: "#",
-}
+// const mockMember: Member = {
+//   src: "/CrewImg.png",
+//   name: "김아주",
+//   position: "회장",
+//   department: "소프트웨어",
+//   studentNumber: "22",
+//   generation: 0,
+//   active: true,
+//   to: "/crew/kim-ajou",
+//   emailAddress: "example123@ajou.ac.kr",
+//   description: "한 줄 소개입니다.",
+//   activityCount: 12,
+//   blogCount: 5,
+//   follower: 22,
+//   following: 12,
+// };
+// const mockProject: Project = {
+//   src: "/ExBgIMG.png",
+//   title: "ACC",
+//   subtitle: "Aolda Cloud Console",
+//   date: "2025.11.10 13:43",
+//   status: "status",
+//   crewNum: 5,
+//   bgColor: "#018CF1",
+//   description: '위와 같은 서비스로 발전할 수 있는 초석을 만드는 프로젝트입니다.\n즉 미래에 만들어질 다수의 서비스를 연결할 수 있는 하나의 통합 클라우드 콘솔을  만드는 것을 의미합니다.\n“콘솔에서 각 프로젝트들을 CSP의 제품단위로 쓸 수 있도록” 말이죠',
+//   problems:[""],
+//   solutions:[""],
+//   members:[mockMember, mockMember],
+//   to: "#",
+// }
 
 export default function Home() {
 
