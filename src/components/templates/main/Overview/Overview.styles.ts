@@ -39,9 +39,27 @@ export const GlareEffect = styled.div`
     z-index: 1;
 `;
 
+export const ShadowWrapper = styled.div`
+    position: absolute;
+    top: 70%; 
+    left: 50%;
+    transform: translate(-50%, -0%);
+    
+    width: 20rem;
+    height: auto;
+    
+    z-index: 2;
+    pointer-events: none;
+
+    svg {
+        width: 100%;
+        height: auto;
+    }
+`;
+
 export const SphereImage = styled.div`
     position: relative;
-    z-index: 2;
+    z-index: 3;
     width: 24rem;
     height: 24rem;
     

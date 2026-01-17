@@ -29,7 +29,31 @@ const Overview = () => {
                     <S.BgText>
                         <Image src="/main/bgText.png" alt="bgtext" width={2128} height={120}/>
                     </S.BgText>
+
                     <S.GlareEffect />
+
+                    <S.ShadowWrapper>
+                        <svg viewBox="0 0 436 116" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                            <defs>
+                                <linearGradient id="gradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style={{"stopColor":"rgba(163, 210, 245, 1)"}} />
+                                    <stop offset="100%" style={{"stopColor":"rgba(95, 122, 143, 1)"}} />
+                                </linearGradient>
+                                <linearGradient id="gradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style={{"stopColor":"rgba(72, 164, 234, 1)"}} />
+                                    <stop offset="100%" style={{"stopColor":"rgba(41, 93, 132, 1)"}} />
+                                </linearGradient>
+                            </defs>
+                            {/* 가장 넓고 연한 타원 (맨 아래) */}
+                            <ellipse cx="218" cy="65" rx="210" ry="40" stroke="url(#gradient1)" strokeWidth="3"/>
+                            {/* 중간 타원 */}
+                            <ellipse cx="218" cy="60" rx="170" ry="25" stroke="url(#gradient2)" strokeWidth="5"/>
+                            {/* 가장 좁고 진한 타원 (맨 위) */}
+                            <ellipse cx="218" cy="60" rx="130" ry="14" fill="rgba(0, 0, 0, 0.58)"/>
+                        </svg>
+                    </S.ShadowWrapper>
+
                     <S.SphereImage>
                     {/* 실제 구체 이미지 경로로 수정 필요 */}
                         <Image 
