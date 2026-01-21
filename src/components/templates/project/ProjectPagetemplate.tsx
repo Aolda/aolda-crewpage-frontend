@@ -21,7 +21,7 @@ const FILTER_OPTIONS: { label: string; value: ProjectStatus | "" }[] = [
 
 interface ProjectPageTemplateProps {
     projectList: Project[];
-    onProjectClick?: (id: string) => void;
+    onProjectClick: (id: string) => void;
 }
 
 // 애니메이션 설정값
@@ -156,6 +156,7 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
                             <motion.div
                                 key={project.id}
                                 layout // 카드가 이동할 때 부드럽게 슬라이딩됨
+                                onClick={() => onProjectClick(project.id)}
                                 variants={itemVariants}
                                 initial="hidden"
                                 animate="visible"

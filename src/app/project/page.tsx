@@ -11,7 +11,7 @@ export default function ProjectsPage() {
     const router = useRouter();
 
     const handleProjectNavigation = (id: string) => {
-        router.push(`/projects/${id}`);
+        router.push(`/project/${id}`);
     };
 
     return (
