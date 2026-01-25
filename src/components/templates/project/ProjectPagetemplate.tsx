@@ -54,21 +54,21 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
     projectList,
     onProjectClick 
 }) => {
-
     const [searchValue, setSearchValue] = useState("");
     const [activeSearch, setActiveSearch] = useState("");
     const [selectedStatus, setSelectedStatus] = useState<ProjectStatus | "">("");
 
+    //프로젝트 필터링
     const filteredProjects = useMemo(() => {
         return projectList.filter((project) => {
             const matchesSearch = project.title.toLowerCase().includes(activeSearch.toLowerCase());
-            // selectedStatus가 빈 문자열이면 모든 상태를 허용(true)합니다.
             const matchesStatus = selectedStatus === "" ? true : project.status === selectedStatus;
             
             return matchesSearch && matchesStatus;
         });
     }, [activeSearch, selectedStatus]);
 
+    //OverviewCard에 들어갈 데이터 정리
     const stats = useMemo(() => {
         // 1. 프로젝트 수 관련
         const totalProjects = projectList.length;
@@ -80,8 +80,7 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
             projectList.filter(p => p.status === 'ONGOING').flatMap(p => p.memberIds)
         );
     
-        // 3. 대회 참석 관련 (임시 데이터 - 나중에 별도 Mock 분리 권장)
-        // 디자인상 수치인 13과 6을 기준으로 우선 세팅합니다.
+        // 3. 파란학기연계 관련 (추후 데이터 형식에 추가 예정)
         const totalParan = 13; 
         const onGoingParan = 6;
     
