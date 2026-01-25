@@ -14,8 +14,8 @@ export const HeaderBackground = styled.header`
     display: flex;
     align-items: end;
 
-    padding-left: 15.9375rem;
-    padding-right: 15.9375rem;
+    padding-left: 8.4375rem;
+    padding-right: 8.4375rem;
     padding-bottom: 3.75rem;
     
     background-image: url('/crewbookBG.png');
@@ -26,7 +26,7 @@ export const HeaderBackground = styled.header`
 
 export const HeaderContent = styled.div`
     width: 100%;
-    max-width: 75rem;
+    max-width: 90rem;
 
     h1 {
         font-size: 2rem;
@@ -38,7 +38,7 @@ export const HeaderContent = styled.div`
 `;
 
 export const ContentContainer = styled.main`
-    width: 75rem;
+    width: 90rem;
     padding: 4.5rem 0;
     margin: 0 auto;
 `;
