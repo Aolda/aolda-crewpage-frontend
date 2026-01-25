@@ -9,8 +9,8 @@ import SearchBox from '@/components/molecules/SearchBox';
 import Select from '@/components/molecules/Select';
 
 interface CrewPageTemplateProps {
-    crewList: CrewMember[]; // 실제 서버나 Mock에서 올 데이터
-    onDetailClick: (id: string) => void;
+    crewList: CrewMember[];                 // 실제 서버나 Mock에서 올 데이터
+    onDetailClick: (id: string) => void;    //클릭 이벤트 발생시 실행될 함수(디테일 페이지 라우팅)
 }
 
 const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({ 
@@ -25,7 +25,7 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
         department: "",
     });
 
-    // 템플릿 내에서 이루어지는 데이터 처리 (팀장님 가이드 반영)
+    //카테고리 항목(위에서부터 기수, 역할, 학과)
     const genOptions = useMemo(() => 
         Array.from(new Set(crewList.map(c => `${c.generation}기`))).sort(), 
         [crewList]
@@ -36,6 +36,7 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
         [crewList]
     );
 
+    //검색 또는 카테고리로 필터링된 크루
     const filteredCrew = useMemo(() => {
         return crewList.filter((member) => {
             const matchesSearch = member.name.includes(activeSearch);
@@ -46,6 +47,7 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
         }).sort((a, b) => a.position - b.position);
     }, [crewList, activeSearch, filters]);
 
+    //필터링 초기화
     const resetFilters = () => {
         setFilters({ generation: "", role: "", department: "" });
         setActiveSearch("");
@@ -106,7 +108,7 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
                             />
                         ))
                     ) : (
-                        <S.EmptyState>검색 결과가 없습니다. 😅</S.EmptyState>
+                        <S.EmptyState>검색 결과가 없습니다.</S.EmptyState>
                     )}
                 </S.CrewList>
             </S.ContentContainer>
