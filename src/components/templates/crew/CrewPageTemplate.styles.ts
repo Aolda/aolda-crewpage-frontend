@@ -9,11 +9,14 @@ export const PageWrapper = styled.div`
 
 export const HeaderBackground = styled.header`
     width: 100%;
-    height: ${pxToRem(480)};
+    height: 30rem;
     background: linear-gradient(108deg, #E0F2FE 0%, #DBEAFE 100%);
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: end;
+
+    padding-left: 15.9375rem;
+    padding-right: 15.9375rem;
+    padding-bottom: 3.75rem;
     
     background-image: url('/crewbookBG.png');
     background-repeat: no-repeat;
@@ -23,36 +26,34 @@ export const HeaderBackground = styled.header`
 
 export const HeaderContent = styled.div`
     width: 100%;
-    max-width: ${pxToRem(1100)};
-    padding: 0 ${pxToRem(20)};
+    max-width: 75rem;
 
     h1 {
-        font-size: ${pxToRem(32)};
+        font-size: 2rem;
         font-weight: 700;
         line-height: 1.4;
-        margin-bottom: ${pxToRem(24)};
+        margin-bottom: 1.5rem;
         strong { color: #1E40AF; }
     }
 `;
 
 export const ContentContainer = styled.main`
-    max-width: ${pxToRem(1100)};
-    margin: 0 auto;
-    padding: ${pxToRem(40)} ${pxToRem(20)};
+    width: 100%;
+    padding: 4.5rem 15.9375rem;
 `;
 
 export const FilterBar = styled.section`
     display: flex;
-    gap: ${pxToRem(12)};
-    margin-bottom: ${pxToRem(32)};
+    gap: 0.75rem;
+    margin-bottom: 2rem;
     align-items: center;
 `;
 
 export const AllButton = styled.button<{ $isActive: boolean }>`
-    width: ${pxToRem(71)};
-    height: ${pxToRem(47)};
-    padding: ${pxToRem(12)} ${pxToRem(16)};
-    border-radius: ${pxToRem(8)};
+    width: 4.4375rem;
+    height: 2.9375rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
     border: none;
     background-color: ${props => props.$isActive ? '#111827' : '#E5E7EB'};
     color: ${props => props.$isActive ? 'white' : '#6B7280'};
@@ -68,12 +69,12 @@ export const AllButton = styled.button<{ $isActive: boolean }>`
 export const CrewList = styled.section`
     display: flex;
     flex-direction: column;
-    gap: ${pxToRem(16)};
+    gap: 1rem;
 `;
 
 export const EmptyState = styled.div`
     text-align: center;
-    padding: ${pxToRem(100)} 0;
+    padding: 6.25rem 0;
     color: #9CA3AF;
-    font-size: ${pxToRem(18)};
+    font-size: 1.125rem;
 `;
