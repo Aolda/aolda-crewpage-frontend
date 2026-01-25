@@ -38,8 +38,9 @@ export const HeaderContent = styled.div`
 `;
 
 export const ContentContainer = styled.main`
-    width: 100%;
-    padding: 4.5rem 15.9375rem;
+    width: 75rem;
+    padding: 4.5rem 0;
+    margin: 0 auto;
 `;
 
 export const FilterBar = styled.section`
