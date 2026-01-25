@@ -3,6 +3,7 @@
 import React from "react";
 import HashTag from "../atoms/HashTag";
 import { StyledActivityBlock } from "./ActivityBlock.styles";
+import { ProjectStatus } from "@/types/project";
 
 /*
 * Home page Activity Section의 block(내부 요소로는 Badge, 텍스트)
@@ -14,7 +15,7 @@ import { StyledActivityBlock } from "./ActivityBlock.styles";
 */
 
 interface ActivityBlockProps {
-    completed: boolean;
+    status: ProjectStatus;
     date: string;
     title: string;
     subtitle: string;
@@ -22,7 +23,7 @@ interface ActivityBlockProps {
 }
 
 const ActivityBlock: React.FC<ActivityBlockProps> = ({
-	completed,
+	status,
 	date,
 	title,
 	subtitle,
@@ -32,8 +33,8 @@ const ActivityBlock: React.FC<ActivityBlockProps> = ({
 		<StyledActivityBlock>
 			<section className="topSection">
                 <section className="hashTagSection">
-                    <HashTag completed={completed} color="white"/>
-			        <HashTag date={date} color="white"/>
+                    <HashTag status={status}/>
+			        <HashTag date={date}/>
                 </section>
 			    <section className="titleSection">
                     <h2>{title}</h2>

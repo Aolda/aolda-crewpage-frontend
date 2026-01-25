@@ -1,23 +1,33 @@
-import styled from 'styled-components';
-import { fontSize } from '@/styles/theme';
+import styled, { css } from 'styled-components';
+import { ProjectStatus } from "@/types/project";
+import { fontSize, colors } from '@/styles/theme';
 
 interface HashTagProps {
-    $completed?: boolean,
+    $status?: ProjectStatus,
     $date?: string,
-    $color: string,
-    $bgColor: string,
 }
 
 export const StyledHashTag = styled.div<HashTagProps>`
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     border-radius: 1.5rem;
     width: auto;
-    padding: 0.4375rem 1rem;
-    color: ${(props) => props.$color};
+    height: 1.0625rem;
+    padding: 0.5rem 0.75rem;
     font-size: ${fontSize.smaller};
 
-    background-color: ${(props) => props.$bgColor};
+    ${({ $date, $status }) => $status && css`
+        background-color: ${() => {
+            if ($status === 'DONE') return colors.primary500; // Blue
+            if ($status === 'PLANNING') return colors.gray600; // Gray
+            if ($status === 'ONGOING') return '#10B981'; // Green (예상)
+            return '#E5E7EB';
+        }};
+        color: white;
+    ` || $date && css`
+        background-color: black;
+        color: white;
+    `}
 `;

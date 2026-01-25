@@ -4,6 +4,8 @@ import BaseTemplate from '@/components/templates/BaseTemplate/BaseTemplate';
 import HeroSection from '@/components/templates/main/HeroSection/HeroSection';
 import Overview from '@/components/templates/main/Overview/Overview';
 import Vision from '@/components/templates/main/Vision/Vision';
+import Activity from '@/components/templates/main/Activity/Activity';
+import { MOCK_PROJECTS } from './project/mockData';
 
 export default function HomePage() {
     return (
@@ -14,6 +16,8 @@ export default function HomePage() {
             <Overview />
 
             <Vision />
+
+            <Activity activities={MOCK_PROJECTS}/>
         </BaseTemplate>
     );
 }
