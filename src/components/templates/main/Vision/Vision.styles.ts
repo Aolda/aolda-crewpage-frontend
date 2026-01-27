@@ -38,6 +38,5 @@ export const CardGrid = styled.div`
     width: 100%;
     max-width: 75rem;
     margin: 0 auto;
-    padding: 0 1.25rem;
     z-index: 1;
 `;

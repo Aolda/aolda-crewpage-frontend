@@ -5,39 +5,39 @@ import { fontSize, colors } from "@/styles/theme";
 
 export const StyledHeader = styled.header`
     display: flex;
-    width: calc(100% - ${pxToRem(80)});
-    height: ${pxToRem(72)};
+    width: 85rem;
+    height: 4.5rem;
     justify-content: space-between;
     align-items: center;
 
-    padding: ${pxToRem(16)};
+    padding: 1rem;
     border: solid 1px ${colors.border};
-    border-radius: ${pxToRem(12)};
+    border-radius: 0.75rem;
     background-color: white;
     
     position: absolute;
-    top: ${pxToRem(40)};
-    left: ${pxToRem(40)};
+    top: 2.5rem;
+    left: 10.9375rem;
     z-index: 10;
 
     box-sizing: border-box;
 
     .iconSection {
-        width: ${pxToRem(36)};
-        height: ${pxToRem(36)};
+        width: 2.25rem;
+        height: 2.25rem;
     }
 
     .linkSeciton {
         display: inline-flex;
         align-items: center;
-        height: ${pxToRem(40)};
+        height: 2.5rem;
     }
 `;
 
 export const NavLink = styled.span<{ $isActive: boolean }>`
-    height: ${pxToRem(40)};
+    height: 2.5rem;
     text-align: center;
-    padding: ${pxToRem(8)} ${pxToRem(20)};
+    padding: 0.5rem 2.25rem;
     font-size: ${fontSize.base};
     font-weight: 400;
 

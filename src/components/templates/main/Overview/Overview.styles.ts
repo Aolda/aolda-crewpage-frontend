@@ -6,7 +6,7 @@ export const OverviewWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
-    overflow: hidden;
+    overflow: visible;
 `;
 
 /* 상단: 구체 및 배경 텍스트 영역 */
@@ -17,7 +17,6 @@ export const SphereContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
 `;
 
 export const BgText = styled.div`

@@ -2,13 +2,20 @@ import styled from 'styled-components';
 import { fontSize, colors } from '@/styles/theme';
 
 export const SectionWrapper = styled.section<{ $bgColor?: string }>`
-    width: 100%;
-    padding-top: 10rem;
-    background-color: ${(props) => props.$bgColor || '#FFFFFF'};
     display: flex;
+    width: 90rem;
+
+    margin: 0 auto;
+    padding-top: 10rem;
+    padding-left: 7.5rem;
+    padding-right: 7.5rem;
+
+    background-color: ${(props) => props.$bgColor || '#FFFFFF'};
     flex-direction: column;
     align-items: center;
     text-align: center;
+
+    overflow: visible;
 `;
 
 export const Header = styled.div`
