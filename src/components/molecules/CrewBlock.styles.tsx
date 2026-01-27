@@ -48,7 +48,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
     ` : css`
         display: flex;
         align-items: center;
-        width: 90rem;
+        width: 75rem;
         height: 10.5rem;
 
         padding: 1.5rem 2.25rem;
