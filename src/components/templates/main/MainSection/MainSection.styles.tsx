@@ -28,7 +28,7 @@ export const Header = styled.div`
 export const GrayBar = styled.div`
     width: 3rem;
     height: 0;
-    border: solid 0.1875rem #636363;
+    border: solid 1.5px #636363;
     border-radius: 4px;
     margin-bottom: 0.5rem;
 `;

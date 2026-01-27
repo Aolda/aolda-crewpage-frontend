@@ -16,7 +16,7 @@ import { colors } from "@/styles/theme";
 interface CrewBlockProps {
     member: CrewMember;
     isHomepage: boolean;
-    onDetailClick?: (id: string) => void;
+    onDetailClick: (id: string) => void;
 }
 
 const CrewBlock: React.FC<CrewBlockProps> = ({
@@ -29,8 +29,8 @@ const CrewBlock: React.FC<CrewBlockProps> = ({
     return (
         <StyledCrewBlock 
             $isHomepage={isHomepage}
-            onClick={!isHomepage ? () => onDetailClick?.(member.id) : undefined}
-            style={{ cursor: isHomepage ? 'default' : 'pointer' }}
+            onClick={() => onDetailClick(member.id)}
+            style={{ cursor: 'pointer' }}
         >
             <section className="imageSection">
                 <Image src={member.profileImage} alt={`${member.name} profile`}  width={120} height={120}/>
