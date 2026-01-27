@@ -112,60 +112,62 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
                 <div className="ellipse3"></div>
             </S.HeaderSection>
 
-            <S.StatsSection>
-                <OverviewCard type={1} totalNum={stats.projects.total} onGoingNum={stats.projects.current}/>
-                <OverviewCard type={2} totalNum={stats.crews.total} onGoingNum={stats.crews.current}/>
-                <OverviewCard type={3} totalNum={stats.parans.total} onGoingNum={stats.parans.current}/>
-            </S.StatsSection>
+            <S.ContentSection>
+                <S.StatsSection>
+                    <OverviewCard type={1} totalNum={stats.projects.total} onGoingNum={stats.projects.current}/>
+                    <OverviewCard type={2} totalNum={stats.crews.total} onGoingNum={stats.crews.current}/>
+                    <OverviewCard type={3} totalNum={stats.parans.total} onGoingNum={stats.parans.current}/>
+                </S.StatsSection>
 
-            <S.FilterBar>
-                <S.LeftButtonGroup>
-                    {/* 크루 페이지와 동일한 '#전체' 버튼 로직 */}
-                    <S.FilterButton 
-                        $isActive={selectedStatus === ""}
-                        onClick={() => setSelectedStatus("")}
-                    >
-                        #전체
-                    </S.FilterButton>
-
-                    {/* 나머지 상태 버튼들 */}
-                    {FILTER_OPTIONS.map((opt) => (
+                <S.FilterBar>
+                    <S.LeftButtonGroup>
+                        {/* 크루 페이지와 동일한 '#전체' 버튼 로직 */}
                         <S.FilterButton 
-                            key={opt.value}
-                            $isActive={selectedStatus === opt.value}
-                            onClick={() => setSelectedStatus(opt.value as ProjectStatus)}
+                            $isActive={selectedStatus === ""}
+                            onClick={() => setSelectedStatus("")}
                         >
-                            {opt.label}
+                            #전체
                         </S.FilterButton>
-                    ))}
-                </S.LeftButtonGroup>
+
+                        {/* 나머지 상태 버튼들 */}
+                        {FILTER_OPTIONS.map((opt) => (
+                            <S.FilterButton 
+                                key={opt.value}
+                                $isActive={selectedStatus === opt.value}
+                                onClick={() => setSelectedStatus(opt.value as ProjectStatus)}
+                            >
+                                {opt.label}
+                            </S.FilterButton>
+                        ))}
+                    </S.LeftButtonGroup>
+                    
+                    {/* ... Select 컴포넌트 생략 ... */}
+                </S.FilterBar>
                 
-                {/* ... Select 컴포넌트 생략 ... */}
-            </S.FilterBar>
-            
-            <S.ProjectGrid
-                as={motion.main} // Styled-components를 motion으로 확장
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-            >
-                <AnimatePresence mode='popLayout'>
-                    {filteredProjects.map((project) => (
-                        <motion.div
-                            key={project.id}
-                            layout // 카드가 이동할 때 부드럽게 슬라이딩됨
-                            onClick={() => onProjectClick(project.id)}
-                            variants={itemVariants}
-                            initial="hidden"
-                            animate="visible"
-                            exit={{ opacity: 0, scale: 0.9 }} // 필터링 시 사라지는 효과
-                            transition={{ duration: 0.3 }}
-                        >
-                            <ProjectBlock key={project.id} project={project} />
-                        </motion.div>
-                    ))}
-                </AnimatePresence>
-            </S.ProjectGrid>
+                <S.ProjectGrid
+                    as={motion.main} // Styled-components를 motion으로 확장
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                >
+                    <AnimatePresence mode='popLayout'>
+                        {filteredProjects.map((project) => (
+                            <motion.div
+                                key={project.id}
+                                layout // 카드가 이동할 때 부드럽게 슬라이딩됨
+                                onClick={() => onProjectClick(project.id)}
+                                variants={itemVariants}
+                                initial="hidden"
+                                animate="visible"
+                                exit={{ opacity: 0, scale: 0.9 }} // 필터링 시 사라지는 효과
+                                transition={{ duration: 0.3 }}
+                            >
+                                <ProjectBlock key={project.id} project={project} />
+                            </motion.div>
+                        ))}
+                    </AnimatePresence>
+                </S.ProjectGrid>
+            </S.ContentSection>
         </BaseTemplate>
     );
 }
