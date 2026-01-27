@@ -15,7 +15,6 @@ export const SectionWrapper = styled.section<{ $bgColor?: string }>`
     align-items: center;
     text-align: center;
 
-    overflow: visible;
 `;
 
 export const Header = styled.div`

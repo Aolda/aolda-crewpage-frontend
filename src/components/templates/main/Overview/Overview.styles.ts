@@ -6,7 +6,6 @@ export const OverviewWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
-    overflow: visible;
 `;
 
 /* 상단: 구체 및 배경 텍스트 영역 */
@@ -21,12 +20,20 @@ export const SphereContainer = styled.div`
 
 export const BgText = styled.div`
     position: absolute;
-    width: 133rem;
+    overflow: hidden;
+    width: 106.875rem;
     height: auto;
     opacity: 0.2;
     z-index: 0;
     pointer-events: none;
     user-select: none;
+
+    img {
+        max-width: unset;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 `;
 
 export const GlareEffect = styled.div`

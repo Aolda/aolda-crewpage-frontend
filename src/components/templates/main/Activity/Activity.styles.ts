@@ -68,5 +68,4 @@ export const HorizontalScrollArea = styled.div`
 export const CardList = styled.div`
     display: flex;
     gap: 1.5rem; /* 24px */
-    padding-bottom: 2.5rem; /* 그림자 잘림 방지 */
 `;
