@@ -2,12 +2,6 @@ import styled from 'styled-components';
 import { fontSize } from '@/styles/theme';
 import { pxToRem } from '@/styles/utils';
 
-export const PageWrapper = styled.div`
-    width: 100%;
-    background-color: #FFFFFF;
-    min-height: 100vh;
-`;
-
 /* 헤더 섹션: 복합 그라데이션과 마스코트 배치 */
 export const HeaderSection = styled.header`
     position: relative;
@@ -97,22 +91,27 @@ export const HeaderSection = styled.header`
 
 export const StatsSection = styled.section`
     display: flex;
-    width: 75rem;
-    margin: 0 auto;
+    width: 90rem;
+    // margin: 0 auto;
     justify-content: center;
     gap: 1.5rem;
+
     padding-top: 3.75rem;
+    padding-left: 7.5rem;
+    padding-right: 7.5rem;
     z-index: 10;
 `;
 
 /* 필터 및 그리드 섹션 */
 export const FilterBar = styled.div`
-    max-width: 75rem;
-    margin: 0 auto;
+    max-width: 90rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     padding-top: 3.75rem;
+    padding-left: 7.5rem;
+    padding-right: 7.5rem;
 `;
 
 export const FilterButton = styled.button<{ $isActive: boolean }>`
@@ -152,12 +151,11 @@ export const LeftButtonGroup = styled.div`
 `;
 
 export const ProjectGrid = styled.main`
-    max-width: 75rem;
-    margin: 0 auto;
+    max-width: 90rem;
+    // margin: 0 auto;
     display: grid;
     /* 피그마 [A-5] 디자인: 4열 그리드 */
     grid-template-columns: repeat(4, 1fr);
     gap: 2.25rem;
-    padding-top: 2rem;
-    padding-bottom: 10rem;
+    padding: 2rem 7.5rem 10rem 7.5rem;
 `;
