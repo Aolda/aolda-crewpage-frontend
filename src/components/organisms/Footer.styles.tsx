@@ -1,49 +1,47 @@
 import styled from "styled-components";
 import { pxToRem } from "@/styles/utils";
-import { fontSize } from "@/styles/theme";
+import { colors, fontSize } from "@/styles/theme";
 
 export const StyledFooter = styled.footer`
     display: flex;
+    flex-direction: column;
     width: 100%;
-    height: ${pxToRem(217)};
+    height: 14.4375rem;
 
     background-color: #061C2C;
 
     position: relative;
     bottom: 0;
 
+    padding: 3.75rem 7.5rem;
+
+    gap: 0.75rem;
+
     .logoSection {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        width: ${pxToRem(261)};
-        height: ${pxToRem(56)};
+        width: 16.3125rem;
+        height: 3.5rem;
 
-        position: absolute;
-        top: ${pxToRem(43)};
-        left: ${pxToRem(69.75)};
-
-        gap: ${pxToRem(6)};
+        gap: 0.25rem;
 
         .description {
-            padding-left: ${pxToRem(40)};
-            color: white;
+            padding-left: 2.5rem;
+            color: ${colors.primary500};
             font-size: ${fontSize.smaller};
-            font-weight: 300;
+            font-weight: 500;
         }
     }
 
     .addressSection {
         display: flex;
         flex-direction: column;
-        width: ${pxToRem(301.5)};
-        height: ${pxToRem(41)};
-
-        position: absolute;
-        top: ${pxToRem(116)};
-        left: ${pxToRem(118.13)};
+        width: 18.84375rem;
+        height: 2.5625rem;
 
         color: white;
+        padding-left: 2.5rem;
 
         .address {
             font-size: ${fontSize.smaller};
@@ -53,14 +51,14 @@ export const StyledFooter = styled.footer`
         .managementSection {
             display: inline-flex;
             align-items: center;
-            gap: ${pxToRem(8)};
+            gap: 0.5rem;
             font-size: ${fontSize.smaller};
             font-weight: 300;
 
             .divider {
                 width: 4px;
                 height: 0px;
-                border-width: 1px;
+                border-width: 0.5px;
                 transform: rotate(-90deg);
             }
         }
