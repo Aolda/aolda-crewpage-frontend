@@ -44,7 +44,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({
 				type='button'
 				onClick={() => onSearch(value.trim())}
 			>
-				<Image src="/Search.png" alt="search" width={20} height={20}/>
+				<Image src="/images/Search.png" alt="search" width={20} height={20}/>
 			</button>
 		</StyledSearchBox>
 	);

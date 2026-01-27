@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <StyledFooter>
             <section className="logoSection">
-                <Image src="/FooterLogo.svg" alt="logo" width={130} height={33}/>
+                <Image src="/images/FooterLogo.svg" alt="logo" width={130} height={33}/>
                 <span className="description">교내 클라우드 인프라 개발/운영 소학회</span>
             </section>
             <section className="addressSection">

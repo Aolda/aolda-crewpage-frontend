@@ -4,7 +4,7 @@ export const MOCK_CREW_LIST: CrewMember[] = [
     {
         id: "crew_1",
         name: "김철수",
-        profileImage: "/CrewImg.png",
+        profileImage: "/images/CrewImg.png",
         position: 4, // 크루원
         department: "소프트웨어",
         studentNumber: "22",
@@ -20,7 +20,7 @@ export const MOCK_CREW_LIST: CrewMember[] = [
     {
         id: "crew_2",
         name: "이영희",
-        profileImage: "/CrewImg.png",
+        profileImage: "/images/CrewImg.png",
         position: 1,
         department: "사이버보안",
         studentNumber: "20",
@@ -36,7 +36,7 @@ export const MOCK_CREW_LIST: CrewMember[] = [
     {
         id: "crew_3",
         name: "박지민",
-        profileImage: "/CrewImg.png",
+        profileImage: "/images/CrewImg.png",
         position: 2,
         department: "컴퓨터공학",
         studentNumber: "21",

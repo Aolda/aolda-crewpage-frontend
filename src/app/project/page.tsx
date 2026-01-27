@@ -89,7 +89,7 @@ export default function ProjectListPage() {
             <S.HeaderSection>
                 <section className="contentsSection">
                     <section className="textSection">
-                        <Image src="/project/mascot.png" alt="Mascot" width={160} height={160} className="mascot" />
+                        <Image src="/images/project/mascot.png" alt="Mascot" width={160} height={160} className="mascot" />
                         <h1>클라우드 실전 역량을 쌓는<br /><strong>핵심 Activity</strong></h1>
                         <p>아올다는 기획, 개발, 운영 전반을 아우르는 활동들을 통해<br />클라우드 분야의 실질적인 전문가로 성장합니다.</p>
                     </section>

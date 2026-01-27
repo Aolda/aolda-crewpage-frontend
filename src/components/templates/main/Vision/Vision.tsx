@@ -9,19 +9,19 @@ const VISION_DATA = [
     {
         id: 'idea',
         title: '아이디어',
-        icon: '/main/vision-idea.png',
+        icon: '/images/main/vision-idea.png',
         description: "아주대학교 학생들이 원하는 프로젝트들을\n 자유롭게 기획 및 진행해 볼 수 있어요.",
     },
     {
         id: 'dev',
         title: '개발',
-        icon: '/main/vision-dev.png',
+        icon: '/images/main/vision-dev.png',
         description: "기존 프로젝트들과 더불어 최신 기술 스택을\n 활용한 개발 경험을 폭넓게 지원하고 있어요.",
     },
     {
         id: 'ops',
         title: '운영',
-        icon: '/main/vision-ops.png',
+        icon: '/images/main/vision-ops.png',
         description: "개발한 서비스를 배포된 환경에서\n 직접 관리하고, 안정적으로 유지할 수 있어요." ,
     },
 ];

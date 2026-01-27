@@ -79,7 +79,7 @@ export const SphereImage = styled.div`
 
 /* 중앙: 연결 점선 */
 export const DashedLine = styled.div`
-    background: url("/main/dashedLine.png");
+    background: url("/images/main/dashedLine.png");
     width: 1rem;
     height: 11rem;
     margin-bottom: 2rem;

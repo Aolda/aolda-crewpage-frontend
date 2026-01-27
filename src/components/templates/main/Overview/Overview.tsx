@@ -57,7 +57,7 @@ const Overview = () => {
                     <S.SphereImage>
                     {/* 실제 구체 이미지 경로로 수정 필요 */}
                         <Image 
-                            src="/icon.png" 
+                            src="/images/icon.png" 
                             alt="Cloud Sphere" 
                             width={384} 
                             height={384}
@@ -81,7 +81,7 @@ const Overview = () => {
                     <S.CardIllustration>
                         {/* 실제 일러스트 이미지 경로로 수정 필요 */}
                         <Image 
-                            src="/main/mainImg1.png" 
+                            src="/images/main/mainImg1.png" 
                             alt="Learning Illustration" 
                             width={320} 
                             height={240} 
