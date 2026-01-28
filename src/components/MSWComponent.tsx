@@ -1,19 +1,29 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-export const MSWComponent = () => {
-  useEffect(() => {
-    if (process.env.NODE_ENV === 'development') {
-      if (typeof window !== 'undefined') {
-        // browser.js에서 정의한 worker를 가져와 시작합니다.
-        const { worker } = require('@/mocks/browser');
-        worker.start({
-          onUnhandledRequest: 'bypass', // 정의되지 않은 API는 무시하고 통과
-        });
-      }
-    }
-  }, []);
+export const MSWComponent = ({ children }: { children: React.ReactNode }) => {
+    const [isReady, setIsReady] = useState(false);
 
-  return null;
+    useEffect(() => {
+        const initMSW = async () => {
+        if (process.env.NODE_ENV === 'development') {
+            const { worker } = await import('@/mocks/browser');
+            // worker.start()가 끝날 때까지 기다립니다.
+            await worker.start({
+            onUnhandledRequest: 'bypass',
+            });
+            setIsReady(true); // 준비 완료!
+        } else {
+            setIsReady(true); // 개발 환경이 아니면 바로 통과
+        }
+        };
+
+        initMSW();
+    }, []);
+
+    // 워커가 준비되기 전에는 아무것도 렌더링하지 않거나 로딩 화면을 보여줍니다.
+    if (!isReady) return null; 
+
+    return <>{children}</>;
 };
