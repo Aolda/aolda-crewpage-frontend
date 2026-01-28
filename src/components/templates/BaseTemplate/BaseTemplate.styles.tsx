@@ -9,6 +9,6 @@ export const Wrapper = styled.div`
 
 export const MainContent = styled.main`
     flex: 1;
-    padding-bottom: 10rem; 
+    padding-bottom: 5rem; 
     width: 100%;
 `;

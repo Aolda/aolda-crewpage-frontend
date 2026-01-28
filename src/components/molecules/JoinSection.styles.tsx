@@ -3,7 +3,7 @@ import { fontSize, colors } from "@/styles/theme";
 // Styles (고정 rem 적용)
 export const Container = styled.section`
     padding-top: 10rem;
-    padding-bottom: 4.5rem;
+    padding-bottom: 2rem;
     text-align: center;
     display: flex;
     flex-direction: column;
