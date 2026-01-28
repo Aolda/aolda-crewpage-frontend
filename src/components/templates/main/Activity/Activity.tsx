@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import MainSection from '../MainSection/MainSection';
 import * as S from './Activity.styles';
-import ActivityBlock from '@/components/molecules/ActivityBlock';
+import ActivityBlock from '@/components/organisms/ActivityBlock';
 import { Project } from '@/types/project';
 
 interface ActivityProps {

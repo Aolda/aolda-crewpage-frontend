@@ -3,9 +3,9 @@
 import React, {useState, type ChangeEvent} from "react";
 import Badge from "@/components/atoms/Badge";
 import HashTag from "@/components/atoms/HashTag";
-import ActivityBlock from "@/components/molecules/ActivityBlock";
+import ActivityBlock from "@/components/organisms/ActivityBlock";
 import OverviewCard from "@/components/molecules/OverviewCard";
-import CrewBlock from "@/components/molecules/CrewBlock";
+import CrewBlock from "@/components/organisms/CrewBlock";
 import { type Member } from "@/types/Types";
 import { type Project } from "@/types/Types";
 import MenuItem from "@/components/molecules/MenuItem";

@@ -2,7 +2,7 @@
 
 import React, { useMemo, useState } from 'react';
 import MainSection from '../MainSection/MainSection';
-import CrewBlock from '@/components/molecules/CrewBlock';
+import CrewBlock from '@/components/organisms/CrewBlock';
 import { CrewMember } from '@/types/crew';
 import * as S from './Crew.styles';
 

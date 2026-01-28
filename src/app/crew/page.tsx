@@ -6,7 +6,7 @@ import { MOCK_CREW_LIST } from './mockData';
 import { POSITION_LABEL, PositionValue } from '@/types/crew';
 import * as S from './CrewPage.styles';
 import BaseTemplate from '@/components/templates/BaseTemplate/BaseTemplate';
-import CrewBlock from '@/components/molecules/CrewBlock';
+import CrewBlock from '@/components/organisms/CrewBlock';
 import SearchBox from '@/components/molecules/SearchBox';
 import Select from '@/components/molecules/Select';
 
