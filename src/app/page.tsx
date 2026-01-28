@@ -11,8 +11,7 @@ import Vision from '@/components/templates/main/Vision/Vision';
 import Activity from '@/components/templates/main/Activity/Activity';
 import Crew from '@/components/templates/main/Crew/Crew';
 import { useRouter } from 'next/navigation';
-import { MOCK_PROJECTS } from './project/mockData';
-import { MOCK_CREW_LIST } from './crew/mockData';
+import JoinSection from '@/components/molecules/JoinSection';
 
 
 export default function HomePage() {
@@ -74,6 +73,8 @@ export default function HomePage() {
             <Activity activities={projects}/>
 
             <Crew crews={crews} onCrewClick={handleDetailNavigation}/>
+
+            <JoinSection />
         </BaseTemplate>
     );
 }
