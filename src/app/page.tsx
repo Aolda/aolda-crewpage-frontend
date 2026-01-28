@@ -31,7 +31,7 @@ export default function HomePage() {
                 // 크루와 프로젝트 데이터를 병렬로 요청
                 const [crewRes, projectRes] = await Promise.all([
                     fetch('/api/crews'),
-                    fetch('/api/projects') // handlers.ts에 프로젝트 API도 추가되어 있어야 합니다!
+                    fetch('/api/projects')
                 ]);
 
                 if (!crewRes.ok || !projectRes.ok) throw new Error('데이터 로드 실패');
