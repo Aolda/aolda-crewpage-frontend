@@ -9,7 +9,7 @@ export const HeaderBackground = styled.header`
     justify-content: center;
     align-items: flex-end;
     
-    background-image: url('/crew/crewbookBG.png');
+    background-image: url('/images/crew/crewbookBG.png');
     background-repeat: no-repeat;
     background-position: right bottom;
     background-size: contain;

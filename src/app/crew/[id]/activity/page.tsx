@@ -20,7 +20,7 @@ export default function CrewActivityPage() {
                 // MSW 핸들러를 통해 멤버 정보와 활동 리스트 페칭
                 const [memberRes, activityRes] = await Promise.all([
                     fetch(`/api/crews/${id}`),
-                    fetch('/api/projects') 
+                    fetch(`/api/crews/${id}/projects`)
                 ]);
 
                 if (!memberRes.ok) throw new Error('데이터 로드 실패');
@@ -48,7 +48,7 @@ export default function CrewActivityPage() {
                 activities.map((item) => (
                     <MenuItem
                         key={item.id}
-                        pageName="활동"
+                        pageName="activity"
                         title={item.title}
                         date={item.date}
                         description={item.description}
