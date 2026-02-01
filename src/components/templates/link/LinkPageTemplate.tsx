@@ -24,27 +24,38 @@ const LinkPageTemplate = () => {
     ]
     return (
         <BaseTemplate>
-            <S.PageHeader>
-                <h2><strong>아올다</strong>의 다른<br />활동들도 만나보세요</h2>
-            </S.PageHeader>
+            <S.PageWrapper>
+                <S.Ellipse className="ellipse1" />
+                <S.Ellipse className="ellipse2" />
+                <S.Ellipse className="ellipse3" />
+                <S.Ellipse className="ellipse4" />
+                <S.Ellipse className="ellipse5" />
+                <S.Ellipse className="ellipse6" />
+                <S.PageHeader>
+                    <h2><strong>아올다</strong>의 다른<br />활동들도 만나보세요</h2>
+                </S.PageHeader>
 
-            <S.LinkWrapper>
-                {LinkList.map((link, index) => (
-                    <LinkSection
-                        key={index}
-                        src={link.src}
-                        index={index}
-                        title={link.title}
-                        description={link.description}
-                        to={link.to}
-                    />
-                ))}
-            </S.LinkWrapper>
+                <S.LinkWrapper>
+                    {LinkList.map((link, index) => (
+                        <LinkSection
+                            key={index}
+                            src={link.src}
+                            index={index}
+                            title={link.title}
+                            description={link.description}
+                            to={link.to}
+                        />
+                    ))}
+                </S.LinkWrapper>
 
-            
+                <S.UnderSection>
+                    <Image src="/images/link/UnderImg.png" alt="underimg" width={1053} height={510}/>
+                    <h2><strong>아올다</strong>의 새로운<br />활동들을 함께 만들어 가봐요</h2>
+                </S.UnderSection>
 
-            {/* 공통 CTA 섹션 */}
-            <JoinSection />
+                {/* 공통 CTA 섹션 */}
+                <JoinSection />
+            </S.PageWrapper>
         </BaseTemplate>
     );
 };

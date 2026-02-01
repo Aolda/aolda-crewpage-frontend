@@ -45,7 +45,6 @@ export const StyledActivityBlock = styled.div`
 
         h2 {
             font-size: ${fontSize.body1};
-            color: #1A8EE5;
             font-weight: bold;
         }
 

@@ -27,7 +27,7 @@ const Overview = () => {
                 {/* 그래픽 영역 */}
                 <S.SphereContainer>
                     <S.BgText>
-                        <Image src="/main/bgText.png" alt="bgtext" width={2128} height={120}/>
+                        <Image src="/images/main/bgText.png" alt="bgtext" width={2128} height={120}/>
                     </S.BgText>
 
                     <S.GlareEffect />
