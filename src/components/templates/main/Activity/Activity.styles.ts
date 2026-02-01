@@ -11,8 +11,8 @@ export const ActivityWrapper = styled.div`
 /* 탭 메뉴 스타일 */
 export const TabContainer = styled.div`
     display: flex;
-    gap: 1.25rem; /* 20px */
-    margin-bottom: 3.75rem; /* 60px */
+    gap: 1.5rem;
+    margin-bottom: 2.25rem;
 `;
 
 export const TabButton = styled.button<{ $isActive: boolean }>`
@@ -22,7 +22,7 @@ export const TabButton = styled.button<{ $isActive: boolean }>`
 
     padding: 1.5rem 2.25rem;
     background: #FFFFFF;
-    border: 0.0625rem solid ${(props) => (props.$isActive ? colors.primary500  : '#F3F4F6')};
+    border: 0.125rem solid ${(props) => (props.$isActive ? colors.primary500  : '#F3F4F6')};
     border-radius: 1rem;
 
     justify-content: space-between;

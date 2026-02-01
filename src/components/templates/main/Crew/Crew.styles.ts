@@ -12,7 +12,6 @@ export const CrewSection = styled.div`
 export const GenerationPagination = styled.div`
     display: flex;
     justify-content: center;
-    gap: 0.75rem;
     margin-bottom: 3rem;
     width: 100%;
     max-width: 75rem;
@@ -30,7 +29,7 @@ export const GenButton = styled.button<{ $isActive: boolean }>`
     color: ${(props) => (props.$isActive ? colors.primary500 : colors.gray500)};
     
     /* 선택된 탭 하단 파란색 밑줄 */
-    border-bottom: 2px solid ${(props) => (props.$isActive ? '#3B82F6' : 'transparent')};
+    border-bottom: 2px solid ${(props) => (props.$isActive ? colors.primary500 : 'transparent')};
     
     cursor: pointer;
     transition: all 0.2s ease;
