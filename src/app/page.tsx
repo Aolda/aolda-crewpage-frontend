@@ -5,7 +5,7 @@ import { CrewMember } from '@/types/crew';
 import { Project } from '@/types/project';
 
 import BaseTemplate from '@/components/templates/BaseTemplate/BaseTemplate';
-import HeroSection from '@/components/templates/main/HeroSection/HeroSection';
+import Hero from '@/components/templates/main/Hero/Hero';
 import Overview from '@/components/templates/main/Overview/Overview';
 import Vision from '@/components/templates/main/Vision/Vision';
 import Activity from '@/components/templates/main/Activity/Activity';
@@ -64,7 +64,7 @@ export default function HomePage() {
     return (
         <BaseTemplate>
             {/* 1. 최상단 Hero 섹션 */}
-            <HeroSection />
+            <Hero />
 
             <Overview />
 
