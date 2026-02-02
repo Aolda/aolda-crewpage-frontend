@@ -10,12 +10,14 @@ import Select from '@/components/molecules/Select';
 
 interface CrewPageTemplateProps {
     crewList: CrewMember[];                 // 실제 서버나 Mock에서 올 데이터
+    children: React.ReactNode;
     onDetailClick: (id: string) => void;    //클릭 이벤트 발생시 실행될 함수(디테일 페이지 라우팅)
 }
 
 const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({ 
-    crewList, 
-    onDetailClick 
+    crewList,
+    children,
+    onDetailClick
 }) => {
     const [searchValue, setSearchValue] = useState("");
     const [activeSearch, setActiveSearch] = useState("");
@@ -112,6 +114,7 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
                     )}
                 </S.CrewList>
             </S.ContentContainer>
+            {children}
         </BaseTemplate>
     );
 };
