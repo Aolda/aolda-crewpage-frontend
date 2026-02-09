@@ -3,7 +3,6 @@
 import React, {useState, type ChangeEvent} from "react";
 import Badge from "@/components/atoms/Badge";
 import HashTag from "@/components/atoms/HashTag";
-import { pxToRem } from "@/styles/utils";
 import ActivityBlock from "@/components/molecules/ActivityBlock";
 import OverviewCard from "@/components/molecules/OverviewCard";
 import CrewBlock from "@/components/molecules/CrewBlock";
@@ -18,6 +17,10 @@ import Profile from "@/components/molecules/Profile";
 
 import Header from "@/components/organisms/Header";
 import Footer from "@/components/organisms/Footer";
+
+import { MOCK_CREW_LIST } from "@/app/crew/mockData";
+import { MOCK_PROJECTS } from "@/app/project/mockData";
+
 
 const mockMember: Member = {
   src: "/CrewImg.png",
@@ -42,7 +45,7 @@ const mockProject: Project = {
   date: "2025.11.10 13:43",
   status: "status",
   crewNum: 5,
-  bgcolor: "#018CF1",
+  bgColor: "#018CF1",
   description: '위와 같은 서비스로 발전할 수 있는 초석을 만드는 프로젝트입니다.\n즉 미래에 만들어질 다수의 서비스를 연결할 수 있는 하나의 통합 클라우드 콘솔을  만드는 것을 의미합니다.\n“콘솔에서 각 프로젝트들을 CSP의 제품단위로 쓸 수 있도록” 말이죠',
   problems:[""],
   solutions:[""],
@@ -74,8 +77,8 @@ export default function Home() {
     <main>
       <Header />
       <div>
-        <Badge $theme="status">진행중</Badge>
-        <Badge $theme="info">소프트웨어</Badge>
+        <Badge variant="solid" status="ONGOING">진행중</Badge>
+        <Badge variant="outline" status="INACTIVE">비활동</Badge>
         <HashTag completed color="white"/>
         <HashTag date="2025.09.24" color="white" />
       </div>
@@ -92,17 +95,39 @@ export default function Home() {
         <OverviewCard type={3} totalNum={20} onGoingNum={13}/>
       </div>
       <div>
-        <CrewBlock member={mockMember} isHomepage/>
-        <CrewBlock member={mockMember} isHomepage={false}/>
+        <CrewBlock member={MOCK_CREW_LIST[0]} isHomepage/>
+        <CrewBlock member={MOCK_CREW_LIST[1]} isHomepage={false}/>
       </div>
       <div style={{"display":"flex", "flexDirection":"column", "gap":"24px"}}>
-        <MenuItem pageName="bloging" title={mockProject.title} date={mockProject.date} description={mockProject.description}/>
-        <MenuItem pageName="bloging" title={mockProject.title} date={mockProject.date} description={mockProject.description}/>
-        <MenuItem pageName="activity" title={`${mockProject.title}(${mockProject.subtitle})`} date={mockProject.date} description={mockProject.description}/>
-        <MenuItem pageName="activity" title={`${mockProject.title}(${mockProject.subtitle})`} date={mockProject.date} description={mockProject.description}/>
+        <MenuItem
+          pageName="bloging"
+          title={MOCK_PROJECTS[0].title}
+          date={MOCK_PROJECTS[0].date}
+          description={MOCK_PROJECTS[0].description} 
+        />
+        <MenuItem
+          pageName="bloging"
+          title={MOCK_PROJECTS[1].title}
+          date={MOCK_PROJECTS[1].date}
+          description={MOCK_PROJECTS[1].description}
+        />
+        <MenuItem
+          pageName="activity"
+          title={`${MOCK_PROJECTS[0].title}(${MOCK_PROJECTS[0].subtitle})`}
+          date={MOCK_PROJECTS[0].date}
+          description={MOCK_PROJECTS[0].description}
+          status={MOCK_PROJECTS[0].status}
+        />
+        <MenuItem
+          pageName="activity"
+          title={`${MOCK_PROJECTS[1].title}(${MOCK_PROJECTS[1].subtitle})`}
+          date={MOCK_PROJECTS[1].date}
+          description={MOCK_PROJECTS[1].description}
+          status={MOCK_PROJECTS[1].status}
+        />
       </div>
       <div>
-        <ProjectBlock project={mockProject}/>
+        <ProjectBlock project={MOCK_PROJECTS[0]} />
       </div>
       <div>
         <SearchBox
@@ -132,7 +157,7 @@ export default function Home() {
           to="#"/>
       </div>
       <div>
-        <Profile member={mockMember}/>
+        <Profile member={MOCK_CREW_LIST[0]}/>
       </div>
       <Footer />
     </main>

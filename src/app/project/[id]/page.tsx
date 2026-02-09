@@ -1,4 +1,4 @@
-//src/app/projects/[id]/page.tsx
+//src/app/project/[id]/page.tsx
 'use client';
 
 import React, { use } from 'react';
@@ -7,7 +7,7 @@ interface PageProps {
     params: Promise<{ id: string }>;
 }
 
-export default function ProjectsPage({ params }: PageProps) {
+export default function ProjectPage({ params }: PageProps) {
     
     const resolvedParams = use(params);
     const id = resolvedParams.id;
