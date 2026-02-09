@@ -1,4 +1,5 @@
 //src/app/project/page.tsx
+
 'use client';
 
 import React, { useState, useMemo } from 'react';
@@ -10,79 +11,14 @@ import SearchBox from '@/components/molecules/SearchBox';
 import OverviewCard from '@/components/molecules/OverviewCard';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { MOCK_PROJECTS } from './mockData';
-import { ProjectStatus } from '@/types/project';
+import ProjectPageTemplate from '@/components/templates/project/ProjectPagetemplate';
 
-// 버튼에 표시될 라벨들 (실제 상태값과 매핑)
-const FILTER_OPTIONS: { label: string; value: ProjectStatus | "" }[] = [
-    { label: '기획중', value: 'PLANNING' },
-    { label: '진행중', value: 'ONGOING' },
-    { label: '완료', value: 'DONE' },
-];
+export default function ProjectsPage() {
+    const router = useRouter();
 
-// 애니메이션 설정값
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.1, // 자식 요소들이 0.1초 간격으로 나타남
-        },
-    },
-};
-
-const itemVariants: Variants = {
-    hidden: { 
-        opacity: 0, 
-        y: "1.25rem" // 20px -> 1.25rem (문자열로 명시)
-    },
-    visible: { 
-        opacity: 1, 
-        y: "0rem", 
-        transition: { 
-            duration: 0.5, 
-            ease: "easeOut" 
-        } 
-    },
-};
-
-export default function ProjectListPage() {
-
-    const [searchValue, setSearchValue] = useState("");
-    const [activeSearch, setActiveSearch] = useState("");
-    const [selectedStatus, setSelectedStatus] = useState<ProjectStatus | "">("");
-
-    const filteredProjects = useMemo(() => {
-        return MOCK_PROJECTS.filter((project) => {
-            const matchesSearch = project.title.toLowerCase().includes(activeSearch.toLowerCase());
-            // selectedStatus가 빈 문자열이면 모든 상태를 허용(true)합니다.
-            const matchesStatus = selectedStatus === "" ? true : project.status === selectedStatus;
-            
-            return matchesSearch && matchesStatus;
-        });
-    }, [activeSearch, selectedStatus]);
-
-    const stats = useMemo(() => {
-        // 1. 프로젝트 수 관련
-        const totalProjects = MOCK_PROJECTS.length;
-        const ongoingProjects = MOCK_PROJECTS.filter(p => p.status === 'ONGOING').length;
-    
-        // 2. 참여 크루원 관련 (중복 제거)
-        const allMemberIds = new Set(MOCK_PROJECTS.flatMap(p => p.memberIds));
-        const ongoingMemberIds = new Set(
-            MOCK_PROJECTS.filter(p => p.status === 'ONGOING').flatMap(p => p.memberIds)
-        );
-    
-        // 3. 대회 참석 관련 (임시 데이터 - 나중에 별도 Mock 분리 권장)
-        // 디자인상 수치인 13과 6을 기준으로 우선 세팅합니다.
-        const totalParan = 13; 
-        const onGoingParan = 6;
-    
-        return {
-            projects: { total: totalProjects, current: ongoingProjects },
-            crews: { total: allMemberIds.size, current: ongoingMemberIds.size },
-            parans: { total: totalParan, current: onGoingParan },
-        };
-    }, []);
+    const handleProjectNavigation = (id: string) => {
+        router.push(`/project/${id}`);
+    };
 
     return (
         <BaseTemplate>

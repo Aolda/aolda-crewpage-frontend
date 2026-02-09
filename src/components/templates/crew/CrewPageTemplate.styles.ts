@@ -6,8 +6,11 @@ export const HeaderBackground = styled.header`
     height: 30rem;
     background: linear-gradient(108deg, #E0F2FE 0%, #DBEAFE 100%);
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    align-items: end;
+
+    padding-left: 15.9375rem;
+    padding-right: 15.9375rem;
+    padding-bottom: 3.75rem;
     
     background-image: url('/images/crew/crewbookBG.png');
     background-repeat: no-repeat;
@@ -17,8 +20,7 @@ export const HeaderBackground = styled.header`
 
 export const HeaderContent = styled.div`
     width: 100%;
-    max-width: 68.75rem;
-    padding-bottom: 5rem;
+    max-width: 90rem;
 
     h1 {
         font-size: ${fontSize.h2};

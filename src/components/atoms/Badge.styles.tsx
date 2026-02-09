@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { pxToRem } from '@/styles/utils';
 import { fontSize, colors } from '@/styles/theme';
 import { BadgeVariant } from "./Badge";
 import { ProjectStatus } from "@/types/project";
@@ -15,6 +14,7 @@ export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: Proje
     width: fit-content;
     height: 1.9375rem;
     padding: 0.4375rem 1rem;
+    white-space: nowrap;
     white-space: nowrap;
 
     /* 1. Solid Variant (배경 있음 - [A-2] 활동중, [A-4] 진행중 등) */

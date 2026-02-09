@@ -89,23 +89,30 @@ export const HeaderSection = styled.header`
     }
 `;
 
+export const ContentSection = styled.main`
+    width: 90rem;
+    margin: 0 auto;
+    padding-left: 7.5rem;
+    padding-right: 7.5rem;
+`;
+
 export const StatsSection = styled.section`
     display: flex;
     width: 75rem;
-    margin: 0 auto;
     justify-content: center;
     gap: 1.5rem;
+
     padding-top: 3.75rem;
     z-index: 10;
 `;
 
 /* 필터 및 그리드 섹션 */
 export const FilterBar = styled.div`
-    max-width: 75rem;
-    margin: 0 auto;
+    width: 75rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     padding-top: 3.75rem;
 `;
 
@@ -145,12 +152,11 @@ export const LeftButtonGroup = styled.div`
     gap: 1.5rem;
 `;
 
-export const ProjectGrid = styled.main`
-    max-width: 75rem;
-    margin: 0 auto;
+export const ProjectGrid = styled.section`
+    width: 75rem;
     display: grid;
     /* 피그마 [A-5] 디자인: 4열 그리드 */
     grid-template-columns: repeat(4, 1fr);
     gap: 2.25rem;
-    padding-top: 2rem;
+    padding: 2rem 0 10rem 0;
 `;
