@@ -1,10 +1,10 @@
-// src/components/templates/main/HeroSection/HeroSection.tsx
+// src/components/templates/main/Hero/Hero.tsx
 'use client';
 
 import React from 'react';
-import * as S from './HeroSection.styles';
+import * as S from './Hero.styles';
 
-const HeroSection = () => {
+const Hero = () => {
     return (
         <S.HeroWrapper>
             <S.HeroContent>
@@ -17,4 +17,4 @@ const HeroSection = () => {
     );
 };
 
-export default HeroSection;
+export default Hero;
