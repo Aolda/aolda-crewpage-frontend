@@ -1,5 +1,5 @@
 import styled, {css} from "styled-components";
-import { fontSize } from "@/styles/theme";
+import { fontSize, colors } from "@/styles/theme";
 
 interface CrewBlockProps {
     $isHomepage: boolean;
@@ -15,11 +15,11 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
         height: 16.75rem;
 
         padding: 1.5rem 2.25rem;
-        border: 1px solid #E2E2E2;
+        border: 1px solid ${colors.border};
         border-radius: 1.25rem;
         gap: 2.25rem;
 
-        .textContainer {
+        .textSection {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -40,7 +40,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             .majorInfo {
                 font-size: ${fontSize.base};
                 font-weight: bold;
-                color: #777777;
+                color: ${colors.gray600};
             }
         }
 
@@ -56,7 +56,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
         border-radius: 1.25rem;
         gap: 2.25rem;
 
-        .textContainer {
+        .textSection {
             display: flex;
             height: 7.5rem;
             flex-direction: column;
@@ -64,7 +64,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             align-items: flex-start;
         }
 
-        .infoContainer {
+        .infoSection {
             display: flex;
             flex-direction: column;
             height: 4.875rem;
@@ -82,7 +82,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             }
         }
 
-        .badgeContainer {
+        .badgeSection {
             display: inline-flex;
             gap: 0.5rem;
         }
@@ -107,7 +107,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             }
             span {
                 font-size: ${(props) => props.$isHomepage ? fontSize.base : fontSize.body1};
-                color: #777777;
+                color: ${colors.gray600};
             }
             
             * {
@@ -115,7 +115,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             }
     }
 
-    .statsContainer {
+    .statsSection {
         display: flex;
         align-items: center;
         gap: 1.5rem;

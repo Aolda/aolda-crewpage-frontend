@@ -1,16 +1,16 @@
 import styled, { css } from 'styled-components';
 import { type BadgeProps }  from './Badge';
-import { fontSize } from '@/styles/theme';
+import { fontSize, colors } from '@/styles/theme';
 
 const themeStyles = {
     info: css`
-        border: 1px solid #777777;
-        color: #777777;
+        border: 1px solid ${colors.gray600};
+        color: ${colors.gray600};
     `,
     status: css`
-        border: 1px solid white;
-        background-color: #1A8EE5;
-        color: white;
+        border: 1px solid ${colors.white500};
+        background-color: ${colors.primary500};
+        color: ${colors.white500};
     `,
 };
 

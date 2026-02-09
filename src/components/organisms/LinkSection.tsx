@@ -3,6 +3,7 @@
 import React, {type CSSProperties} from "react";
 import Image from "next/image";
 import { StyledLinkSection } from "./LinkSection.styles";
+import { colors } from "@/styles/theme";
 
 /*
 * 주요링크 페이지의 항목별 섹션
@@ -55,9 +56,9 @@ const LinkSection: React.FC<LinkSectionProps> = ({
 				<Image src={src} alt={title} width={588} height={441}/>
 			</section>
 			<section className="textSection" style={{"alignItems":align}}>
-				<h1 style={{"fontSize":"4.5rem", "color":"#1A8EE5", "fontWeight":"700"}}>0{index+1}</h1>
+				<h1 style={{"fontSize":"4.5rem", "color":colors.primary500, "fontWeight":"700"}}>0{index+1}</h1>
 				<h1 style={{"fontSize": "2rem", "fontWeight":"700"}}>
-					<span style={{"color":"#1A8EE5"}}>아올다 </span>
+					<span style={{"color":colors.primary500}}>아올다 </span>
 					{title}
 				</h1>
 				<p>{description}</p>

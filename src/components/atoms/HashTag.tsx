@@ -1,19 +1,18 @@
 'use client';
 
-import React from "react"
+import React from "react";
 import { StyledHashTag } from "./HashTag.styles";
+import { colors } from "@/styles/theme";
 
 /*
 * 카드에 태그처럼 붙여서 상태를 표현하는 컴포넌트
 * @params {boolean} [completed] 활동 완료 여부(완료가 아닐때는 어떤지 디자인팀에게 물어보기)
 * @params {string} [date] 활동 시작 날짜
-* @params {string} bgColor 색 설정(blue, black)
 */
 interface HashTagProps {
     completed?: boolean,
     date?: string,
     color: string,
-    $bgColor: string,
 }
 
 
@@ -21,7 +20,6 @@ const HashTag: React.FC<HashTagProps> = ({
 	completed, //date와 completed는 둘중에 하나만 존재
 	date,
     color,
-	$bgColor
 }) => {
     // 1. 날짜가 들어온 경우 (YYYY.MM.DD)
 	if(date) {
@@ -35,7 +33,7 @@ const HashTag: React.FC<HashTagProps> = ({
         else season = "겨울";
 
         return (
-            <StyledHashTag $bgColor={$bgColor} $date={date} $color={color}>
+            <StyledHashTag $bgColor={colors.black500} $date={date} $color={color}>
                 #{dateArr[0]}-{season}
             </StyledHashTag>
         );
@@ -44,7 +42,7 @@ const HashTag: React.FC<HashTagProps> = ({
     const status = completed ? "완료" : "진행중";
     
     return (
-        <StyledHashTag $bgColor={$bgColor} $completed={completed} $color={color}>
+        <StyledHashTag $bgColor={colors.primary500} $completed={completed} $color={color}>
             #{status}
         </StyledHashTag>
     );
