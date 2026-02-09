@@ -1,19 +1,16 @@
 import styled from 'styled-components';
 import { pxToRem } from '@/styles/utils';
 
-export const PageWrapper = styled.div`
-    width: 100%;
-    background-color: #F9FAFB;
-    min-height: 100vh;
-`;
-
 export const HeaderBackground = styled.header`
     width: 100%;
     height: 30rem;
     background: linear-gradient(108deg, #E0F2FE 0%, #DBEAFE 100%);
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: end;
+
+    padding-left: 15.9375rem;
+    padding-right: 15.9375rem;
+    padding-bottom: 3.75rem;
     
     background-image: url('/crew/crewbookBG.png');
     background-repeat: no-repeat;
@@ -23,8 +20,7 @@ export const HeaderBackground = styled.header`
 
 export const HeaderContent = styled.div`
     width: 100%;
-    max-width: 68.75rem;
-    padding: 0 1.25rem;
+    max-width: 90rem;
 
     h1 {
         font-size: 2rem;
@@ -36,9 +32,9 @@ export const HeaderContent = styled.div`
 `;
 
 export const ContentContainer = styled.main`
-    max-width: 68.75rem;
+    width: 90rem;
+    padding: 4.5rem 7.5rem;
     margin: 0 auto;
-    padding: 2.5rem 1.25rem;
 `;
 
 export const FilterBar = styled.section`
