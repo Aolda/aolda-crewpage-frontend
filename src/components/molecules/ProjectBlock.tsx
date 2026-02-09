@@ -25,7 +25,7 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
 
 	return (
 		<StyledProjectBlock
-			bgColor={project.bgColor}
+			$bgColor={project.bgColor}
 			onClick={() => onDetailClick?.(project.id)}
 		>
 			<section className="infoSection">
@@ -37,7 +37,7 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
                 <Badge variant="transparent" status={project.status}>{PROJECT_STATUS_LABEL[project.status]}</Badge>
             </section>
 			<section className="imgSection">
-				<Image src={project.thumbnail} alt="projectBlock img" width={300} height={300} layout="responsive"/>
+				<Image src={project.thumbnail} alt="projectBlock img" width={300} height={300}/>
 			</section>
 		</StyledProjectBlock>
 	);

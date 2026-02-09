@@ -12,7 +12,7 @@ export const HeaderBackground = styled.header`
     padding-right: 15.9375rem;
     padding-bottom: 3.75rem;
     
-    background-image: url('/crewbookBG.png');
+    background-image: url('/crew/crewbookBG.png');
     background-repeat: no-repeat;
     background-position: right bottom;
     background-size: contain;

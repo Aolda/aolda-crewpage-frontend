@@ -7,6 +7,7 @@ export const StyledSearchBox = styled.section`
     display: flex;
     width: 29.6875rem;
     height: 3rem;
+    background-color: white;
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem 1rem;
@@ -18,7 +19,7 @@ export const StyledSearchBox = styled.section`
     input {
         border: none;
         outline: none;
-        width: 9.0625rem;
+        width: fit-content;
         height: 1.5rem;
         font-size: ${fontSize.base};
 
