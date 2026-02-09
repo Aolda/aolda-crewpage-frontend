@@ -31,10 +31,10 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
     let imgHeight=0;
 	
 	if(type == 3) {
-        title="대회 참석";
-		totalText="참석";
-		onGoingText = "수상";
-        src="/PrizeImg.png";
+        title="파란학기 연계율";
+		totalText="전체";
+		onGoingText = "진행중";
+        src="/project/PrizeImg.png";
         imgWidth=16;
         imgHeight=21.81;
 	}else {
@@ -42,12 +42,12 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
 		onGoingText="진행중";
         if (type == 1) {
             title="프로젝트 수";
-            src="/CategoryBlueImg.png";
+            src="/project/CategoryBlueImg.png";
             imgWidth=18;
             imgHeight=19;
         } else {
             title="참여 크루원";
-            src="/CrewBlueImg.png";
+            src="/project/CrewBlueImg.png";
             imgWidth=18;
             imgHeight=18;
         }

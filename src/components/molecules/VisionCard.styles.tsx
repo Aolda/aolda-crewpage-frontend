@@ -1,10 +1,12 @@
 import styled from "styled-components"
+import { pxToRem } from "@/styles/utils";
+import { colors } from "@/styles/theme";
 
 export const StyledVisionCard = styled.div `
     display: flex;
     width: 21.75rem;
     height: 22.75rem;
-    border: 2px solid #E2E2E2;
+    border: 2px solid ${colors.border};;
     border-radius: 1rem;
 
     justify-content: center;
@@ -19,11 +21,11 @@ export const StyledVisionCard = styled.div `
     }
     
     h1 {
-        color: #1A8EE5;
+        color: ${colors.primary500};
     }
 
     span {
-        color: #777777;
+        color: ${colors.gray600};
         white-space: pre-wrap;
     }
 `;

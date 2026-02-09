@@ -4,8 +4,8 @@ import React from "react";
 import Image from "next/image";
 import { StyledCrewBlock } from "./CrewBlock.styles";
 import Badge from "../atoms/Badge";
-import { type Member } from "@/types/Types";
-import { fontSize } from "@/styles/theme";
+import { CrewMember, POSITION_LABEL } from "@/types/crew"; 
+import { colors } from "@/styles/theme";
 /*
 * CrewBook page 크루원의 정보를 보여주는 block
 * @params {Member} member 크루 정보를 담은 객체
@@ -14,9 +14,9 @@ import { fontSize } from "@/styles/theme";
 */
 
 interface CrewBlockProps {
-    member: Member;
+    member: CrewMember;
     isHomepage: boolean;
-    onDetailClick?: (name: string) => void;
+    onDetailClick?: (id: string) => void;
 }
 
 const CrewBlock: React.FC<CrewBlockProps> = ({
@@ -24,46 +24,46 @@ const CrewBlock: React.FC<CrewBlockProps> = ({
     isHomepage,
     onDetailClick,
 }) => {
-    const { src, name, position, major, studentNumber, generation, active, to } = member;
+    // const memberStatus = member.active ? 'ACTIVE' : 'INACTIVE';
 
     return (
         <StyledCrewBlock 
             $isHomepage={isHomepage}
-            onClick={!isHomepage ? () => onDetailClick?.(to) : undefined}
+            onClick={!isHomepage ? () => onDetailClick?.(member.id) : undefined}
             style={{ cursor: isHomepage ? 'default' : 'pointer' }}
         >
-            <section className="imageContainer">
-                <Image src={src} alt={`${name} profile`}  width={120} height={120}/>
+            <section className="imageSection">
+                <Image src={member.profileImage} alt={`${member.name} profile`}  width={120} height={120}/>
             </section>
 
-            <section className="textContainer">
-                <section className="infoContainer">
+            <section className="textSection">
+                <section className="infoSection">
                     <section className="nameInfo">
-                        <h2>{name}</h2>
-                        <span>{position}</span>
+                        <h2>{member.name}</h2>
+                        <span>{POSITION_LABEL[member.position]}</span>
                     </section>
 
                     {!isHomepage && (
-                        <section className="badgeContainer">
-                            <Badge $theme="status">{active ? "활동중" : "비활동"}</Badge>
-                            <Badge $theme="info">{generation}기</Badge>
-                            <Badge $theme="info">{`${major} ${studentNumber}학번`}</Badge>
+                        <section className="badgeSection">
+                            <Badge variant="solid" status={member.active}>{member.active ? "활동중" : "비활동"}</Badge>
+                            <Badge variant="outline">{member.generation}기</Badge>
+                            <Badge variant="outline">{`${member.department} ${member.studentNumber}학번`}</Badge>
                         </section>
                     )}
                 </section>
 
                 {isHomepage ? (
-                    <span className="majorInfo">{major} {studentNumber}</span>
+                    <span className="majorInfo">{member.department} {member.studentNumber}</span>
                 ) : (
-                    <section className="statsContainer">
+                    <section className="statsSection">
                         <section style={{"display":"inline-flex", "gap":"0.75rem", "alignItems":"center"}}>
-                            <Image src="/CategoryImg.png" alt="categoryimg" width={18} height={18}/>
-                            <span style={{"color":"#A0A0A0"}}>{member.activityCount || 0}</span>
+                            <Image src="/crew/CategoryImg.png" alt="categoryimg" width={18} height={18}/>
+                            <span style={{"color":colors.gray500}}>{member.activityCount || 0}</span>
                         </section>
                         <section>·</section>
                         <section style={{"display":"inline-flex", "gap":"0.75rem", "alignItems":"center"}}>
-                            <Image src="/BlogingImg.png" alt="blogingimg" width={18} height={18}/>
-                            <span style={{"color":"#A0A0A0"}}>{member.blogCount || 0}</span>
+                            <Image src="/crew/BlogingImg.png" alt="blogingimg" width={18} height={18}/>
+                            <span style={{"color":colors.gray500}}>{member.blogCount || 0}</span>
                         </section>
                     </section>
                 )}

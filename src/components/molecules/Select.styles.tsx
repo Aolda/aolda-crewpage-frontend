@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { fontSize } from '@/styles/theme';
+import { fontSize, colors } from '@/styles/theme';
 
 export const SelectContainer = styled.div`
     position: relative;
@@ -7,7 +7,8 @@ export const SelectContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     
-    width: 5.875rem;
+    min-width: 5.875rem; 
+    width: auto;
     height: 3rem;
     padding: 0.75rem 1rem;
     
@@ -38,8 +39,8 @@ export const ArrowIcon = styled.div`
         content: '';
         width: 0.625rem;
         height: 0.625rem;
-        border-right: 2px solid #888888;
-        border-bottom: 2px solid #888888;
+        border-right: 2px solid ${colors.gray600};
+        border-bottom: 2px solid ${colors.gray600};
         transform: rotate(45deg);
         margin-bottom: 0.25rem;
     }

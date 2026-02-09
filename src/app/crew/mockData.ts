@@ -1,0 +1,53 @@
+import { CrewMember } from '@/types/crew';
+
+export const MOCK_CREW_LIST: CrewMember[] = [
+    {
+        id: "crew_1",
+        name: "김철수",
+        profileImage: "/CrewImg.png",
+        position: 4, // 크루원
+        department: "소프트웨어",
+        studentNumber: "22",
+        generation: 2,
+        active: 'ACTIVE',
+        emailAddress: "chulsoo@example.com",
+        description: "새로운 기술을 배우는 것을 좋아하는 신입 크루입니다.",
+        follower: 15,
+        following: 20,
+        activityCount: 10,
+        blogCount: 5,
+    },
+    {
+        id: "crew_2",
+        name: "이영희",
+        profileImage: "/CrewImg.png",
+        position: 1,
+        department: "사이버보안",
+        studentNumber: "20",
+        generation: 1,
+        active: 'ACTIVE',
+        emailAddress: "younghee@example.com",
+        description: "아올다의 1기 회장을 맡고 있는 이영희입니다.",
+        follower: 250,
+        following: 180,
+        activityCount: 24,
+        blogCount: 12,
+    },
+    {
+        id: "crew_3",
+        name: "박지민",
+        profileImage: "/CrewImg.png",
+        position: 2,
+        department: "컴퓨터공학",
+        studentNumber: "21",
+        generation: 1,
+
+        active: 'ACTIVE',
+        emailAddress: "jimin@example.com",
+        description: "꼼꼼한 설계와 기록을 중요하게 생각합니다.",
+        follower: 85,
+        following: 90,
+        activityCount: 10,
+        blogCount: 5,
+    },
+];

@@ -25,7 +25,7 @@ export const StyledOverviewCard = styled.div`
         gap: 0.5rem;
         h3 {
             margin: 0;
-            font-size: ${fontSize.body1};
+            font-size: ${fontSize.base};
             font-weight: bold;
         }
     }

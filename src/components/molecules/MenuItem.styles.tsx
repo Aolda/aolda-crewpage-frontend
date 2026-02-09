@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { fontSize } from "@/styles/theme";
+import { fontSize, colors } from "@/styles/theme";
 
 export const StyledMenuItem = styled.div`
     display: flex;
@@ -8,7 +8,7 @@ export const StyledMenuItem = styled.div`
     width: 52.75rem;
     height: 9.875rem;
     padding-bottom: 1.5rem;
-    border-bottom: solid 1px #E2E2E2;
+    border-bottom: solid 1px ${colors.border};
     gap: 1.25rem;
 
     .infoSection {
@@ -32,7 +32,7 @@ export const StyledMenuItem = styled.div`
 
     .date {
         font-size: ${fontSize.base};
-        color: #777777;
+        color: ${colors.gray600};
     }
 
     .descriptionSection {
@@ -42,7 +42,7 @@ export const StyledMenuItem = styled.div`
 
         p {
             margin: 0;
-            color: #777777;
+            color: ${colors.gray600};
             font-size: ${fontSize.base};
             line-height: 1.5;
             text-align: left;

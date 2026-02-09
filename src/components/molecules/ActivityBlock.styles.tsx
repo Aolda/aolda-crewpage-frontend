@@ -14,19 +14,19 @@ export const StyledActivityBlock = styled.div`
     justify-content: space-between;
     align-items: flex-start;
 
-    .hashTagContainer {
+    .hashTagSection {
         display: inline-flex;
         align-items: flex-start;
         gap: 0.5rem;
         margin-bottom: 1rem;
     }
 
-    .topContainer {
+    .topSection {
         display: flex;
         flex-direction: column;
     }
 
-    .titleContainer {
+    .titleSection {
         display: flex;
         width: auto;
         flex-direction: column;
@@ -48,7 +48,7 @@ export const StyledActivityBlock = styled.div`
         }
     }
 
-    .bottomContainer {
+    .bottomSection {
         display: flex;
         flex-direction: row;
         justify-content: right;

@@ -30,17 +30,17 @@ const ActivityBlock: React.FC<ActivityBlockProps> = ({
 }) => {
 	return (
 		<StyledActivityBlock>
-			<section className="topContainer">
-                <section className="hashTagContainer">
-                    <HashTag completed={completed} $bgColor="#1A8EE5" color="white"/>
-			        <HashTag date={date} $bgColor="black" color="white"/>
+			<section className="topSection">
+                <section className="hashTagSection">
+                    <HashTag completed={completed} color="white"/>
+			        <HashTag date={date} color="white"/>
                 </section>
-			    <section className="titleContainer">
+			    <section className="titleSection">
                     <h2>{title}</h2>
 			        <span style={{"color":"#777777"}}>{subtitle}</span>
                 </section>
             </section>
-			<section className="bottomContainer">
+			<section className="bottomSection">
                 <p style={{"color":"#777777"}}>{description}</p>
             </section>
 		</StyledActivityBlock>
