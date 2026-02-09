@@ -16,7 +16,7 @@ import { colors } from "@/styles/theme";
 interface CrewBlockProps {
     member: CrewMember;
     isHomepage: boolean;
-    onDetailClick?: (id: string) => void;
+    onDetailClick: (id: string) => void;
 }
 
 const CrewBlock: React.FC<CrewBlockProps> = ({
@@ -29,8 +29,8 @@ const CrewBlock: React.FC<CrewBlockProps> = ({
     return (
         <StyledCrewBlock 
             $isHomepage={isHomepage}
-            onClick={!isHomepage ? () => onDetailClick?.(member.id) : undefined}
-            style={{ cursor: isHomepage ? 'default' : 'pointer' }}
+            onClick={() => onDetailClick(member.id)}
+            style={{ cursor: 'pointer' }}
         >
             <section className="imageSection">
                 <Image src={member.profileImage} alt={`${member.name} profile`}  width={120} height={120}/>
@@ -57,12 +57,12 @@ const CrewBlock: React.FC<CrewBlockProps> = ({
                 ) : (
                     <section className="statsSection">
                         <section style={{"display":"inline-flex", "gap":"0.75rem", "alignItems":"center"}}>
-                            <Image src="/crew/CategoryImg.png" alt="categoryimg" width={18} height={18}/>
+                            <Image src="/images/crew/CategoryImg.png" alt="categoryimg" width={18} height={18}/>
                             <span style={{"color":colors.gray500}}>{member.activityCount || 0}</span>
                         </section>
                         <section>·</section>
                         <section style={{"display":"inline-flex", "gap":"0.75rem", "alignItems":"center"}}>
-                            <Image src="/crew/BlogingImg.png" alt="blogingimg" width={18} height={18}/>
+                            <Image src="/images/crew/BlogingImg.png" alt="blogingimg" width={18} height={18}/>
                             <span style={{"color":colors.gray500}}>{member.blogCount || 0}</span>
                         </section>
                     </section>

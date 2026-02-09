@@ -41,12 +41,12 @@ export const NavLink = styled.span<{ $isActive: boolean }>`
     font-size: ${fontSize.base};
     font-weight: 400;
 
-    color: ${props => props.$isActive ? '#3B82F6' : '#6B7280'};
+    color: ${props => props.$isActive ? colors.primary500 : colors.gray500};
 
     text-decoration: none;
     transition: color 0.2s ease;
 
     &:hover {
-        color: #3B82F6; /* 마우스를 올렸을 때도 미리 피드백 제공 */
+        color:${colors.primary500}; /* 마우스를 올렸을 때도 미리 피드백 제공 */
     }
 `;

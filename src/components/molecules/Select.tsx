@@ -24,23 +24,23 @@ const Select: React.FC<SelectProps> = ({ label, options, onSelectChange, selecte
 
     return (
         <S.SelectContainer>
-        <S.LabelText>{selectedValue || title}</S.LabelText>
-        <S.ArrowIcon />
+            <S.LabelText>{selectedValue || title}</S.LabelText>
+            <S.ArrowIcon />
 
-        <S.NativeSelect
-            id={label}
-            onChange={(e) => onSelectChange(e.target.value)}
-            defaultValue=""
-        >
-            <option value="" disabled hidden>
-            {title} 선택
-            </option>
-            {options.map((option, index) => (
-                <option key={index} value={option}>
-                    {option}
+            <S.NativeSelect
+                id={label}
+                onChange={(e) => onSelectChange(e.target.value)}
+                defaultValue=""
+            >
+                <option value="" disabled hidden>
+                {title} 선택
                 </option>
-            ))}
-        </S.NativeSelect>
+                {options.map((option, index) => (
+                    <option key={index} value={option}>
+                        {option}
+                    </option>
+                ))}
+            </S.NativeSelect>
         </S.SelectContainer>
     );
 };

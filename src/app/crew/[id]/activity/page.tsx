@@ -1,26 +1,63 @@
-//src/app/crew/[id]/activity/page.tsx
 'use client';
 
-import React, { use } from 'react';
-import Badge from '@/components/atoms/Badge';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
+import { CrewMember } from '@/types/crew';
+import { Project } from '@/types/project';
+import CrewDetailPageTemplate from '@/components/templates/CrewDetail/CrewDetailPageTemplate';
+import MenuItem from '@/components/molecules/MenuItem';
 
-interface PageProps {
-    params: Promise<{ id: string }>;
-}
+export default function CrewActivityPage() {
+    const { id } = useParams();
+    const [member, setMember] = useState<CrewMember | null>(null);
+    const [activities, setActivities] = useState<Project[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-export default function CrewActivityPage({ params }: PageProps) {
-    
-    const resolvedParams = use(params);
-    const id = resolvedParams.id;
+    useEffect(() => {
+        const fetchActivityData = async () => {
+            try {
+                setIsLoading(true);
+                // MSW 핸들러를 통해 멤버 정보와 활동 리스트 페칭
+                const [memberRes, activityRes] = await Promise.all([
+                    fetch(`/api/crews/${id}`),
+                    fetch(`/api/crews/${id}/projects`)
+                ]);
+
+                if (!memberRes.ok) throw new Error('데이터 로드 실패');
+
+                const memberData = await memberRes.json();
+                const activityData = await activityRes.json();
+
+                setMember(memberData);
+                setActivities(activityData);
+            } catch (error) {
+                console.error('Fetching error:', error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        if (id) fetchActivityData();
+    }, [id]);
+
+    if (isLoading || !member) return <div>로딩 중...</div>;
 
     return (
-        <div>
-        <h1>[A-4] 크루북 - 활동</h1>
-        
-        <p>크루 ID: <strong>{id}</strong>님의 활동 기록입니다.</p>
-        <Badge variant="solid" status="ONGOING">진행중</Badge>
-        <Badge variant="solid" status="DONE">완료</Badge>
-        <Badge variant="solid" status="PLANNING">기획중</Badge>
-        </div>
+        <CrewDetailPageTemplate member={member} activeTab="활동">
+            {activities.length > 0 ? (
+                activities.map((item) => (
+                    <MenuItem
+                        key={item.id}
+                        pageName="activity"
+                        title={item.title}
+                        date={item.date}
+                        description={item.description}
+                        status={item.status}
+                    />
+                ))
+            ) : (
+                <p>참여한 활동이 없습니다.</p>
+            )}
+        </CrewDetailPageTemplate>
     );
 }

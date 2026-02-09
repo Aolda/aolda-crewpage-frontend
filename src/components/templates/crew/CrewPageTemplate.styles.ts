@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { pxToRem } from '@/styles/utils';
+import { colors, fontSize } from '@/styles/theme';
 
 export const HeaderBackground = styled.header`
     width: 100%;
@@ -12,7 +12,7 @@ export const HeaderBackground = styled.header`
     padding-right: 15.9375rem;
     padding-bottom: 3.75rem;
     
-    background-image: url('/crew/crewbookBG.png');
+    background-image: url('/images/crew/crewbookBG.png');
     background-repeat: no-repeat;
     background-position: right bottom;
     background-size: contain;
@@ -23,18 +23,20 @@ export const HeaderContent = styled.div`
     max-width: 90rem;
 
     h1 {
-        font-size: 2rem;
+        font-size: ${fontSize.h2};
         font-weight: 700;
         line-height: 1.4;
         margin-bottom: 1.5rem;
-        strong { color: #1E40AF; }
+        strong { color: ${colors.primary500}; }
     }
 `;
 
 export const ContentContainer = styled.main`
-    width: 90rem;
-    padding: 4.5rem 7.5rem;
+    display: flex;
+    width: 75rem;
+    flex-direction: column;
     margin: 0 auto;
+    padding-top: 4.5rem;
 `;
 
 export const FilterBar = styled.section`

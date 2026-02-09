@@ -3,12 +3,21 @@ import { fontSize } from "@/styles/theme";
 import styled from "styled-components"
 
 export const StyledActivityBlock = styled.div`
+
     display: flex;
     border: 1px solid #E2E2E2;
     border-radius: 1.25rem;
     width: 15rem;
     height: 20rem;
-    padding: 1.5rem;
+    padding: 1.25rem;
+
+    & * {
+        flex-shrink: 0;
+        box-sizing: unset !important;
+    }
+    
+    flex-shrink: 0;
+    box-sizing: border-box;
 
     flex-direction: column;
     justify-content: space-between;
@@ -31,6 +40,7 @@ export const StyledActivityBlock = styled.div`
         width: auto;
         flex-direction: column;
         align-items: flex-start;
+        text-align: left;
         gap: 0.5rem;
 
         h2 {
@@ -56,12 +66,14 @@ export const StyledActivityBlock = styled.div`
 
         p {
             margin: 0;
+            padding-left: 2rem;
             width: 10rem;
             height: 3.375rem;
             white-space: pre-wrap;
             font-size: ${fontSize.smaller};
             overflow: hidden;
             text-overflow: ellipsis;
+            text-align: justify;
         }
     }
 `;

@@ -17,7 +17,7 @@ const Header = () => {
     return (
         <StyledHeader>
             <section className="iconSection">
-                <Link href="/"><Image src="/aoldaIcon.svg" alt="icon" width={35} height={36}/></Link>
+                <Link href="/"><Image src="/images/aoldaIcon.svg" alt="icon" width={35} height={36}/></Link>
             </section>
                 <nav className="linkSeciton">
                     {NAV_ITEMS.map((item) => {

@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { StyledVisionCard } from "./VisionCard.styles"
+import * as S from "./VisionCard.styles"
 /*
 * Home page Vision Section의 카드(내부 요소로는 아이콘, 텍스트)
 * @params {string} src 아이콘 경로
@@ -12,7 +12,7 @@ import { StyledVisionCard } from "./VisionCard.styles"
 interface VisionCardProps {
     src: string;
     title: string;
-    description: string;
+    description: React.ReactNode;
 }
 
 const VisionCard: React.FC<VisionCardProps> = ({
@@ -21,11 +21,13 @@ const VisionCard: React.FC<VisionCardProps> = ({
 	description
 }) => {
 	return (
-		<StyledVisionCard>
-			<Image src="/LightBulb.png" alt={title} width={120} height={120}/>
-			<h1>{title}</h1>
-			<span>{description}</span>
-		</StyledVisionCard>
+		<S.StyledVisionCard>
+			<Image src={src} alt={title} width={120} height={120}/>
+			<S.TextContainer>
+				<h1>{title}</h1>
+				<p>{description}</p>
+			</S.TextContainer>
+		</S.StyledVisionCard>
 	);
 };
 
