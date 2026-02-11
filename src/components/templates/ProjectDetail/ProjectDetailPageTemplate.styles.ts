@@ -2,42 +2,47 @@ import styled from 'styled-components';
 import { colors, fontSize } from '@/styles/theme';
 
 export const PageWrapper = styled.div`
-    width: 100%;
-    max-width: 1200px;
+    width: 90rem;
     margin: 0 auto;
-    padding: 4rem 2rem;
+    padding-top: 12.5rem;
+    padding-left: 7.5rem;
+    padding-right: 7.5rem;
 `;
 
 export const HeaderSection = styled.header`
     margin-bottom: 6rem;
     
     h1 {
-        font-size: 4rem;
-        font-weight: 800;
+        font-size: 2.25rem;
+        font-weight: 700;
         color: #FFFFFF;
         margin: 1rem 0;
     }
     
     p {
         color: ${colors.white600};
-        font-size: ${fontSize.body1};
+        font-size: ${fontSize.base};
     }
 `;
 
 /* 헤더 배경 */
-export const HeaderBackground = styled.div<{ $bgColor: string, $bgImg: string }>`
+export const HeaderBackground = styled.div<{ $bgColor: string }>`
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 400px;
+    height: 25rem;
     background: ${(props) => props.$bgColor};
     z-index: -1;
 
-    background-image: url(${(props) => props.$bgImg});
-    background-repeat: no-repeat;
-    background-position: right bottom;
-    background-size: contain;
+    img {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        width: 24rem;
+        height: auto;
+    }
 `;
 
 export const Section = styled.section`

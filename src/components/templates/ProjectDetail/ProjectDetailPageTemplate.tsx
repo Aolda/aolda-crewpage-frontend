@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import * as S from './ProjectDetailPageTemplate.styles';
 import BreadCrumb from '@/components/molecules/BreadCrump';
 import SolutionCard from '@/components/molecules/SolutionCard';
@@ -24,13 +25,13 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
 
     return (
         <>
-            <S.HeaderBackground $bgColor={project.bgColor} $bgImg={project.thumbnail}/>
+            <S.HeaderBackground $bgColor={project.bgColor}>
+                <Image src={project.thumbnail} alt={project.title} width={400} height={300}/>
+            </S.HeaderBackground>
             <S.PageWrapper>
-                {/* 1. 상단 내비게이션 */}
-                <BreadCrumb items={breadcrumbItems} />
-
                 {/* 2. 헤더 섹션 */}
                 <S.HeaderSection>
+                    <BreadCrumb items={breadcrumbItems} />
                     <h1>{project.title}</h1>
                     <p>{project.subtitle}</p>
                 </S.HeaderSection>
