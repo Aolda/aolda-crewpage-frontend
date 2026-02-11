@@ -1,22 +1,43 @@
 //src/app/project/[id]/page.tsx
 'use client';
 
-import React, { use } from 'react';
+import React, { useEffect, useState } from 'react';
+import ProjectDetailPageTemplate from '@/components/templates/ProjectDetail/ProjectDetailPageTemplate';
+import { Project } from '@/types/project';
+import { useParams } from 'next/navigation';
 
-interface PageProps {
-    params: Promise<{ id: string }>;
-}
-
-export default function ProjectPage({ params }: PageProps) {
+export default function ProjectPage() {
     
-    const resolvedParams = use(params);
-    const id = resolvedParams.id;
+    const params = useParams();
+    const id = params.id; // URL의 [id] 값
 
-    return (
-        <div>
-        <h1>[A-6] 프로젝트 - 활동</h1>
-        
-        <p>프로젝트 ID: <strong>{id}</strong>님의 프로젝트 기록입니다.</p>
-        </div>
-    );
+    const [project, setProject] = useState<Project | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchProjectDetail = async () => {
+            try {
+                setIsLoading(true);
+                // MSW 핸들러에 정의한 엔드포인트 호출
+                const res = await fetch(`/api/projects/${id}`);
+                
+                if (!res.ok) throw new Error('데이터 로드 실패');
+                
+                const data = await res.json();
+                setProject(data);
+            } catch (error) {
+                console.error(error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        if (id) fetchProjectDetail();
+    }, [id]);
+
+    if (isLoading) return <div>프로젝트 정보를 불러오는 중...</div>;
+    if (!project) return <div>프로젝트를 찾을 수 없습니다.</div>;
+
+    // 템플릿에 동적으로 가져온 데이터 주입
+    return <ProjectDetailPageTemplate project={project} />;
 }

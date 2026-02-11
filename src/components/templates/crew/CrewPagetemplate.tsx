@@ -105,7 +105,7 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
                             <CrewBlock
                                 key={member.id}
                                 member={member}
-                                isHomepage={false}
+                                isCrewpage={true}
                                 onDetailClick={onDetailClick}
                             />
                         ))

@@ -2,11 +2,11 @@ import styled, {css} from "styled-components";
 import { fontSize, colors } from "@/styles/theme";
 
 interface CrewBlockProps {
-    $isHomepage: boolean;
+    $isCrewpage: boolean;
 }
 
 export const StyledCrewBlock = styled.div<CrewBlockProps>`
-    ${(props) => props.$isHomepage ? css`
+    ${(props) => (!props.$isCrewpage) ? css`
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -103,10 +103,10 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             align-items: center;
             gap: 0.75rem;
             h2 {
-                font-size: ${(props) => props.$isHomepage ? fontSize.body1 : fontSize.h3};
+                font-size: ${(props) => props.$isCrewpage ? fontSize.h3 : fontSize.body1};
             }
             span {
-                font-size: ${(props) => props.$isHomepage ? fontSize.base : fontSize.body1};
+                font-size: ${(props) => props.$isCrewpage ? fontSize.body1 : fontSize.base};
                 color: ${colors.gray600};
             }
             

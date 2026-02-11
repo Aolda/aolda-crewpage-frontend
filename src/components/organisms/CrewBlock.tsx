@@ -9,26 +9,26 @@ import { colors } from "@/styles/theme";
 /*
 * CrewBook page 크루원의 정보를 보여주는 block
 * @params {Member} member 크루 정보를 담은 객체
-* @params {boolean} isHomepage 홈페이지 크루, 크루북 크루 구분을 위한 인자(true -> homepage)
+* @params {boolean} isCrewpage 홈페이지 크루, 크루북 크루 구분을 위한 인자(true -> homepage)
 * @params {string} className 홈페이지 크루, 크루북 크루 스타일 구분 클래스
 */
 
 interface CrewBlockProps {
     member: CrewMember;
-    isHomepage: boolean;
+    isCrewpage: boolean;
     onDetailClick: (id: string) => void;
 }
 
 const CrewBlock: React.FC<CrewBlockProps> = ({
 	member,
-    isHomepage,
+    isCrewpage,
     onDetailClick,
 }) => {
     // const memberStatus = member.active ? 'ACTIVE' : 'INACTIVE';
 
     return (
         <StyledCrewBlock 
-            $isHomepage={isHomepage}
+            $isCrewpage={isCrewpage}
             onClick={() => onDetailClick(member.id)}
             style={{ cursor: 'pointer' }}
         >
@@ -43,7 +43,7 @@ const CrewBlock: React.FC<CrewBlockProps> = ({
                         <span>{POSITION_LABEL[member.position]}</span>
                     </section>
 
-                    {!isHomepage && (
+                    {isCrewpage && (
                         <section className="badgeSection">
                             <Badge variant="solid" status={member.active}>{member.active ? "활동중" : "비활동"}</Badge>
                             <Badge variant="outline">{member.generation}기</Badge>
@@ -52,7 +52,7 @@ const CrewBlock: React.FC<CrewBlockProps> = ({
                     )}
                 </section>
 
-                {isHomepage ? (
+                {!isCrewpage ? (
                     <span className="majorInfo">{member.department} {member.studentNumber}</span>
                 ) : (
                     <section className="statsSection">

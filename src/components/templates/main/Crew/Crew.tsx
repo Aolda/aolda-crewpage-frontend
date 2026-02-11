@@ -53,10 +53,10 @@ const Crew = ({ crews, onCrewClick }: CrewProps) => {
                 <S.CrewGrid>
                 {displayCrews.map((member) => (
                     <CrewBlock 
-                    key={member.id} 
-                    member={member} 
-                    isHomepage={true} 
-                    onDetailClick={onCrewClick}
+                        key={member.id} 
+                        member={member} 
+                        isCrewpage={false} 
+                        onDetailClick={onCrewClick}
                     />
                 ))}
                 </S.CrewGrid>
