@@ -7,6 +7,7 @@ export const PageWrapper = styled.div`
     padding-top: 12.5rem;
     padding-left: 7.5rem;
     padding-right: 7.5rem;
+    padding-bottom: 3.75rem;
 `;
 
 export const HeaderSection = styled.header`
@@ -62,12 +63,26 @@ export const SectionTitle = styled.h2`
 /* 활동 정보 카드 그리드 */
 export const InfoGrid = styled.div`
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.4rem;
-    
-    /* 하단 2개 배치를 위한 중앙 정렬 처리 */
-    & > *:nth-last-child(-n+2):nth-child(3n+1) {
-        grid-column: span 1.5; /* 혹은 별도의 컨테이너로 분리 필요 */
+    grid-template-columns: repeat(6, 1fr); /* 6열 그리드 생성 */
+    gap: 1.5rem;
+    width: 100%;
+
+    /* 1, 2, 3번째 카드 (첫 줄): 각각 2칸씩 차지 (2 * 3 = 6) */
+    & > *:nth-child(-n+3) {
+        grid-column: span 2;
+    }
+
+    /* 4, 5번째 카드 (둘째 줄): 각각 3칸씩 차지 (3 * 2 = 6) */
+    & > *:nth-child(n+4) {
+        grid-column: span 3;
+    }
+
+    /* 모바일 대응: 한 줄에 하나씩 */
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        & > * {
+            grid-column: span 1 !important;
+        }
     }
 `;
 

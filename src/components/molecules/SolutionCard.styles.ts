@@ -12,9 +12,9 @@ export const SolutionCard = styled.div`
     justify-content: center;
     text-align: center;
     gap: 0.8rem;
-    min-height: 150px;
-    width: 344px;
-    height: 129px;
+    min-height: 5rem;
+    width: 100%;
+    height: 8rem;
 `;
 
 export const SolutionTitle = styled.h3`

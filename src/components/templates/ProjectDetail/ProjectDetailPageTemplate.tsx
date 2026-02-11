@@ -49,11 +49,9 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
                         <SolutionCard title="진행 학기" description={project.date} />
                         <SolutionCard title="프로젝트 유형" description={project.subtitle} />
                         <SolutionCard title="활동 진행회차" description="n회 진행" />
-                    </S.InfoGrid>
-                    <S.CardRow>
                         <SolutionCard title="활동 블로깅" description="m개" />
                         <SolutionCard title="활동 사진" description="k개" />
-                    </S.CardRow>
+                    </S.InfoGrid>
                 </S.Section>
 
                 {/* 5. 참여 크루 섹션 */}
