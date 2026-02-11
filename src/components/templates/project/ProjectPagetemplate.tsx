@@ -4,7 +4,6 @@
 import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import * as S from './ProjectPageTemplate.styles';
-import BaseTemplate from '@/components/templates/BaseTemplate/BaseTemplate';
 import ProjectBlock from '@/components/organisms/ProjectBlock';
 import SearchBox from '@/components/molecules/SearchBox';
 import OverviewCard from '@/components/molecules/OverviewCard';
@@ -92,7 +91,7 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
     }, []);
 
     return (
-        <BaseTemplate>
+        <>
             <S.HeaderSection>
                 <section className="contentsSection">
                     <section className="textSection">
@@ -168,7 +167,7 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
                     </AnimatePresence>
                 </S.ProjectGrid>
             </S.ContentSection>
-        </BaseTemplate>
+        </>
     );
 }
 

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import StyledComponentsRegistry from '@/lib/registry';
 import { MSWComponent } from '@/components/MSWComponent';
+import Header from "@/components/organisms/Header";
+import Footer from "@/components/organisms/Footer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -26,12 +28,14 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="ko">
         <body>
             <StyledComponentsRegistry>
-            <MSWComponent>
-                {children}
-            </MSWComponent>
+                <Header />
+                <MSWComponent>
+                    <main style={{"marginBottom": "5rem", "minHeight": "80vh"}}>{children}</main>
+                </MSWComponent>
+                <Footer />
             </StyledComponentsRegistry>
         </body>
         </html>

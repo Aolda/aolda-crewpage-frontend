@@ -4,7 +4,6 @@ import React from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { CrewMember } from '@/types/crew';
 import Profile from '@/components/molecules/Profile';
-import BaseTemplate from '../BaseTemplate/BaseTemplate';
 import * as S from './CrewDetailPageTemplate.styles';
 import Image from 'next/image';
 
@@ -25,7 +24,7 @@ const CrewDetailPageTemplate = ({ member, activeTab, children }: CrewDetailPageT
     };
 
     return (
-        <BaseTemplate>
+        <>
             <S.TemplateWrapper>
                 {/* 좌측: 고정 프로필 영역 */}
                 <S.SidebarSection>
@@ -58,7 +57,7 @@ const CrewDetailPageTemplate = ({ member, activeTab, children }: CrewDetailPageT
                     </S.ListWrapper>
                 </S.ContentSection>
             </S.TemplateWrapper>        
-        </BaseTemplate>
+        </>
     );
 };
 

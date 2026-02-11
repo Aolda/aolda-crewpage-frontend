@@ -3,7 +3,6 @@
 import React, { useState, useMemo } from 'react';
 import { CrewMember, POSITION_LABEL } from '@/types/crew';
 import * as S from './CrewPageTemplate.styles';
-import BaseTemplate from '@/components/templates/BaseTemplate/BaseTemplate';
 import CrewBlock from '@/components/organisms/CrewBlock';
 import SearchBox from '@/components/molecules/SearchBox';
 import Select from '@/components/molecules/Select';
@@ -57,7 +56,7 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
     };
 
     return (
-        <BaseTemplate>
+        <>
             <S.HeaderBackground>
                 <S.HeaderContent>
                     <h1>아올다와 함께 성장하는<br /><strong>핵심 인재들</strong></h1>
@@ -115,7 +114,7 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
                 </S.CrewList>
             </S.ContentContainer>
             {children}
-        </BaseTemplate>
+        </>
     );
 };
 

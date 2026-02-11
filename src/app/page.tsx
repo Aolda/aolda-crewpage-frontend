@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { CrewMember } from '@/types/crew';
 import { Project } from '@/types/project';
 
-import BaseTemplate from '@/components/templates/BaseTemplate/BaseTemplate';
 import Hero from '@/components/templates/main/Hero/Hero';
 import Overview from '@/components/templates/main/Overview/Overview';
 import Vision from '@/components/templates/main/Vision/Vision';
@@ -58,11 +57,11 @@ export default function HomePage() {
 
     // 로딩 중일 때의 처리 (추후 스켈레톤 UI로 대체 권장)
     if (isLoading) {
-        return <BaseTemplate><div>데이터를 불러오는 중입니다...</div></BaseTemplate>;
+        return <><div>데이터를 불러오는 중입니다...</div></>;
     }
 
     return (
-        <BaseTemplate>
+        <>
             {/* 1. 최상단 Hero 섹션 */}
             <Hero />
 
@@ -75,6 +74,6 @@ export default function HomePage() {
             <Crew crews={crews} onCrewClick={handleDetailNavigation}/>
 
             <JoinSection />
-        </BaseTemplate>
+        </>
     );
 }
