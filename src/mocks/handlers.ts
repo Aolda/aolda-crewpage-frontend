@@ -86,8 +86,8 @@ export const handlers = [
     http.get('/api/projects/:id', ({ params }) => {
         const id = params.id as string;
     
-        const filteredProject = MOCK_PROJECTS.filter(project => project.id === id);
-        console.dir(filteredProject);
-        return HttpResponse.json(filteredProject);
+        const project = MOCK_PROJECTS.find((p) => p.id === id);
+        console.dir(project);
+        return HttpResponse.json(project);
     }),
 ];

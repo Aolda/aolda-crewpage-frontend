@@ -38,7 +38,7 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
                 {/* 3. 기획 정보 섹션 */}
                 <S.Section>
                     <S.SectionTitle>💡 기획 정보</S.SectionTitle>
-                    {/* 상세 기획 내용 들어갈 자리 */}
+                    <p>{project.description}</p>
                 </S.Section>
 
                 {/* 4. 활동 정보 섹션 */}
