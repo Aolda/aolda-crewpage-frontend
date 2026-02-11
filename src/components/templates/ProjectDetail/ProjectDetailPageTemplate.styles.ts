@@ -25,14 +25,19 @@ export const HeaderSection = styled.header`
 `;
 
 /* 헤더 배경 */
-export const HeaderBackground = styled.div`
+export const HeaderBackground = styled.div<{ $bgColor: string, $bgImg: string }>`
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 400px;
-    background: linear-gradient(90deg, #0085FF 0%, #00BAFF 100%);
+    background: ${(props) => props.$bgColor};
     z-index: -1;
+
+    background-image: url(${(props) => props.$bgImg});
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: contain;
 `;
 
 export const Section = styled.section`

@@ -24,7 +24,7 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
 
     return (
         <>
-            <S.HeaderBackground />
+            <S.HeaderBackground $bgColor={project.bgColor} $bgImg={project.thumbnail}/>
             <S.PageWrapper>
                 {/* 1. 상단 내비게이션 */}
                 <BreadCrumb items={breadcrumbItems} />
