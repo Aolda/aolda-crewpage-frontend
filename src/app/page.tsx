@@ -1,8 +1,10 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { CrewMember } from '@/types/crew';
-import { Project } from '@/types/project';
+import { getAllActivities } from '@/api/activity';
+import { getCrewList } from '@/api/crew';
+import { ActivitySummary } from '@/types/project';
+import { CrewMember } from '@/types/crew'
 
 import Hero from '@/components/templates/main/Hero/Hero';
 import Overview from '@/components/templates/main/Overview/Overview';
@@ -17,28 +19,28 @@ export default function HomePage() {
     const router = useRouter();
 
     // 1. 상태 관리 (데이터 및 로딩 상태)
+    const [activities, setActivities] = useState<ActivitySummary[]>([]);
     const [crews, setCrews] = useState<CrewMember[]>([]);
-    const [projects, setProjects] = useState<Project[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
     // 2. 데이터 페칭 로직
     useEffect(() => {
-        const fetchMainData = async () => {
+        const loadMainData = async () => {
             try {
                 setIsLoading(true);
                 // 크루와 프로젝트 데이터를 병렬로 요청
-                const [crewRes, projectRes] = await Promise.all([
-                    fetch('/api/crews'),
-                    fetch('/api/projects')
+                const [activityRes, crewRes] = await Promise.all([
+                    getAllActivities(),
+                    getCrewList()
                 ]);
 
-                if (!crewRes.ok || !projectRes.ok) throw new Error('데이터 로드 실패');
+                if (!crewRes.ok || !activityRes.ok) throw new Error('데이터 로드 실패');
 
                 const crewData = await crewRes.json();
-                const projectData = await projectRes.json();
+                const activityData = await activityRes.json();
 
                 setCrews(crewData);
-                setProjects(projectData);
+                setActivities(activityData);
             } catch (error) {
                 console.error('Fetching error:', error);
             } finally {
@@ -46,11 +48,11 @@ export default function HomePage() {
             }
         };
 
-        fetchMainData();
+        loadMainData();
     }, []);
 
     // 상세 페이지 이동 함수
-    const handleDetailNavigation = (id: string) => {
+    const handleDetailNavigation = (id: number) => {
         // 기본 페이지를 activity로 설정: /crew/[id]/activity
         router.push(`/crew/${id}/activity`);
     };
@@ -69,7 +71,7 @@ export default function HomePage() {
 
             <Vision />
 
-            <Activity activities={projects}/>
+            <Activity activities={activities}/>
 
             <Crew crews={crews} onCrewClick={handleDetailNavigation}/>
 

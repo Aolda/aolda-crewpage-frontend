@@ -8,19 +8,11 @@ import ProjectBlock from '@/components/organisms/ProjectBlock';
 import SearchBox from '@/components/molecules/SearchBox';
 import OverviewCard from '@/components/molecules/OverviewCard';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
-import { Project } from '@/types/project';
-import { ProjectStatus } from '@/types/project';
-
-// 버튼에 표시될 라벨들 (실제 상태값과 매핑)
-const FILTER_OPTIONS: { label: string; value: ProjectStatus | "" }[] = [
-    { label: '기획중', value: 'PLANNING' },
-    { label: '진행중', value: 'ONGOING' },
-    { label: '완료', value: 'DONE' },
-];
+import { ProjectListResponse, ActivityStatusKey } from '@/types/project';
 
 interface ProjectPageTemplateProps {
-    projectList: Project[];
-    onProjectClick: (id: string) => void;
+    data: ProjectListResponse; 
+    onProjectClick: (id: number) => void;
 }
 
 // 애니메이션 설정값
@@ -50,45 +42,29 @@ const itemVariants: Variants = {
 };
 
 const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({ 
-    projectList,
+    data,
     onProjectClick 
 }) => {
     const [searchValue, setSearchValue] = useState("");
     const [activeSearch, setActiveSearch] = useState("");
-    const [selectedStatus, setSelectedStatus] = useState<ProjectStatus | "">("");
+    const [selectedStatus, setSelectedStatus] = useState<string>("");
 
     //프로젝트 필터링
     const filteredProjects = useMemo(() => {
-        return projectList.filter((project) => {
-            const matchesSearch = project.title.toLowerCase().includes(activeSearch.toLowerCase());
+        return data.data.projects.filter((project) => {
+            // 국문명 또는 영문명에 검색어가 포함되는지 확인
+            const matchesSearch = 
+                project.activityNames.ko.toLowerCase().includes(activeSearch.toLowerCase()) ||
+                project.activityNames.en.toLowerCase().includes(activeSearch.toLowerCase());
+            
+            // 서버에서 준 status 키값과 매칭
             const matchesStatus = selectedStatus === "" ? true : project.status === selectedStatus;
             
             return matchesSearch && matchesStatus;
         });
-    }, [activeSearch, selectedStatus]);
+    }, [data.data.projects, activeSearch, selectedStatus]);
 
-    //OverviewCard에 들어갈 데이터 정리
-    const stats = useMemo(() => {
-        // 1. 프로젝트 수 관련
-        const totalProjects = projectList.length;
-        const ongoingProjects = projectList.filter(p => p.status === 'ONGOING').length;
-    
-        // 2. 참여 크루원 관련 (중복 제거)
-        const allMemberIds = new Set(projectList.flatMap(p => p.memberIds));
-        const ongoingMemberIds = new Set(
-            projectList.filter(p => p.status === 'ONGOING').flatMap(p => p.memberIds)
-        );
-    
-        // 3. 파란학기연계 관련 (추후 데이터 형식에 추가 예정)
-        const totalParan = 13; 
-        const onGoingParan = 6;
-    
-        return {
-            projects: { total: totalProjects, current: ongoingProjects },
-            crews: { total: allMemberIds.size, current: ongoingMemberIds.size },
-            parans: { total: totalParan, current: onGoingParan },
-        };
-    }, []);
+    const { statistics } = data.data;
 
     return (
         <>
@@ -113,9 +89,9 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
 
             <S.ContentSection>
                 <S.StatsSection>
-                    <OverviewCard type={1} totalNum={stats.projects.total} onGoingNum={stats.projects.current}/>
-                    <OverviewCard type={2} totalNum={stats.crews.total} onGoingNum={stats.crews.current}/>
-                    <OverviewCard type={3} totalNum={stats.parans.total} onGoingNum={stats.parans.current}/>
+                    <OverviewCard type={1} totalNum={statistics.projects.total} onGoingNum={statistics.projects.value}/>
+                    <OverviewCard type={2} totalNum={statistics.participants.total} onGoingNum={statistics.participants.value}/>
+                    <OverviewCard type={3} totalNum={statistics.paran_projects.total} onGoingNum={statistics.paran_projects.value}/>
                 </S.StatsSection>
 
                 <S.FilterBar>
@@ -129,13 +105,13 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
                         </S.FilterButton>
 
                         {/* 나머지 상태 버튼들 */}
-                        {FILTER_OPTIONS.map((opt) => (
+                        {Object.values(data.data.filters.status).map((filter) => (
                             <S.FilterButton 
-                                key={opt.value}
-                                $isActive={selectedStatus === opt.value}
-                                onClick={() => setSelectedStatus(opt.value as ProjectStatus)}
+                                key={filter.key}
+                                $isActive={selectedStatus === filter.key}
+                                onClick={() => setSelectedStatus(filter.key)}
                             >
-                                {opt.label}
+                                {filter.value}
                             </S.FilterButton>
                         ))}
                     </S.LeftButtonGroup>
@@ -152,16 +128,16 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
                     <AnimatePresence mode='popLayout'>
                         {filteredProjects.map((project) => (
                             <motion.div
-                                key={project.id}
+                                key={project.activityId}
                                 layout // 카드가 이동할 때 부드럽게 슬라이딩됨
-                                onClick={() => onProjectClick(project.id)}
+                                onClick={() => onProjectClick(project.activityId)}
                                 variants={itemVariants}
                                 initial="hidden"
                                 animate="visible"
                                 exit={{ opacity: 0, scale: 0.9 }} // 필터링 시 사라지는 효과
                                 transition={{ duration: 0.3 }}
                             >
-                                <ProjectBlock key={project.id} project={project} />
+                                <ProjectBlock key={project.activityId} project={project} />
                             </motion.div>
                         ))}
                     </AnimatePresence>

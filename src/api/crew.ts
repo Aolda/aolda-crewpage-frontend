@@ -1,7 +1,7 @@
 import { axiosInstance } from './instance';
 import { CrewListResponse, CrewDetailResponse } from '@/types/crew';
 
-interface CrewQueryParams {
+export interface CrewQueryParams {
     generation?: number;
     role?: string;
     univDepartment?: string;
