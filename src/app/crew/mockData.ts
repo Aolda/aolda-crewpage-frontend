@@ -147,7 +147,7 @@ export const MOCK_CREW_DETAILS: Record<number, CrewDetailResponse> = {
         activities: [
             {
                 activityId: 3,
-                status: "ACTIVITY_TYPE/COMPLETED",
+                status: "ACTIVITY_STATUS/COMPLETED",
                 startedAt: "2025-1",
                 activityNames: { ko: "ACC 프로젝트", en: "Aolda Cloud Console" },
                 activityType: "ACTIVITY_TYPE/PROJECT",

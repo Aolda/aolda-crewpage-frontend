@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { StyledMenuItem } from "./MenuItem.styles";
 import Badge from "../atoms/Badge";
-import { ACTIVITY_TYPE, type ProjectStatus } from "@/types/project";
+import { ACTIVITY_STATUS, type ActivityStatusKey } from "@/types/project";
 import { fontSize } from "@/styles/theme";
 /*
 * 크루 상세 페이지의 활동/블로깅 리스트 항목 컴포넌트
@@ -21,7 +21,7 @@ interface MenuItemProps {
     title: string;
     date: string;
     description: string;
-    status?: ProjectStatus;
+    status?: ActivityStatusKey;
 }
 
 const MenuItem: React.FC<MenuItemProps> = ({
@@ -42,7 +42,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
 						<h2 style={{"fontSize":fontSize.h3, "fontWeight":"bold"}}>{title}</h2>
 						{ (pageName==="activity") && status
 							&& <Badge variant="solid" status={status}>
-								{ACTIVITY_TYPE[status]}
+								{ACTIVITY_STATUS[status]}
 						</Badge> }
 					</section>
 					<span className='date' color='gray' style={{"fontSize":fontSize.base}}>{date}</span>

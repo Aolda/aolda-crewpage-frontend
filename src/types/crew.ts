@@ -56,11 +56,11 @@ export const ACTIVITY_TYPE_LABEL = {
     'ACTIVITY_TYPE/STUDY': '스터디',
 } as const;
 
-import { ProjectStatus } from './project';
+import { ActivityStatusKey } from './project';
 
 export interface CrewActivity {
     activityId: number;
-    status: ProjectStatus;
+    status: ActivityStatusKey;
     startedAt: string;
     activityNames: { ko: string; en: string };
     activityType: keyof typeof ACTIVITY_TYPE_LABEL;

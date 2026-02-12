@@ -1,11 +1,40 @@
 //
-export const ACTIVITY_TYPE = {
-    'ACTIVITY_TYPE/RECRIUTING': '모집중',
-    'ACTIVITY_TYPE/ONBOARDING': '진행중',
-    'ACTIVITY_TYPE/COMPLETED': '완료',
+export const ACTIVITY_STATUS = {
+    'ACTIVITY_STATUS/RECRIUTING': '모집중',
+    'ACTIVITY_STATUS/ONBOARDING': '진행중',
+    'ACTIVITY_STATUS/COMPLETED': '완료',
 } as const;
 
-export type ProjectStatus = keyof typeof ACTIVITY_TYPE;
+export const ACTIVITY_TYPE_LABEL = {
+    'ACTIVITY_TYPE/PROJECT': '프로젝트',
+    'ACTIVITY_TYPE/STUDY': '스터디',
+} as const;
+
+export type ActivityStatusKey = keyof typeof ACTIVITY_STATUS;
+export type ActivityTypeKey = keyof typeof ACTIVITY_TYPE_LABEL;
+
+// 전체 활동 요약 정보 (리스트용)
+export interface ActivitySummary {
+    status: ActivityStatusKey;
+    startedAt: string;
+    activityNames: {
+        ko: string;
+        en: string;
+    };
+    activityType: ActivityTypeKey;
+    description: string; // 이 명세에는 소개글이 포함됩니다!
+}
+
+// 전체 활동 응답 타입
+export interface ActivityListResponse {
+    total: number;
+    data: ActivitySummary[];
+    paginate?: {
+        from: number;
+        to: number;
+        curr: number;
+    };
+}
 
 // 통계 데이터 타입
 export interface ProjectStatistics {
@@ -17,7 +46,7 @@ export interface ProjectStatistics {
 // 프로젝트 요약 정보 (리스트용)
 export interface ProjectSummary {
     activityId: number;
-    status: ProjectStatus;
+    status: ActivityStatusKey;
     startedAt: string;
     activityNames: {
         ko: string;

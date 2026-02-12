@@ -68,7 +68,14 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
                         {project.participants.map((crew) => (
                             <CrewBlock 
                                 key={crew.crewId}
-                                member={crew}
+                                member={{
+                                    ...crew, // crewId, profile, crewName, univDepartment, univJoinedYear 포함
+                                    crewLog: [],           // 상세 데이터가 없으므로 빈 배열
+                                    isActive: true,        // 기본값 설정
+                                    joinedGen: 0,          // 기본값 설정
+                                    totalActivities: 0,    // 기본값 설정
+                                    totalBloggings: 0      // 기본값 설정
+                                }}
                                 isCrewpage={false} // 간략 모드로 렌더링
                                 onDetailClick={(id) => console.log(id)}
                             />

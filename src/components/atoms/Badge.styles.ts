@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 import { fontSize, colors } from '@/styles/theme';
 import { BadgeVariant } from "./Badge";
-import { ProjectStatus } from "@/types/project";
+import { ActivityStatusKey } from "@/types/project";
 
 
-export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: ProjectStatus | boolean }>`
+export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: ActivityStatusKey | boolean }>`
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -25,12 +25,12 @@ export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: Proje
                 return $status ? colors.primary500 : colors.gray600;
             }
 
-            // 2. 프로젝트 진행 상태 처리 (ProjectStatus 키값)
+            // 2. 프로젝트 진행 상태 처리 (ActivityStatusKey 키값)
             switch ($status) {
-                case 'ACTIVITY_TYPE/RECRIUTING': // 모집중
-                case 'ACTIVITY_TYPE/ONBOARDING':  // 진행중
+                case 'ACTIVITY_STATUS/RECRIUTING': // 모집중
+                case 'ACTIVITY_STATUS/ONBOARDING':  // 진행중
                     return colors.primary500;     // Blue
-                case 'ACTIVITY_TYPE/COMPLETED':   // 완료
+                case 'ACTIVITY_STATUS/COMPLETED':   // 완료
                     return '#10B981';             // Green
                 default:
                     return '#E5E7EB';             // 기본 회색
