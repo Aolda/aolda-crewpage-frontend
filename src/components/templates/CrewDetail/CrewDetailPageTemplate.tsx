@@ -2,13 +2,13 @@
 
 import React from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import { CrewMember } from '@/types/crew';
+import { CrewDetailResponse } from '@/types/crew';
 import Profile from '@/components/molecules/Profile';
 import * as S from './CrewDetailPageTemplate.styles';
 import Image from 'next/image';
 
 interface CrewDetailPageTemplateProps {
-    member: CrewMember;
+    member: CrewDetailResponse;
     activeTab: '활동' | '블로깅';
     children: React.ReactNode; // MenuItem 리스트가 들어올 자리
 }

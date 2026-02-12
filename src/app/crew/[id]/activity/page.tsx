@@ -2,45 +2,35 @@
 
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { CrewMember } from '@/types/crew';
-import { Project } from '@/types/project';
+import { CrewDetailResponse } from '@/types/crew';
 import CrewDetailPageTemplate from '@/components/templates/CrewDetail/CrewDetailPageTemplate';
 import MenuItem from '@/components/molecules/MenuItem';
+import { getCrewDetail } from '@/api/crew';
 
 export default function CrewActivityPage() {
     const { id } = useParams();
-    const [member, setMember] = useState<CrewMember | null>(null);
-    const [activities, setActivities] = useState<Project[]>([]);
+    const [crew, setCrew] = useState<CrewDetailResponse | null>(null);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const fetchActivityData = async () => {
+        const fetchCrewActivityData = async () => {
             try {
                 setIsLoading(true);
-                // MSW 핸들러를 통해 멤버 정보와 활동 리스트 페칭
-                const [memberRes, activityRes] = await Promise.all([
-                    fetch(`/api/crews/${id}`),
-                    fetch(`/api/crews/${id}/projects`)
-                ]);
-
-                if (!memberRes.ok) throw new Error('데이터 로드 실패');
-
-                const memberData = await memberRes.json();
-                const activityData = await activityRes.json();
-
-                setMember(memberData);
-                setActivities(activityData);
+                // 서버에서 크루 상세 정보를 직접 패칭 (활동 리스트 포함)
+                const data = await getCrewDetail(id as string);
+                setCrew(data);
             } catch (error) {
-                console.error('Fetching error:', error);
+                console.error('데이터 로드 실패:', error);
             } finally {
                 setIsLoading(false);
             }
         };
 
-        if (id) fetchActivityData();
+        if (id) fetchCrewActivityData();
     }, [id]);
 
-    if (isLoading || !member) return <div>로딩 중...</div>;
+    if (isLoading) return <div>로딩 중...</div>;
+    if (!crew) return <div>크루 정보를 찾을 수 없습니다.</div>;
 
     return (
         <CrewDetailPageTemplate member={member} activeTab="활동">

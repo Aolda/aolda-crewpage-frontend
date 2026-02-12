@@ -1,4 +1,4 @@
-import { CrewMember } from '@/types/crew';
+import { CrewMember, CrewDetailResponse } from '@/types/crew';
 
 export const MOCK_CREW_LIST: CrewMember[] = [
     {
@@ -128,3 +128,43 @@ export const MOCK_CREW_LIST: CrewMember[] = [
         totalBloggings: 5,
     },
 ];
+
+export const MOCK_CREW_DETAILS: Record<number, CrewDetailResponse> = {
+    15: {
+        crewId: 15,
+        profile: { url: "/images/CrewImg.png" },
+        crewName: "정우재",
+        crewLog: [
+            { generation: 2, type: "CREW_ROLE/CREW", department: "DEPARTMENT_TYPE/DEV" },
+            { generation: 1, type: "CREW_ROLE/CREW", department: "DEPARTMENT_TYPE/INFRA" }
+        ],
+        isActive: true,
+        joinedGen: 1,
+        univDepartment: "소프트웨어학과",
+        univJoinedYear: "22",
+        crewEmail: "woojae@ajou.ac.kr",
+        description: "클라우드 인프라와 백엔드 개발에 관심이 많은 크루입니다.",
+        activities: [
+            {
+                activityId: 3,
+                status: "ACTIVITY_STATUS/COMPLETED",
+                startedAt: "2025-1",
+                activityNames: { ko: "ACC 프로젝트", en: "Aolda Cloud Console" },
+                activityType: "ACTIVITY_TYPE/PROJECT",
+                description: "소학회 통합 클라우드 콘솔 개발 프로젝트"
+            }
+        ],
+        bloggings: [
+            {
+                title: "Next.js에서 MSW 도입하기",
+                postedAt: "2026-02-10 14:00:00",
+                contentPreview: "프론트엔드 개발 효율을 높이기 위한 MSW 설정 방법을 공유합니다..."
+            }
+        ],
+        connections: {
+            isFollowing: false,
+            followers: 12,
+            followings: 8
+        }
+    }
+};

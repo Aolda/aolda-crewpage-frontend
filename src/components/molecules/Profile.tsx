@@ -2,13 +2,13 @@
 
 import React from "react";
 import Image from "next/image";
-import { CrewMember, CREW_ROLE } from "@/types/crew"; 
+import { CrewDetailResponse, CREW_ROLE } from "@/types/crew"; 
 import { StyledProfile } from "./Profile.styles";
 import Badge from "../atoms/Badge";
 import { fontSize } from "@/styles/theme";
 
 interface ProfileProps {
-    member: CrewMember;
+    member: CrewDetailResponse;
 }
 
 const Profile: React.FC<ProfileProps> = ({
@@ -24,25 +24,26 @@ const Profile: React.FC<ProfileProps> = ({
             <section className="infoSection">
                 <section className="nameInfo">
                     <span className="name">{member.crewName}</span>
-                    <Badge status={member.isActive} variant="solid">{member.isActive ? "활동중" : "비활동"}</Badge>
+                    <Badge status={member.isActive} variant="solid">
+                        {member.isActive ? "활동중" : "비활동"}
+                    </Badge>
                 </section>
                 <section className="positionInfo">
                     <span>{CREW_ROLE[currentRole]}</span>
                 </section>
             </section>
             <section className="buttonSection">
-                <button>follow</button>
+                <button>{member.connections.isFollowing ? 'unfollow' : 'follow'}</button>
             </section>
             <section className="descriptionSection">
-                {/* 리스트 명세에는 없으므로, 추후 상세조회(/crew/:id) 연동 시 데이터가 추가될 예정 */}
-                <span>{/* member.description */}</span>
+                <span>{member.description}</span>
             </section>
             <section className="followerSection">
                 <Image src="/images/crew/infoLogo.svg" alt="infoLogo" width={20} height={20}/>
-                <span className="variable">{/*member.follower*/}</span>
+                <span className="variable">{member.connections.followers}</span>
                 <span className="nonvariable">followers</span>
                 <span className="nonvariable" style={{"fontSize":fontSize.base}}>·</span>
-                <span className="variable">{/*member.following*/}</span>
+                <span className="variable">{member.connections.followings}</span>
                 <span className="nonvariable">following</span>
             </section>
             <section className="statsSection">
@@ -52,11 +53,11 @@ const Profile: React.FC<ProfileProps> = ({
                 </section>
                 <section className="statContainer">
                     <Image src="/images/crew/ajouIcon.svg" alt="ajou logo" width={20} height={20}/>
-                    <span>{member.univDepartment + member.univJoinedYear + "학번"}</span>
+                    <span>{`${member.univDepartment} ${member.univJoinedYear}학번`}</span>
                 </section>
                 <section className="statContainer">
                     <Image src="/images/crew/googleIcon.svg" alt="gmail logo" width={20} height={20}/>
-                    <span>{/*member.emailAddress*/}</span>
+                    <span>{member.crewEmail}</span>
                 </section>
             </section>
         </StyledProfile>
