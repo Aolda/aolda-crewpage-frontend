@@ -1,5 +1,5 @@
 import { axiosInstance } from './instance';
-import { CrewListResponse } from '@/types/crew';
+import { CrewListResponse, CrewDetailResponse } from '@/types/crew';
 
 interface CrewQueryParams {
     generation?: number;
@@ -17,5 +17,14 @@ export const getCrewList = async (params?: CrewQueryParams) => {
     const response = await axiosInstance.get<CrewListResponse>('/crew', {
         params,
     });
+    return response.data;
+};
+
+/**
+ * 크루 상세 정보 조회 (AMMS 연계)
+ * @param id 크루 고유 ID (crewId)
+ */
+export const getCrewDetail = async (id: string | number) => {
+    const response = await axiosInstance.get<CrewDetailResponse>(`/crew/${id}`);
     return response.data;
 };

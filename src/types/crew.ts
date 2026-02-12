@@ -49,3 +49,45 @@ export interface CrewListResponse {
     data: CrewMember[];
     paginate?: Paginate; // 페이지네이션 적용 시에만 포함
 }
+
+//
+export const ACTIVITY_TYPE_LABEL = {
+    'ACTIVITY_TYPE/PROJECT': '프로젝트',
+    'ACTIVITY_TYPE/STUDY': '스터디',
+} as const;
+
+export interface CrewActivity {
+    activityId: number;
+    status: string;
+    startedAt: string;
+    activityNames: { ko: string; en: string };
+    activityType: keyof typeof ACTIVITY_TYPE_LABEL;
+    description: string;
+}
+
+export interface CrewBlogging {
+    title: string;
+    postedAt: string;
+    contentPreview: string;
+}
+
+// 크루 상세 응답 데이터 구조
+export interface CrewDetailResponse {
+    crewId: number;
+    profile: { url: string };
+    crewName: string;
+    crewLog: CrewLog[];
+    isActive: boolean;
+    joinedGen: number;
+    univDepartment: string;
+    univJoinedYear: string;
+    crewEmail: string;
+    description: string;
+    activities: CrewActivity[];
+    bloggings: CrewBlogging[];
+    connections: {
+        isFollowing: boolean;
+        followers: number;
+        followings: number;
+    };
+}
