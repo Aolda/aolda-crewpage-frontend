@@ -49,6 +49,8 @@ export const TabButton = styled.button<{ $isActive: boolean }>`
     transition: all 0.2s ease;
 
     img {
+        width: 1.25rem;
+        height: auto;
         filter: ${(props) => (props.$isActive ? 'none' : 'grayscale(100%) opacity(0.6)')};
     }
 `;

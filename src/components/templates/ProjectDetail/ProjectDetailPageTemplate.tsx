@@ -27,19 +27,19 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
         <>
             <S.HeaderBackground $bgColor={project.bgColor}>
                 <Image src={project.thumbnail} alt={project.title} width={400} height={300}/>
-            </S.HeaderBackground>
-            <S.PageWrapper>
-                {/* 2. 헤더 섹션 */}
                 <S.HeaderSection>
                     <BreadCrumb items={breadcrumbItems} />
                     <h1>{project.title}</h1>
                     <p>{project.subtitle}</p>
                 </S.HeaderSection>
+            </S.HeaderBackground>
+            <S.PageWrapper>
+                {/* 2. 헤더 섹션 */}
 
                 {/* 3. 기획 정보 섹션 */}
-                <S.Section>
+                <S.Section style={{"paddingTop": "3.75rem"}}>
                     <S.SectionTitle>💡 기획 정보</S.SectionTitle>
-                    <p>{project.description}</p>
+                    <p style={{"fontSize": "1rem"}}>{project.description}</p>
                 </S.Section>
 
                 {/* 4. 활동 정보 섹션 */}
@@ -72,6 +72,7 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
                 {/* 6. 갤러리 섹션 */}
                 <S.Section>
                     <S.SectionTitle>🖼️ 갤러리</S.SectionTitle>
+                    <p style={{"fontSize": "1.25rem"}}>본 활동에서 진행된 활동 사진들의 공간</p>
                     {/* 갤러리 이미지 그리드 배치 예정 */}
                 </S.Section>
             </S.PageWrapper>

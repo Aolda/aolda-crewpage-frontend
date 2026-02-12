@@ -57,7 +57,7 @@ const Overview = () => {
                     <S.SphereImage>
                     {/* 실제 구체 이미지 경로로 수정 필요 */}
                         <Image 
-                            src="/images/icon.png" 
+                            src="/images/main/icon.png" 
                             alt="Cloud Sphere" 
                             width={384} 
                             height={384}

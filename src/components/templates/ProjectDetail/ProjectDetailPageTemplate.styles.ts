@@ -4,14 +4,23 @@ import { colors, fontSize } from '@/styles/theme';
 export const PageWrapper = styled.div`
     width: 90rem;
     margin: 0 auto;
-    padding-top: 12.5rem;
+
+    padding-top: 3.75rem;
     padding-left: 7.5rem;
     padding-right: 7.5rem;
     padding-bottom: 3.75rem;
 `;
 
 export const HeaderSection = styled.header`
-    margin-bottom: 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    width: 75rem;
+    height: auto;
+
+    margin: 0 auto;
+    margin-bottom: 3.75rem;
     
     h1 {
         font-size: 2.25rem;
@@ -28,13 +37,11 @@ export const HeaderSection = styled.header`
 
 /* 헤더 배경 */
 export const HeaderBackground = styled.div<{ $bgColor: string }>`
-    position: absolute;
-    top: 0;
-    left: 0;
+    display: flex;
+    position: relative;
     width: 100%;
     height: 25rem;
     background: ${(props) => props.$bgColor};
-    z-index: -1;
 
     img {
         position: absolute;
@@ -48,15 +55,18 @@ export const HeaderBackground = styled.div<{ $bgColor: string }>`
 
 export const Section = styled.section`
     margin-bottom: 8rem;
+    p {
+        color: ${colors.gray500};
+    }
 `;
 
 export const SectionTitle = styled.h2`
     display: flex;
     align-items: center;
     gap: 1rem;
-    font-size: ${fontSize.h2};
+    font-size: ${fontSize.h3};
     font-weight: 700;
-    margin-bottom: 3.2rem;
+    margin-bottom: 1.25rem;
     color: ${colors.black600};
 `;
 

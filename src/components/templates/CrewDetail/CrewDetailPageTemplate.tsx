@@ -39,14 +39,22 @@ const CrewDetailPageTemplate = ({ member, activeTab, children }: CrewDetailPageT
                             $isActive={activeTab === '활동'} 
                             onClick={() => handleTabClick('활동')}
                         >
-                            <Image src="/images/crew/CategoryImg.png" alt="활동" width={20} height={20} />
+                            <Image
+                                src={activeTab === '활동' 
+                                    ? "/images/crew/CategoryImgBlue.png" 
+                                    : "/images/crew/CategoryImg.png"}
+                                alt="활동" width={24} height={24} />
                             활동
                         </S.TabButton>
                         <S.TabButton 
                             $isActive={activeTab === '블로깅'} 
                             onClick={() => handleTabClick('블로깅')}
                         >
-                            <Image src="/images/crew/BlogingImg.png" alt="블로깅" width={20} height={20} />
+                            <Image
+                                src={activeTab === '블로깅' 
+                                    ? "/images/crew/BlogingImgBlue.png" 
+                                    : "/images/crew/BlogingImg.png"}
+                                alt="블로깅" width={24} height={24} />
                             블로깅
                         </S.TabButton>
                     </S.TabWrapper>
