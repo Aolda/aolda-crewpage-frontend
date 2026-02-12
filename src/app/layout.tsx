@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import StyledComponentsRegistry from '@/lib/registry';
-import { MSWComponent } from '@/components/MSWComponent';
+// import { MSWComponent } from '@/components/MSWComponent';
 import Header from "@/components/organisms/Header";
 import Footer from "@/components/organisms/Footer";
 import "./globals.css";
@@ -32,9 +32,9 @@ export default function RootLayout({
         <body>
             <StyledComponentsRegistry>
                 <Header />
-                <MSWComponent>
+                {/* <MSWComponent> */}
                     <main style={{"marginBottom": "5rem", "minHeight": "80vh"}}>{children}</main>
-                </MSWComponent>
+                {/* </MSWComponent> */}
                 <Footer />
             </StyledComponentsRegistry>
         </body>
