@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { StyledCrewBlock } from "./CrewBlock.styles";
 import Badge from "../atoms/Badge";
-import { CrewMember, POSITION_LABEL } from "@/types/crew"; 
+import { CrewMember, CREW_ROLE } from "@/types/crew"; 
 import { colors } from "@/styles/theme";
 /*
 * CrewBook page 크루원의 정보를 보여주는 block
@@ -16,7 +16,7 @@ import { colors } from "@/styles/theme";
 interface CrewBlockProps {
     member: CrewMember;
     isCrewpage: boolean;
-    onDetailClick: (id: string) => void;
+    onDetailClick: (id: number) => void;
 }
 
 const CrewBlock: React.FC<CrewBlockProps> = ({
@@ -24,46 +24,46 @@ const CrewBlock: React.FC<CrewBlockProps> = ({
     isCrewpage,
     onDetailClick,
 }) => {
-    // const memberStatus = member.active ? 'ACTIVE' : 'INACTIVE';
+    const currentRole = member.crewLog[0]?.type || 'CREW_ROLE/CREW';
 
     return (
         <StyledCrewBlock 
             $isCrewpage={isCrewpage}
-            onClick={() => onDetailClick(member.id)}
+            onClick={() => onDetailClick(member.crewId)}
             style={{ cursor: 'pointer' }}
         >
             <section className="imageSection">
-                <Image src={member.profileImage} alt={`${member.name} profile`}  width={120} height={120}/>
+                <Image src={member.profile.url} alt={`${member.crewName} profile`}  width={120} height={120}/>
             </section>
 
             <section className="textSection">
                 <section className="infoSection">
                     <section className="nameInfo">
-                        <h2>{member.name}</h2>
-                        <span>{POSITION_LABEL[member.position]}</span>
+                        <h2>{member.crewName}</h2>
+                        <span>{CREW_ROLE[currentRole]}</span>
                     </section>
 
                     {isCrewpage && (
                         <section className="badgeSection">
-                            <Badge variant="solid" status={member.active}>{member.active ? "활동중" : "비활동"}</Badge>
-                            <Badge variant="outline">{member.generation}기</Badge>
-                            <Badge variant="outline">{`${member.department} ${member.studentNumber}학번`}</Badge>
+                            <Badge variant="solid" status={member.isActive}>{member.isActive ? "활동중" : "비활동"}</Badge>
+                            <Badge variant="outline">{member.joinedGen}기</Badge>
+                            <Badge variant="outline">{`${member.univDepartment} ${member.univJoinedYear}학번`}</Badge>
                         </section>
                     )}
                 </section>
 
                 {!isCrewpage ? (
-                    <span className="majorInfo">{member.department} {member.studentNumber}</span>
+                    <span className="majorInfo">{member.univDepartment} {member.univJoinedYear}</span>
                 ) : (
                     <section className="statsSection">
                         <section style={{"display":"inline-flex", "gap":"0.75rem", "alignItems":"center"}}>
                             <Image src="/images/crew/CategoryImg.png" alt="categoryimg" width={18} height={18}/>
-                            <span style={{"color":colors.gray500}}>{member.activityCount || 0}</span>
+                            <span style={{"color":colors.gray500}}>{member.totalActivities || 0}</span>
                         </section>
                         <section>·</section>
                         <section style={{"display":"inline-flex", "gap":"0.75rem", "alignItems":"center"}}>
                             <Image src="/images/crew/BlogingImg.png" alt="blogingimg" width={18} height={18}/>
-                            <span style={{"color":colors.gray500}}>{member.blogCount || 0}</span>
+                            <span style={{"color":colors.gray500}}>{member.totalBloggings || 0}</span>
                         </section>
                     </section>
                 )}

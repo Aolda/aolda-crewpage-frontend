@@ -2,9 +2,9 @@ import styled, { css } from 'styled-components';
 import { fontSize, colors } from '@/styles/theme';
 import { BadgeVariant } from "./Badge";
 import { ProjectStatus } from "@/types/project";
-import { MemberStatus } from "@/types/crew";
 
-export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: ProjectStatus | MemberStatus }>`
+
+export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: ProjectStatus | boolean }>`
     display: inline-flex;
     align-items: center;
     justify-content: center;
