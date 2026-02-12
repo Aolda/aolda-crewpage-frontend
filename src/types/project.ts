@@ -68,7 +68,7 @@ export interface ProjectListResponse {
         };
         filters: {
             status: Record<string, { key: string; value: string }>;
-            seasons: Record<string, { key: string; value: string }>;
+            // seasons: Record<string, { key: string; value: string }>;
         };
         projects: ProjectSummary[];
     };

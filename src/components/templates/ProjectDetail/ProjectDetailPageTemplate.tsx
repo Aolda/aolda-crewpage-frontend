@@ -39,7 +39,14 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
 
                 {/* 3. 기획 정보 섹션 */}
                 <S.Section style={{"paddingTop": "3.75rem"}}>
-                    <S.SectionTitle>💡 기획 정보</S.SectionTitle>
+                    <S.SectionTitle>
+                        <Image 
+                            src='/images/project/detail/designIcon.png'
+                            alt="design"
+                            width={30}
+                            height={30}/>
+                        기획 정보
+                    </S.SectionTitle>
                     <p style={{
                         fontSize: "1rem", 
                         lineHeight: "1.8", 
@@ -51,7 +58,14 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
 
                 {/* 4. 활동 정보 섹션 */}
                 <S.Section>
-                    <S.SectionTitle>🧩 활동 정보</S.SectionTitle>
+                    <S.SectionTitle>
+                        <Image 
+                            src='/images/project/detail/activityIcon.png'
+                            alt="design"
+                            width={30}
+                            height={30}/>
+                        활동 정보
+                    </S.SectionTitle>
                     <S.InfoGrid>
                         <SolutionCard title="진행 학기" description={semesterText} />
                         <SolutionCard title="프로젝트 유형" description={projectTypeText} />
@@ -61,9 +75,45 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
                     </S.InfoGrid>
                 </S.Section>
 
-                {/* 5. 참여 크루 섹션 */}
+                {/* 5. 주요블로깅 섹션 */}
                 <S.Section>
-                    <S.SectionTitle>👥 참여 크루</S.SectionTitle>
+                    <S.SectionTitle>
+                        <Image 
+                            src='/images/project/detail/blogingIcon.png'
+                            alt="design"
+                            width={30}
+                            height={30}/>
+                        주요 블로깅
+                    </S.SectionTitle>
+                    <S.BlogGrid>
+                        {project.contents.mainBloggings?.slice(0, 6).map((blog, index) => (
+                            <S.BlogCard key={index}>
+                                {/* 1. 블로그 제목 */}
+                                <h3>{blog.title}</h3>
+                                
+                                {/* 2. 작성자 및 작성 시간 */}
+                                <div className="meta">
+                                    <span className="author">{blog.createdBy.crewName}</span>
+                                    <span className="date">{blog.postedAt}</span>
+                                </div>
+                                
+                                {/* 3. 본문 미리보기 */}
+                                <p className="preview">{blog.contentPreview}</p>
+                            </S.BlogCard>
+                        ))}
+                    </S.BlogGrid>
+                </S.Section>
+
+                {/* 6. 참여 크루 섹션 */}
+                <S.Section>
+                    <S.SectionTitle>
+                        <Image 
+                            src='/images/project/detail/participantIcon.png'
+                            alt="design"
+                            width={30}
+                            height={30}/>
+                        참여 크루
+                    </S.SectionTitle>
                     <S.CrewGrid>
                         {project.participants.map((crew) => (
                             <CrewBlock 
@@ -83,9 +133,16 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
                     </S.CrewGrid>
                 </S.Section>
 
-                {/* 6. 갤러리 섹션 */}
+                {/* 7. 갤러리 섹션 */}
                 <S.Section>
-                    <S.SectionTitle>🖼️ 갤러리</S.SectionTitle>
+                    <S.SectionTitle>
+                        <Image 
+                            src='/images/project/detail/galleryIcon.png'
+                            alt="design"
+                            width={30}
+                            height={30}/>
+                        갤러리
+                    </S.SectionTitle>
                     <p style={{"fontSize": "1.25rem"}}>본 활동에서 진행된 활동 사진들의 공간</p>
                     <S.GalleryGrid>
                         {project.gallery.map((photo) => (

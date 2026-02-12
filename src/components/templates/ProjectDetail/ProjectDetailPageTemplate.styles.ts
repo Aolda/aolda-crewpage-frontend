@@ -96,6 +96,59 @@ export const InfoGrid = styled.div`
     }
 `;
 
+export const BlogGrid = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+`;
+
+export const BlogCard = styled.div`
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB; // 연한 회색 테두리
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    h3 {
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: #111827;
+    }
+
+    .meta {
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+        
+        .author {
+            color: #4B5563;
+            margin-right: 0.75rem;
+        }
+        
+        .date {
+            color: #9CA3AF;
+        }
+    }
+
+    .preview {
+        font-size: 0.875rem;
+        color: #6B7280;
+        line-height: 1.5;
+        /* 두 줄 이상일 때 말줄임표 처리 */
+        display: -webkit-box;
+        -webkit-line-clamp: 1; 
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+`;
+
 /* 참여 크루 그리드 */
 export const CrewGrid = styled.div`
     display: grid;
