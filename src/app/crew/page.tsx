@@ -28,7 +28,7 @@ export default function CrewListPage() {
 
     const router = useRouter();
 
-    const handleDetailNavigation = (id: string) => {
+    const handleDetailNavigation = (id: number) => {
         router.push(`/crew/${id}/activity`);
     };
 
