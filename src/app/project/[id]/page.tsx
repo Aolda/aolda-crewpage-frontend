@@ -3,41 +3,32 @@
 
 import React, { useEffect, useState } from 'react';
 import ProjectDetailPageTemplate from '@/components/templates/ProjectDetail/ProjectDetailPageTemplate';
-import { Project } from '@/types/project';
+import { ProjectDetailResponse } from '@/types/project';
 import { useParams } from 'next/navigation';
+import { getProjectDetail } from '@/api/project';
 
 export default function ProjectPage() {
-    
-    const params = useParams();
-    const id = params.id; // URL의 [id] 값
-
-    const [project, setProject] = useState<Project | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
+    const { id } = useParams();
+    const [project, setProject] = useState<ProjectDetailResponse | null>(null);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const fetchProjectDetail = async () => {
+        const fetchProject = async () => {
             try {
-                setIsLoading(true);
-                // MSW 핸들러에 정의한 엔드포인트 호출
-                const res = await fetch(`/api/projects/${id}`);
-                
-                if (!res.ok) throw new Error('데이터 로드 실패');
-                
-                const data = await res.json();
+                // 서버에서 데이터 직접 수신
+                const data = await getProjectDetail(id as string);
                 setProject(data);
-            } catch (error) {
-                console.error(error);
-            } finally {
-                setIsLoading(false);
+            } catch (err: any) {
+                // 명세에 정의된 에러 코드 처리 (403, 404, 503 등)
+                setError(err.response?.data?.code || 'FETCH_ERROR');
             }
         };
 
-        if (id) fetchProjectDetail();
+        if (id) fetchProject();
     }, [id]);
 
-    if (isLoading) return <div>프로젝트 정보를 불러오는 중...</div>;
-    if (!project) return <div>프로젝트를 찾을 수 없습니다.</div>;
+    if (error) return <div>에러 발생: {error}</div>; //
+    if (!project) return <div>로딩 중...</div>;
 
-    // 템플릿에 동적으로 가져온 데이터 주입
     return <ProjectDetailPageTemplate project={project} />;
 }

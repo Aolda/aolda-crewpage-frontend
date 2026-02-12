@@ -1,104 +1,43 @@
-//src/app/project/page.tsx
-import { Project } from '@/types/project';
+import { ProjectDetailResponse } from '@/types/project';
 
-export const MOCK_PROJECTS: Project[] = [
-    {
-        id: '1',
-        title: 'ACC',
-        subtitle: 'Aolda Cloud Console',
-        status: 'DONE',
-        memberIds: ['crew_1', 'crew_2', 'crew_3', 'crew_4', 'crew_5', 'crew_6', 'crew_7', 'crew_8', 'crew_9'],
-        thumbnail: '/images/project/acc.png',
-        bgColor: '#018CF1',
-        date: '2023.03.15',
-        description: '아올다 클라우드 자원을 한눈에 관리하고 제어할 수 있는 통합 관리 콘솔 서비스입니다.',
-    },
-    {
-        id: '2',
-        title: 'AMDB',
-        subtitle: 'Aolda Managed Database',
-        status: 'ONGOING',
-        memberIds: ['crew_1', 'crew_2', 'crew_3', 'crew_4'],
-        thumbnail: '/images/project/amdb.png',
-        bgColor: '#30C2CF',
-        date: '2023.06.01',
-        description: '복잡한 데이터베이스 설정 없이 클릭만으로 클라우드 DB 인스턴스를 생성하고 관리합니다.',
-    },
-    {
-        id: '3',
-        title: 'ADS',
-        subtitle: 'Aolda Design System',
-        status: 'DONE',
-        memberIds: ['crew_5', 'crew_6', 'crew_7', 'crew_8', 'crew_9'],
-        thumbnail: '/images/project/ads.png',
-        bgColor: '#05C2A2',
-        date: '2023.01.20',
-        description: '아올다 서비스 전반에 걸쳐 일관된 사용자 경험을 제공하기 위한 공통 디자인 가이드 및 컴포넌트 라이브러리입니다.',
-    },
-    {
-        id: '4',
-        title: 'AAS',
-        subtitle: 'Aolda Autonomous System',
-        status: 'DONE',
-        memberIds: ['crew_1', 'crew_3', 'crew_5', 'crew_7', 'crew_9'],
-        thumbnail: '/images/project/aas.png',
-        bgColor: '#0084FF',
-        date: '2022.11.10',
-        description: '인프라 장애 상황을 스스로 감지하고 자동으로 복구 시나리오를 가동하는 자율 운영 시스템입니다.',
-    },
-    {
-        id: '5',
-        title: 'ABS',
-        subtitle: 'Aolda Blog Service',
-        status: 'DONE',
-        memberIds: ['crew_2', 'crew_4', 'crew_6', 'crew_8'],
-        thumbnail: '/images/project/abs.png',
-        bgColor: '#F18501',
-        date: '2023.05.04',
-        description: '클라우드 엔지니어링 지식을 공유하고 기술 아티클을 관리하기 위한 아올다 전용 기술 블로그 플랫폼입니다.',
-    },
-    {
-        id: '6',
-        title: 'APM',
-        subtitle: 'Aolda Proxy Manager',
-        status: 'DONE',
-        memberIds: ['crew_4', 'crew_6', 'crew_7'],
-        thumbnail: '/images/project/apm.png',
-        bgColor: '#3F56B3',
-        date: '2023.08.12',
-        description: '복잡한 네트워크 트래픽을 효율적으로 분산하고 보안 정책을 일괄 적용하는 리버스 프록시 관리 도구입니다.',
-    },
-    {
-        id: '7',
-        title: 'AMMS',
-        subtitle: 'Aolda Member Managed System',
-        status: 'PLANNING',
-        memberIds: ['crew_2', 'crew_6', 'crew_7', 'crew_8', 'crew_9'],
-        thumbnail: '/images/project/amms.png',
-        bgColor: '#5072BA',
-        date: '2024.01.05',
-        description: '아올다 크루원들의 활동 이력, 기술 스택, 프로젝트 참여 현황을 통합 관리하는 시스템입니다.',
-    },
-    {
-        id: '8',
-        title: 'AHP',
-        subtitle: 'Aolda Homepage Project',
-        status: 'ONGOING',
-        memberIds: ['crew_7', 'crew_8', 'crew_9'],
-        thumbnail: '/images/project/ahp.png',
-        bgColor: '#2F407F',
-        date: '2023.12.01',
-        description: '아올다 동아리의 정체성을 알리고 신규 크루 모집 및 활동 내용을 소개하는 공식 홈페이지입니다.',
-    },
-    {
-        id: '9',
-        title: 'AISE',
-        subtitle: 'Aolda Infrastructure Security Enhancement',
-        status: 'DONE',
-        memberIds: ['crew_3', 'crew_4', 'crew_5'],
-        thumbnail: '/images/project/aise.png',
-        bgColor: '#3F3F3F',
-        date: '2023.09.20',
-        description: '클라우드 인프라의 보안 취약점을 점검하고 방화벽 및 접근 제어 정책을 강화하는 보안 프로젝트입니다.',
-    },
-];
+export const MOCK_PROJECT_DETAILS: Record<number, ProjectDetailResponse> = {
+    3: {
+        activityNames: {
+            ko: "아올다 디자인 시스템",
+            en: "ADS (Aolda Design System)"
+        },
+        backgroundImage: {
+            url: "/images/project/ads_bg.png"
+        },
+        contents: {
+            ideaBackground: "아올다 서비스 전반에 걸쳐 일관된 사용자 경험을 제공하기 위한 공통 디자인 가이드 및 컴포넌트 라이브러리입니다.\n\n다양한 프로젝트에서 중복되는 UI 요소를 통합하여 개발 생산성을 높이는 것이 목표입니다.",
+            activityInfo: {
+                startedAt: ["2024-2", "2025-1"],
+                projectType: "PROJECT_TYPE/IN_HOUSE",
+                activityCounts: 12,
+                bloggingCounts: 5
+            },
+            mainBloggings: [
+                {
+                    title: "ADS 라이브러리 배포기",
+                    createdBy: { crewId: 15, crewName: "정우재" },
+                    postedAt: "2025-01-20 10:30:00",
+                    contentPreview: "NPM을 통해 사내 라이브러리를 배포하고 관리하는 과정을 담았습니다."
+                }
+            ]
+        },
+        participants: [
+            {
+                crewId: 15,
+                profile: { url: "/images/CrewImg.png" },
+                crewName: "정우재",
+                univDepartment: "소프트웨어학과",
+                univJoinedYear: "22"
+            }
+        ],
+        gallery: [
+            { photoId: 1, content: { url: "/images/project/gallery1.png" } },
+            { photoId: 2, content: { url: "/images/project/gallery2.png" } }
+        ]
+    }
+};
