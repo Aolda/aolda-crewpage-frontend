@@ -34,13 +34,8 @@ export default function HomePage() {
                     getCrewList()
                 ]);
 
-                if (!crewRes.ok || !activityRes.ok) throw new Error('데이터 로드 실패');
-
-                const crewData = await crewRes.json();
-                const activityData = await activityRes.json();
-
-                setCrews(crewData);
-                setActivities(activityData);
+                setActivities(activityRes.data);
+                setCrews(crewRes.data);
             } catch (error) {
                 console.error('Fetching error:', error);
             } finally {
