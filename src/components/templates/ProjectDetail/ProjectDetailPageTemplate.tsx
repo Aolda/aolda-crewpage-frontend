@@ -7,30 +7,31 @@ import BreadCrumb from '@/components/molecules/BreadCrump';
 import SolutionCard from '@/components/molecules/SolutionCard';
 import CrewBlock from '@/components/organisms/CrewBlock'; // 추가
 import { CrewMember } from '@/types/crew';
-import { Project } from '@/types/project';
+import { ProjectDetailResponse, PROJECT_TYPE } from '@/types/project';
 
 interface ProjectDetailPageTemplateProps {
-    project: Project;
+    project: ProjectDetailResponse;
 }
 
 const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) => {
+    const semesterText = project.contents.activityInfo.startedAt.join(', ');
     // 예시 데이터 (실제로는 API나 Props로 받게 됩니다)
-    const participatingCrews: CrewMember[] = [ /* ... 크루 데이터 배열 ... */ ];
+    const projectTypeText = PROJECT_TYPE[project.contents.activityInfo.projectType];
     // Breadcrumb 데이터
     const breadcrumbItems = [
         { label: '홈', href: '/' },
         { label: '주요 활동', href: '/project' },
-        { label: project.title, href: '#'},
+        { label: project.activityNames.ko, href: '#' },
     ];
 
     return (
         <>
-            <S.HeaderBackground $bgColor={project.bgColor}>
-                <Image src={project.thumbnail} alt={project.title} width={400} height={300}/>
+            <S.HeaderBackground $bgColor={"orange"}>
+                <Image src={project.backgroundImage.url} alt={project.activityNames.en} width={400} height={300}/>
                 <S.HeaderSection>
                     <BreadCrumb items={breadcrumbItems} />
-                    <h1>{project.title}</h1>
-                    <p>{project.subtitle}</p>
+                    <h1>{project.activityNames.en}</h1>
+                    <p>{project.activityNames.ko}</p>
                 </S.HeaderSection>
             </S.HeaderBackground>
             <S.PageWrapper>
@@ -39,18 +40,24 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
                 {/* 3. 기획 정보 섹션 */}
                 <S.Section style={{"paddingTop": "3.75rem"}}>
                     <S.SectionTitle>💡 기획 정보</S.SectionTitle>
-                    <p style={{"fontSize": "1rem"}}>{project.description}</p>
+                    <p style={{
+                        fontSize: "1rem", 
+                        lineHeight: "1.8", 
+                        whiteSpace: "pre-wrap" // \n, \t 처리를 위해 필수
+                    }}>
+                        {project.contents.ideaBackground}
+                    </p>
                 </S.Section>
 
                 {/* 4. 활동 정보 섹션 */}
                 <S.Section>
                     <S.SectionTitle>🧩 활동 정보</S.SectionTitle>
                     <S.InfoGrid>
-                        <SolutionCard title="진행 학기" description={project.date} />
-                        <SolutionCard title="프로젝트 유형" description={project.subtitle} />
-                        <SolutionCard title="활동 진행회차" description="n회 진행" />
-                        <SolutionCard title="활동 블로깅" description="m개" />
-                        <SolutionCard title="활동 사진" description="k개" />
+                        <SolutionCard title="진행 학기" description={semesterText} />
+                        <SolutionCard title="프로젝트 유형" description={projectTypeText} />
+                        <SolutionCard title="활동 진행회차" description={`${project.contents.activityInfo.activityCounts}회 진행`} />
+                        <SolutionCard title="활동 블로깅" description={`${project.contents.activityInfo.bloggingCounts}개`} />
+                        <SolutionCard title="활동 사진" description={`${project.gallery.length}개`} />
                     </S.InfoGrid>
                 </S.Section>
 
@@ -58,9 +65,9 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
                 <S.Section>
                     <S.SectionTitle>👥 참여 크루</S.SectionTitle>
                     <S.CrewGrid>
-                        {participatingCrews.map((crew) => (
+                        {project.participants.map((crew) => (
                             <CrewBlock 
-                                key={crew.id}
+                                key={crew.crewId}
                                 member={crew}
                                 isCrewpage={false} // 간략 모드로 렌더링
                                 onDetailClick={(id) => console.log(id)}
@@ -73,7 +80,13 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
                 <S.Section>
                     <S.SectionTitle>🖼️ 갤러리</S.SectionTitle>
                     <p style={{"fontSize": "1.25rem"}}>본 활동에서 진행된 활동 사진들의 공간</p>
-                    {/* 갤러리 이미지 그리드 배치 예정 */}
+                    <S.GalleryGrid>
+                        {project.gallery.map((photo) => (
+                            <S.GalleryItem key={photo.photoId}>
+                                <Image src={photo.content.url} alt="활동 사진" fill style={{ objectFit: 'cover' }} />
+                            </S.GalleryItem>
+                        ))}
+                    </S.GalleryGrid>
                 </S.Section>
             </S.PageWrapper>
         </>

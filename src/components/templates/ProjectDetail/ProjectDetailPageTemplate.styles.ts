@@ -113,3 +113,17 @@ export const CardRow = styled.div`
     gap: 2.4rem;
     margin-top: 2.4rem;
 `;
+
+export const GalleryGrid = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.6rem;
+    margin-top: 1.6rem;
+`;
+
+export const GalleryItem = styled.div`
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    overflow: hidden;
+`;
