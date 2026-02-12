@@ -7,6 +7,7 @@ import { CrewMember } from '@/types/crew';
 import { getCrewList, CrewQueryParams } from '@/api/crew';
 import CrewPageTemplate from '@/components/templates/crew/CrewPagetemplate';
 import Pagination from '@/components/molecules/Pagination';
+// import { MOCK_CREW_LIST } from '../../mocks/crewData';
 
 const ITEMS_PER_PAGE = 6;
 
@@ -64,7 +65,6 @@ export default function CrewListPage() {
         fetchCrews();
     }, [currentPage, searchParams]);
 
-
     const handleDetailNavigation = (id: number) => {
         router.push(`/crew/${id}/activity`);
     };
@@ -77,7 +77,7 @@ export default function CrewListPage() {
                 current={currentPage} 
                 total={totalCount} 
                 pageSize={ITEMS_PER_PAGE} 
-                onPageChange={(page) => updateQuery({ page })} 
+                onPageChange={(page) => {}} 
             /> 
         </CrewPageTemplate>
     );

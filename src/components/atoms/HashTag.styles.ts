@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
-import { ProjectStatus } from "@/types/project";
+import { ActivityStatusKey } from "@/types/project";
 import { fontSize, colors } from '@/styles/theme';
 
 interface HashTagProps {
-    $status?: ProjectStatus,
+    $status?: ActivityStatusKey,
     $date?: string,
 }
 
@@ -18,16 +18,30 @@ export const StyledHashTag = styled.div<HashTagProps>`
     padding: 0.5rem 0.75rem;
     font-size: ${fontSize.smaller};
 
-    ${({ $date, $status }) => $status && css`
-        background-color: ${() => {
-            if ($status === 'DONE') return colors.primary500; // Blue
-            if ($status === 'PLANNING') return colors.gray600; // Gray
-            if ($status === 'ONGOING') return '#10B981'; // Green (예상)
-            return '#E5E7EB';
-        }};
-        color: white;
-    ` || $date && css`
-        background-color: black;
-        color: white;
-    `}
+    ${({ $date, $status }) => {
+        // 1. 상태값(Status) 기반 스타일
+        if ($status) {
+            return css`
+                background-color: ${() => {
+                    // 프리픽스(STATUS/TYPE)에 상관없이 핵심 키워드로 색상 매핑
+                    if ($status.includes('RECRIUTING') || $status.includes('ONBOARDING')) {
+                        return colors.primary500; // Blue (진행/모집 중)
+                    }
+                    if ($status.includes('COMPLETED')) {
+                        return '#10B981'; // Green (완료)
+                    }
+                    return colors.gray600; // 기본 회색 (기획/준비 중)
+                }};
+                color: white;
+            `;
+        }
+
+        // 2. 날짜(Date) 기반 스타일
+        if ($date) {
+            return css`
+                background-color: black;
+                color: white;
+            `;
+        }
+    }}
 `;

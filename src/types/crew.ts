@@ -3,7 +3,7 @@ export const CREW_ROLE = {
     'CREW_ROLE/P': '회장',
     'CREW_ROLE/VP': '부회장',
     'CREW_ROLE/EA': '총무',
-    'CREW_ROLE/CREW': '일반 크루원',
+    'CREW_ROLE/CREW': '크루원',
 } as const;
 
 export const DEPARTMENT_TYPE = {
