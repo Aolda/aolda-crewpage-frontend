@@ -51,8 +51,7 @@ export const StyledMenuItem = styled.div`
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
-
-            white-space: pre-wrap;
+            text-overflow: ellipsis;
         }
     }
 `;

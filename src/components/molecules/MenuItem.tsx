@@ -3,20 +3,21 @@
 import React from "react";
 import { StyledMenuItem } from "./MenuItem.styles";
 import Badge from "../atoms/Badge";
-import { PROJECT_STATUS_LABEL, type Project, type ProjectStatus } from "@/types/project";
+import { ACTIVITY_TYPE, type ProjectStatus } from "@/types/project";
 import { fontSize } from "@/styles/theme";
 /*
-* 크루북 detail 페이지 Menu Section 하위 컴포넌트로, 항목을 담당
-* @params {string} pageName 페이지 별로 구성 태그 구분(현재는 크루북 활동, 블로깅) activity or bloging
-* @params {string} title MenuItem의 title
-* @params {string} date MenuItem의 date
-* @params {string} description MenuItem의 description
+* 크루 상세 페이지의 활동/블로깅 리스트 항목 컴포넌트
+* @params {string} pageName - "activity" 또는 "블로깅"
+* @params {string} title - 활동명 또는 블로그 제목
+* @params {string} date - 시작 학기 또는 게시일
+* @params {string} description - 활동 소개 또는 블로그 미리보기
+* @params {ProjectStatus} status - 프로젝트 진행 상태 (활동 탭에서만 사용)
 */
 interface MenuItemProps {
     pageName: string;
-    title: Project["title"];
-    date: Project["date"];
-    description: Project["description"];
+    title: string;
+    date: string;
+    description: string;
     status?: ProjectStatus;
 }
 
@@ -32,7 +33,10 @@ const MenuItem: React.FC<MenuItemProps> = ({
 				<section className="infoSection">
                     <section className="titleSection">
 					    <h2 style={{"fontSize":fontSize.h3, "fontWeight":"bold"}}>{title}</h2>
-					    { (pageName==="activity") && status && <Badge variant="solid" status={status}>{PROJECT_STATUS_LABEL[status]}</Badge> }
+					    { (pageName==="activity") && status
+							&& <Badge variant="solid" status={status}>
+								{ACTIVITY_TYPE[status]}
+						</Badge> }
 				    </section>
 				    <span className='date' color='gray' style={{"fontSize":fontSize.base}}>{date}</span>
                 </section>
