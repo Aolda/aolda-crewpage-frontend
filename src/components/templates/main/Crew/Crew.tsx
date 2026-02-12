@@ -6,26 +6,44 @@ import CrewBlock from '@/components/organisms/CrewBlock';
 import { CrewMember } from '@/types/crew';
 import * as S from './Crew.styles';
 
+// 역할별 정렬 우선순위 정의 (회장 > 부회장 > 총무 > 일반 크루원)
+const ROLE_PRIORITY: Record<string, number> = {
+    'CREW_ROLE/P': 0,
+    'CREW_ROLE/VP': 1,
+    'CREW_ROLE/EA': 2,
+    'CREW_ROLE/CREW': 3,
+};
+
 interface CrewProps {
     crews: CrewMember[];
-    onCrewClick: (id: string) => void; // 카드 클릭 시 호출될 함수
+    onCrewClick: (id: number) => void; // 카드 클릭 시 호출될 함수
 }
 
 const Crew = ({ crews, onCrewClick }: CrewProps) => {
-    // 1. 사용 가능한 기수 목록 추출 및 정렬 (내림차순)
+    // 사용 가능한 기수 목록 추출 및 정렬 (내림차순)
     const generations = useMemo(() => {
-        const gens = Array.from(new Set(crews.map(c => c.generation)));
+        const gens = Array.from(new Set(crews.map(c => c.joinedGen)));
         return gens.sort((a, b) => a - b);
     }, [crews]);
 
-    // 2. 현재 선택된 기수 상태 (초기값은 가장 최신 기수)
-    const [activeGen, setActiveGen] = useState<number>(generations[0]);
+    // 초기값 설정 (기수가 없을 경우를 대비한 방어 로직 추가)
+    const [activeGen, setActiveGen] = useState<number>(generations[0] || 0);
 
     // 3. 현재 기수의 크루들을 직책순으로 정렬하여 필터링
     const displayCrews = useMemo(() => {
         return crews
-        .filter(member => member.generation === activeGen)
-        .sort((a, b) => a.position - b.position); // 직책 숫자 기준 오름차순 정렬 (0: 회장, 1: 부회장...)
+        .filter(member => member.joinedGen === activeGen)
+        .sort((a, b) => {
+            const roleA = a.crewLog[0]?.type || 'CREW_ROLE/CREW';
+            const roleB = b.crewLog[0]?.type || 'CREW_ROLE/CREW';
+            
+            // 1순위: 역할 우선순위
+            if (ROLE_PRIORITY[roleA] !== ROLE_PRIORITY[roleB]) {
+                return ROLE_PRIORITY[roleA] - ROLE_PRIORITY[roleB];
+            }
+            // 2순위: 이름 가나다순
+            return a.crewName.localeCompare(b.crewName);
+        });
     }, [crews, activeGen]);
     return (
         <MainSection
@@ -53,7 +71,7 @@ const Crew = ({ crews, onCrewClick }: CrewProps) => {
                 <S.CrewGrid>
                 {displayCrews.map((member) => (
                     <CrewBlock 
-                        key={member.id} 
+                        key={member.crewId} 
                         member={member} 
                         isCrewpage={false} 
                         onDetailClick={onCrewClick}
