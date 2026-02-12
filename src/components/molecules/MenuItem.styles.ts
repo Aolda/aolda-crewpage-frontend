@@ -11,6 +11,10 @@ export const StyledMenuItem = styled.div`
     border-bottom: solid 1px ${colors.border};
     gap: 1.25rem;
 
+    $:hover {
+        cursor: pointer;
+    }
+
     .infoSection {
         display: flex;
         height: 4.125rem;

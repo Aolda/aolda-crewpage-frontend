@@ -38,6 +38,7 @@ export default function CrewActivityPage() {
                 crew.activities.map((item) => (
                     <MenuItem
                         key={item.activityId}
+                        id={item.activityId}
                         pageName="activity"
                         title={item.activityNames.en}
                         date={item.startedAt}

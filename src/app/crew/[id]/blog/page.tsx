@@ -39,6 +39,7 @@ export default function CrewBlogPage() {
                 crew.bloggings.map((item, index) => (
                     <MenuItem
                         key={`${item.title}-${index}`}
+                        id={index}
                         pageName="블로깅"
                         title={item.title}
                         date={item.postedAt.split(' ')[0]}
