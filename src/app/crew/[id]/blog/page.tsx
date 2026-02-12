@@ -3,55 +3,47 @@
 
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { CrewMember } from '@/types/crew';
+import { CrewDetailResponse } from '@/types/crew';
 import CrewDetailPageTemplate from '@/components/templates/CrewDetail/CrewDetailPageTemplate';
 import MenuItem from '@/components/molecules/MenuItem';
+import { getCrewDetail } from '@/api/crew';
 
 export default function CrewBlogPage() {
     const { id } = useParams();
-    const [member, setMember] = useState<CrewMember | null>(null);
-    const [blogs, setBlogs] = useState<any[]>([]); 
+    const [crew, setCrew] = useState<CrewDetailResponse | null>(null);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const fetchBlogData = async () => {
+        const fetchCrewBlogData = async () => {
             try {
                 setIsLoading(true);
-                // 멤버 정보와 블로그 리스트를 병렬로 가져옴
-                const [memberRes, blogRes] = await Promise.all([
-                    fetch(`/api/crews/${id}`),
-                    fetch(`/api/crews/${id}/blogs`), 
-                ]);
-
-                if (!memberRes.ok || !blogRes.ok) throw new Error('데이터 로드 실패');
-
-                const memberData = await memberRes.json();
-                const blogData = await blogRes.json();
-
-                setMember(memberData);
-                setBlogs(blogData);
+                // 서버에서 블로깅 리스트가 포함된 전체 상세 데이터 수신
+                const data = await getCrewDetail(id as string);
+                setCrew(data);
             } catch (error) {
-                console.error('Fetching error:', error);
+                console.error('블로깅 데이터 로드 실패:', error);
             } finally {
                 setIsLoading(false);
             }
         };
 
-        if (id) fetchBlogData();
+        if (id) fetchCrewBlogData();
     }, [id]);
 
-    if (isLoading || !member) return <div>로딩 중...</div>;
+    if (isLoading) return <div>로딩 중...</div>;
+    if (!crew) return <div>크루 정보를 찾을 수 없습니다.</div>;
 
     return (
-        <CrewDetailPageTemplate member={member} activeTab="블로깅">
-            {blogs.length > 0 ? (
-                blogs.map((item) => (
+        <CrewDetailPageTemplate member={crew} activeTab="블로깅">
+            {crew.bloggings.length > 0 ? (
+                crew.bloggings.map((item, index) => (
                     <MenuItem
-                        key={item.id}
+                        key={`${item.title}-${index}`}
+                        id={index}
                         pageName="블로깅"
                         title={item.title}
-                        date={item.date}
-                        description={item.description}
+                        date={item.postedAt.split(' ')[0]}
+                        description={item.contentPreview}
                         // 블로그 포스트는 status 프롭을 생략합니다.
                     />
                 ))

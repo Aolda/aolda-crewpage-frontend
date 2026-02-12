@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import BaseTemplate from '../BaseTemplate/BaseTemplate';
 import JoinSection from '@/components/molecules/JoinSection';
 import LinkSection from '@/components/molecules/LinkSection';
 import Image from 'next/image';
@@ -23,7 +22,7 @@ const LinkPageTemplate = () => {
         },
     ]
     return (
-        <BaseTemplate>
+        <>
             <S.PageWrapper>
                 <S.Ellipse className="ellipse1" />
                 <S.Ellipse className="ellipse2" />
@@ -56,7 +55,7 @@ const LinkPageTemplate = () => {
                 {/* 공통 CTA 섹션 */}
                 <JoinSection />
             </S.PageWrapper>
-        </BaseTemplate>
+        </>
     );
 };
 

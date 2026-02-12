@@ -1,45 +1,83 @@
 //src/app/crew/page.tsx
 'use client';
 
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { CrewMember } from '@/types/crew';
-import { useRouter } from 'next/navigation';
-import { MOCK_CREW_LIST } from './mockData';
+import { getCrewList, CrewQueryParams } from '@/api/crew';
 import CrewPageTemplate from '@/components/templates/crew/CrewPagetemplate';
 import Pagination from '@/components/molecules/Pagination';
+// import { MOCK_CREW_LIST } from '../../mocks/crewData';
 
 const ITEMS_PER_PAGE = 6;
 
 export default function CrewListPage() {
-    const [data, setData] = useState<any>(null); // 명세표 구조 수용용
-    const [currentPage, setCurrentPage] = useState<number>(1);
+    const router = useRouter();
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
 
+    // 현재 페이지 수 추출(기본은 1)
+    const currentPage = Number(searchParams.get('page')) || 1;
+
+    const [crews, setCrews] = useState<CrewMember[]>([]);
+    const [totalCount, setTotalCount] = useState<number>(0);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+
+    // 쿼리 파라미터 업데이트 함수
+    const updateQuery = useCallback((newParams: Partial<CrewQueryParams>) => {
+        const params = new URLSearchParams(searchParams.toString());
+        
+        Object.entries(newParams).forEach(([key, value]) => {
+            if (value === undefined || value === null) {
+                params.delete(key);
+            } else {
+                params.set(key, String(value));
+            }
+        });
+
+        router.push(`${pathname}?${params.toString()}`);
+    }, [pathname, router, searchParams]);
+
+    // 쿼리 스트링 기반 데이터 패칭
     useEffect(() => {
         const fetchCrews = async () => {
-        // 페이지 번호를 쿼리 파라미터로 전달
-        const res = await fetch(`/api/crews?page=${currentPage}`);
-        const json = await res.json();
-        setData(json);
+            try {
+                setIsLoading(true);
+                
+                // URL에 포함된 모든 검색 조건을 객체로 구성
+                const params: CrewQueryParams = {
+                    page: currentPage,
+                    generation: searchParams.get('generation') ? Number(searchParams.get('generation')) : undefined,
+                    role: searchParams.get('role') || undefined,
+                    univDepartment: searchParams.get('univDepartment') || undefined,
+                };
+
+                const response = await getCrewList(params);
+                setCrews(response.data);
+                setTotalCount(response.total);
+            } catch (error) {
+                console.error('크루 리스트 로드 실패:', error);
+            } finally {
+                setIsLoading(false);
+            }
         };
+
         fetchCrews();
-    }, [currentPage]);
+    }, [currentPage, searchParams]);
 
-    // if (!data) return null;
-
-    const router = useRouter();
-
-    const handleDetailNavigation = (id: string) => {
+    const handleDetailNavigation = (id: number) => {
         router.push(`/crew/${id}/activity`);
     };
 
-    // 실제 데이터(Mock)를 템플릿에 속성(Prop)으로 넘겨줌
+    if (isLoading) return <div>크루 목록을 불러오는 중...</div>;
+
     return (
-        <CrewPageTemplate crewList={MOCK_CREW_LIST} onDetailClick={handleDetailNavigation}>
+        <CrewPageTemplate crewList={crews} onDetailClick={handleDetailNavigation}>
             <Pagination 
                 current={currentPage} 
-                total={MOCK_CREW_LIST.length} 
+                total={totalCount} 
                 pageSize={ITEMS_PER_PAGE} 
-                onPageChange={(page) => setCurrentPage(page)} 
+                onPageChange={(page) => {}} 
             /> 
         </CrewPageTemplate>
     );

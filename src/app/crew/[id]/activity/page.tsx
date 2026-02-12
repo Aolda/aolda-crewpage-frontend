@@ -2,57 +2,52 @@
 
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { CrewMember } from '@/types/crew';
-import { Project } from '@/types/project';
+import { CrewDetailResponse } from '@/types/crew';
 import CrewDetailPageTemplate from '@/components/templates/CrewDetail/CrewDetailPageTemplate';
 import MenuItem from '@/components/molecules/MenuItem';
+import { getCrewDetail } from '@/api/crew';
+
+import { MOCK_CREW_DETAIL } from '@/mocks/crewData';
 
 export default function CrewActivityPage() {
-    const { id } = useParams();
-    const [member, setMember] = useState<CrewMember | null>(null);
-    const [activities, setActivities] = useState<Project[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
+    // const { id } = useParams();
+    // const [crew, setCrew] = useState<CrewDetailResponse | null>(null);
+    // const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchActivityData = async () => {
-            try {
-                setIsLoading(true);
-                // MSW 핸들러를 통해 멤버 정보와 활동 리스트 페칭
-                const [memberRes, activityRes] = await Promise.all([
-                    fetch(`/api/crews/${id}`),
-                    fetch(`/api/crews/${id}/projects`)
-                ]);
+    // useEffect(() => {
+    //     const fetchCrewActivityData = async () => {
+    //         try {
+    //             setIsLoading(true);
+    //             // 서버에서 크루 상세 정보를 직접 패칭 (활동 리스트 포함)
+    //             const data = await getCrewDetail(id as string);
+    //             setCrew(data);
+    //         } catch (error) {
+    //             console.error('데이터 로드 실패:', error);
+    //         } finally {
+    //             setIsLoading(false);
+    //         }
+    //     };
 
-                if (!memberRes.ok) throw new Error('데이터 로드 실패');
+    //     if (id) fetchCrewActivityData();
+    // }, [id]);
 
-                const memberData = await memberRes.json();
-                const activityData = await activityRes.json();
+    // if (isLoading) return <div>로딩 중...</div>;
+    // if (!crew) return <div>크루 정보를 찾을 수 없습니다.</div>;
 
-                setMember(memberData);
-                setActivities(activityData);
-            } catch (error) {
-                console.error('Fetching error:', error);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-
-        if (id) fetchActivityData();
-    }, [id]);
-
-    if (isLoading || !member) return <div>로딩 중...</div>;
+    const [crew, setActivities] = useState(MOCK_CREW_DETAIL);
 
     return (
-        <CrewDetailPageTemplate member={member} activeTab="활동">
-            {activities.length > 0 ? (
-                activities.map((item) => (
+        <CrewDetailPageTemplate member={crew as any} activeTab="활동">
+            {crew.activities.length > 0 ? (
+                crew.activities.map((item) => (
                     <MenuItem
-                        key={item.id}
+                        key={item.activityId}
+                        id={item.activityId}
                         pageName="activity"
-                        title={item.title}
-                        date={item.date}
+                        title={item.activityNames.en}
+                        date={item.startedAt}
                         description={item.description}
-                        status={item.status}
+                        status={item.status as any}
                     />
                 ))
             ) : (
