@@ -33,14 +33,14 @@ export default function CrewActivityPage() {
     if (!crew) return <div>크루 정보를 찾을 수 없습니다.</div>;
 
     return (
-        <CrewDetailPageTemplate member={member} activeTab="활동">
-            {activities.length > 0 ? (
-                activities.map((item) => (
+        <CrewDetailPageTemplate member={crew} activeTab="활동">
+            {crew.activities.length > 0 ? (
+                crew.activities.map((item) => (
                     <MenuItem
-                        key={item.id}
+                        key={item.activityId}
                         pageName="activity"
-                        title={item.title}
-                        date={item.date}
+                        title={item.activityNames.en}
+                        date={item.startedAt}
                         description={item.description}
                         status={item.status}
                     />
