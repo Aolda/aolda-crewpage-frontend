@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { colors, fontSize } from '@/styles/theme';
 
 export const ActivityWrapper = styled.div`
@@ -52,11 +52,27 @@ export const TabButton = styled.button<{ $isActive: boolean }>`
     }
 `;
 
+const infiniteScroll = keyframes`
+    0% { transform: translateX(-50%); } /* 복제된 리스트의 중간 지점에서 시작 */
+    100% { transform: translateX(0); }  /* 오른쪽 끝(처음 위치)으로 이동 */
+`;
+
 /* 수평 스크롤 리스트 영역 */
 export const HorizontalScrollArea = styled.div`
     width: 100vw;
     position: relative;
-    overflow-x: auto;
+    overflow: hidden;
+
+    pointer-events: none;
+
+    /* 양 끝이 자연스럽게 사라지는 페이드 효과 (선택 사항) */
+    mask-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 1) 15%,
+        rgba(0, 0, 0, 1) 85%,
+        rgba(0, 0, 0, 0) 100%
+    );
     
     &::-webkit-scrollbar {
         display: none; /* 스크롤바 숨김 */
@@ -67,5 +83,10 @@ export const HorizontalScrollArea = styled.div`
 
 export const CardList = styled.div`
     display: flex;
-    gap: 1.5rem; /* 24px */
+    gap: 1.5rem;
+
+    width: max-content;
+    /* 왼쪽 -> 오른쪽 무한 애니메이션 적용 */
+    /* 60s는 예시이며, 숫자가 커질수록 더 천천히 움직입니다. */
+    animation: ${infiniteScroll} 40s linear infinite;
 `;
