@@ -26,7 +26,7 @@ export const MOCK_PROJECT_RESPONSE: ProjectListResponse = {
                     ko: "아올다 공식 홈페이지 개발",
                     en: "Aolda Official Website Project"
                 },
-                backgroundImage: { url: "https://api.aoldacloud.com/images/projects/aolda.png" }
+                backgroundImage: { url: "/images/project/aas.png" }
             },
             {
                 activityId: 102,
@@ -36,7 +36,7 @@ export const MOCK_PROJECT_RESPONSE: ProjectListResponse = {
                     ko: "클라우드 인프라 자동화 스터디",
                     en: "Cloud Infrastructure Automation Study"
                 },
-                backgroundImage: { url: "https://api.aoldacloud.com/images/projects/study.png" }
+                backgroundImage: { url: "/images/project/abs.png" }
             }
         ]
     }

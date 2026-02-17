@@ -8,6 +8,8 @@ import { getProjectList } from '@/api/project';
 import { ProjectListResponse } from '@/types/project';
 import ProjectPageTemplate from '@/components/templates/project/ProjectPagetemplate';
 
+import { MOCK_PROJECT_RESPONSE } from '@/mocks/projectData';
+
 export default function ProjectsPage() {
     const router = useRouter();
 
@@ -17,7 +19,7 @@ export default function ProjectsPage() {
         getProjectList().then(setProjectList).catch(console.error);
     }, []);
 
-    if (!projectList) return <div>Loading...</div>;
+    // if (!projectList) return <div>Loading...</div>;
 
     const handleProjectNavigation = (id: number) => {
         router.push(`/project/${id}`);
@@ -25,7 +27,7 @@ export default function ProjectsPage() {
 
     return (
         <ProjectPageTemplate 
-            data={projectList} 
+            data={MOCK_PROJECT_RESPONSE} 
             onProjectClick={handleProjectNavigation}
         />
     );

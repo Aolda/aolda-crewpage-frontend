@@ -1,7 +1,7 @@
 //src/app/project/page.tsx
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Image from 'next/image';
 import * as S from './ProjectPageTemplate.styles';
 import ProjectBlock from '@/components/organisms/ProjectBlock';
@@ -49,15 +49,23 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
     const [activeSearch, setActiveSearch] = useState("");
     const [selectedStatus, setSelectedStatus] = useState<string>("");
 
+    // 입력창의 글자를 모두 지우면 즉시 검색 결과를 초기화
+    useEffect(() => {
+        if (searchValue === "") {
+            setActiveSearch("");
+        }
+    }, [searchValue]);
+
     //프로젝트 필터링
     const filteredProjects = useMemo(() => {
         return data.data.projects.filter((project) => {
-            // 국문명 또는 영문명에 검색어가 포함되는지 확인
-            const matchesSearch = 
-                project.activityNames.ko.toLowerCase().includes(activeSearch.toLowerCase()) ||
+            // 1. 검색어 필터링 로직 보완
+            const matchesSearch = activeSearch === "" 
+                ? true  // 검색어가 없으면 무조건 통과
+                : project.activityNames.ko.toLowerCase().includes(activeSearch.toLowerCase()) ||
                 project.activityNames.en.toLowerCase().includes(activeSearch.toLowerCase());
             
-            // 서버에서 준 status 키값과 매칭
+            // 2. 상태 필터링
             const matchesStatus = selectedStatus === "" ? true : project.status === selectedStatus;
             
             return matchesSearch && matchesStatus;
