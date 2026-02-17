@@ -6,6 +6,7 @@ import Image from 'next/image';
 import * as S from './ProjectPageTemplate.styles';
 import ProjectBlock from '@/components/organisms/ProjectBlock';
 import SearchBox from '@/components/molecules/SearchBox';
+import Select from '@/components/molecules/Select';
 import OverviewCard from '@/components/molecules/OverviewCard';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { ProjectListResponse, ActivityStatusKey } from '@/types/project';
@@ -48,6 +49,7 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
     const [searchValue, setSearchValue] = useState("");
     const [activeSearch, setActiveSearch] = useState("");
     const [selectedStatus, setSelectedStatus] = useState<string>("");
+    const [selectedSeasonValue, setSelectedSeasonValue] = useState<string>("");
 
     // 입력창의 글자를 모두 지우면 즉시 검색 결과를 초기화
     useEffect(() => {
@@ -56,21 +58,30 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
         }
     }, [searchValue]);
 
+    // Select 컴포넌트에 넘겨줄 옵션 배열 (값들만 추출)
+    const seasonOptions = useMemo(() => {
+        return Object.values(data.data.filters.seasons || {}).map(s => s.value);
+    }, [data.data.filters.seasons]);
+
     //프로젝트 필터링
     const filteredProjects = useMemo(() => {
         return data.data.projects.filter((project) => {
-            // 1. 검색어 필터링 로직 보완
+            // 검색어 필터링 로직 보완
             const matchesSearch = activeSearch === "" 
                 ? true  // 검색어가 없으면 무조건 통과
                 : project.activityNames.ko.toLowerCase().includes(activeSearch.toLowerCase()) ||
                 project.activityNames.en.toLowerCase().includes(activeSearch.toLowerCase());
             
-            // 2. 상태 필터링
+            // 상태 필터링
             const matchesStatus = selectedStatus === "" ? true : project.status === selectedStatus;
+            const selectedSeasonKey = Object.values(data.data.filters.seasons || {})
+                .find(s => s.value === selectedSeasonValue)?.key;
+
+            const matchesSeason = !selectedSeasonKey ? true : project.startedAt === selectedSeasonKey;
             
-            return matchesSearch && matchesStatus;
+            return matchesSearch && matchesStatus && matchesSeason;
         });
-    }, [data.data.projects, activeSearch, selectedStatus]);
+    }, [data.data.projects, activeSearch, selectedStatus, selectedSeasonValue, data.data.filters.seasons]);
 
     const { statistics } = data.data;
 
@@ -124,7 +135,12 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
                         ))}
                     </S.LeftButtonGroup>
                     
-                    {/* ... Select 컴포넌트 생략 ... */}
+                    <Select 
+                        label="season" // TITLE_MAP에 의해 "전체 기간"으로 표시됨
+                        options={seasonOptions}
+                        selectedValue={selectedSeasonValue}
+                        onSelectChange={(value) => setSelectedSeasonValue(value)}
+                    />
                 </S.FilterBar>
                 
                 <S.ProjectGrid
