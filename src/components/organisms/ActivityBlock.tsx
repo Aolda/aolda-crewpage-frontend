@@ -3,7 +3,7 @@
 import React from "react";
 import HashTag from "../atoms/HashTag";
 import { StyledActivityBlock } from "./ActivityBlock.styles";
-import { ProjectStatus } from "@/types/project";
+import { ActivityStatusKey } from "@/types/project";
 
 /*
 * Home page Activity Section의 block(내부 요소로는 Badge, 텍스트)
@@ -15,7 +15,7 @@ import { ProjectStatus } from "@/types/project";
 */
 
 interface ActivityBlockProps {
-    status: ProjectStatus;
+    status: ActivityStatusKey;
     date: string;
     title: string;
     subtitle: string;

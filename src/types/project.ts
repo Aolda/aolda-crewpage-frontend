@@ -1,37 +1,128 @@
-// src/types/project.ts
-// 프로젝트 진행 상태 정의
-// PLANNING: 기획 중, ONGOING: 진행 중, DONE: 완료
-export type ProjectStatus = "PLANNING" | "ONGOING" | "DONE";
+//
+export const ACTIVITY_STATUS = {
+    'ACTIVITY_STATUS/RECRIUTING': '모집중',
+    'ACTIVITY_STATUS/ONBOARDING': '진행중',
+    'ACTIVITY_STATUS/COMPLETED': '완료',
+} as const;
 
-// 프로젝트 진행 상태별 한글 라벨 매핑
-export const PROJECT_STATUS_LABEL: Record<ProjectStatus, string> = {
-    PLANNING: '기획중',
-    ONGOING: '진행중',
-    DONE: '완료',
-};
+export const ACTIVITY_TYPE_LABEL = {
+    'ACTIVITY_TYPE/PROJECT': '프로젝트',
+    'ACTIVITY_TYPE/STUDY': '스터디',
+} as const;
 
-export interface Project {
-    // 필수 식별자 및 라우팅
-    id: string;               // URL 구분을 위한 고유 ID (to 대신 사용)
-    
-    // 핵심 정보
-    title: string;            // 프로젝트 제목 (ex. ACC)
-    subtitle: string;         // 부제목 (ex. Aolda Cloud Console)
-    description: string;      // 프로젝트 한 줄 소개
-    date: string;             // 시작 날짜 또는 기간 (ex. "2024.01")
-    
-    // 상태 관리
-    status: ProjectStatus;       
-    
-    // 디자인 요소 (디자인상 프로젝트마다 다르므로 유지)
-    thumbnail: string;        // 프로젝트 카드용 이미지 경로
-    bgColor: string;          // 카드나 배경에 쓰일 고유 색상 코드
-    
-    // 콘텐츠 (문항 수정)
-    //solutions는 필요한 경우 유지
-    solutions?: string[];     
-    
-    // 인원 정보
-    // Member 객체 대신 id 배열만 관리하여 데이터 무결성 유지
-    memberIds: string[];
+export type ActivityStatusKey = keyof typeof ACTIVITY_STATUS;
+export type ActivityTypeKey = keyof typeof ACTIVITY_TYPE_LABEL;
+
+// 전체 활동 요약 정보 (리스트용)
+export interface ActivitySummary {
+    status: ActivityStatusKey;
+    startedAt: string;
+    activityNames: {
+        ko: string;
+        en: string;
+    };
+    activityType: ActivityTypeKey;
+    description: string; // 이 명세에는 소개글이 포함됩니다!
+}
+
+// 전체 활동 응답 타입
+export interface ActivityListResponse {
+    total: number;
+    data: ActivitySummary[];
+    paginate?: {
+        from: number;
+        to: number;
+        curr: number;
+    };
+}
+
+// 통계 데이터 타입
+export interface ProjectStatistics {
+    key: string;
+    total: number;
+    value: number;
+}
+
+// 프로젝트 요약 정보 (리스트용)
+export interface ProjectSummary {
+    activityId: number;
+    status: ActivityStatusKey;
+    startedAt: string;
+    activityNames: {
+        ko: string;
+        en: string;
+    };
+    backgroundImage: {
+        url: string;
+    };
+}
+
+// 전체 조회 응답 타입
+export interface ProjectListResponse {
+    total: number;
+    data: {
+        statistics: {
+            projects: ProjectStatistics;
+            participants: ProjectStatistics;
+            paran_projects: ProjectStatistics;
+        };
+        filters: {
+            status: Record<string, { key: string; value: string }>;
+            // seasons: Record<string, { key: string; value: string }>;
+        };
+        projects: ProjectSummary[];
+    };
+}
+
+// 프로젝트 유형 상수 정의
+export const PROJECT_TYPE = {
+    'PROJECT_TYPE/INFRA': '인프라 프로젝트 (HW 운영 관련 연관 프로젝트)',
+    'PROJECT_TYPE/IN_HOUSE': '인하우스 프로젝트 (소학회 내부운용 서비스)',
+    'PROJECT_TYPE/PUBLIC': '퍼블릭 클라우드서비스 개발 프로젝트 (일반공개 및 운용 서비스)',
+} as const;
+
+export type ProjectTypeKey = keyof typeof PROJECT_TYPE;
+
+// 상세 조회 응답 데이터 구조
+export interface ProjectDetailResponse {
+    activityNames: {
+        ko: string;
+        en: string;
+    };
+    backgroundImage: {
+        url: string;
+    };
+    contents: {
+        ideaBackground: string; // 기획배경 (\n, \t 포함)
+        activityInfo: {
+            startedAt: string[]; // 진행학기 리스트
+            projectType: ProjectTypeKey;
+            activityCounts: number;
+            bloggingCounts: number;
+        };
+        mainBloggings: Array<{
+            title: string;
+            createdBy: {
+                crewId: number;
+                crewName: string;
+            };
+            postedAt: string;
+            contentPreview: string;
+        }>;
+    };
+    participants: Array<{
+        crewId: number;
+        profile: {
+            url: string;
+        };
+        crewName: string;
+        univDepartment: string;
+        univJoinedYear: string;
+    }>;
+    gallery: Array<{
+        photoId: number;
+        content: {
+            url: string;
+        };
+    }>;
 }

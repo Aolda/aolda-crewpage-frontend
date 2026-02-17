@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { CrewMember } from '@/types/crew';
-import { Project } from '@/types/project';
+import { getAllActivities } from '@/api/activity';
+import { getCrewList } from '@/api/crew';
+import { ActivitySummary } from '@/types/project';
+import { CrewMember } from '@/types/crew'
 
-import BaseTemplate from '@/components/templates/BaseTemplate/BaseTemplate';
 import Hero from '@/components/templates/main/Hero/Hero';
 import Overview from '@/components/templates/main/Overview/Overview';
 import Vision from '@/components/templates/main/Vision/Vision';
@@ -13,33 +14,34 @@ import Crew from '@/components/templates/main/Crew/Crew';
 import { useRouter } from 'next/navigation';
 import JoinSection from '@/components/molecules/JoinSection';
 
+import { MOCK_CREW_LIST } from '../mocks/crewData';
+import { MOCK_ACTIVITY_RESPONSE } from '@/mocks/activityData';
+
 
 export default function HomePage() {
     const router = useRouter();
 
     // 1. 상태 관리 (데이터 및 로딩 상태)
+    const [activities, setActivities] = useState<ActivitySummary[]>([]);
     const [crews, setCrews] = useState<CrewMember[]>([]);
-    const [projects, setProjects] = useState<Project[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
     // 2. 데이터 페칭 로직
     useEffect(() => {
-        const fetchMainData = async () => {
+        const loadMainData = async () => {
             try {
                 setIsLoading(true);
                 // 크루와 프로젝트 데이터를 병렬로 요청
-                const [crewRes, projectRes] = await Promise.all([
-                    fetch('/api/crews'),
-                    fetch('/api/projects')
-                ]);
+                // const [activityRes, crewRes] = await Promise.all([
+                //     getAllActivities(),
+                //     getCrewList()
+                // ]);
 
-                if (!crewRes.ok || !projectRes.ok) throw new Error('데이터 로드 실패');
+                // setActivities(activityRes.data);
+                // setCrews(crewRes.data);
 
-                const crewData = await crewRes.json();
-                const projectData = await projectRes.json();
-
-                setCrews(crewData);
-                setProjects(projectData);
+                setCrews(MOCK_CREW_LIST);
+                setActivities(MOCK_ACTIVITY_RESPONSE.data);
             } catch (error) {
                 console.error('Fetching error:', error);
             } finally {
@@ -47,22 +49,22 @@ export default function HomePage() {
             }
         };
 
-        fetchMainData();
+        loadMainData();
     }, []);
 
     // 상세 페이지 이동 함수
-    const handleDetailNavigation = (id: string) => {
+    const handleDetailNavigation = (id: number) => {
         // 기본 페이지를 activity로 설정: /crew/[id]/activity
         router.push(`/crew/${id}/activity`);
     };
 
     // 로딩 중일 때의 처리 (추후 스켈레톤 UI로 대체 권장)
     if (isLoading) {
-        return <BaseTemplate><div>데이터를 불러오는 중입니다...</div></BaseTemplate>;
+        return <><div>데이터를 불러오는 중입니다...</div></>;
     }
 
     return (
-        <BaseTemplate>
+        <>
             {/* 1. 최상단 Hero 섹션 */}
             <Hero />
 
@@ -70,11 +72,11 @@ export default function HomePage() {
 
             <Vision />
 
-            <Activity activities={projects}/>
+            <Activity activities={activities}/>
 
             <Crew crews={crews} onCrewClick={handleDetailNavigation}/>
 
             <JoinSection />
-        </BaseTemplate>
+        </>
     );
 }

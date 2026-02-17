@@ -11,6 +11,10 @@ export const StyledMenuItem = styled.div`
     border-bottom: solid 1px ${colors.border};
     gap: 1.25rem;
 
+    $:hover {
+        cursor: pointer;
+    }
+
     .infoSection {
         display: flex;
         height: 4.125rem;
@@ -51,8 +55,7 @@ export const StyledMenuItem = styled.div`
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
-
-            white-space: pre-wrap;
+            text-overflow: ellipsis;
         }
     }
 `;

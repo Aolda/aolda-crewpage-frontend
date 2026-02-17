@@ -4,14 +4,15 @@ import React, { useState } from 'react';
 import MainSection from '../MainSection/MainSection';
 import * as S from './Activity.styles';
 import ActivityBlock from '@/components/organisms/ActivityBlock';
-import { Project } from '@/types/project';
+import { type ActivitySummary } from '@/types/project';
 
 interface ActivityProps {
-  activities: Project[]; // 실제 서버 데이터 타입으로 정의 가능
+  activities: ActivitySummary[]; // 실제 서버 데이터 타입으로 정의 가능
 }
 
 const Activity = ({ activities }: ActivityProps) => {
     const [activeTab, setActiveTab] = useState('principles');
+
     return (
         <MainSection
             label="Activity"
@@ -43,12 +44,12 @@ const Activity = ({ activities }: ActivityProps) => {
                     <S.CardList>
                         {activities.map((item, index) => (
                             <ActivityBlock 
-                                key={index}
-                                status={item.status}
-                                date={item.date}
-                                title={item.title}
-                                subtitle={item.subtitle}
-                                description={item.description}
+                                key={`${item.activityNames.en}-${index}`}
+                                status={item.status} // ACTIVITY_STATUS/...
+                                date={item.startedAt}
+                                title={item.activityNames.ko}
+                                subtitle={item.activityNames.en}
+                                description={item.description} 
                             />
                         ))}
                     </S.CardList>

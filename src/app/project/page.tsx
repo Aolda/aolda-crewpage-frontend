@@ -2,21 +2,30 @@
 
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { MOCK_PROJECTS } from './mockData';
+import { getProjectList } from '@/api/project';
+import { ProjectListResponse } from '@/types/project';
 import ProjectPageTemplate from '@/components/templates/project/ProjectPagetemplate';
 
 export default function ProjectsPage() {
     const router = useRouter();
 
-    const handleProjectNavigation = (id: string) => {
+    const [projectList, setProjectList] = useState<ProjectListResponse | null>(null);
+
+    useEffect(() => {
+        getProjectList().then(setProjectList).catch(console.error);
+    }, []);
+
+    if (!projectList) return <div>Loading...</div>;
+
+    const handleProjectNavigation = (id: number) => {
         router.push(`/project/${id}`);
     };
 
     return (
         <ProjectPageTemplate 
-            projectList={MOCK_PROJECTS} 
+            data={projectList} 
             onProjectClick={handleProjectNavigation}
         />
     );

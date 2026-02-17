@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 import { fontSize, colors } from '@/styles/theme';
 import { BadgeVariant } from "./Badge";
-import { ProjectStatus } from "@/types/project";
-import { MemberStatus } from "@/types/crew";
+import { ActivityStatusKey } from "@/types/project";
 
-export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: ProjectStatus | MemberStatus }>`
+
+export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: ActivityStatusKey | boolean }>`
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -20,10 +20,21 @@ export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: Proje
     /* 1. Solid Variant (배경 있음 - [A-2] 활동중, [A-4] 진행중 등) */
     ${({ $variant, $status }) => $variant === 'solid' && css`
         background-color: ${() => {
-            if ($status === 'ACTIVE' || $status === 'ONGOING') return colors.primary500; // Blue
-            if ($status === 'INACTIVE' || $status === 'PLANNING') return colors.gray600; // Gray
-            if ($status === 'DONE') return '#10B981'; // Green (예상)
-            return '#E5E7EB';
+            // 1. 크루 활동 상태 처리 (boolean)
+            if (typeof $status === 'boolean') {
+                return $status ? colors.primary500 : colors.gray600;
+            }
+
+            // 2. 프로젝트 진행 상태 처리 (ActivityStatusKey 키값)
+            switch ($status) {
+                case 'ACTIVITY_STATUS/RECRIUTING': // 모집중
+                case 'ACTIVITY_STATUS/ONBOARDING':  // 진행중
+                    return colors.primary500;     // Blue
+                case 'ACTIVITY_STATUS/COMPLETED':   // 완료
+                    return '#10B981';             // Green
+                default:
+                    return '#E5E7EB';             // 기본 회색
+            }
         }};
         color: white;
     `}

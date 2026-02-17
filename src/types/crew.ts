@@ -1,39 +1,95 @@
-// src/types/crew.ts
-// 1: 회장, 2: 부회장, 3: 총무, 4: 크루원
-export type PositionValue = 1 | 2 | 3 | 4;
-// 숫자를 한글 이름으로 매핑하는 객체
-export const POSITION_LABEL: Record<PositionValue, string> = {
-    1: '회장',
-    2: '부회장',
-    3: '총무',
-    4: '크루원',
-};
+//
+export const CREW_ROLE = {
+    'CREW_ROLE/P': '회장',
+    'CREW_ROLE/VP': '부회장',
+    'CREW_ROLE/EA': '총무',
+    'CREW_ROLE/CREW': '크루원',
+} as const;
 
-export type MemberStatus = 'ACTIVE' | 'INACTIVE'; // 활동중 -> ACTIVE, 비활동 -> INACTIVE
+export const DEPARTMENT_TYPE = {
+    'DEPARTMENT_TYPE/CLEVEL': '임원진',
+    'DEPARTMENT_TYPE/DEV': '개발팀',
+    'DEPARTMENT_TYPE/INFRA': '인프라팀',
+    'DEPARTMENT_TYPE/GA': '운영지원팀',
+    'DEPARTMENT_TYPE/DESIGN': '디자인팀',
+} as const;
 
-// 최종 CrewMember 인터페이스
+export interface CrewLog {
+    generation: number;
+    type: keyof typeof CREW_ROLE;
+    department: keyof typeof DEPARTMENT_TYPE;
+}
+
+// 서버 응답 기반의 크루 데이터 타입
 export interface CrewMember {
-    // 시스템 및 라우팅 필수 키
-    id: string;             // URL 파라미터 및 API 호출용 고유 식별자
-    
-    // 기본 인적 사항
-    name: string;           // 이름
-    profileImage: string;   // 프로필 이미지 경로 (기존의 src)
-    position: PositionValue; // 직책
-    department: string;     // 전공 (소프트웨어, 사이버보안 등)
-    studentNumber: string;  // 학번 (ex. "21")
-    generation: number;     // 기수 (ex. 2)
-    
-    // 상태 및 연락처
-    active: MemberStatus;   // 활동 여부 (활동중 -> ACTIVE, 비활동 -> INACTIVE)
-    emailAddress: string;   // 이메일 주소
-    
-    // 크루북 상세 데이터
-    description: string;    // 한 줄 소개
-    follower: number;       // 팔로워 수
-    following: number;      // 팔로잉 수
-    
-    // 활동 통계 (선택적 속성)
-    activityCount?: number; // 총 활동 개수
-    blogCount?: number;     // 총 블로그 포스팅 개수
+    crewId: number;
+    profile: {
+        url: string;
+    };
+    crewName: string;
+    crewLog: CrewLog[];
+    isActive: boolean;
+    joinedGen: number;
+    univDepartment: string;
+    univJoinedYear: string; // "00" 형태의 문자열
+    totalActivities: number;
+    totalBloggings: number;
+}
+
+// 페이지네이션 정보 타입
+export interface Paginate {
+    from: number;
+    to: number;
+    curr: number;
+}
+
+// 최종 응답 타입
+export interface CrewListResponse {
+    total: number;
+    data: CrewMember[];
+    paginate?: Paginate; // 페이지네이션 적용 시에만 포함
+}
+
+//
+export const ACTIVITY_TYPE_LABEL = {
+    'ACTIVITY_TYPE/PROJECT': '프로젝트',
+    'ACTIVITY_TYPE/STUDY': '스터디',
+} as const;
+
+import { ActivityStatusKey } from './project';
+
+export interface CrewActivity {
+    activityId: number;
+    status: ActivityStatusKey;
+    startedAt: string;
+    activityNames: { ko: string; en: string };
+    activityType: keyof typeof ACTIVITY_TYPE_LABEL;
+    description: string;
+}
+
+export interface CrewBlogging {
+    title: string;
+    postedAt: string;
+    contentPreview: string;
+}
+
+// 크루 상세 응답 데이터 구조
+export interface CrewDetailResponse {
+    crewId: number;
+    profile: { url: string };
+    crewName: string;
+    crewLog: CrewLog[];
+    isActive: boolean;
+    joinedGen: number;
+    univDepartment: string;
+    univJoinedYear: string;
+    crewEmail: string;
+    description: string;
+    activities: CrewActivity[];
+    bloggings: CrewBlogging[];
+    connections: {
+        isFollowing: boolean;
+        followers: number;
+        followings: number;
+    };
 }
