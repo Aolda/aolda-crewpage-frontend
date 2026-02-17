@@ -9,7 +9,7 @@ import { getProjectDetail } from '@/api/project';
 
 import { MOCK_PROJECT_DETAILS } from '@/mocks/projectData';
 
-const USE_MOCK = true;
+const USE_MOCK = false;
 
 export default function ProjectPage() {
     const params = useParams();

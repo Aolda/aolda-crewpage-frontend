@@ -31,17 +31,17 @@ export default function HomePage() {
         const loadMainData = async () => {
             try {
                 setIsLoading(true);
-                // 크루와 프로젝트 데이터를 병렬로 요청
-                // const [activityRes, crewRes] = await Promise.all([
-                //     getAllActivities(),
-                //     getCrewList()
-                // ]);
+                //크루와 프로젝트 데이터를 병렬로 요청
+                const [activityRes, crewRes] = await Promise.all([
+                    getAllActivities(),
+                    getCrewList()
+                ]);
 
-                // setActivities(activityRes.data);
-                // setCrews(crewRes.data);
+                setActivities(activityRes.data);
+                setCrews(crewRes.data);
 
-                setCrews(MOCK_CREW_LIST);
-                setActivities(MOCK_ACTIVITY_RESPONSE.data);
+                // setCrews(MOCK_CREW_LIST);
+                // setActivities(MOCK_ACTIVITY_RESPONSE.data);
             } catch (error) {
                 console.error('Fetching error:', error);
             } finally {

@@ -5,7 +5,7 @@ import { ProjectListResponse, ProjectDetailResponse } from '@/types/project';
  * 프로젝트 전체 정보 조회
  */
 export const getProjectList = async () => {
-    const response = await axiosInstance.get<ProjectListResponse>('/project');
+    const response = await axiosInstance.get<ProjectListResponse>('/team/project');
     return response.data;
 };
 
@@ -14,6 +14,6 @@ export const getProjectList = async () => {
  * @param id 프로젝트 고유 ID (activityId)
  */
 export const getProjectDetail = async (id: string | number) => {
-    const response = await axiosInstance.get<ProjectDetailResponse>(`/project/${id}`);
+    const response = await axiosInstance.get<ProjectDetailResponse>(`/team/project/${id}`);
     return response.data;
 };

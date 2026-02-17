@@ -19,7 +19,7 @@ export default function ProjectsPage() {
         getProjectList().then(setProjectList).catch(console.error);
     }, []);
 
-    // if (!projectList) return <div>Loading...</div>;
+    if (!projectList) return <div>Loading...</div>;
 
     const handleProjectNavigation = (id: number) => {
         router.push(`/project/${id}`);
@@ -27,7 +27,7 @@ export default function ProjectsPage() {
 
     return (
         <ProjectPageTemplate 
-            data={MOCK_PROJECT_RESPONSE} 
+            data={projectList} 
             onProjectClick={handleProjectNavigation}
         />
     );

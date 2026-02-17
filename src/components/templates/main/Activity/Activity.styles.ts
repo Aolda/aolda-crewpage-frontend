@@ -87,6 +87,6 @@ export const CardList = styled.div`
 
     width: max-content;
     /* 왼쪽 -> 오른쪽 무한 애니메이션 적용 */
-    /* 60s는 예시이며, 숫자가 커질수록 더 천천히 움직입니다. */
+    /* 숫자가 커질수록 더 천천히 움직임 */
     animation: ${infiniteScroll} 40s linear infinite;
 `;
