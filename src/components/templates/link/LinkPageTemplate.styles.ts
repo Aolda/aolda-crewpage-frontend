@@ -144,6 +144,6 @@ export const UnderSection = styled.section`
         font-weight: 700;
         line-height: 1.4;
         color: #111827;
-        strong { color: ${colors.primary500}; }
+        span { color: ${colors.primary500}; }
     }
 `;
