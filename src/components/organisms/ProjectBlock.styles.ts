@@ -14,6 +14,7 @@ export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
     justify-content: space-between;
 
     background-color: ${(props) => props.$bgColor};
+    cursor: pointer;
 
     * {
         margin: 0;
