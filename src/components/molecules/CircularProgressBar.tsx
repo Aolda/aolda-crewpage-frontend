@@ -6,7 +6,7 @@ import * as S from './CircularProgressBar.styles';
 const CircularProgressBar: React.FC<{ total: number; current: number; size?: number }> = ({
     total,
     current,
-    size = 110, // 기본 px 값
+    size = 101, // 기본 px 값
 }) => {
     const STROKE_WIDTH = 16;
     const center = size / 2;
