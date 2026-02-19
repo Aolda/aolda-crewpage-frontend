@@ -19,7 +19,6 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
     onDetailClick
 }) => {
     const [searchValue, setSearchValue] = useState("");
-    const [activeSearch, setActiveSearch] = useState("");
     const [filters, setFilters] = useState({
         generation: "",
         role: "",
@@ -43,19 +42,18 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
             // 가장 최근 활동 로그의 역할명을 가져옵니다.
             const currentRoleName = CREW_ROLE[member.crewLog[0]?.type || 'CREW_ROLE/CREW'];
 
-            const matchesSearch = member.crewName.includes(activeSearch);
+            const matchesSearch = member.crewName.toLowerCase().includes(searchValue.toLowerCase());
             const matchesGen = !filters.generation || `${member.joinedGen}기` === filters.generation;
             const matchesRole = !filters.role || currentRoleName === filters.role;
             const matchesDept = !filters.department || member.univDepartment === filters.department;
             
             return matchesSearch && matchesGen && matchesRole && matchesDept;
         }).sort((a, b) => a.crewId - b.crewId); // position 대신 crewId로 정렬
-    }, [crewList, activeSearch, filters]);
+    }, [crewList, searchValue, filters]);
 
     //필터링 초기화
     const resetFilters = () => {
         setFilters({ generation: "", role: "", department: "" });
-        setActiveSearch("");
         setSearchValue("");
     };
 
@@ -66,8 +64,7 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
                     <h1>아올다와 함께 성장하는<br />핵심 인재들</h1>
                     <SearchBox 
                         value={searchValue}
-                        onChange={(e) => setSearchValue(e.target.value)}
-                        onSearch={(query) => setActiveSearch(query)}
+                        onChange={(e) => {setSearchValue(e.target.value)}}
                         placeholder="크루를 검색해 보세요."
                     />
                 </S.HeaderContent>
@@ -76,7 +73,7 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
             <S.ContentContainer>
                 <S.FilterBar>
                     <S.AllButton 
-                        $isActive={!filters.generation && !filters.role && !filters.department && !activeSearch}
+                        $isActive={!filters.generation && !filters.role && !filters.department && !searchValue}
                         onClick={resetFilters}
                     >
                         #전체

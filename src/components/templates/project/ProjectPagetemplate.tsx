@@ -47,16 +47,8 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
     onProjectClick 
 }) => {
     const [searchValue, setSearchValue] = useState("");
-    const [activeSearch, setActiveSearch] = useState("");
     const [selectedStatus, setSelectedStatus] = useState<string>("");
     const [selectedSeasonValue, setSelectedSeasonValue] = useState<string>("");
-
-    // 입력창의 글자를 모두 지우면 즉시 검색 결과를 초기화
-    useEffect(() => {
-        if (searchValue === "") {
-            setActiveSearch("");
-        }
-    }, [searchValue]);
 
     // Select 컴포넌트에 넘겨줄 옵션 배열 (값들만 추출)
     const seasonOptions = useMemo(() => {
@@ -66,12 +58,14 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
 
     //프로젝트 필터링
     const filteredProjects = useMemo(() => {
+        const query = searchValue.trim().toLowerCase();
+
         return data.data.projects.filter((project) => {
             // 검색어 필터링 로직 보완
-            const matchesSearch = activeSearch === "" 
-                ? true  // 검색어가 없으면 무조건 통과
-                : project.activityNames.ko.toLowerCase().includes(activeSearch.toLowerCase()) ||
-                project.activityNames.en.toLowerCase().includes(activeSearch.toLowerCase());
+            const matchesSearch = query === "" 
+            ? true 
+            : project.activityNames.ko.toLowerCase().includes(query) ||
+            project.activityNames.en.toLowerCase().includes(query);
             
             // 상태 필터링
             const matchesStatus = selectedStatus === "" ? true : project.status === selectedStatus;
@@ -85,7 +79,7 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
             
             return matchesSearch && matchesStatus && matchesSeason;
         });
-    }, [data.data.projects, activeSearch, selectedStatus, selectedSeasonValue, data.data.filters.seasons]);
+    }, [data.data.projects, searchValue, selectedStatus, selectedSeasonValue, data.data.filters.seasons]);
 
     const { statistics } = data.data;
 
@@ -101,7 +95,7 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
                     <SearchBox 
                         value={searchValue}
                         onChange={(e) => setSearchValue(e.target.value)}
-                        onSearch={(query) => setActiveSearch(query)}
+                        // onSearch={(query) => setActiveSearch(query)}
                         placeholder="프로젝트를 검색해 보세요."
                     />
                 </section>
