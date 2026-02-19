@@ -60,7 +60,8 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
 
     // Select 컴포넌트에 넘겨줄 옵션 배열 (값들만 추출)
     const seasonOptions = useMemo(() => {
-        return Object.values(data.data.filters.seasons || {}).map(s => s.value);
+        const apiSeasons = Object.values(data.data.filters.seasons || {}).map(s => s.value);
+        return ["전체 기간", ...apiSeasons];
     }, [data.data.filters.seasons]);
 
     //프로젝트 필터링
@@ -74,10 +75,13 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
             
             // 상태 필터링
             const matchesStatus = selectedStatus === "" ? true : project.status === selectedStatus;
+
+            //'전체 기간'이 선택된 경우 무조건 true 반환
+            const isAllPeriod = selectedSeasonValue === "" || selectedSeasonValue === "전체 기간";
             const selectedSeasonKey = Object.values(data.data.filters.seasons || {})
                 .find(s => s.value === selectedSeasonValue)?.key;
 
-            const matchesSeason = !selectedSeasonKey ? true : project.startedAt === selectedSeasonKey;
+            const matchesSeason = isAllPeriod ? true : project.startedAt === selectedSeasonKey;
             
             return matchesSearch && matchesStatus && matchesSeason;
         });
