@@ -111,8 +111,8 @@ export const CardText = styled.div`
         color: #111827;
         word-break: keep-all;
 
-        strong {
-        color: ${colors.primary500};
+        span {
+            color: ${colors.primary500};
         }
     }
     p {

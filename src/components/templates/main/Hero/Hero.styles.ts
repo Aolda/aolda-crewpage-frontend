@@ -52,13 +52,20 @@ export const HeroContent = styled.div`
 
     .team-name {
         font-size: 3.75rem;
-        font-weight: 800;
+        font-weight: 700;
         color: ${colors.primary500};
         
-        span {
+        span:not(.font-cjk) {
             font-size: ${fontSize.h3};
             color: ${colors.black600};
             margin-right: 1rem;
+        }
+
+        .font-cjk {
+            font-family: var(--font-cjk); 
+            font-size: 3.75rem;
+            font-weight: 700;
+            line-height: 1;
         }
     }
 `;

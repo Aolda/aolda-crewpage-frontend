@@ -12,7 +12,7 @@ const Overview = () => {
             title={
                 <>
                     <div style={{ fontSize: '1rem', fontWeight: 'normal', color: '#9CA3AF', marginBottom: '0.75rem' }}>since 2023</div>
-                    아주대 유일무이 <strong>클라우드 개발/운영 소학회</strong>
+                    아주대 유일무이 <span>클라우드 개발/운영 소학회</span>
                 </>
             }
             description={
@@ -71,7 +71,7 @@ const Overview = () => {
                 {/* 하단 카드 영역 */}
                 <S.InfoCard>
                     <S.CardText>
-                        <h3>아올다는<br />목표를 향한 <strong>도전 속 새로운 배움</strong>을 위해<br />나아가고 있습니다</h3>
+                        <h3>아올다는<br />목표를 향한 <span>도전 속 새로운 배움</span>을 위해<br />나아가고 있습니다</h3>
                         <p>
                             아올다는 클라우드 개발과 운영 중 발생하는 문제들을 해결하고,<br />
                             불편한 기능과 환경을 새롭게 개발/개선하는 과정을 통해<br />

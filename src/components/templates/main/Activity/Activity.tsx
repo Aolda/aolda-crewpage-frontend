@@ -20,7 +20,7 @@ const Activity = ({ activities }: ActivityProps) => {
     return (
         <MainSection
             label="Activity"
-            title={<>아올다에서 완성하는<br/><strong>Full-Cycle 클라우드 여정</strong></>}
+            title={<>아올다에서 완성하는<br/><span>Full-Cycle 클라우드 여정</span></>}
             description={<>아올다는 아이디어를 발굴하여, 최신 클라우드 기술로 개발하고,<br />나아가 서비스를 직접 운영하며 발생하는 모든 문제를 해결하는<br />실전 경험을 통해 IT 전문가로 성장하는 가장 확실한 길을 제시합니다.</>}
         >
             <S.ActivityWrapper>
