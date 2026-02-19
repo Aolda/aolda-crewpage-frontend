@@ -6,9 +6,9 @@ import Header from "@/components/organisms/Header";
 import Footer from "@/components/organisms/Footer";
 import "./globals.css";
 
-const notoScript = Noto_Sans_KR({
+const notoKR = Noto_Sans_KR({
     subsets: ['latin'],
-    weight: ['400', '700'],
+    weight: ['400', '500', '700'],
     variable: '--font-noto-sans', 
 });
 
@@ -33,8 +33,14 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="ko" className={`${notoScript.variable}`}>
-            <body className={notoScript.className}>
+        <html lang="ko" className={`${notoKR.variable}`}>
+            <head>
+                <link
+                    rel="stylesheet"
+                    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+                />
+            </head>
+            <body className={notoKR.className}>
                 <StyledComponentsRegistry>
                     <Header />
                     {/* <MSWComponent> */}
