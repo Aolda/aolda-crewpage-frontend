@@ -119,12 +119,11 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
 
                 <S.FilterBar>
                     <S.LeftButtonGroup>
-                        {/* 크루 페이지와 동일한 '#전체' 버튼 로직 */}
                         <S.FilterButton 
                             $isActive={selectedStatus === ""}
                             onClick={() => setSelectedStatus("")}
                         >
-                            #전체
+                            전체
                         </S.FilterButton>
 
                         {/* 나머지 상태 버튼들 */}
