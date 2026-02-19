@@ -13,7 +13,7 @@ interface ActivityProps {
 const Activity = ({ activities }: ActivityProps) => {
     // 무한 루프를 위해 리스트 복제
     // 활동 데이터가 적을 경우를 대비 2번 이상 복제
-    const duplicatedActivities = [...activities, ...activities];
+    const duplicatedActivities = [...activities, ...activities, ...activities];
 
     return (
         <MainSection
@@ -37,7 +37,7 @@ const Activity = ({ activities }: ActivityProps) => {
                 </S.TabContainer>
                 {/* 하단 수평 스크롤 리스트 */}
                 <S.HorizontalScrollArea>
-                    <S.CardList>
+                    <S.CardList $count={activities.length}>
                         {duplicatedActivities.map((item, index) => (
                             <ActivityBlock 
                                 key={`${item.activityNames.en}-${index}`}

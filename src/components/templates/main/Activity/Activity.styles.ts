@@ -50,8 +50,8 @@ export const Tab = styled.div`
 `;
 
 const infiniteScroll = keyframes`
-    0% { transform: translateX(-50%); } /* 복제된 리스트의 중간 지점에서 시작 */
-    100% { transform: translateX(0); }  /* 오른쪽 끝(처음 위치)으로 이동 */
+    0% { transform: translateX(-50%); }   /* 이미 화면이 카드로 꽉 찬 상태에서 시작 */
+    100% { transform: translateX(-25%); } /* 한 세트만큼 오른쪽으로 이동 후 리셋 */
 `;
 
 /* 수평 스크롤 리스트 영역 */
@@ -78,12 +78,14 @@ export const HorizontalScrollArea = styled.div`
     scrollbar-width: none;
 `;
 
-export const CardList = styled.div`
+export const CardList = styled.div<{ $count: number }>`
     display: flex;
     gap: 1.5rem;
 
     width: max-content;
     /* 왼쪽 -> 오른쪽 무한 애니메이션 적용 */
-    /* 숫자가 커질수록 더 천천히 움직임 */
-    animation: ${infiniteScroll} 40s linear infinite;
+    /* 숫자가 커질수록 더 천천히 움직임, 활동 개수에 맞게 스크롤 되는 속도 조정 */
+    animation: ${infiniteScroll} ${props => props.$count * 20}s linear infinite;
+
+    padding-right: 1.5rem;
 `;
