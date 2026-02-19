@@ -15,26 +15,23 @@ export const TabContainer = styled.div`
     margin-bottom: 2.25rem;
 `;
 
-export const TabButton = styled.button<{ $isActive: boolean }>`
+export const Tab = styled.div`
     display: flex;
     width: 36.75rem;
     height: 7.5rem;
 
     padding: 1.5rem 2.25rem;
     background: #FFFFFF;
-    border: 0.125rem solid ${(props) => (props.$isActive ? colors.primary500  : '#F3F4F6')};
+    border: 2px solid #E2E2E2;
     border-radius: 1rem;
 
     justify-content: space-between;
     text-align: left;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    box-shadow: ${(props) => (props.$isActive ? '0 0.5rem 1.5rem rgba(59, 130, 246, 0.1)' : 'none')};
 
     h4 {
         font-size: ${fontSize.body1};
         font-weight: 700;
-        color: ${(props) => (props.$isActive ? colors.primary500 : '#111827')};
+        color: #111827;
         margin: 0;
     }
 
