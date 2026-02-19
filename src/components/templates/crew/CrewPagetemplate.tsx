@@ -63,7 +63,7 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
         <>
             <S.HeaderBackground>
                 <S.HeaderContent>
-                    <h1>아올다와 함께 성장하는<br /><strong>핵심 인재들</strong></h1>
+                    <h1>아올다와 함께 성장하는<br />핵심 인재들</h1>
                     <SearchBox 
                         value={searchValue}
                         onChange={(e) => setSearchValue(e.target.value)}

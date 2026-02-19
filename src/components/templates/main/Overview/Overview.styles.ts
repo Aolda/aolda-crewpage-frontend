@@ -104,16 +104,16 @@ export const CardText = styled.div`
     display: flex;
     flex-direction: column;
     gap: 3rem;
+    
+    span {
+            color: ${colors.primary500};
+    }
     h3 {
         font-size: ${fontSize.h2};
         font-weight: 700;
         line-height: 1.4;
         color: #111827;
         word-break: keep-all;
-
-        span {
-            color: ${colors.primary500};
-        }
     }
     p {
         font-size: ${fontSize.base};

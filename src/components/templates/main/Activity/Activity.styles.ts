@@ -43,8 +43,8 @@ export const TabButton = styled.button<{ $isActive: boolean }>`
         font-size: ${fontSize.smaller};
         color: #6B7280;
         line-height: 1.5;
-        max-width: 18.75rem;
         text-align: right;
+        font-weight: 400;
         span {
             font-weight: 700;
             color: black;
