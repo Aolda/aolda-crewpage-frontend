@@ -128,7 +128,7 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
                                     totalBloggings: 0      // 기본값 설정
                                 }}
                                 isCrewpage={false} // 간략 모드로 렌더링
-                                onDetailClick={(id) => console.log(id)}
+                                // onDetailClick={() => {}}
                             />
                         ))}
                     </S.CrewGrid>
