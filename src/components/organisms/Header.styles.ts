@@ -5,7 +5,7 @@ import { fontSize, colors } from "@/styles/theme";
 
 export const StyledHeader = styled.header`
     display: flex;
-    width: 85rem;
+    width: calc(100% - 20rem);
     height: 4.5rem;
     justify-content: space-between;
     align-items: center;
@@ -17,7 +17,8 @@ export const StyledHeader = styled.header`
     
     position: absolute;
     top: 2.5rem;
-    left: 10.9375rem;
+    left: 50%;
+    transform: translate(-50%);
     z-index: 10;
 
     box-sizing: border-box;
