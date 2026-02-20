@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { CrewMember, CREW_ROLE } from '@/types/crew';
+import { CrewMember, DEPARTMENT_TYPE } from '@/types/crew';
 import * as S from './CrewPageTemplate.styles';
 import CrewBlock from '@/components/organisms/CrewBlock';
 import SearchBox from '@/components/molecules/SearchBox';
@@ -30,7 +30,7 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
         Array.from(new Set(crewList.map(c => `${c.joinedGen}기`))).sort(), 
         [crewList]
     );
-    const roleOptions = Object.values(CREW_ROLE);
+    const roleOptions = Object.values(DEPARTMENT_TYPE);
     const deptOptions = useMemo(() => 
         Array.from(new Set(crewList.map(c => c.univDepartment))).sort(), 
         [crewList]
@@ -40,7 +40,7 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
     const filteredCrew = useMemo(() => {
         return crewList.filter((member) => {
             // 가장 최근 활동 로그의 역할명을 가져옵니다.
-            const currentRoleName = CREW_ROLE[member.crewLog[0]?.type || 'CREW_ROLE/CREW'];
+            const currentRoleName = DEPARTMENT_TYPE[member.crewLog[0]?.department];
 
             const matchesSearch = member.crewName.toLowerCase().includes(searchValue.toLowerCase());
             const matchesGen = !filters.generation || `${member.joinedGen}기` === filters.generation;
