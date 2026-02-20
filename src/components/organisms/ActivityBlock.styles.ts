@@ -50,6 +50,7 @@ export const StyledActivityBlock = styled.div`
 
         span {
             font-size: ${fontSize.smaller};
+            font-family: var(--font-cjk);
         }
 
         * {
@@ -70,6 +71,7 @@ export const StyledActivityBlock = styled.div`
             height: 3.375rem;
             white-space: pre-wrap;
             font-size: ${fontSize.smaller};
+            font-family: var(--font-cjk);
             overflow: hidden;
             text-overflow: ellipsis;
             text-align: justify;

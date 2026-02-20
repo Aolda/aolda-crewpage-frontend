@@ -10,31 +10,31 @@ import { getCrewDetail } from '@/api/crew';
 import { MOCK_CREW_DETAIL } from '@/mocks/crewData';
 
 export default function CrewActivityPage() {
-    // const { id } = useParams();
-    // const [crew, setCrew] = useState<CrewDetailResponse | null>(null);
-    // const [isLoading, setIsLoading] = useState(true);
+    const { id } = useParams();
+    const [crew, setCrew] = useState<CrewDetailResponse | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
-    // useEffect(() => {
-    //     const fetchCrewActivityData = async () => {
-    //         try {
-    //             setIsLoading(true);
-    //             // 서버에서 크루 상세 정보를 직접 패칭 (활동 리스트 포함)
-    //             const data = await getCrewDetail(id as string);
-    //             setCrew(data);
-    //         } catch (error) {
-    //             console.error('데이터 로드 실패:', error);
-    //         } finally {
-    //             setIsLoading(false);
-    //         }
-    //     };
+    useEffect(() => {
+        const fetchCrewActivityData = async () => {
+            try {
+                setIsLoading(true);
+                // 서버에서 크루 상세 정보를 직접 패칭 (활동 리스트 포함)
+                const data = await getCrewDetail(id as string);
+                setCrew(data);
+            } catch (error) {
+                console.error('데이터 로드 실패:', error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
 
-    //     if (id) fetchCrewActivityData();
-    // }, [id]);
+        if (id) fetchCrewActivityData();
+    }, [id]);
 
-    // if (isLoading) return <div>로딩 중...</div>;
-    // if (!crew) return <div>크루 정보를 찾을 수 없습니다.</div>;
+    if (isLoading) return <div>로딩 중...</div>;
+    if (!crew) return <div>크루 정보를 찾을 수 없습니다.</div>;
 
-    const [crew, setActivities] = useState(MOCK_CREW_DETAIL);
+    // const [crew, setActivities] = useState(MOCK_CREW_DETAIL);
 
     return (
         <CrewDetailPageTemplate member={crew as any} activeTab="활동">

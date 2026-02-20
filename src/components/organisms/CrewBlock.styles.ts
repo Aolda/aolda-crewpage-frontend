@@ -19,6 +19,13 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
         border-radius: 1.25rem;
         gap: 2.25rem;
 
+        transition: transform 0.2s;
+
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
         .textSection {
             display: flex;
             flex-direction: column;

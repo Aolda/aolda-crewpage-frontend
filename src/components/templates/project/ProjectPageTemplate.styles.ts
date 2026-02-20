@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { fontSize } from '@/styles/theme';
+import { fontSize, colors } from '@/styles/theme';
 import { pxToRem } from '@/styles/utils';
 
 /* 헤더 섹션: 복합 그라데이션과 마스코트 배치 */
@@ -127,8 +127,8 @@ export const FilterButton = styled.button<{ $isActive: boolean }>`
     font-weight: 700;
     line-height: 1.5;
     
-    /* 3. 상태별 색상 (사용자님이 요청하신 크루 페이지 매커니즘) */
-    background-color: ${props => props.$isActive ? '#111827' : '#F3F4F6'};
+    /* 3. 상태별 색상 */
+    background-color: ${props => props.$isActive ? colors.primary500 : 'none'};
     color: ${props => props.$isActive ? '#FFFFFF' : '#6B7280'};
     
     /* 4. 인터랙션 */
@@ -137,7 +137,7 @@ export const FilterButton = styled.button<{ $isActive: boolean }>`
 
     &:hover {
         /* 활성화 상태면 유지, 비활성화면 살짝 더 진한 회색으로 */
-        background-color: ${props => props.$isActive ? '#111827' : '#E5E7EB'};
+        background-color: ${props => props.$isActive ? colors.primary500 : '#E5E7EB'};
     }
 
     /* 버튼 사이의 간격을 위해 (부모 LeftButtonGroup에서 gap을 주지만 개별 설정도 가능) */

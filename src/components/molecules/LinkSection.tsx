@@ -17,7 +17,7 @@ interface LinkSectionProps {
     src: string;
     index: number;
     title: string;
-    description: string;
+    description: React.ReactNode;
     to: string;
 }
 

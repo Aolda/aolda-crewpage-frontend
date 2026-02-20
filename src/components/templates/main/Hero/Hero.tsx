@@ -10,7 +10,8 @@ const Hero = () => {
             <S.HeroContent>
                 <h1>편리하고 안정적인 환경을 만들기 위해<br/>다양하고 깊게 배워나갑니다</h1>
                 <div className="team-name">
-                    <span>Team</span>Aolda
+                    <span>Team</span>
+                    <span className="font-cjk">Aolda</span>
                 </div>
             </S.HeroContent>
         </S.HeroWrapper>

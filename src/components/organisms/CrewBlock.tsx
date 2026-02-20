@@ -6,6 +6,7 @@ import { StyledCrewBlock } from "./CrewBlock.styles";
 import Badge from "../atoms/Badge";
 import { CrewMember, CREW_ROLE } from "@/types/crew"; 
 import { colors } from "@/styles/theme";
+import { useRouter } from "next/navigation";
 /*
 * CrewBook page 크루원의 정보를 보여주는 block
 * @params {Member} member 크루 정보를 담은 객체
@@ -16,7 +17,7 @@ import { colors } from "@/styles/theme";
 interface CrewBlockProps {
     member: CrewMember;
     isCrewpage: boolean;
-    onDetailClick: (id: number) => void;
+    onDetailClick?: (id: number) => void;
 }
 
 const CrewBlock: React.FC<CrewBlockProps> = ({
@@ -26,10 +27,20 @@ const CrewBlock: React.FC<CrewBlockProps> = ({
 }) => {
     const currentRole = member.crewLog[0]?.type || 'CREW_ROLE/CREW';
 
+    const router = useRouter();
+
+    const handleClick = () => {
+        if(onDetailClick) {
+            onDetailClick(member.crewId);
+        }else {
+            router.push(`/crew/${member.crewId}/activity`);
+        }
+    }
+
     return (
         <StyledCrewBlock 
             $isCrewpage={isCrewpage}
-            onClick={() => onDetailClick(member.crewId)}
+            onClick={handleClick}
             style={{ cursor: 'pointer' }}
         >
             <section className="imageSection">

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { fontSize } from "@/styles/theme";
+import { colors, fontSize } from "@/styles/theme";
 
 export const StyledLinkSection = styled.section`
     .imgSection {
@@ -25,6 +25,10 @@ export const StyledLinkSection = styled.section`
             line-height: 1.5;
 
             white-space: pre-wrap;
+
+            span {
+                color: ${colors.primary500};
+            }
         }
     }
 

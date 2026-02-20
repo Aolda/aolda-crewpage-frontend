@@ -14,8 +14,9 @@ export const StyledFooter = styled.footer`
     bottom: 0;
 
     padding: 3.75rem 7.5rem;
-
     gap: 0.75rem;
+
+    font-family: var(--font-cjk);
 
     .logoSection {
         display: flex;
@@ -37,7 +38,7 @@ export const StyledFooter = styled.footer`
     .addressSection {
         display: flex;
         flex-direction: column;
-        width: 18.84375rem;
+        width: 20rem;
         height: 2.5625rem;
 
         color: white;
