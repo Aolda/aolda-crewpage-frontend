@@ -22,7 +22,7 @@ const containerVariants = {
     visible: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.1, // 자식 요소들이 0.1초 간격으로 나타남
+            staggerChildren: 0.05,
         },
     },
 };
@@ -30,13 +30,13 @@ const containerVariants = {
 const itemVariants: Variants = {
     hidden: { 
         opacity: 0, 
-        y: "1.25rem" // 20px -> 1.25rem (문자열로 명시)
+        y: "0.5rem"
     },
     visible: { 
         opacity: 1, 
         y: "0rem", 
         transition: { 
-            duration: 0.5, 
+            duration: 0.4, 
             ease: "easeOut" 
         } 
     },
@@ -150,13 +150,12 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
                         {filteredProjects.map((project) => (
                             <motion.div
                                 key={project.activityId}
-                                layout // 카드가 이동할 때 부드럽게 슬라이딩됨
+                                // layout // 카드가 이동할 때 부드럽게 슬라이딩됨
                                 onClick={() => onProjectClick(project.activityId)}
                                 variants={itemVariants}
                                 initial="hidden"
                                 animate="visible"
-                                exit={{ opacity: 0, scale: 0.9 }} // 필터링 시 사라지는 효과
-                                transition={{ duration: 0.3 }}
+                                exit={{ opacity: 0, transition: { duration: 0.2 } }}
                             >
                                 <ProjectBlock key={project.activityId} project={project} />
                             </motion.div>
