@@ -5,7 +5,8 @@ import Image from 'next/image';
 import * as S from './ProjectDetailPageTemplate.styles';
 import BreadCrumb from '@/components/molecules/BreadCrump';
 import SolutionCard from '@/components/molecules/SolutionCard';
-import CrewBlock from '@/components/organisms/CrewBlock'; // 추가
+import CrewBlock from '@/components/organisms/CrewBlock';
+import Link from 'next/link';
 import { CrewMember } from '@/types/crew';
 import { ProjectDetailResponse, PROJECT_TYPE } from '@/types/project';
 
@@ -87,7 +88,7 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
                     </S.SectionTitle>
                     <S.BlogGrid>
                         {project.contents.mainBloggings?.slice(0, 6).map((blog, index) => (
-                            <S.BlogCard key={index}>
+                            <S.BlogCard href={`/blog/${index}`} key={index} as={Link}>
                                 {/* 1. 블로그 제목 */}
                                 <h3>{blog.title}</h3>
                                 
