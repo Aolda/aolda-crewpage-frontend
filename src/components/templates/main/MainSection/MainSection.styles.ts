@@ -79,25 +79,9 @@ export const Description = styled.p`
     margin: 0 auto;
     word-break: keep-all;
 
-    /* PC 전용 줄바꿈 클래스 */
-    br.pc-only {
-        display: block;
-    }
-
-    /* 모바일 전용 줄바꿈 클래스 */
-    br.mobile-only {
-        display: none;
-    }
-
     ${theme.media.mobile} {
         font-size: ${fontSize.smaller};
         line-height: 1.5;
-        br.pc-only {
-            display: none;
-        }
-        br.mobile-only {
-            display: block;
-        }
     }
 `;
 
