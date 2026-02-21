@@ -1,9 +1,10 @@
+// /src/components/molecules/OverviewCard.tsx
 'use client';
 
 import React from "react";
 import Image from "next/image";
 import CircularProgressBar from "./CircularProgressBar";
-import { StyledOverviewCard, ColorBox } from "./OverViewCard.styles";
+import { StyledOverviewCard, ColorBox } from "./OverviewCard.styles";
 
 /*
 * 주요활동 페이지의 개요 카드
