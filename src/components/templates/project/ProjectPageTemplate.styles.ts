@@ -15,7 +15,7 @@ export const HeaderSection = styled.header`
     justify-content: center;
     align-items: center;
 
-    padding-top: 12rem;
+    padding-top: 8rem;
 
     ${theme.media.mobile} {
         height: 30rem;
