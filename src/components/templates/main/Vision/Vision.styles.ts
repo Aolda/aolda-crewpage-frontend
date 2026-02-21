@@ -55,10 +55,5 @@ export const CardGrid = styled.div`
         grid-template-columns: 1fr;
         justify-items: center; 
         gap: 2rem;
-        
-        & > div {
-            width: 100%;
-            max-width: 22.5rem; // 카드 최대 너비를 설정해 중앙 정렬 강조
-        }
     }
 `;
