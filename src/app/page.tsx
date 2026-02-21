@@ -51,7 +51,8 @@ export default function HomePage() {
                     handleError(error.response.data.code);
                 } else {
                     // 알 수 없는 네트워크 오류 등 기본 처리
-                    alert("데이터를 불러오는 중 문제가 발생했습니다.");
+                    console.error('Unknown Error:', error);
+                    alert("서비스 연결이 원활하지 않습니다. 잠시 후 다시 시도해 주세요.");
                 }
             } finally {
                 setIsLoading(false);
