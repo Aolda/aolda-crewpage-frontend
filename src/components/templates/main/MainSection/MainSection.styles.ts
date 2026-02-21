@@ -1,5 +1,6 @@
+// /src/components/templates/main/MainSection/MainSection.styles.ts
 import styled from 'styled-components';
-import { fontSize, colors } from '@/styles/theme';
+import { fontSize, colors, theme } from '@/styles/theme';
 
 export const SectionWrapper = styled.section<{ $bgColor?: string }>`
     display: flex;
@@ -15,6 +16,13 @@ export const SectionWrapper = styled.section<{ $bgColor?: string }>`
     align-items: center;
     text-align: center;
 
+    /* 750px 반응형 대응 */
+    ${theme.media.mobile} {
+        width: 100%; // 모바일에서는 전체 너비 사용
+        padding-top: 5rem; // 상단 여백 축소
+        padding-left: 1.25rem; // 좌우 여백을 시안에 맞춰 좁게 설정
+        padding-right: 1.25rem;
+    }
 `;
 
 export const Header = styled.div`
@@ -23,6 +31,10 @@ export const Header = styled.div`
     align-items: center;
     margin-bottom: 3.75rem;
     padding: 0 1.25rem;
+
+    ${theme.media.mobile} {
+        margin-bottom: 2rem;
+    }
 `;
 
 export const GrayBar = styled.div`
@@ -52,6 +64,11 @@ export const Title = styled.h2`
     span {
         color: ${colors.primary500};
     }
+
+    ${theme.media.mobile} {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
 `;
 
 export const Description = styled.p`
@@ -61,6 +78,11 @@ export const Description = styled.p`
     max-width: 43.75rem;
     margin: 0 auto;
     word-break: keep-all;
+
+    ${theme.media.mobile} {
+        font-size: ${fontSize.smaller};
+        line-height: 1.5;
+    }
 `;
 
 export const Content = styled.div`

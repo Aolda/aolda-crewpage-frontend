@@ -1,5 +1,6 @@
+// /src/components/templates/main/Vision/Vision.style.ts
 import styled from 'styled-components';
-import { fontSize, colors } from '@/styles/theme';
+import { fontSize, colors, theme } from '@/styles/theme';
 
 export const VisionWrapper = styled.div`
     position: relative;
@@ -8,6 +9,11 @@ export const VisionWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    ${theme.media.mobile} {
+        height: auto;
+        padding: 2rem 0;
+    }
 `;
 
 export const GlareEffect = styled.div`
@@ -26,9 +32,14 @@ export const GlareEffect = styled.div`
     );
 
     filter: blur(7rem);
-    
     z-index: 0;
     pointer-events: none;
+
+    ${theme.media.mobile} {
+        width: 18rem;
+        height: 18rem;
+        filter: blur(5rem);
+    }
 `;
 
 export const CardGrid = styled.div`
@@ -39,4 +50,10 @@ export const CardGrid = styled.div`
     max-width: 75rem;
     margin: 0 auto;
     z-index: 1;
+
+    ${theme.media.mobile} {
+        grid-template-columns: 1fr;
+        justify-items: center; 
+        gap: 2rem;
+    }
 `;

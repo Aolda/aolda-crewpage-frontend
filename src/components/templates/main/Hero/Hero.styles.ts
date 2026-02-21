@@ -1,5 +1,6 @@
+// /src/components/templates/main/Hero/Hero.styles.ts
 import styled from 'styled-components';
-import { fontSize, colors } from '@/styles/theme';
+import { fontSize, colors, theme } from '@/styles/theme';
 
 export const HeroWrapper = styled.section`
     width: 100%;
@@ -30,10 +31,18 @@ export const HeroWrapper = styled.section`
         
         transform: translate(-20rem, -12rem) scale(1.8); 
 
-        /* 2. 배경 투명도 유지 (글씨에는 영향 없음) */
+        /* 배경 투명도 유지*/
         opacity: 0.15; 
-        
         z-index: 0;
+
+        /* 모바일 배경 이미지 구도 조정 */
+        ${theme.media.mobile} {
+            transform: translate(-5rem, -3rem) scale(1.8);
+        }
+    }
+    
+    ${theme.media.mobile} {
+        height: 25rem;
     }
 `;
 
@@ -48,17 +57,31 @@ export const HeroContent = styled.div`
         color: ${colors.black600};
         margin-bottom: 2rem;
         word-break: keep-all;
+
+        ${theme.media.mobile} {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
     }
 
     .team-name {
         font-size: 3.75rem;
         font-weight: 700;
         color: ${colors.primary500};
+
+        ${theme.media.mobile} {
+            font-size: 2.5rem;
+        }
         
         span:not(.font-cjk) {
             font-size: ${fontSize.h3};
             color: ${colors.black600};
             margin-right: 1rem;
+
+            ${theme.media.mobile} {
+                font-size: 1.5rem;
+                margin-right: 0.5rem;
+            }
         }
 
         .font-cjk {
@@ -66,6 +89,10 @@ export const HeroContent = styled.div`
             font-size: 3.75rem;
             font-weight: 700;
             line-height: 1;
+
+            ${theme.media.mobile} {
+                font-size: 2.5rem;
+            }
         }
     }
 `;

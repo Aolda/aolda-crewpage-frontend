@@ -1,3 +1,4 @@
+// /src/components/templates/main/MainSection/MainSection.tsx
 'use client';
 
 import React from 'react';

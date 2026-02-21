@@ -1,3 +1,4 @@
+// src/components/templates/main/Vision/Vision.tsx
 'use client';
 
 import React from 'react';

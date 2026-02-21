@@ -1,5 +1,6 @@
+// /src/components/molecules/VisionCard.styles.ts
 import styled from "styled-components"
-import { colors, fontSize } from "@/styles/theme";
+import { colors, fontSize, theme } from "@/styles/theme";
 
 export const StyledVisionCard = styled.div `
     display: flex;
@@ -15,11 +16,26 @@ export const StyledVisionCard = styled.div `
 
     padding: 2rem 2.25rem;
     gap: 2.25rem;
-    // z-index: 1;
+    
+    ${theme.media.mobile} {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1.25rem;
+        width: 30rem;
+        height: 7rem;
+        margin: 0 auto;
+    }
 
     img {
         width: 7.5rem;
         height: 7.5rem;
+
+        ${theme.media.mobile} {
+            width: 4rem;
+            height: 4rem;
+        }
     }
 `;
 
@@ -29,11 +45,19 @@ export const TextContainer = styled.section`
     width: 19.5rem;
     gap: 0.75rem;
 
+    ${theme.media.mobile} {
+        text-align: left;
+        align-items: left;
+    }
 
     h1 {
         font-size: ${fontSize.h2};
         font-weight: 700;
         color: ${colors.primary500};
+
+        ${theme.media.mobile} {
+            font-size: 1.25rem;
+        }
     }
 
     p {
@@ -41,5 +65,9 @@ export const TextContainer = styled.section`
         font-size: ${fontSize.base};
         white-space: pre-wrap;
         word-break: keep-all;
+
+        ${theme.media.mobile} {
+            font-size: ${fontSize.smaller};
+        }
     }
 `;

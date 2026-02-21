@@ -1,5 +1,6 @@
+// /src/components/templates/link/LinkPageTempalte.styles.ts
 import styled from "styled-components";
-import { fontSize, colors } from "@/styles/theme";
+import { fontSize, colors, theme } from "@/styles/theme";
 
 export const PageWrapper = styled.div`
     position: relative;
@@ -15,6 +16,11 @@ export const Ellipse = styled.div`
     z-index: 0;
     pointer-events: none;
 
+    ${theme.media.mobile} {
+        opacity: 0.1; 
+        filter: blur(50px);
+    }
+
     &.ellipse1 {
         top: 37.8125rem;
         left: -13.625rem;
@@ -22,6 +28,13 @@ export const Ellipse = styled.div`
         height: 49.625rem;
         background: rgba(26, 142, 229, 0.1);
         filter: blur(100px);
+
+        ${theme.media.mobile} {
+            width: 20rem;
+            height: 20rem;
+            top: 25rem;
+            left: -8rem;
+        }
     }
 
     &.ellipse2 {
@@ -31,6 +44,13 @@ export const Ellipse = styled.div`
         height: 52.4375rem;
         background: rgba(0, 146, 255, 0.2);
         filter: blur(80px);
+
+        ${theme.media.mobile} {
+            width: 22rem;
+            height: 22rem;
+            top: 5rem;
+            left: -6rem;
+        }
     }
 
     &.ellipse3 {
@@ -44,6 +64,14 @@ export const Ellipse = styled.div`
         filter: blur(1.228125rem);
         backdrop-filter: blur(4.159375rem);
         transform: matrix(0, 1, 1, 0, 0, 0);
+
+        ${theme.media.mobile} {
+            width: 35rem;
+            height: 35rem;
+            top: 50rem;
+            right: -10rem;
+            left: auto;
+        }
     }
 
     &.ellipse4 {
@@ -57,6 +85,14 @@ export const Ellipse = styled.div`
         filter: blur(1.228125rem);
         backdrop-filter: blur(4.159375rem);
         transform: matrix(-1, 0, 0, 1, 0, 0);
+
+        ${theme.media.mobile} {
+            width: 28rem;
+            height: 28rem;
+            top: -10rem;
+            right: -5rem;
+            left: auto;
+        }
     }
 
     &.ellipse5 {
@@ -69,6 +105,13 @@ export const Ellipse = styled.div`
         filter: blur(1.228125rem);
         backdrop-filter: blur(4.159375rem);
         transform: matrix(-0.57, 0.82, 0.82, 0.57, 0, 0);
+
+        ${theme.media.mobile} {
+            width: 40rem;
+            height: 40rem;
+            left: -15rem;
+            top: 60rem;
+        }
     }
 
     &.ellipse6 {
@@ -81,6 +124,15 @@ export const Ellipse = styled.div`
         opacity: 0.59;
         filter: blur(1.9375rem);
         transform: matrix(-1, 0, 0, 1, 0, 0);
+
+        ${theme.media.mobile} {
+            width: 12rem;
+            height: 12rem;
+            top: 2rem;
+            right: 10%;
+            left: auto;
+            opacity: 0.3;
+        }
     }
 `;
 
@@ -96,6 +148,12 @@ export const PageHeader = styled.div`
         line-height: 1.4;
         color: #111827;
         strong { color: ${colors.primary500}; }
+    }
+
+    ${theme.media.mobile} {
+        padding-top: 8rem;
+
+        h2 { font-size: 1.5rem; }
     }
 `;
 
@@ -114,6 +172,12 @@ export const LinkWrapper = styled.main`
     paddinf-left: 7.5rem;
     paddinf-right: 7.5rem;
     margin: 0 auto;
+
+    ${theme.media.mobile} {
+        width: 100%;
+        padding: 5rem 1.25rem 0;
+        gap: 4rem;
+    }
 `;
 
 export const UnderSection = styled.section`
@@ -121,20 +185,25 @@ export const UnderSection = styled.section`
     z-index: 1;
     display: flex;
     width: 90rem;
-    height: 53.875rem;
+    height: auto;
 
     justify-content: center;
     align-items: center;
     flex-direction: column;
 
     margin: 0 auto;
-    padding-top: 12.5rem;
-    paddinf-left: 7.5rem;
-    paddinf-right: 7.5rem;
+    padding: 12.5rem 7.5rem 0;
 
-    img {
-        width: 65.81625rem;
-        height: 31.86875rem;
+    ${theme.media.mobile} {
+        width: 100%;
+        padding: 6rem 1.25rem 0;
+    }
+
+    .img-container {
+        width: 65.8rem;
+        ${theme.media.mobile} {
+            width: 100%;
+        }
     }
 
     h2 {
@@ -145,5 +214,10 @@ export const UnderSection = styled.section`
         line-height: 1.4;
         color: #111827;
         span { color: ${colors.primary500}; }
+
+        ${theme.media.mobile} {
+            font-size: 1.25rem;
+            margin-top: 2rem;
+        }
     }
 `;

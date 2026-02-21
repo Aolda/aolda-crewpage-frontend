@@ -1,5 +1,6 @@
+// /src/components/organisms/CrewBlock.style.ts
 import styled, {css} from "styled-components";
-import { fontSize, colors } from "@/styles/theme";
+import { fontSize, colors, theme } from "@/styles/theme";
 
 interface CrewBlockProps {
     $isCrewpage: boolean;
@@ -26,6 +27,13 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
+        ${theme.media.mobile} {
+            width: 10.5rem;
+            height: 13.5rem;
+            padding: 1.25rem;
+            gap: 1.25rem;
+        }
+
         .textSection {
             display: flex;
             flex-direction: column;
@@ -33,14 +41,22 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             align-items: center;
             gap: 0.75rem;
 
+            ${theme.media.mobile} {
+                gap: 0.4rem;
+            }
+
             .nameInfo {
                 h2 {
                     font-size: ${fontSize.body1};
                     font-weight: bold;
+
+                    ${theme.media.mobile} { font-size: ${fontSize.base}; }
                 }
 
                 span {
                     font-size: ${fontSize.base};
+
+                    ${theme.media.mobile} { font-size: ${fontSize.smaller}; }
                 }
             }
 
@@ -48,6 +64,8 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
                 font-size: ${fontSize.base};
                 font-weight: bold;
                 color: ${colors.gray600};
+
+                ${theme.media.mobile} { font-size: ${fontSize.smaller}; }
             }
         }
 

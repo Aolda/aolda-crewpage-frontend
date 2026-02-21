@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { pxToRem } from "@/styles/utils";
-import { colors, fontSize } from "@/styles/theme";
+import { colors, fontSize, theme } from "@/styles/theme";
 
 export const StyledFooter = styled.footer`
     display: flex;
@@ -18,6 +18,12 @@ export const StyledFooter = styled.footer`
 
     font-family: var(--font-cjk);
 
+    ${theme.media.mobile} {
+        height: auto;
+        padding: 2.5rem 1.25rem;
+        gap: 1.25rem;
+    }
+
     .logoSection {
         display: flex;
         flex-direction: column;
@@ -27,11 +33,21 @@ export const StyledFooter = styled.footer`
 
         gap: 0.25rem;
 
+        ${theme.media.mobile} {
+            width: 100%;
+            height: auto;
+        }
+
         .description {
             padding-left: 2.5rem;
             color: ${colors.primary500};
             font-size: ${fontSize.smaller};
             font-weight: 500;
+
+            ${theme.media.mobile} {
+                padding-left: 0;
+                margin-top: 0.25rem;
+            }
         }
     }
 
@@ -43,6 +59,13 @@ export const StyledFooter = styled.footer`
 
         color: white;
         padding-left: 2.5rem;
+
+        ${theme.media.mobile} {
+            width: 100%;
+            height: auto;
+            padding-left: 0;
+            gap: 0.5rem;
+        }
 
         .address {
             font-size: ${fontSize.smaller};
@@ -56,8 +79,12 @@ export const StyledFooter = styled.footer`
             font-size: ${fontSize.smaller};
             font-weight: 300;
 
+            ${theme.media.mobile} {
+                flex-wrap: wrap;
+            }
+
             .divider {
-                width: 4px;
+                width: 6px;
                 height: 0px;
                 border-width: 0.5px;
                 transform: rotate(-90deg);

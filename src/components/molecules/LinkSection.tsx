@@ -1,3 +1,4 @@
+// /src/components/molecules/LinkSection.tsx
 'use client';
 
 import React, {type CSSProperties} from "react";
@@ -28,46 +29,26 @@ const LinkSection: React.FC<LinkSectionProps> = ({
 	description,
 	to
 }) => {
-	let flexDirection = "row";
-	let align="flex-start";
-	let textalign="left";
-	
-	if((index+1) % 2 == 1) {
-		flexDirection="row";
-		align="flex-start";
-		textalign="left";
-	}else {
-		flexDirection="row-reverse";
-		align="flex-end";
-		textalign="right";
-	}
-	const styles: Record<string, CSSProperties> = {
-	    "offsetStyles": {
-		    "display": "flex",
-	        "flexDirection": flexDirection as React.CSSProperties['flexDirection'],
-            "gap": "1.5rem",
-			"textAlign": textalign as React.CSSProperties['textAlign'],
-	    }
-	};
-	
-	return (
-		<StyledLinkSection style={styles.offsetStyles}>
-			<section className="imgSection">
-				<Image src={src} alt={title} width={588} height={441}/>
-			</section>
-			<section className="textSection" style={{"alignItems":align}}>
-				<h1 style={{"fontSize":"4.5rem", "color":colors.primary500, "fontWeight":"700"}}>0{index+1}</h1>
-				<h1 style={{"fontSize": "2rem", "fontWeight":"700"}}>
-					<span style={{"color":colors.primary500}}>아올다 </span>
-					{title}
-				</h1>
-				<p>{description}</p>
-				<button onClick={() => {}}>
-					아올다 {title} 이동하기
-				</button>
-			</section>
-		</StyledLinkSection>
-	);
+	const isEven = index % 2 === 1;
+
+    return (
+        <StyledLinkSection $isEven={isEven}>
+            <section className="imgSection">
+                <Image src={src} alt={title} width={588} height={441} layout="responsive" />
+            </section>
+            <section className="textSection">
+                <h1 className="indexNumber">0{index + 1}</h1>
+                <h1 className="title">
+                    <span>아올다 </span>
+                    {title}
+                </h1>
+                <p>{description}</p>
+                <button className="linkButton">
+                    아올다 {title} 이동하기
+                </button>
+            </section>
+        </StyledLinkSection>
+    );
 };
 
 export default LinkSection

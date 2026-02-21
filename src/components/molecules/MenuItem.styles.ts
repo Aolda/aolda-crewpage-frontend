@@ -1,5 +1,6 @@
+// /src/components/molecules/MenuItem.styles.ts
 import styled from "styled-components";
-import { fontSize, colors } from "@/styles/theme";
+import { fontSize, colors, theme } from "@/styles/theme";
 
 export const StyledMenuItem = styled.div`
     display: flex;
@@ -15,12 +16,24 @@ export const StyledMenuItem = styled.div`
         cursor: pointer;
     }
 
+    ${theme.media.mobile} {
+        width: 100%;
+        height: auto;
+        padding: 1.25rem 0;
+        gap: 1rem;
+    }
+
     .infoSection {
         display: flex;
         height: 4.125rem;
         flex-direction: column;
         align-items: flex-start;
-        // gap: 0.5rem;
+        
+        ${theme.media.mobile} {
+            height: auto;
+            width: 100%;
+            gap: 0.25rem;
+        }
     }
 
     .titleSection {
@@ -32,11 +45,31 @@ export const StyledMenuItem = styled.div`
         * {
             margin: 0;
         }
+
+        ${theme.media.mobile} {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0;
+
+            /* 제목이 길어질 경우를 대비한 스타일 */
+            h3 {
+                font-size: 1.125rem;
+                flex: 1;
+                padding-right: 0.5rem;
+                word-break: keep-all;
+            }
+        }
     }
 
     .date {
         font-size: ${fontSize.base};
         color: ${colors.gray600};
+
+        ${theme.media.mobile} {
+            font-size: ${fontSize.smaller};
+        }
     }
 
     .descriptionSection {
@@ -56,6 +89,10 @@ export const StyledMenuItem = styled.div`
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
+
+            ${theme.media.mobile} {
+                font-size: ${fontSize.smaller};
+            }
         }
     }
 `;

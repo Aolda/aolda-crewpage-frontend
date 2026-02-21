@@ -1,3 +1,4 @@
+// /src/components/molecules/JoinSections.tsx
 'use client';
 
 import React from 'react';
