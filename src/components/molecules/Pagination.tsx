@@ -1,3 +1,4 @@
+// /src/components/molecules/Pagination.tsx
 'use client';
 
 import React from 'react';
