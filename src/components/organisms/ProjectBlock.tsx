@@ -29,9 +29,9 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
 		>
 			<section className="infoSection">
                 <section className="textSection">
-                    <span style={{"fontSize":fontSize.base}}>x명 참여</span>
-                    <h1 style={{"fontSize": "2.25rem"}}>{project.activityNames.ko}</h1>
-                    <span style={{"fontSize":fontSize.smaller}}>{project.activityNames.en}</span>
+                    <span>x명 참여</span>
+                    <h1>{project.activityNames.ko}</h1>
+                    <span>{project.activityNames.en}</span>
                 </section>
                 <Badge variant="transparent" status={project.status}>{ACTIVITY_STATUS[project.status]}</Badge>
             </section>

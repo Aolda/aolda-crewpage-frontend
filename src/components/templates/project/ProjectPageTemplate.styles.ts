@@ -1,5 +1,6 @@
+// /src/components/templates/project/ProjectPageTemplate.styles.ts
 import styled from 'styled-components';
-import { fontSize, colors } from '@/styles/theme';
+import { fontSize, colors, theme } from '@/styles/theme';
 import { pxToRem } from '@/styles/utils';
 
 /* 헤더 섹션: 복합 그라데이션과 마스코트 배치 */
@@ -8,13 +9,18 @@ export const HeaderSection = styled.header`
     width: 100%;
     /* 전체 높이 설정 (디자인에 맞춰 조절 필요) */
     height: 38.5rem; 
-    background-color: #F9FAFB; /* 기본 배경색 */
-    overflow: hidden; /* 배경 요소가 튀어나가지 않도록 */
+    background-color: #F9FAFB;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    padding-top: 7.5rem;
+    padding-top: 12rem;
+
+    ${theme.media.mobile} {
+        height: 30rem;
+        padding-top: 7rem;
+    }
 
     /* 배경 원형 그래픽 요소들 */
     .ellipse1 {
@@ -22,11 +28,17 @@ export const HeaderSection = styled.header`
         top: 15rem;
         left: 50%;
         transform: translateX(-50%);
-        width: 60.9375rem; /* 화면보다 넓게 잡아서 완만한 곡선 표현 */
+        width: 60.9375rem;
         height: 60.9375rem;
         border-radius: 50%;
         background: rgba(103, 132, 237, 0.8);
-        z-index: 1; /* 콘텐츠보다 뒤에 */
+        z-index: 1;
+
+        ${theme.media.mobile} {
+            width: 40rem;
+            height: 40rem;
+            top: 10rem;
+        }
     }
 
     .ellipse2 {
@@ -38,7 +50,13 @@ export const HeaderSection = styled.header`
         border-radius: 50%;
         background: rgba(239, 118, 187, 0.3);
         filter: blur(46.7px);
-        z-index: 0; /* 가장 뒤에 */
+        z-index: 0;
+
+        ${theme.media.mobile} {
+            width: 15rem;
+            height: 15rem;
+            left: -5rem;
+        }
     }
 
     .ellipse3 {
@@ -50,7 +68,14 @@ export const HeaderSection = styled.header`
         border-radius: 50%;
         background: rgba(118, 187, 239, 0.3);
         filter: blur(46.7px);
-        z-index: 0; /* 가장 뒤에 */
+        z-index: 0;
+
+        ${theme.media.mobile} {
+            width: 18rem;
+            height: 18rem;
+            right: -4rem;
+            top: -5rem;
+        }
     }
 
     /* 실제 콘텐츠를 감싸는 컨테이너 */
@@ -65,6 +90,10 @@ export const HeaderSection = styled.header`
         max-width: 50rem;
         padding: 0 1.25rem;
 
+        ${theme.media.mobile} {
+            gap: 1rem;
+        }
+
         /* 마스코트, 타이틀, 설명을 감싸는 내부 섹션 */
         .textSection {
             display: flex;
@@ -74,16 +103,30 @@ export const HeaderSection = styled.header`
             color: white;
             gap: 1rem;
 
+            ${theme.media.mobile} {
+                margin-bottom: 0;
+            }
+
+            .mascot {
+                ${theme.media.mobile} {
+                    width: 8rem;
+                    height: auto;
+                }
+            }
+
             h1 {
                 font-size: ${fontSize.h2};
                 font-weight: 700;
                 line-height: 1.4;
+
+                ${theme.media.mobile} { font-size: 1.5rem; }
             }
 
             p {
                 font-size: ${fontSize.body1};
-                // line-height: 1.6;
                 word-break: keep-all;
+
+                ${theme.media.mobile} { font-size: ${fontSize.smaller}; }
             }
         }
     }
@@ -94,6 +137,11 @@ export const ContentSection = styled.main`
     margin: 0 auto;
     padding-left: 7.5rem;
     padding-right: 7.5rem;
+
+    ${theme.media.mobile} {
+        width: 100%;
+        padding: 0 1rem;
+    }
 `;
 
 export const StatsSection = styled.section`
@@ -104,6 +152,14 @@ export const StatsSection = styled.section`
 
     padding-top: 3.75rem;
     z-index: 10;
+
+    ${theme.media.mobile} {
+        width: 100%;
+        flex-direction: row; 
+        justify-content: space-between;
+        gap: 0.5rem;
+        padding: 2rem 0.5rem 0;
+    }
 `;
 
 /* 필터 및 그리드 섹션 */
@@ -114,6 +170,16 @@ export const FilterBar = styled.div`
     align-items: center;
 
     padding-top: 3.75rem;
+
+    ${theme.media.mobile} {
+        width: 100%;
+        flex-direction: row; 
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        padding-top: 2rem;
+        overflow: visible;
+    }
 `;
 
 export const FilterButton = styled.button<{ $isActive: boolean }>`
@@ -135,6 +201,11 @@ export const FilterButton = styled.button<{ $isActive: boolean }>`
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 
+    ${theme.media.mobile} {
+        padding: 0.4rem 0.75rem; 
+        font-size: ${fontSize.smaller}; 
+    }
+
     &:hover {
         /* 활성화 상태면 유지, 비활성화면 살짝 더 진한 회색으로 */
         background-color: ${props => props.$isActive ? colors.primary500 : '#E5E7EB'};
@@ -150,6 +221,16 @@ export const FilterButton = styled.button<{ $isActive: boolean }>`
 export const LeftButtonGroup = styled.div`
     display: flex;
     gap: 1.5rem;
+
+    ${theme.media.mobile} {
+        flex: 1; 
+        overflow-x: auto;
+        white-space: nowrap;
+        gap: 0.5rem;
+        padding-bottom: 0.25rem;
+        
+        &::-webkit-scrollbar { display: none; }
+    }
 `;
 
 export const ProjectGrid = styled.section`
@@ -159,4 +240,11 @@ export const ProjectGrid = styled.section`
     grid-template-columns: repeat(4, 1fr);
     gap: 2.25rem;
     padding: 2rem 0 10rem 0;
+
+    ${theme.media.mobile} {
+        width: 100%;
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 0.75rem; // 카드 간격 좁히기
+        padding-bottom: 5rem;
+    }
 `;
