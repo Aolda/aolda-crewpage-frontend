@@ -1,5 +1,17 @@
+// src/components/templates/main/Overview/Overview.styles.ts
 import styled from 'styled-components';
-import { colors, fontSize } from '@/styles/theme';
+import { colors, fontSize, theme } from '@/styles/theme';
+
+export const SinceText = styled.div`
+    font-size: 1rem;
+    font-weight: normal;
+    color: #9CA3AF;
+    margin-bottom: 0.75rem;
+
+    ${theme.media.mobile} {
+        font-size: 0.875rem;
+    }
+`;
 
 export const OverviewWrapper = styled.div`
     display: flex;
@@ -16,6 +28,10 @@ export const SphereContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    ${theme.media.mobile} {
+        height: 20rem;
+    }
 `;
 
 export const BgText = styled.div`
@@ -27,6 +43,14 @@ export const BgText = styled.div`
     z-index: 0;
     pointer-events: none;
     user-select: none;
+
+    ${theme.media.mobile} {
+        width: 100%;
+
+        img {
+            width: 63rem;
+        }
+    }
 
     img {
         max-width: unset;
@@ -43,6 +67,11 @@ export const GlareEffect = styled.div`
     background: rgba(26, 142, 229, 0.5);
     filter: blur(4rem);
     z-index: 1;
+
+    ${theme.media.mobile} {
+        width: 20rem;
+        height: 10rem;
+    }
 `;
 
 export const ShadowWrapper = styled.div`
@@ -53,6 +82,11 @@ export const ShadowWrapper = styled.div`
     
     width: 20rem;
     height: auto;
+    
+    ${theme.media.mobile} {
+        width: 12rem;
+        top: 65%;
+    }
     
     z-index: 2;
     pointer-events: none;
@@ -68,6 +102,11 @@ export const SphereImage = styled.div`
     z-index: 3;
     width: 24rem;
     height: 24rem;
+
+    ${theme.media.mobile} {
+        width: 14rem;
+        height: 14rem;
+    }
     
     img {
         width: 100%;
@@ -83,6 +122,17 @@ export const DashedLine = styled.div`
     width: 1rem;
     height: 11rem;
     margin-bottom: 2rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
+
+    ${theme.media.mobile} {
+        margin-top: -5rem;
+        mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
+    }
 `;
 
 /* 하단: 인포 화이트 카드 */
@@ -98,6 +148,29 @@ export const InfoCard = styled.div`
     justify-content: space-between;
     align-items: center;
     text-align: left;
+
+    br.pc-only {
+            display: flex;
+        }
+        br.mobile-only {
+            display: none;
+        }
+
+    ${theme.media.mobile} {
+        border: none;
+        flex-direction: column;
+        height: auto;
+        padding: 2.5rem 1.5rem;
+        text-align: center;
+        gap: 2.5rem;
+
+        br.pc-only {
+            display: none;
+        }
+        br.mobile-only {
+            display: flex;
+        }
+    }
 `;
 
 export const CardText = styled.div`
@@ -121,11 +194,26 @@ export const CardText = styled.div`
         color: ${colors.gray500};
         word-break: keep-all;
     }
+
+    ${theme.media.mobile} {
+        gap: 1.5rem;
+        
+        h3 {
+            font-size: 1.5rem;
+        }
+        p {
+            font-size: ${fontSize.smaller};
+        }
+    }
 `;
 
 export const CardIllustration = styled.div`
     img {
         width: 100%;
         height: auto;
+    }
+
+    ${theme.media.mobile} {
+        display: none;
     }
 `;
