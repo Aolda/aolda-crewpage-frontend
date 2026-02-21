@@ -38,6 +38,30 @@ export const StyledHeader = styled.header`
         padding: 0 1.25rem;
     }
 
+    .iconSection {
+        display: flex;
+        align-items: center;
+
+        .logoWrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logoText {
+            display: none;
+            
+            ${theme.media.mobile} {
+                display: block;
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: ${colors.primary500};
+                letter-spacing: -0.02em;
+            }
+        }
+    }
+
     .linkSeciton.pc-only {
         display: inline-flex;
         align-items: center;
@@ -59,14 +83,14 @@ export const StyledHeader = styled.header`
     }
 
     .mobileMenuIcon {
-        cursor: pointer; /* 클릭 가능함을 표시 */
+        cursor: pointer;
         
         .hamburger {
-            width: 18px; // 시안 기준 너비
-            height: 12px; // 시안 기준 높이
+            width: 18px;
+            height: 12px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; // 세 줄 사이 간격을 균등하게 벌림
+            justify-content: space-between;
 
             span {
                 display: block;

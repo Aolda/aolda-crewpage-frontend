@@ -23,7 +23,10 @@ const Header = () => {
         <>
             <S.StyledHeader>
                 <section className="iconSection">
-                    <Link href="/"><Image src="/images/aoldaIcon.svg" alt="icon" width={35} height={36}/></Link>
+                    <Link href="/" className='logoWrapper'>
+                        <Image src="/images/aoldaIcon.svg" alt="icon" width={35} height={36}/>
+                        <span className="logoText">Aolda</span>
+                    </Link>
                 </section>
 
                 {/* 데스크톱 전용 네비게이션 */}
@@ -44,12 +47,13 @@ const Header = () => {
 
                 {/* 모바일 전용 햄버거 메뉴 아이콘 */}
                 <section className="mobileMenuIcon mobile-only" onClick={toggleMenu}>
-                <div className={`hamburger ${isMenuOpen ? 'open' : ''}`}>
+                    <div className={`hamburger ${isMenuOpen ? 'open' : ''}`}>
                         <span></span>
                         <span></span>
                         <span></span>
                     </div>
                 </section>
+                {/* PC에서 우측 균형을 맞추기 위한 빈 섹션 */}
                 <section className="iconSection pc-only"></section>
             </S.StyledHeader>
 
