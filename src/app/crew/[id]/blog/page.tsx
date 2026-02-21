@@ -3,35 +3,46 @@
 
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
+import { isAxiosError } from "axios";
+
+import { useErrorHandler } from "@/hooks/useErrorHandler";
+import { getCrewDetail } from '@/api/crew';
 import { CrewDetailResponse } from '@/types/crew';
+
 import CrewDetailPageTemplate from '@/components/templates/CrewDetail/CrewDetailPageTemplate';
 import MenuItem from '@/components/molecules/MenuItem';
-import { getCrewDetail } from '@/api/crew';
 
 export default function CrewBlogPage() {
     const { id } = useParams();
+    const { handleError } = useErrorHandler();
+
     const [crew, setCrew] = useState<CrewDetailResponse | null>(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [hasError, setHasError] = useState(false);
 
     useEffect(() => {
         const fetchCrewBlogData = async () => {
             try {
                 setIsLoading(true);
+                setHasError(false);
                 // 서버에서 블로깅 리스트가 포함된 전체 상세 데이터 수신
                 const data = await getCrewDetail(id as string);
                 setCrew(data);
             } catch (error) {
-                console.error('블로깅 데이터 로드 실패:', error);
+                setHasError(true);
+                if (isAxiosError(error) && error.response?.data?.code) {
+                    handleError(error.response.data.code);
+                }
             } finally {
                 setIsLoading(false);
             }
         };
 
         if (id) fetchCrewBlogData();
-    }, [id]);
+    }, [id, handleError]);
 
     if (isLoading) return <div>로딩 중...</div>;
-    if (!crew) return <div>크루 정보를 찾을 수 없습니다.</div>;
+    if (hasError || !crew) return null;
 
     return (
         <CrewDetailPageTemplate member={crew} activeTab="블로깅">
