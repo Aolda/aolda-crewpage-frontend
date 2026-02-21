@@ -44,7 +44,13 @@ export default function CrewActivityPage() {
         if (id) fetchCrewActivityData();
     }, [id, handleError]);
 
-    if (isLoading) return <div>로딩 중...</div>;
+    if (isLoading) {
+        return (
+            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                데이터를 불러오는 중...
+            </div>
+        );
+    }
     if (hasError || !crew) return null;
 
     return (

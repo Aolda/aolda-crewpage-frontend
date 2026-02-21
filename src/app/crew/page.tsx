@@ -66,7 +66,7 @@ export default function CrewListPage() {
 
     if (isLoading) {
         return (
-            <div style={{ padding: '100px 0', textAlign: 'center' }}>
+            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 크루 목록을 불러오는 중...
             </div>
         );
@@ -75,7 +75,7 @@ export default function CrewListPage() {
     // 에러 발생 시 UI 처리
     if (hasError) {
         return (
-            <div style={{ padding: '100px 20px', textAlign: 'center' }}>
+            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <p>크루 정보를 불러오는 중 서버 오류가 발생했습니다.</p>
                 <button onClick={() => window.location.reload()}>새로고침</button>
             </div>
