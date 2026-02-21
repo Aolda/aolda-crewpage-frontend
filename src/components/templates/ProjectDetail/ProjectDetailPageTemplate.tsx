@@ -32,15 +32,17 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
                 <Image src={project.backgroundImage.url} alt={project.activityNames.en} width={400} height={300}/>
                 <S.HeaderSection>
                     <BreadCrumb items={breadcrumbItems} />
-                    <h1>{project.activityNames.en}</h1>
-                    <p>{project.activityNames.ko}</p>
+                    <div className="titleGroup">
+                        <h1>{project.activityNames.en}</h1>
+                        <p>{project.activityNames.ko}</p>
+                    </div>
                 </S.HeaderSection>
             </S.HeaderBackground>
             <S.PageWrapper>
                 {/* 2. 헤더 섹션 */}
 
                 {/* 3. 기획 정보 섹션 */}
-                <S.Section style={{"paddingTop": "3.75rem"}}>
+                <S.Section>
                     <S.SectionTitle>
                         <Image 
                             src='/images/project/detail/designIcon.png'
@@ -51,7 +53,6 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
                     </S.SectionTitle>
                     <p style={{
                         fontSize: "1rem", 
-                        lineHeight: "1.8", 
                         whiteSpace: "pre-wrap" // \n, \t 처리를 위해 필수
                     }}>
                         {project.contents.ideaBackground}
@@ -145,7 +146,7 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
                             height={30}/>
                         갤러리
                     </S.SectionTitle>
-                    <p style={{"fontSize": "1.25rem"}}>본 활동에서 진행된 활동 사진들의 공간</p>
+                    <p>본 활동에서 진행된 활동 사진들의 공간</p>
                     <S.GalleryGrid>
                         {project.gallery.map((photo) => (
                             <S.GalleryItem key={photo.photoId}>
