@@ -1,3 +1,4 @@
+// /src/components/organisms/Header.tsx
 'use client';
 
 import Image from "next/image";
