@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, fontSize } from '@/styles/theme';
+import { colors, fontSize, theme } from '@/styles/theme';
 
 export const HeaderBackground = styled.header`
     width: 100%;
@@ -16,11 +16,22 @@ export const HeaderBackground = styled.header`
     background-repeat: no-repeat;
     background-position: right bottom;
     background-size: contain;
+
+    ${theme.media.mobile} {
+        position: relative;
+        height: 22rem;
+        padding: 0 1.25rem 2.5rem;
+        background-size: 40%;
+        align-items: center;
+    }
 `;
 
 export const HeaderContent = styled.div`
-    width: 100%;
-    max-width: 90rem;
+
+    ${theme.media.mobile} {
+        position: absolute;
+        bottom: 2.5rem;
+    }
 
     h1 {
         font-size: ${fontSize.h2};
@@ -28,6 +39,10 @@ export const HeaderContent = styled.div`
         line-height: 1.4;
         margin-bottom: 1.5rem;
         span { color: ${colors.primary500}; }
+
+        ${theme.media.mobile} {
+            font-size: 1.5rem;
+        }
     }
 `;
 
@@ -37,6 +52,11 @@ export const ContentContainer = styled.main`
     flex-direction: column;
     margin: 0 auto;
     padding-top: 4.5rem;
+
+    ${theme.media.mobile} {
+        width: 100%;
+        padding: 2.5rem 1.25rem;
+    }
 `;
 
 export const FilterBar = styled.section`
@@ -44,6 +64,15 @@ export const FilterBar = styled.section`
     gap: 0.75rem;
     margin-bottom: 2rem;
     align-items: center;
+
+    ${theme.media.mobile} {
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 12rem;
+        margin-bottom: -10rem;
+        
+        &::-webkit-scrollbar { display: none; }
+    }
 `;
 
 export const AllButton = styled.button<{ $isActive: boolean }>`
@@ -60,6 +89,12 @@ export const AllButton = styled.button<{ $isActive: boolean }>`
 
     &:hover {
         background-color: ${props => props.$isActive ? '#111827' : '#D1D5DB'};
+    }
+
+    ${theme.media.mobile} {
+        height: 2.5rem;
+        padding: 0.5rem 0.75rem;
+        font-size: ${fontSize.smaller};
     }
 `;
 
