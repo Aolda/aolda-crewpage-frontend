@@ -34,7 +34,7 @@ export const ButtonGrid = styled.div`
     }
 `;
 
-export const PrimaryButton = styled.button`
+export const PrimaryButton = styled.a`
     background: ${colors.primary600};
     color: white;
     border: none;

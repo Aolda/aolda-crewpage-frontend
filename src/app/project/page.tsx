@@ -8,6 +8,8 @@ import { getProjectList } from '@/api/project';
 import { ProjectListResponse } from '@/types/project';
 import ProjectPageTemplate from '@/components/templates/project/ProjectPagetemplate';
 
+import { MOCK_PROJECT_RESPONSE } from '@/mocks/projectData';
+
 export default function ProjectsPage() {
     const router = useRouter();
 

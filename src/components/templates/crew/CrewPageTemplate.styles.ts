@@ -27,7 +27,7 @@ export const HeaderContent = styled.div`
         font-weight: 700;
         line-height: 1.4;
         margin-bottom: 1.5rem;
-        strong { color: ${colors.primary500}; }
+        span { color: ${colors.primary500}; }
     }
 `;
 

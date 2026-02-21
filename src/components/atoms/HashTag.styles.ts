@@ -11,12 +11,12 @@ export const StyledHashTag = styled.div<HashTagProps>`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
     border-radius: 1.5rem;
     width: auto;
     height: 1.0625rem;
     padding: 0.5rem 0.75rem;
     font-size: ${fontSize.smaller};
+    font-family: var(--font-cjk);
 
     ${({ $date, $status }) => {
         // 1. 상태값(Status) 기반 스타일

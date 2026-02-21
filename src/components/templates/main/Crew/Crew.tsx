@@ -48,7 +48,7 @@ const Crew = ({ crews, onCrewClick }: CrewProps) => {
     return (
         <MainSection
         label="Crew"
-        title={<>아올다와 성장하는<br/><strong>핵심 인재들</strong></>}
+        title={<>아올다와 성장하는<br/><span>핵심 인재들</span></>}
         description={<>열정적인 개발자, 기획자, 디자이너, 운영자로 구성된<br />
             아올다 멤버들은 서로의 성장을 돕는 동반자로서, 아주대학교를 넘어<br />
             IT 분야의 미래를 함께 설계하고 있습니다.</>}

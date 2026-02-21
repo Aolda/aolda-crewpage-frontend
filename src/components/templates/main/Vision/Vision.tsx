@@ -30,7 +30,7 @@ const Vision = () => {
     return (
         <MainSection
             label="Vision"
-            title={<>경험의 기회와 <strong>자유로운 도전의 장</strong>을<br />만들어내는 소학회</>}
+            title={<>경험의 기회와 <span>자유로운 도전의 장</span>을<br />만들어내는 소학회</>}
             description={<>아올다는 클라우드 인프라에 관심있는 아주대학교 학생들이<br /> 함께 학습하고 프로젝트를 진행하며 성장하는 소학회입니다.</>}
         >
             <S.VisionWrapper>

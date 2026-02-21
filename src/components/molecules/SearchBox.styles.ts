@@ -15,6 +15,8 @@ export const StyledSearchBox = styled.section`
     border-radius: 0.5rem;
     border-width: 1px;
 
+    cursor: text;
+
 
     input {
         border: none;

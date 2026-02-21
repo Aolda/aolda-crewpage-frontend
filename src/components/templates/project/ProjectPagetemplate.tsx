@@ -1,11 +1,12 @@
 //src/app/project/page.tsx
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Image from 'next/image';
 import * as S from './ProjectPageTemplate.styles';
 import ProjectBlock from '@/components/organisms/ProjectBlock';
 import SearchBox from '@/components/molecules/SearchBox';
+import Select from '@/components/molecules/Select';
 import OverviewCard from '@/components/molecules/OverviewCard';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { ProjectListResponse, ActivityStatusKey } from '@/types/project';
@@ -21,7 +22,7 @@ const containerVariants = {
     visible: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.1, // 자식 요소들이 0.1초 간격으로 나타남
+            staggerChildren: 0.05,
         },
     },
 };
@@ -29,13 +30,13 @@ const containerVariants = {
 const itemVariants: Variants = {
     hidden: { 
         opacity: 0, 
-        y: "1.25rem" // 20px -> 1.25rem (문자열로 명시)
+        y: "0.5rem"
     },
     visible: { 
         opacity: 1, 
         y: "0rem", 
         transition: { 
-            duration: 0.5, 
+            duration: 0.4, 
             ease: "easeOut" 
         } 
     },
@@ -46,23 +47,39 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
     onProjectClick 
 }) => {
     const [searchValue, setSearchValue] = useState("");
-    const [activeSearch, setActiveSearch] = useState("");
     const [selectedStatus, setSelectedStatus] = useState<string>("");
+    const [selectedSeasonValue, setSelectedSeasonValue] = useState<string>("");
+
+    // Select 컴포넌트에 넘겨줄 옵션 배열 (값들만 추출)
+    const seasonOptions = useMemo(() => {
+        const apiSeasons = Object.values(data.data.filters.seasons || {}).map(s => s.value);
+        return ["전체 기간", ...apiSeasons];
+    }, [data.data.filters.seasons]);
 
     //프로젝트 필터링
     const filteredProjects = useMemo(() => {
+        const query = searchValue.trim().toLowerCase();
+
         return data.data.projects.filter((project) => {
-            // 국문명 또는 영문명에 검색어가 포함되는지 확인
-            const matchesSearch = 
-                project.activityNames.ko.toLowerCase().includes(activeSearch.toLowerCase()) ||
-                project.activityNames.en.toLowerCase().includes(activeSearch.toLowerCase());
+            // 검색어 필터링 로직 보완
+            const matchesSearch = query === "" 
+            ? true 
+            : project.activityNames.ko.toLowerCase().includes(query) ||
+            project.activityNames.en.toLowerCase().includes(query);
             
-            // 서버에서 준 status 키값과 매칭
+            // 상태 필터링
             const matchesStatus = selectedStatus === "" ? true : project.status === selectedStatus;
+
+            //'전체 기간'이 선택된 경우 무조건 true 반환
+            const isAllPeriod = selectedSeasonValue === "" || selectedSeasonValue === "전체 기간";
+            const selectedSeasonKey = Object.values(data.data.filters.seasons || {})
+                .find(s => s.value === selectedSeasonValue)?.key;
+
+            const matchesSeason = isAllPeriod ? true : project.startedAt === selectedSeasonKey;
             
-            return matchesSearch && matchesStatus;
+            return matchesSearch && matchesStatus && matchesSeason;
         });
-    }, [data.data.projects, activeSearch, selectedStatus]);
+    }, [data.data.projects, searchValue, selectedStatus, selectedSeasonValue, data.data.filters.seasons]);
 
     const { statistics } = data.data;
 
@@ -72,13 +89,13 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
                 <section className="contentsSection">
                     <section className="textSection">
                         <Image src="/images/project/mascot.png" alt="Mascot" width={160} height={160} className="mascot" />
-                        <h1>클라우드 실전 역량을 쌓는<br /><strong>핵심 Activity</strong></h1>
+                        <h1>클라우드 실전 역량을 쌓는<br />핵심 Activity</h1>
                         <p>아올다는 기획, 개발, 운영 전반을 아우르는 활동들을 통해<br />클라우드 분야의 실질적인 전문가로 성장합니다.</p>
                     </section>
                     <SearchBox 
                         value={searchValue}
                         onChange={(e) => setSearchValue(e.target.value)}
-                        onSearch={(query) => setActiveSearch(query)}
+                        // onSearch={(query) => setActiveSearch(query)}
                         placeholder="프로젝트를 검색해 보세요."
                     />
                 </section>
@@ -96,12 +113,11 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
 
                 <S.FilterBar>
                     <S.LeftButtonGroup>
-                        {/* 크루 페이지와 동일한 '#전체' 버튼 로직 */}
                         <S.FilterButton 
                             $isActive={selectedStatus === ""}
                             onClick={() => setSelectedStatus("")}
                         >
-                            #전체
+                            전체
                         </S.FilterButton>
 
                         {/* 나머지 상태 버튼들 */}
@@ -116,7 +132,12 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
                         ))}
                     </S.LeftButtonGroup>
                     
-                    {/* ... Select 컴포넌트 생략 ... */}
+                    <Select 
+                        label="season" // TITLE_MAP에 의해 "전체 기간"으로 표시됨
+                        options={seasonOptions}
+                        selectedValue={selectedSeasonValue}
+                        onSelectChange={(value) => setSelectedSeasonValue(value)}
+                    />
                 </S.FilterBar>
                 
                 <S.ProjectGrid
@@ -129,13 +150,12 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
                         {filteredProjects.map((project) => (
                             <motion.div
                                 key={project.activityId}
-                                layout // 카드가 이동할 때 부드럽게 슬라이딩됨
+                                // layout // 카드가 이동할 때 부드럽게 슬라이딩됨
                                 onClick={() => onProjectClick(project.activityId)}
                                 variants={itemVariants}
                                 initial="hidden"
                                 animate="visible"
-                                exit={{ opacity: 0, scale: 0.9 }} // 필터링 시 사라지는 효과
-                                transition={{ duration: 0.3 }}
+                                exit={{ opacity: 0, transition: { duration: 0.2 } }}
                             >
                                 <ProjectBlock key={project.activityId} project={project} />
                             </motion.div>

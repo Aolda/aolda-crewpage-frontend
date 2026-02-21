@@ -151,12 +151,12 @@ export const BlogCard = styled.div`
 
 /* 참여 크루 그리드 */
 export const CrewGrid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4열 배치 */
-    gap: 2rem;
+    display: flex;
+    grid-template-columns: repeat(5, 1fr); /* 4열 배치 */
+    gap: 1.5rem;
     
     @media (max-width: 1024px) {
-        grid-template-columns: repeat(2, 1fr);
+        // grid-template-columns: repeat(2, 1fr);
     }
 `;
 

@@ -11,12 +11,13 @@ export const StyledOverviewCard = styled.div`
     background-color: white;
     border-radius: 3.75rem 0.75rem 3.75rem 0.75rem; 
     box-shadow: 0px 0.25rem 1.25rem 0px #1A8EE54D;
-    gap: 3.4375rem;
 
     .leftSection {
         display: flex;
+        width: 10.625rem;
         flex-direction: column;
         gap: 1rem;
+        flex-shrink: 0;
     }
 
     .titleSection {
@@ -25,8 +26,8 @@ export const StyledOverviewCard = styled.div`
         gap: 0.5rem;
         h3 {
             margin: 0;
-            font-size: ${fontSize.base};
-            font-weight: bold;
+            font-size: ${fontSize.body1};
+            font-weight: 700;
         }
     }
 

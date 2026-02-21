@@ -8,7 +8,7 @@ export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: Activ
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
+    font-weight: 700;
     font-size: ${fontSize.smaller};
     border-radius: 0.625rem;
     width: fit-content;

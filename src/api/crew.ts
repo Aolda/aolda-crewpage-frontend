@@ -14,7 +14,7 @@ export interface CrewQueryParams {
  */
 export const getCrewList = async (params?: CrewQueryParams) => {
     // 쿼리 파라미터가 없으면 전체 목록, 있으면 페이지네이션 적용
-    const response = await axiosInstance.get<CrewListResponse>('/crew', {
+    const response = await axiosInstance.get<CrewListResponse>('/team/crew', {
         params,
     });
     return response.data;
@@ -25,6 +25,6 @@ export const getCrewList = async (params?: CrewQueryParams) => {
  * @param id 크루 고유 ID (crewId)
  */
 export const getCrewDetail = async (id: string | number) => {
-    const response = await axiosInstance.get<CrewDetailResponse>(`/crew/${id}`);
+    const response = await axiosInstance.get<CrewDetailResponse>(`/team/crew/${id}`);
     return response.data;
 };

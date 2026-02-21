@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { colors, fontSize } from '@/styles/theme';
 
 export const ActivityWrapper = styled.div`
@@ -15,26 +15,23 @@ export const TabContainer = styled.div`
     margin-bottom: 2.25rem;
 `;
 
-export const TabButton = styled.button<{ $isActive: boolean }>`
+export const Tab = styled.div`
     display: flex;
     width: 36.75rem;
     height: 7.5rem;
 
     padding: 1.5rem 2.25rem;
     background: #FFFFFF;
-    border: 0.125rem solid ${(props) => (props.$isActive ? colors.primary500  : '#F3F4F6')};
+    border: 2px solid #E2E2E2;
     border-radius: 1rem;
 
     justify-content: space-between;
     text-align: left;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    box-shadow: ${(props) => (props.$isActive ? '0 0.5rem 1.5rem rgba(59, 130, 246, 0.1)' : 'none')};
 
     h4 {
         font-size: ${fontSize.body1};
         font-weight: 700;
-        color: ${(props) => (props.$isActive ? colors.primary500 : '#111827')};
+        color: #111827;
         margin: 0;
     }
 
@@ -43,8 +40,8 @@ export const TabButton = styled.button<{ $isActive: boolean }>`
         font-size: ${fontSize.smaller};
         color: #6B7280;
         line-height: 1.5;
-        max-width: 18.75rem;
         text-align: right;
+        font-weight: 400;
         span {
             font-weight: 700;
             color: black;
@@ -52,11 +49,31 @@ export const TabButton = styled.button<{ $isActive: boolean }>`
     }
 `;
 
+const infiniteScroll = keyframes`
+    0% { 
+        transform: translateX(-50%);
+    }
+    100% { 
+        transform: translateX(calc(-100% / 6 * 2));
+    }
+`;
+
 /* 수평 스크롤 리스트 영역 */
 export const HorizontalScrollArea = styled.div`
     width: 100vw;
     position: relative;
-    overflow-x: auto;
+    overflow: hidden;
+
+    pointer-events: none;
+
+    /* 양 끝이 자연스럽게 사라지는 페이드 효과 (선택 사항) */
+    mask-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 1) 15%,
+        rgba(0, 0, 0, 1) 85%,
+        rgba(0, 0, 0, 0) 100%
+    );
     
     &::-webkit-scrollbar {
         display: none; /* 스크롤바 숨김 */
@@ -65,7 +82,14 @@ export const HorizontalScrollArea = styled.div`
     scrollbar-width: none;
 `;
 
-export const CardList = styled.div`
+export const CardList = styled.div<{ $count: number }>`
     display: flex;
-    gap: 1.5rem; /* 24px */
+    gap: 1.5rem;
+
+    width: max-content;
+    /* 왼쪽 -> 오른쪽 무한 애니메이션 적용 */
+    /* 숫자가 커질수록 더 천천히 움직임, 활동 개수에 맞게 스크롤 되는 속도 조정 */
+    animation: ${infiniteScroll} ${props => props.$count * 10}s linear infinite;
+
+    padding-right: 1.5rem;
 `;
