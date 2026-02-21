@@ -1,3 +1,4 @@
+// /src/components/templates/link/LinkPageTemplate.tsx
 'use client';
 
 import React from 'react';
@@ -30,12 +31,9 @@ const LinkPageTemplate = () => {
     return (
         <>
             <S.PageWrapper>
-                <S.Ellipse className="ellipse1" />
-                <S.Ellipse className="ellipse2" />
-                <S.Ellipse className="ellipse3" />
-                <S.Ellipse className="ellipse4" />
-                <S.Ellipse className="ellipse5" />
-                <S.Ellipse className="ellipse6" />
+                {[1, 2, 3, 4, 5, 6].map(num => (
+                    <S.Ellipse key={num} className={`ellipse${num}`} />
+                ))}
                 <S.PageHeader>
                     <h2><strong>아올다</strong>의 다른<br />활동들도 만나보세요</h2>
                 </S.PageHeader>
@@ -54,7 +52,9 @@ const LinkPageTemplate = () => {
                 </S.LinkWrapper>
 
                 <S.UnderSection>
-                    <Image src="/images/link/UnderImg.png" alt="underimg" width={1053} height={510}/>
+                    <div className="img-container">
+                        <Image src="/images/link/UnderImg.png" alt="underimg" width={1053} height={510} layout="responsive" />
+                    </div>
                     <h2><span>아올다</span>의 새로운<br />활동들을 함께 만들어 가봐요</h2>
                 </S.UnderSection>
 
