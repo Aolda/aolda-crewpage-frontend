@@ -3,11 +3,14 @@
 
 import React, { useEffect, useState, useCallback } from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
-import { CrewMember } from '@/types/crew';
+import { isAxiosError } from "axios";
+
+import { useErrorHandler } from "@/hooks/useErrorHandler";
 import { getCrewList, CrewQueryParams } from '@/api/crew';
+import { CrewMember } from '@/types/crew';
+
 import CrewPageTemplate from '@/components/templates/crew/CrewPagetemplate';
 import Pagination from '@/components/molecules/Pagination';
-// import { MOCK_CREW_LIST } from '../../mocks/crewData';
 
 const ITEMS_PER_PAGE = 6;
 
@@ -15,6 +18,7 @@ export default function CrewListPage() {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
+    const { handleError } = useErrorHandler();
 
     // 현재 페이지 수 추출(기본은 1)
     const currentPage = Number(searchParams.get('page')) || 1;
@@ -22,29 +26,14 @@ export default function CrewListPage() {
     const [crews, setCrews] = useState<CrewMember[]>([]);
     const [totalCount, setTotalCount] = useState<number>(0);
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [hasError, setHasError] = useState(false);
 
-    // 쿼리 파라미터 업데이트 함수
-    const updateQuery = useCallback((newParams: Partial<CrewQueryParams>) => {
-        const params = new URLSearchParams(searchParams.toString());
-        
-        Object.entries(newParams).forEach(([key, value]) => {
-            if (value === undefined || value === null) {
-                params.delete(key);
-            } else {
-                params.set(key, String(value));
-            }
-        });
-
-        router.push(`${pathname}?${params.toString()}`);
-    }, [pathname, router, searchParams]);
-
-    // 쿼리 스트링 기반 데이터 패칭
     useEffect(() => {
         const fetchCrews = async () => {
             try {
                 setIsLoading(true);
+                setHasError(false); // 재시도 시 초기화
                 
-                // URL에 포함된 모든 검색 조건을 객체로 구성
                 const params: CrewQueryParams = {
                     page: currentPage,
                     generation: searchParams.get('generation') ? Number(searchParams.get('generation')) : undefined,
@@ -56,20 +45,42 @@ export default function CrewListPage() {
                 setCrews(response.data);
                 setTotalCount(response.total);
             } catch (error) {
-                console.error('크루 리스트 로드 실패:', error);
+                setHasError(true);
+                // Axios 에러 코드 추출 및 핸들링
+                if (isAxiosError(error) && error.response?.data?.code) {
+                    handleError(error.response.data.code);
+                } else {
+                    console.error('크루 리스트 로드 실패:', error);
+                }
             } finally {
                 setIsLoading(false);
             }
         };
 
         fetchCrews();
-    }, [currentPage, searchParams]);
+    }, [currentPage, searchParams, handleError]);
 
     const handleDetailNavigation = (id: number) => {
         router.push(`/crew/${id}/activity`);
     };
 
-    if (isLoading) return <div>크루 목록을 불러오는 중...</div>;
+    if (isLoading) {
+        return (
+            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                크루 목록을 불러오는 중...
+            </div>
+        );
+    }
+
+    // 에러 발생 시 UI 처리
+    if (hasError) {
+        return (
+            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <p>크루 정보를 불러오는 중 서버 오류가 발생했습니다.</p>
+                <button onClick={() => window.location.reload()}>새로고침</button>
+            </div>
+        );
+    }
 
     return (
         <CrewPageTemplate crewList={crews} onDetailClick={handleDetailNavigation}>

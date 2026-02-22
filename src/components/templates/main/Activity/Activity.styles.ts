@@ -1,5 +1,6 @@
+// /src/components/templates/main/Activity/Activity.styles.ts
 import styled, { keyframes } from 'styled-components';
-import { colors, fontSize } from '@/styles/theme';
+import { colors, fontSize, theme } from '@/styles/theme';
 
 export const ActivityWrapper = styled.div`
     width: 100%;
@@ -13,6 +14,12 @@ export const TabContainer = styled.div`
     display: flex;
     gap: 1.5rem;
     margin-bottom: 2.25rem;
+
+    ${theme.media.mobile} {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+    }
 `;
 
 export const Tab = styled.div`
@@ -28,10 +35,20 @@ export const Tab = styled.div`
     justify-content: space-between;
     text-align: left;
 
+    ${theme.media.mobile} {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+
     h4 {
         font-size: ${fontSize.body1};
         font-weight: 700;
-        color: #111827;
+        color: ${colors.primary500};
         margin: 0;
     }
 
@@ -42,6 +59,12 @@ export const Tab = styled.div`
         line-height: 1.5;
         text-align: right;
         font-weight: 400;
+
+        ${theme.media.mobile} {
+            text-align: center;
+            word-break: keep-all;
+        }
+
         span {
             font-weight: 700;
             color: black;
@@ -74,9 +97,19 @@ export const HorizontalScrollArea = styled.div`
         rgba(0, 0, 0, 1) 85%,
         rgba(0, 0, 0, 0) 100%
     );
+
+    ${theme.media.mobile} {
+        mask-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 1) 5%,
+            rgba(0, 0, 0, 1) 95%,
+            rgba(0, 0, 0, 0) 100%
+        );
+    }
     
     &::-webkit-scrollbar {
-        display: none; /* 스크롤바 숨김 */
+        display: none;
     }
     -ms-overflow-style: none;
     scrollbar-width: none;

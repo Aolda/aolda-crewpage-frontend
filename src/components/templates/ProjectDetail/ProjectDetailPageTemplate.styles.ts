@@ -1,37 +1,51 @@
+// /src/components/templates/ProjectDetail/ProjectDetailPageTemplate.styles.ts
 import styled from 'styled-components';
-import { colors, fontSize } from '@/styles/theme';
+import { colors, fontSize, theme } from '@/styles/theme';
 
 export const PageWrapper = styled.div`
     width: 90rem;
     margin: 0 auto;
+    padding: 3.75rem 7.5rem;
 
-    padding-top: 3.75rem;
-    padding-left: 7.5rem;
-    padding-right: 7.5rem;
-    padding-bottom: 3.75rem;
+    ${theme.media.mobile} {
+        width: 100%;
+        padding: 2.5rem 1.25rem;
+    }
 `;
 
 export const HeaderSection = styled.header`
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: flex-start;
 
     width: 75rem;
-    height: auto;
+    height: 100%;
 
     margin: 0 auto;
-    margin-bottom: 3.75rem;
+    padding: 4rem 1rem 2rem 1rem;
+
+    .titleGroup {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
     
     h1 {
         font-size: 2.25rem;
         font-weight: 700;
         color: #FFFFFF;
-        margin: 1rem 0;
+        margin: 0.5rem 0;
     }
     
     p {
         color: ${colors.white600};
         font-size: ${fontSize.base};
+    }
+
+    ${theme.media.mobile} {
+        width: 100%;
+        .titleGroup { gap: 0.125rem; }
     }
 `;
 
@@ -43,6 +57,10 @@ export const HeaderBackground = styled.div<{ $bgColor: string }>`
     height: 25rem;
     background: ${(props) => props.$bgColor};
 
+    & > header {
+        height: 100%;
+    }
+
     img {
         position: absolute;
         bottom: 0;
@@ -50,6 +68,15 @@ export const HeaderBackground = styled.div<{ $bgColor: string }>`
 
         width: 24rem;
         height: auto;
+
+        ${theme.media.mobile} {
+            width: 12rem;
+            opacity: 0.3;
+        }
+    }
+
+    ${theme.media.mobile} {
+        height: 18rem;
     }
 `;
 
@@ -57,6 +84,11 @@ export const Section = styled.section`
     margin-bottom: 8rem;
     p {
         color: ${colors.gray500};
+        line-height: 1;
+    }
+
+    ${theme.media.mobile} {
+        margin-bottom: 4rem;
     }
 `;
 
@@ -68,31 +100,32 @@ export const SectionTitle = styled.h2`
     font-weight: 700;
     margin-bottom: 1.25rem;
     color: ${colors.black600};
+
+    ${theme.media.mobile} {
+        font-size: 1.25rem;
+        img { width: 1.5rem; height: 1.5rem; }
+    }
 `;
 
 /* 활동 정보 카드 그리드 */
 export const InfoGrid = styled.div`
     display: grid;
-    grid-template-columns: repeat(6, 1fr); /* 6열 그리드 생성 */
+    grid-template-columns: repeat(6, 1fr);
     gap: 1.5rem;
     width: 100%;
 
-    /* 1, 2, 3번째 카드 (첫 줄): 각각 2칸씩 차지 (2 * 3 = 6) */
     & > *:nth-child(-n+3) {
         grid-column: span 2;
     }
 
-    /* 4, 5번째 카드 (둘째 줄): 각각 3칸씩 차지 (3 * 2 = 6) */
     & > *:nth-child(n+4) {
         grid-column: span 3;
     }
 
-    /* 모바일 대응: 한 줄에 하나씩 */
-    @media (max-width: 768px) {
+    ${theme.media.mobile} {
         grid-template-columns: 1fr;
-        & > * {
-            grid-column: span 1 !important;
-        }
+        gap: 0.75rem;
+        & > * { grid-column: span 1 !important; }
     }
 `;
 
@@ -101,6 +134,10 @@ export const BlogGrid = styled.div`
     grid-template-columns: repeat(2, 1fr); 
     gap: 1.25rem;
     margin-top: 1.5rem;
+
+    ${theme.media.mobile} {
+        grid-template-columns: 1fr;
+    }
 `;
 
 export const BlogCard = styled.div`
@@ -147,16 +184,23 @@ export const BlogCard = styled.div`
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
+
+    ${theme.media.mobile} {
+        padding: 1.25rem;
+        h3 { font-size: 1rem; }
+    }
 `;
 
 /* 참여 크루 그리드 */
 export const CrewGrid = styled.div`
-    display: flex;
-    grid-template-columns: repeat(5, 1fr); /* 4열 배치 */
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 1.5rem;
     
-    @media (max-width: 1024px) {
-        // grid-template-columns: repeat(2, 1fr);
+    ${theme.media.mobile} {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        justify-items: center;
     }
 `;
 
@@ -172,6 +216,11 @@ export const GalleryGrid = styled.div`
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.6rem;
     margin-top: 1.6rem;
+
+    ${theme.media.mobile} {
+        grid-template-columns: repeat(2, 1fr); // 모바일에서 2열
+        gap: 0.75rem;
+    }
 `;
 
 export const GalleryItem = styled.div`

@@ -1,5 +1,6 @@
+// /src/components/molecules/CircularProgressBar.styles.ts
 import styled from 'styled-components';
-import { fontSize, colors } from '@/styles/theme';
+import { fontSize, colors, theme } from '@/styles/theme';
 
 export const Container = styled.div<{ $size: number }>`
     position: relative;
@@ -9,6 +10,11 @@ export const Container = styled.div<{ $size: number }>`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    ${theme.media.mobile} {
+        width: 3.5rem; 
+        height: 3.5rem;
+    }
 `;
 
 export const Svg = styled.svg`
@@ -32,6 +38,8 @@ export const CircleProgress = styled.circle<{ $offset: number; $circumference: n
     transition: stroke-dashoffset 1.5s ease-out; 
     stroke-dasharray: ${(props) => props.$circumference};
     stroke-dashoffset: ${(props) => props.$offset};
+
+    ${theme.media.mobile} { stroke-width: 12; }
 `;
 
 export const NumberLabel = styled.div`
@@ -39,4 +47,8 @@ export const NumberLabel = styled.div`
     font-size: 1rem;
     font-weight: bold;
     color: ${colors.primary500};
+
+    ${theme.media.mobile} {
+        font-size: 0.8rem;
+    }
 `;

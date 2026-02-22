@@ -1,5 +1,6 @@
+// /src/components/molecules/Select/styles/ts
 import styled from 'styled-components';
-import { fontSize, colors } from '@/styles/theme';
+import { fontSize, colors, theme } from '@/styles/theme';
 
 export const SelectContainer = styled.div`
     position: relative;
@@ -20,14 +21,22 @@ export const SelectHeader = styled.div`
     border-radius: 0.5rem;
     background-color: white;
     cursor: pointer;
+
+    ${theme.media.mobile} {
+        height: 2.5rem;
+        padding: 0.5rem 0.75rem;
+    }
 `;
 
 export const LabelText = styled.span`
     font-size: ${fontSize.body2};
-    // font-weight: 600;
     color: #555555;
     margin-right: 0.5rem;
     pointer-events: none;
+
+    ${theme.media.mobile} {
+        font-size: ${fontSize.smaller};
+    }
 `;
 
 export const ArrowIcon = styled.div<{ $isOpen: boolean }>`
@@ -64,6 +73,21 @@ export const OptionsList = styled.ul`
     padding: 0.5rem;
     z-index: 100;
     list-style: none;
+
+    ${theme.media.mobile} {
+        max-height: 12rem;
+        overflow-y: auto;
+        min-width: 8rem;
+        
+        /* 스크롤바 커스텀 (선택 사항) */
+        &::-webkit-scrollbar {
+            width: 4px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: ${colors.gray500};
+            border-radius: 4px;
+        }
+    }
 `;
 
 export const OptionItem = styled.li<{ $isSelected?: boolean }>`
@@ -79,6 +103,11 @@ export const OptionItem = styled.li<{ $isSelected?: boolean }>`
     
     &:hover {
         background-color: #f0f0f0;
+    }
+
+    ${theme.media.mobile} {
+        padding: 0.5rem 0.75rem;
+        font-size: ${fontSize.smaller};
     }
 
     &::before {

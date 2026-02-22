@@ -21,3 +21,9 @@ export const colors = {
     black500: '#232527',    //페이지내 기본 검은색
     border: '#E2E2E2',
 }
+
+export const theme = {
+    media: {
+        mobile: `@media (max-width: 750px)`,
+    }
+};

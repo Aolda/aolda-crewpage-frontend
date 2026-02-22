@@ -1,3 +1,4 @@
+// /src/components/templates/main/Activity/Activity.tsx
 'use client';
 
 import React from 'react';

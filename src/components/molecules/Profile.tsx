@@ -1,3 +1,4 @@
+// /src/components/molecules/Profile.tsx
 'use client';
 
 import React from "react";
