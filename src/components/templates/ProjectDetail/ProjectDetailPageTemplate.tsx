@@ -22,7 +22,7 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
     // Breadcrumb 데이터
     const breadcrumbItems = [
         { label: '홈', href: '/' },
-        { label: '주요 활동', href: '/project' },
+        { label: '주요 활동', href: '/activity' },
         { label: project.activityNames.ko, href: '#' },
     ];
 

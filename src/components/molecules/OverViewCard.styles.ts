@@ -1,4 +1,5 @@
 // /src/components/molecules/OverviewCard.styles.ts
+
 import styled from 'styled-components';
 import { fontSize, theme } from '@/styles/theme';
 

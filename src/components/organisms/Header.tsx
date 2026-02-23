@@ -9,7 +9,7 @@ import * as S from "./Header.styles";
 
 const NAV_ITEMS = [
     { label: '크루북', href: '/crew' },
-    { label: '주요 활동', href: '/project' },
+    { label: '주요 활동', href: '/activity' },
     { label: '주요 링크', href: '/link' },
 ];
 
