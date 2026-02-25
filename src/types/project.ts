@@ -21,6 +21,10 @@ export interface ActivitySummary {
         ko: string;
         en: string;
     };
+    background: {
+        url: string, // 활동 배경이미지
+        color: string // 활동 배경색상(#xxxxxx)
+    };
     activityType: ActivityTypeKey;
     description: string; // 이 명세에는 소개글이 포함됩니다!
 }
@@ -51,10 +55,13 @@ export interface ProjectSummary {
     activityNames: {
         ko: string;
         en: string;
+        brief: string;
     };
-    backgroundImage: {
+    background: {
         url: string;
+        color: string;
     };
+    participantsCount: number;
 }
 
 // 전체 조회 응답 타입
@@ -89,8 +96,9 @@ export interface ProjectDetailResponse {
         ko: string;
         en: string;
     };
-    backgroundImage: {
+    background: {
         url: string;
+        color: string;
     };
     contents: {
         ideaBackground: string; // 기획배경 (\n, \t 포함)
