@@ -14,7 +14,7 @@ interface ActivityProps {
 const Activity = ({ activities }: ActivityProps) => {
     // 무한 루프를 위해 리스트 복제
     // 활동 데이터가 적을 경우를 대비 2번 이상 복제
-    const duplicatedActivities = Array(6).fill(activities).flat()
+    const duplicatedActivities = Array(10).fill(activities).flat()
 
     return (
         <MainSection
