@@ -104,7 +104,6 @@ export const HorizontalScrollArea = styled.div`
 
     ${theme.media.mobile} {
         width: 100%;
-        left: 0;
         transform: none;
         mask-image: linear-gradient(
             to right,
