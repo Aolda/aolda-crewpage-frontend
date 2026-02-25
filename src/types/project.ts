@@ -57,6 +57,9 @@ export interface ProjectSummary {
         en: string;
         brief: string;
     };
+    backgroundImage: {
+        url: string;
+    };
     background: {
         url: string;
         color: string;
@@ -99,6 +102,9 @@ export interface ProjectDetailResponse {
     background: {
         url: string;
         color: string;
+    };
+    backgroundImage: {
+        url: string;
     };
     contents: {
         ideaBackground: string; // 기획배경 (\n, \t 포함)

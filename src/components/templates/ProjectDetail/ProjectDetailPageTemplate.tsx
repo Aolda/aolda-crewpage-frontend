@@ -28,8 +28,13 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
 
     return (
         <>
-            <S.HeaderBackground $bgColor={"orange"}>
-                <Image src={project.backgroundImage.url} alt={project.activityNames.en} width={400} height={300}/>
+            <S.HeaderBackground $bgColor={project.background?.color || "#1A8EE5"}>
+                <Image
+                    src={project.background?.url || project.backgroundImage.url}
+                    alt={project.activityNames.en}
+                    width={400}
+                    height={300}
+                />
                 <S.HeaderSection>
                     <BreadCrumb items={breadcrumbItems} />
                     <div className="titleGroup">
