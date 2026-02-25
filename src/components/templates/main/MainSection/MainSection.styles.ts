@@ -4,7 +4,8 @@ import { fontSize, colors, theme } from '@/styles/theme';
 
 export const SectionWrapper = styled.section<{ $bgColor?: string }>`
     display: flex;
-    width: 90rem;
+    max-width: 90rem;
+    width: 100%;
 
     margin: 0 auto;
     padding-top: 10rem;
@@ -18,7 +19,6 @@ export const SectionWrapper = styled.section<{ $bgColor?: string }>`
 
     /* 750px 반응형 대응 */
     ${theme.media.mobile} {
-        width: 100%; // 모바일에서는 전체 너비 사용
         padding-top: 5rem; // 상단 여백 축소
         padding-left: 1.25rem; // 좌우 여백을 시안에 맞춰 좁게 설정
         padding-right: 1.25rem;

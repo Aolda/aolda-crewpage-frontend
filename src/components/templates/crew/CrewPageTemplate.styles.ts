@@ -48,13 +48,13 @@ export const HeaderContent = styled.div`
 
 export const ContentContainer = styled.main`
     display: flex;
-    width: 75rem;
+    max-width: 75rem;
+    width: 100%
     flex-direction: column;
     margin: 0 auto;
     padding-top: 4.5rem;
 
     ${theme.media.mobile} {
-        width: 100%;
         padding: 2.5rem 1.25rem;
     }
 `;

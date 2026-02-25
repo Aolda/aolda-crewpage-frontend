@@ -133,20 +133,21 @@ export const HeaderSection = styled.header`
 `;
 
 export const ContentSection = styled.main`
-    width: 90rem;
+    max-width: 90rem;
+    width: 100&
     margin: 0 auto;
     padding-left: 7.5rem;
     padding-right: 7.5rem;
 
     ${theme.media.mobile} {
-        width: 100%;
         padding: 0 1rem;
     }
 `;
 
 export const StatsSection = styled.section`
     display: flex;
-    width: 75rem;
+    max-width: 75rem;
+    width: 100%
     justify-content: center;
     gap: 1.5rem;
 
@@ -154,7 +155,6 @@ export const StatsSection = styled.section`
     z-index: 10;
 
     ${theme.media.mobile} {
-        width: 100%;
         flex-direction: row; 
         justify-content: space-between;
         gap: 0.5rem;

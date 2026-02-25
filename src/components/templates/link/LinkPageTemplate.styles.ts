@@ -166,7 +166,8 @@ export const LinkWrapper = styled.main`
     align-items: center;
 
     gap: 7.5rem;
-    width: 90rem;
+    max-width: 90rem;
+    width: 100%;
     
     padding-top: 10rem;
     paddinf-left: 7.5rem;
