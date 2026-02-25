@@ -49,7 +49,7 @@ export const HeaderContent = styled.div`
 export const ContentContainer = styled.main`
     display: flex;
     max-width: 75rem;
-    width: 100%
+    width: 100%;
     flex-direction: column;
     margin: 0 auto;
     padding-top: 4.5rem;
