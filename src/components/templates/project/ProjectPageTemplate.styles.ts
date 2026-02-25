@@ -134,7 +134,7 @@ export const HeaderSection = styled.header`
 
 export const ContentSection = styled.main`
     max-width: 90rem;
-    width: 100&
+    width: 100%;
     margin: 0 auto;
     padding-left: 7.5rem;
     padding-right: 7.5rem;
