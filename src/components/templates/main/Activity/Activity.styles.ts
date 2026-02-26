@@ -6,7 +6,7 @@ export const ActivityWrapper = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    // align-items: center;
 `;
 
 /* 탭 메뉴 스타일 */
@@ -77,7 +77,7 @@ const infiniteScroll = keyframes`
         transform: translateX(-50%);
     }
     100% { 
-        transform: translateX(calc(-100% / 6 * 2));
+        transform: translateX(calc(0));
     }
 `;
 
@@ -85,20 +85,26 @@ const infiniteScroll = keyframes`
 export const HorizontalScrollArea = styled.div`
     width: 100vw;
     position: relative;
-    overflow: hidden;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
 
+    overflow: hidden;
     pointer-events: none;
 
     /* 양 끝이 자연스럽게 사라지는 페이드 효과 (선택 사항) */
     mask-image: linear-gradient(
         to right,
         rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 1) 15%,
-        rgba(0, 0, 0, 1) 85%,
+        rgba(0, 0, 0, 1) 5rem,
+        rgba(0, 0, 0, 1) calc(100% - 5rem),
         rgba(0, 0, 0, 0) 100%
     );
 
     ${theme.media.mobile} {
+        width: 100%;
+        transform: none;
         mask-image: linear-gradient(
             to right,
             rgba(0, 0, 0, 0) 0%,
@@ -118,11 +124,11 @@ export const HorizontalScrollArea = styled.div`
 export const CardList = styled.div<{ $count: number }>`
     display: flex;
     gap: 1.5rem;
-
     width: max-content;
+
     /* 왼쪽 -> 오른쪽 무한 애니메이션 적용 */
     /* 숫자가 커질수록 더 천천히 움직임, 활동 개수에 맞게 스크롤 되는 속도 조정 */
-    animation: ${infiniteScroll} ${props => props.$count * 10}s linear infinite;
+    animation: ${infiniteScroll} ${props => props.$count * 15}s linear infinite;
 
     padding-right: 1.5rem;
 `;
