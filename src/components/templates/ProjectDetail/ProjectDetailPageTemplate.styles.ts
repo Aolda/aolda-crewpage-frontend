@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { colors, fontSize, theme } from '@/styles/theme';
 
 export const PageWrapper = styled.div`
-    width: 90rem;
+    max-width: 90rem;
+    width: 100%;
     margin: 0 auto;
     padding: 3.75rem 7.5rem;
 
@@ -19,7 +20,8 @@ export const HeaderSection = styled.header`
     justify-content: space-between;
     align-items: flex-start;
 
-    width: 75rem;
+    max-width: 75rem;
+    width: 100%;
     height: 100%;
 
     margin: 0 auto;

@@ -24,19 +24,24 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
 }) => {
 	return (
 		<StyledProjectBlock
-			$bgColor={"orange"}
+			$bgColor={project.background?.color || "#1A8EE5"}
 			onClick={() => onDetailClick?.(project.activityId)}
 		>
 			<section className="infoSection">
                 <section className="textSection">
-                    <span>x명 참여</span>
-                    <h1>{project.activityNames.ko}</h1>
+                    <span>{project.participantsCount}명 참여</span>
+                    <h1>{project.activityNames.brief}</h1>
                     <span>{project.activityNames.en}</span>
                 </section>
                 <Badge variant="transparent" status={project.status}>{ACTIVITY_STATUS[project.status]}</Badge>
             </section>
 			<section className="imgSection">
-				<Image src={project.backgroundImage.url} alt="projectBlock img" width={300} height={300}/>
+				<Image
+					src={project.background?.url || project.backgroundImage.url || "#"}
+					alt="projectBlock img"
+					width={300}
+					height={300}
+				/>
 			</section>
 		</StyledProjectBlock>
 	);

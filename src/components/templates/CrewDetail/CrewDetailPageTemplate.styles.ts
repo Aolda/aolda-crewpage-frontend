@@ -6,7 +6,8 @@ export const TemplateWrapper = styled.div`
     display: flex;
     justify-content: center;
     gap: 2.25rem;
-    width: 90rem;
+    max-width: 90rem;
+    width: 100%;
 
     margin: 0 auto;
     padding-top: 12.5rem;
@@ -15,7 +16,6 @@ export const TemplateWrapper = styled.div`
 
     ${theme.media.mobile} {
         flex-direction: column;
-        width: 100%;
         padding: 6rem 1.25rem 2.5rem;
         gap: 1.5rem;
     }

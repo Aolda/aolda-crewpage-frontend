@@ -22,14 +22,19 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
     // Breadcrumb 데이터
     const breadcrumbItems = [
         { label: '홈', href: '/' },
-        { label: '주요 활동', href: '/project' },
+        { label: '주요 활동', href: '/activity' },
         { label: project.activityNames.ko, href: '#' },
     ];
 
     return (
         <>
-            <S.HeaderBackground $bgColor={"orange"}>
-                <Image src={project.backgroundImage.url} alt={project.activityNames.en} width={400} height={300}/>
+            <S.HeaderBackground $bgColor={project.background?.color || "#1A8EE5"}>
+                <Image
+                    src={project.background?.url || project.backgroundImage.url}
+                    alt={project.activityNames.en}
+                    width={400}
+                    height={300}
+                />
                 <S.HeaderSection>
                     <BreadCrumb items={breadcrumbItems} />
                     <div className="titleGroup">
