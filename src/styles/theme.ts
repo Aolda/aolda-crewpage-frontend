@@ -25,8 +25,8 @@ export const colors = {
 export const theme = {
     media: {
         mobile: `@media (max-width: 1440px)`,
-        mobileOnly: `@media (max-width: 767px)`,
-        tablet: `@media (min-width: 768px) and (max-width: 1280px)`,
+        mobileOnly: `@media (max-width: 743px)`,
+        tablet: `@media (min-width: 744px) and (max-width: 1280px)`,
         desktop: `@media (min-width: 1441px)`,
     }
 };
