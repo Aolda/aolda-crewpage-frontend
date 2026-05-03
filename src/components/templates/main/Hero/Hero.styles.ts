@@ -44,6 +44,33 @@ export const HeroWrapper = styled.section`
     ${theme.media.mobile} {
         height: 25rem;
     }
+
+    ${theme.media.tablet} {
+        height: 35rem;
+    }
+`;
+
+export const HeroBgText = styled.div`
+    display: none;
+
+    ${theme.media.mobileOnly} {
+        display: block;
+        position: absolute;
+        width: 100%;
+        overflow: hidden;
+        opacity: 0.15;
+        z-index: 0;
+        pointer-events: none;
+        user-select: none;
+
+        img {
+            max-width: unset;
+            width: 50rem;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
 `;
 
 export const HeroContent = styled.div`
