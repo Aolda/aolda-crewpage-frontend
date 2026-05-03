@@ -23,9 +23,9 @@ export const StyledVisionCard = styled.div `
         justify-content: space-between;
         gap: 1rem;
         padding: 1.25rem;
-        width: 30rem;
-        height: 7rem;
-        margin: 0 auto;
+        width: 100%;
+        height: auto;
+        min-height: 6rem;
     }
 
     ${theme.media.tablet} {
@@ -62,8 +62,9 @@ export const TextContainer = styled.section`
     gap: 0.75rem;
 
     ${theme.media.mobile} {
+        flex: 1;
+        width: auto;
         text-align: left;
-        align-items: left;
     }
 
     ${theme.media.tablet} {

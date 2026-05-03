@@ -112,8 +112,8 @@ export const CrewGrid = styled.div`
     margin: 0 auto;
 
     ${theme.media.mobile} {
-        grid-template-columns: repeat(3, 1fr);
-        justify-items: center;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: stretch;
         gap: 0.75rem;
         padding: 0;
 

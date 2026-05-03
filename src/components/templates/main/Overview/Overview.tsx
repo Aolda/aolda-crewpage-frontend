@@ -32,6 +32,22 @@ const Overview = () => {
                         <Image src="/images/main/bgText.png" alt="bgtext" width={2128} height={120}/>
                     </S.BgText>
 
+                    {/* 모바일 전용: 배경 글씨 4개 (1,3 정위치 / 2,4 왼쪽 이동) */}
+                    <S.MobileBgTextGrid>
+                        <S.MobileBgTextRow $shifted={false}>
+                            <Image src="/images/main/bgText.png" alt="" width={2128} height={120} />
+                        </S.MobileBgTextRow>
+                        <S.MobileBgTextRow $shifted={true}>
+                            <Image src="/images/main/bgText.png" alt="" width={2128} height={120} />
+                        </S.MobileBgTextRow>
+                        <S.MobileBgTextRow $shifted={false}>
+                            <Image src="/images/main/bgText.png" alt="" width={2128} height={120} />
+                        </S.MobileBgTextRow>
+                        <S.MobileBgTextRow $shifted={true}>
+                            <Image src="/images/main/bgText.png" alt="" width={2128} height={120} />
+                        </S.MobileBgTextRow>
+                    </S.MobileBgTextGrid>
+
                     <S.GlareEffect />
 
                     <S.ShadowWrapper>

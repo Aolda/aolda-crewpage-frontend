@@ -18,25 +18,6 @@ export const OverviewWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
-
-    ${theme.media.mobile} {
-        position: relative;
-
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('/images/main/bgText.png');
-            background-size: 100% auto;
-            background-repeat: repeat-y;
-            opacity: 0.12;
-            z-index: 0;
-            pointer-events: none;
-        }
-    }
 `;
 
 /* 상단: 구체 및 배경 텍스트 영역 */
@@ -50,10 +31,43 @@ export const SphereContainer = styled.div`
 
     ${theme.media.mobile} {
         height: 20rem;
+        overflow: hidden;
     }
 
     ${theme.media.tablet} {
         height: 26rem;
+    }
+`;
+
+/* 모바일 전용: 배경 글씨 4개 세로 배열 */
+export const MobileBgTextGrid = styled.div`
+    display: none;
+
+    ${theme.media.mobile} {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        user-select: none;
+    }
+`;
+
+export const MobileBgTextRow = styled.div<{ $shifted?: boolean }>`
+    display: none;
+
+    ${theme.media.mobile} {
+        display: block;
+        opacity: 0.15;
+        transform: ${(props) => props.$shifted ? 'translateX(-18%)' : 'translateX(0)'};
+
+        img {
+            width: 150%;
+            max-width: unset;
+            height: auto;
+        }
     }
 `;
 
@@ -99,8 +113,10 @@ export const GlareEffect = styled.div`
     }
 
     ${theme.media.mobile} {
-        width: 20rem;
-        height: 10rem;
+        width: 14rem;
+        height: 7rem;
+        background: rgba(26, 142, 229, 0.2);
+        filter: blur(3rem);
     }
 `;
 
