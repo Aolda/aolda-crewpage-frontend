@@ -53,7 +53,7 @@ export const HeroWrapper = styled.section`
 export const HeroBgText = styled.div`
     display: none;
 
-    ${theme.media.mobileOnly} {
+    ${theme.media.mobile} {
         display: block;
         position: absolute;
         width: 100%;
