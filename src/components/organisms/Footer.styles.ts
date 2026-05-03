@@ -24,6 +24,11 @@ export const StyledFooter = styled.footer`
         gap: 1.25rem;
     }
 
+    ${theme.media.tablet} {
+        padding-left: 7.5rem;
+        padding-right: 7.5rem;
+    }
+
     .logoSection {
         display: flex;
         flex-direction: column;

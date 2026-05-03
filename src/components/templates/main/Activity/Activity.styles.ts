@@ -54,13 +54,13 @@ export const Tab = styled.div`
     ${theme.media.tablet} {
         flex: 1;
         width: auto;
-        height: 7.5rem;
-        flex-direction: row;
+        height: auto;
+        flex-direction: column;
         align-items: flex-start;
         text-align: left;
         padding: 1.5rem;
-        gap: 0;
-        justify-content: space-between;
+        gap: 1rem;
+        justify-content: flex-start;
     }
 
     h4 {
@@ -84,7 +84,7 @@ export const Tab = styled.div`
         }
 
         ${theme.media.tablet} {
-            text-align: right;
+            text-align: left;
         }
 
         span {

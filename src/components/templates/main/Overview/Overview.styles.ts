@@ -56,6 +56,12 @@ export const BgText = styled.div`
         }
     }
 
+    ${theme.media.tablet} {
+        width: 100vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
     img {
         max-width: unset;
         position: relative;
