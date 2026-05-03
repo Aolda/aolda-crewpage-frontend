@@ -165,19 +165,33 @@ export const InfoCard = styled.div`
     text-align: left;
 
     br.pc-only {
-            display: flex;
-        }
-        br.mobile-only {
+        display: flex;
+    }
+    br.mobile-only {
+        display: none;
+    }
+
+    ${theme.media.tablet} {
+        border: none;
+        flex-direction: column;
+        height: auto;
+        padding: 0.75rem 0.75rem;
+        text-align: center;
+
+        br.pc-only {
             display: none;
         }
+        br.mobile-only {
+            display: flex;
+        }
+    }
 
     ${theme.media.mobile} {
         border: none;
         flex-direction: column;
         height: auto;
-        padding: 2.5rem 1.5rem;
+        padding: 0.75rem 0.75rem;
         text-align: center;
-        gap: 2.5rem;
 
         br.pc-only {
             display: none;
@@ -209,9 +223,19 @@ export const CardText = styled.div`
         color: ${colors.gray500};
         word-break: keep-all;
     }
-
+    ${theme.media.tablet} {
+        gap: 0.75rem;
+        
+        h3 {
+            font-size: ${fontSize.h2};
+        }
+        p {
+            font-size: ${fontSize.base};
+        }
+    }
     ${theme.media.mobile} {
-        gap: 1.5rem;
+        gap: 0.75rem;
+        text-align: left;
         
         h3 {
             font-size: 1.5rem;
@@ -228,7 +252,7 @@ export const CardIllustration = styled.div`
         height: auto;
     }
 
-    ${theme.media.mobile} {
+    ${theme.media.tabletDown} {
         display: none;
     }
 `;
