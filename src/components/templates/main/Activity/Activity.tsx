@@ -2,6 +2,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import MainSection from '../MainSection/MainSection';
 import * as S from './Activity.styles';
 import ActivityBlock from '@/components/organisms/ActivityBlock';
@@ -12,9 +13,8 @@ interface ActivityProps {
 }
 
 const Activity = ({ activities }: ActivityProps) => {
-    // 무한 루프를 위해 리스트 복제
-    // 활동 데이터가 적을 경우를 대비 2번 이상 복제
-    const duplicatedActivities = Array(10).fill(activities).flat()
+    const duplicatedActivities = Array(10).fill(activities).flat();
+    const mobileActivities = activities.slice(0, 6);
 
     return (
         <MainSection
@@ -36,21 +36,38 @@ const Activity = ({ activities }: ActivityProps) => {
                         자유로운 아이디어 제안을 통해 발전하는 시간을 가집니다.</p>
                     </S.Tab>
                 </S.TabContainer>
-                {/* 하단 수평 스크롤 리스트 */}
+                {/* 데스크탑/태블릿: 수평 무한 스크롤 */}
                 <S.HorizontalScrollArea>
                     <S.CardList $count={activities.length}>
                         {duplicatedActivities.map((item, index) => (
-                            <ActivityBlock 
+                            <ActivityBlock
                                 key={`${item.activityNames.en}-${index}`}
                                 status={item.status}
                                 date={item.startedAt}
                                 title={item.activityNames.ko}
                                 subtitle={item.activityNames.en}
-                                description={item.description} 
+                                description={item.description}
                             />
                         ))}
                     </S.CardList>
                 </S.HorizontalScrollArea>
+
+                {/* 모바일: 최대 6개 그리드 + 더보기 링크 */}
+                <S.MobileActivityGrid>
+                    {mobileActivities.map((item, index) => (
+                        <ActivityBlock
+                            key={`mobile-${item.activityNames.en}-${index}`}
+                            status={item.status}
+                            date={item.startedAt}
+                            title={item.activityNames.ko}
+                            subtitle={item.activityNames.en}
+                            description={item.description}
+                        />
+                    ))}
+                </S.MobileActivityGrid>
+                <Link href="/activity" passHref legacyBehavior>
+                    <S.MoreLink>활동 더보기</S.MoreLink>
+                </Link>
             </S.ActivityWrapper>
         </MainSection>
     );

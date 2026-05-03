@@ -10,6 +10,7 @@ const Overview = () => {
     return (
         <MainSection
             label="Overview"
+            hideHeaderOnMobile
             title={
                 <>
                     <S.SinceText>since 2023</S.SinceText>

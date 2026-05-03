@@ -45,10 +45,15 @@ export const Tab = styled.div`
         width: 100%;
         height: auto;
         flex-direction: column;
-        align-items: center;
-        text-align: center;
+        align-items: flex-start;
+        text-align: left;
         padding: 1.5rem;
         gap: 1rem;
+        font-size: ${fontSize.smaller};
+
+        br {
+            display: none;
+        }
     }
 
     ${theme.media.tablet} {
@@ -56,7 +61,7 @@ export const Tab = styled.div`
         width: auto;
         height: auto;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         text-align: left;
         padding: 1.5rem;
         gap: 1rem;
@@ -79,12 +84,12 @@ export const Tab = styled.div`
         font-weight: 400;
 
         ${theme.media.mobile} {
-            text-align: center;
+            text-align: left;
             word-break: keep-all;
         }
 
         ${theme.media.tablet} {
-            text-align: left;
+            text-align: center;
         }
 
         span {
@@ -115,7 +120,6 @@ export const HorizontalScrollArea = styled.div`
     overflow: hidden;
     pointer-events: none;
 
-    /* 양 끝이 자연스럽게 사라지는 페이드 효과 (선택 사항) */
     mask-image: linear-gradient(
         to right,
         rgba(0, 0, 0, 0) 0%,
@@ -125,22 +129,45 @@ export const HorizontalScrollArea = styled.div`
     );
 
     ${theme.media.mobile} {
-        width: 100%;
-        transform: none;
-        mask-image: linear-gradient(
-            to right,
-            rgba(0, 0, 0, 0) 0%,
-            rgba(0, 0, 0, 1) 5%,
-            rgba(0, 0, 0, 1) 95%,
-            rgba(0, 0, 0, 0) 100%
-        );
+        display: none;
     }
-    
+
     &::-webkit-scrollbar {
         display: none;
     }
     -ms-overflow-style: none;
     scrollbar-width: none;
+`;
+
+/* 모바일 전용 활동 그리드 */
+export const MobileActivityGrid = styled.div`
+    display: none;
+
+    ${theme.media.mobile} {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        width: 100%;
+    }
+`;
+
+export const MoreLink = styled.a`
+    display: none;
+
+    ${theme.media.mobile} {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        margin-top: 1.5rem;
+        font-size: ${fontSize.smaller};
+        font-weight: 600;
+        color: ${colors.primary500};
+        text-decoration: none;
+
+        &::after {
+            content: '→';
+        }
+    }
 `;
 
 export const CardList = styled.div<{ $count: number }>`

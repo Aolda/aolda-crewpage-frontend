@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useMemo, useState } from 'react';
+import Link from 'next/link';
 import MainSection from '../MainSection/MainSection';
 import CrewBlock from '@/components/organisms/CrewBlock';
 import { CrewMember } from '@/types/crew';
@@ -58,27 +59,33 @@ const Crew = ({ crews, onCrewClick }: CrewProps) => {
                 {/* 기수 페이지네이션 */}
                 <S.GenerationPagination>
                     {generations.map((gen) => (
-                        <S.GenButton 
+                        <S.GenButton
                             key={gen}
                             $isActive={activeGen === gen}
                             onClick={() => setActiveGen(gen)}
                         >
-                        {gen}기
+                            {gen}기
                         </S.GenButton>
                     ))}
                 </S.GenerationPagination>
 
-                {/* 정렬된 크루 그리드 */}
-                <S.CrewGrid>
-                {displayCrews.map((member) => (
-                    <CrewBlock 
-                        key={member.crewId} 
-                        member={member} 
-                        isCrewpage={false} 
-                        onDetailClick={onCrewClick}
-                    />
-                ))}
-                </S.CrewGrid>
+                {/* 크루 그리드 (모바일: 배경 이미지 래퍼) */}
+                <S.CrewGridWrapper>
+                    <S.CrewGrid>
+                        {displayCrews.map((member) => (
+                            <CrewBlock
+                                key={member.crewId}
+                                member={member}
+                                isCrewpage={false}
+                                onDetailClick={onCrewClick}
+                            />
+                        ))}
+                    </S.CrewGrid>
+                </S.CrewGridWrapper>
+
+                <Link href="/crew" passHref legacyBehavior>
+                    <S.CrewMoreLink>크루 더보기</S.CrewMoreLink>
+                </Link>
             </S.CrewSection>
         </MainSection>
     );

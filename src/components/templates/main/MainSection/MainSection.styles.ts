@@ -17,11 +17,12 @@ export const SectionWrapper = styled.section<{ $bgColor?: string }>`
     align-items: center;
     text-align: center;
 
-    /* 750px 반응형 대응 */
     ${theme.media.mobile} {
         padding-top: 5rem;
         padding-left: 1.25rem;
         padding-right: 1.25rem;
+        align-items: flex-start;
+        text-align: left;
     }
 
     ${theme.media.tablet} {
@@ -30,7 +31,7 @@ export const SectionWrapper = styled.section<{ $bgColor?: string }>`
     }
 `;
 
-export const Header = styled.div`
+export const Header = styled.div<{ $hideOnMobile?: boolean }>`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,6 +39,9 @@ export const Header = styled.div`
     padding: 0 1.25rem;
 
     ${theme.media.mobile} {
+        display: ${(props) => props.$hideOnMobile ? 'none' : 'flex'};
+        align-items: flex-start;
+        padding: 0;
         margin-bottom: 2rem;
     }
 `;
@@ -48,6 +52,10 @@ export const GrayBar = styled.div`
     border: solid 1.5px #636363;
     border-radius: 4px;
     margin-bottom: 0.5rem;
+
+    ${theme.media.mobile} {
+        display: none;
+    }
 `;
 
 export const Label = styled.span`
@@ -56,6 +64,16 @@ export const Label = styled.span`
     font-weight: 600;
     color: ${colors.black600};
     margin-bottom: 1.5rem;
+
+    ${theme.media.mobile} {
+        display: inline-block;
+        color: ${colors.primary500};
+        border: 1.5px solid ${colors.primary500};
+        border-radius: 0.375rem;
+        padding: 0.125rem 0.625rem;
+        font-size: ${fontSize.smaller};
+        margin-bottom: 1rem;
+    }
 `;
 
 export const Title = styled.h2`
@@ -73,6 +91,7 @@ export const Title = styled.h2`
     ${theme.media.mobile} {
         font-size: 1.75rem;
         margin-bottom: 1rem;
+        text-align: left;
     }
 `;
 
@@ -87,6 +106,8 @@ export const Description = styled.p`
     ${theme.media.mobile} {
         font-size: ${fontSize.smaller};
         line-height: 1.5;
+        margin: 0;
+        text-align: left;
     }
 `;
 

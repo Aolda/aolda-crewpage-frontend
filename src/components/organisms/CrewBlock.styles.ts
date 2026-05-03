@@ -28,10 +28,13 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
         }
 
         ${theme.media.mobile} {
-            width: 10.5rem;
-            height: 13.5rem;
-            padding: 1.25rem;
-            gap: 1.25rem;
+            width: 100%;
+            height: auto;
+            padding: 0.875rem 0.75rem;
+            gap: 0.5rem;
+            align-items: flex-start;
+
+            .imageSection { display: none; }
         }
 
         ${theme.media.tablet} {
@@ -49,7 +52,8 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             gap: 0.75rem;
 
             ${theme.media.mobile} {
-                gap: 0.4rem;
+                align-items: flex-start;
+                gap: 0.25rem;
             }
 
             .nameInfo {
@@ -72,7 +76,11 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
                 font-weight: bold;
                 color: ${colors.gray600};
 
-                ${theme.media.mobile} { font-size: ${fontSize.smaller}; }
+                ${theme.media.mobile} {
+                    font-size: ${fontSize.smaller};
+                    font-weight: 400;
+                    color: ${colors.gray500};
+                }
             }
         }
 

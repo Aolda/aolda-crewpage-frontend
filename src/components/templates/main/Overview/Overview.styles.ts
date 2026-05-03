@@ -18,6 +18,25 @@ export const OverviewWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
+
+    ${theme.media.mobile} {
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/images/main/bgText.png');
+            background-size: 100% auto;
+            background-repeat: repeat-y;
+            opacity: 0.12;
+            z-index: 0;
+            pointer-events: none;
+        }
+    }
 `;
 
 /* 상단: 구체 및 배경 텍스트 영역 */
@@ -49,11 +68,7 @@ export const BgText = styled.div`
     user-select: none;
 
     ${theme.media.mobile} {
-        width: 100%;
-
-        img {
-            width: 63rem;
-        }
+        display: none;
     }
 
     ${theme.media.tablet} {
@@ -78,6 +93,11 @@ export const GlareEffect = styled.div`
     filter: blur(4rem);
     z-index: 1;
 
+    ${theme.media.tablet} {
+        width: 30rem;
+        height: 15rem;
+    }
+
     ${theme.media.mobile} {
         width: 20rem;
         height: 10rem;
@@ -92,6 +112,10 @@ export const ShadowWrapper = styled.div`
     
     width: 20rem;
     height: auto;
+    
+    ${theme.media.tablet} {
+        width: 15rem;
+    }
     
     ${theme.media.mobile} {
         width: 12rem;

@@ -10,18 +10,20 @@ interface MainSectionProps {
     description?: React.ReactNode;
     children: React.ReactNode;
     bgColor?: string;
+    hideHeaderOnMobile?: boolean;
 }
 
-const MainSection: React.FC<MainSectionProps> = ({ 
-    label, 
-    title, 
-    description, 
-    children, 
-    bgColor 
+const MainSection: React.FC<MainSectionProps> = ({
+    label,
+    title,
+    description,
+    children,
+    bgColor,
+    hideHeaderOnMobile,
 }) => {
     return (
         <S.SectionWrapper $bgColor={bgColor}>
-            <S.Header>
+            <S.Header $hideOnMobile={hideHeaderOnMobile}>
                 <S.GrayBar />
                 {label && <S.Label>{label}</S.Label>}
                 <S.Title>{title}</S.Title>

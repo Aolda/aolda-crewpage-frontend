@@ -12,7 +12,11 @@ export const HeroWrapper = styled.section`
     align-items: center;
     text-align: center;
 
-    overflow: hidden; 
+    overflow: hidden;
+
+    ${theme.media.mobile} {
+        display: none;
+    }
 
     /* 배경 전용 가상 요소 */
     &::before {
