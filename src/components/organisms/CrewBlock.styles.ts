@@ -34,6 +34,13 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             gap: 1.25rem;
         }
 
+        ${theme.media.tablet} {
+            width: 100%;
+            height: auto;
+            padding: 1.25rem 0.75rem;
+            gap: 1rem;
+        }
+
         .textSection {
             display: flex;
             flex-direction: column;

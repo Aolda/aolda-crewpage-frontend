@@ -71,6 +71,12 @@ export const CrewGrid = styled.div`
         padding: 0 1rem;
     }
 
+    ${theme.media.tablet} {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        padding: 0;
+    }
+
     & > * {
         box-sizing: border-box !important;
         flex-shrink: 0;

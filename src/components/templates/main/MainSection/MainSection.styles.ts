@@ -19,9 +19,14 @@ export const SectionWrapper = styled.section<{ $bgColor?: string }>`
 
     /* 750px 반응형 대응 */
     ${theme.media.mobile} {
-        padding-top: 5rem; // 상단 여백 축소
-        padding-left: 1.25rem; // 좌우 여백을 시안에 맞춰 좁게 설정
+        padding-top: 5rem;
+        padding-left: 1.25rem;
         padding-right: 1.25rem;
+    }
+
+    ${theme.media.tablet} {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
     }
 `;
 

@@ -28,6 +28,17 @@ export const StyledVisionCard = styled.div `
         margin: 0 auto;
     }
 
+    ${theme.media.tablet} {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: auto;
+        padding: 1.5rem 1rem;
+        gap: 1rem;
+        margin: 0;
+    }
+
     img {
         width: 7.5rem;
         height: 7.5rem;
@@ -35,6 +46,11 @@ export const StyledVisionCard = styled.div `
         ${theme.media.mobile} {
             width: 4rem;
             height: 4rem;
+        }
+
+        ${theme.media.tablet} {
+            width: 5rem;
+            height: 5rem;
         }
     }
 `;
@@ -50,12 +66,22 @@ export const TextContainer = styled.section`
         align-items: left;
     }
 
+    ${theme.media.tablet} {
+        text-align: center;
+        align-items: center;
+        width: 100%;
+    }
+
     h1 {
         font-size: ${fontSize.h2};
         font-weight: 700;
         color: ${colors.primary500};
 
         ${theme.media.mobile} {
+            font-size: 1.25rem;
+        }
+
+        ${theme.media.tablet} {
             font-size: 1.25rem;
         }
     }
@@ -68,6 +94,11 @@ export const TextContainer = styled.section`
 
         ${theme.media.mobile} {
             font-size: ${fontSize.smaller};
+        }
+
+        ${theme.media.tablet} {
+            font-size: ${fontSize.smaller};
+            white-space: normal;
         }
     }
 `;

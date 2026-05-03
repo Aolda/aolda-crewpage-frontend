@@ -20,6 +20,12 @@ export const TabContainer = styled.div`
         width: 100%;
         gap: 1rem;
     }
+
+    ${theme.media.tablet} {
+        flex-direction: row;
+        width: 100%;
+        gap: 1.25rem;
+    }
 `;
 
 export const Tab = styled.div`
@@ -45,6 +51,18 @@ export const Tab = styled.div`
         gap: 1rem;
     }
 
+    ${theme.media.tablet} {
+        flex: 1;
+        width: auto;
+        height: 7.5rem;
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        padding: 1.5rem;
+        gap: 0;
+        justify-content: space-between;
+    }
+
     h4 {
         font-size: ${fontSize.body1};
         font-weight: 700;
@@ -63,6 +81,10 @@ export const Tab = styled.div`
         ${theme.media.mobile} {
             text-align: center;
             word-break: keep-all;
+        }
+
+        ${theme.media.tablet} {
+            text-align: right;
         }
 
         span {

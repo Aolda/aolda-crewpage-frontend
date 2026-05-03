@@ -14,6 +14,11 @@ export const VisionWrapper = styled.div`
         height: auto;
         padding: 2rem 0;
     }
+
+    ${theme.media.tablet} {
+        height: auto;
+        padding: 1rem 0;
+    }
 `;
 
 export const GlareEffect = styled.div`
@@ -53,7 +58,12 @@ export const CardGrid = styled.div`
 
     ${theme.media.mobile} {
         grid-template-columns: 1fr;
-        justify-items: center; 
+        justify-items: center;
         gap: 2rem;
+    }
+
+    ${theme.media.tablet} {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
     }
 `;

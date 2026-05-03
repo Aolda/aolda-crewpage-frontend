@@ -32,6 +32,10 @@ export const SphereContainer = styled.div`
     ${theme.media.mobile} {
         height: 20rem;
     }
+
+    ${theme.media.tablet} {
+        height: 26rem;
+    }
 `;
 
 export const BgText = styled.div`
@@ -107,7 +111,12 @@ export const SphereImage = styled.div`
         width: 14rem;
         height: 14rem;
     }
-    
+
+    ${theme.media.tablet} {
+        width: 18rem;
+        height: 18rem;
+    }
+
     img {
         width: 100%;
         height: 100%;
