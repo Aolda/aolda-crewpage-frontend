@@ -24,13 +24,18 @@ export const StyledActivityBlock = styled.div`
     justify-content: space-between;
     align-items: flex-start;
 
+    ${theme.media.tablet} {
+        width: 9.6875rem;
+        height: 15rem;
+    }
+
     ${theme.media.mobile} {
         width: 100%;
         height: auto;
         min-height: 5rem;
-        padding: 1rem;
-        border-radius: 1rem;
-        justify-content: flex-start;
+        padding: 0 0.75rem;
+        border-radius: 0.5rem;
+        justify-content: center;
     }
 
     .mobileStatus {
@@ -38,7 +43,7 @@ export const StyledActivityBlock = styled.div`
 
         ${theme.media.mobile} {
             display: block;
-            font-size: 0.75rem;
+            font-size: 0.625rem;
             color: #A0A0A0;
             margin-top: 0.375rem;
         }
@@ -49,6 +54,10 @@ export const StyledActivityBlock = styled.div`
         align-items: flex-start;
         gap: 0.5rem;
         margin-bottom: 1rem;
+
+        ${theme.media.tablet} {
+            width: 7.6875rem;
+        }
 
         ${theme.media.mobile} {
             display: none;
@@ -72,8 +81,12 @@ export const StyledActivityBlock = styled.div`
             font-size: ${fontSize.body1};
             font-weight: bold;
 
+            ${theme.media.tablet} {
+                font-size: ${fontSize.smaller};
+            }
+
             ${theme.media.mobile} {
-                font-size: 0.875rem;
+                font-size: ${fontSize.smaller};
                 word-break: keep-all;
             }
         }
@@ -81,6 +94,10 @@ export const StyledActivityBlock = styled.div`
         span {
             font-size: ${fontSize.smaller};
             font-family: var(--font-cjk);
+
+            ${theme.media.tablet} {
+                font-size: 0.625rem;
+            }
 
             ${theme.media.mobile} {
                 display: none;
@@ -113,6 +130,11 @@ export const StyledActivityBlock = styled.div`
             overflow: hidden;
             text-overflow: ellipsis;
             text-align: justify;
+
+            ${theme.media.tablet} {
+                width: 5.6875rem;
+                font-size:  0.625rem;
+            }
         }
     }
 `;

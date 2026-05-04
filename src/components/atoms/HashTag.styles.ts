@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { ActivityStatusKey } from "@/types/project";
-import { fontSize, colors } from '@/styles/theme';
+import { fontSize, colors, theme } from '@/styles/theme';
 
 interface HashTagProps {
     $status?: ActivityStatusKey,
@@ -17,6 +17,13 @@ export const StyledHashTag = styled.div<HashTagProps>`
     padding: 0.5rem 0.75rem;
     font-size: ${fontSize.smaller};
     font-family: var(--font-cjk);
+
+    ${theme.media.tablet} {
+        padding: 0;
+        background-color: transparent;
+        color: ${colors.gray500};
+        font-size: 0.625rem;
+    }
 
     ${({ $date, $status }) => {
         // 1. 상태값(Status) 기반 스타일

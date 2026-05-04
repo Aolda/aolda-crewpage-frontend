@@ -12,8 +12,10 @@ export const Container = styled.section`
     gap: 1.5rem;
 
     ${theme.media.mobile} {
+        text-align: left;
+        align-items: flex-start;
         padding-top: 5rem;
-        padding-bottom: 5rem;
+        padding-bottom: 0;
         gap: 1rem;
     }
 
@@ -40,6 +42,11 @@ export const ButtonGrid = styled.div`
         justify-content: center;
         align-items: center;
         gap: 1rem;
+
+        ${theme.media.mobile} {
+            gap: 0.5rem;
+        }
+
         span {
             font-size: ${fontSize.base};
             font-weight: 400;
@@ -47,8 +54,27 @@ export const ButtonGrid = styled.div`
             line-height: 1.5;
 
             ${theme.media.mobile} {
-                font-size: ${fontSize.small};
+                font-size: 0.625rem;
             }
+        }
+
+        br.not-mobile {
+            display: block;
+
+            ${theme.media.mobile} {
+                display: none;
+            }
+        }
+    }
+
+    ${theme.media.mobile} {
+        margin: 0rem 1rem;
+
+        width: calc(100% - 2rem);
+        justify-content: space-between;
+
+        .btn-wrapper {
+            width: 15rem;
         }
     }
 `;
@@ -70,9 +96,13 @@ export const PrimaryButton = styled.a`
     cursor: pointer;
 
     ${theme.media.mobile} {
-        width: 10rem;
-        font-size: ${fontSize.small};
+        width: 100%;
+        font-size: 0.625rem;
         font-weight: 500;
+
+        img {
+            width: 1rem;
+        }
     }
 `;
 

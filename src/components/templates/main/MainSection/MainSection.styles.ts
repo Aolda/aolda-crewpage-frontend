@@ -18,9 +18,9 @@ export const SectionWrapper = styled.section<{ $bgColor?: string }>`
     text-align: center;
 
     ${theme.media.mobile} {
-        padding-top: 5rem;
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
+        padding-top: 2.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
         align-items: flex-start;
         text-align: left;
     }
@@ -42,7 +42,7 @@ export const Header = styled.div<{ $hideOnMobile?: boolean }>`
         display: ${(props) => props.$hideOnMobile ? 'none' : 'flex'};
         align-items: flex-start;
         padding: 0;
-        margin-bottom: 2rem;
+        margin-bottom: 1.25rem;
     }
 `;
 
@@ -71,7 +71,7 @@ export const Label = styled.span`
         border: 1.5px solid ${colors.primary500};
         border-radius: 0.375rem;
         padding: 0.125rem 0.625rem;
-        font-size: ${fontSize.smaller};
+        font-size: 0.625rem;
         margin-bottom: 1rem;
     }
 `;
@@ -83,15 +83,24 @@ export const Title = styled.h2`
     color: #111827;
     margin-bottom: 1.5rem;
     word-break: keep-all;
+    
+    br.mobile-only {
+        display: none;
+    }
 
     span {
         color: ${colors.primary500};
     }
 
     ${theme.media.mobile} {
-        font-size: 1.75rem;
+        font-size: 1.25rem;
         margin-bottom: 1rem;
         text-align: left;
+        margin-bottom: 0.5rem;
+
+        br.mobile-only {
+            display: inline-block;
+        }
     }
 `;
 
@@ -104,7 +113,7 @@ export const Description = styled.p`
     word-break: keep-all;
 
     ${theme.media.mobile} {
-        font-size: ${fontSize.smaller};
+        font-size: 0.625rem;
         line-height: 1.5;
         margin: 0;
         text-align: left;

@@ -57,7 +57,7 @@ export const StyledHeader = styled.header`
                 display: block;
                 font-size: 1.25rem;
                 font-weight: 700;
-                font-family: var(--font-cjk);
+                font-family: var(--font-paperlogy);
                 color: ${colors.primary500};
                 letter-spacing: -0.02em;
             }

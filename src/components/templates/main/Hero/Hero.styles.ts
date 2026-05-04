@@ -104,7 +104,7 @@ export const HeroContent = styled.div`
             font-size: 2.5rem;
         }
         
-        span:not(.font-cjk) {
+        span:not(.font-paperlogy) {
             font-size: ${fontSize.h3};
             color: ${colors.black600};
             margin-right: 1rem;
@@ -115,8 +115,8 @@ export const HeroContent = styled.div`
             }
         }
 
-        .font-cjk {
-            font-family: var(--font-cjk); 
+        .font-paperlogy {
+            font-family: var(--font-paperlogy); 
             font-size: 3.75rem;
             font-weight: 700;
             line-height: 1;

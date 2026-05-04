@@ -12,7 +12,7 @@ export const VisionWrapper = styled.div`
 
     ${theme.media.mobile} {
         height: auto;
-        padding: 2rem 1rem;
+        padding: 0 1rem;
         width: calc(100% + 2rem);
         margin-left: -1rem;
     }
@@ -61,7 +61,7 @@ export const CardGrid = styled.div`
     ${theme.media.mobile} {
         grid-template-columns: 1fr;
         justify-items: center;
-        gap: 2rem;
+        gap: 0.75rem;
     }
 
     ${theme.media.tablet} {

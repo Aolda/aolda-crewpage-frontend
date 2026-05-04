@@ -33,6 +33,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             padding: 0.875rem 0.75rem;
             gap: 0.5rem;
             align-items: flex-start;
+            border-radius: 0.5rem;
 
             .imageSection { display: none; }
         }
@@ -51,6 +52,11 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             align-items: center;
             gap: 0.75rem;
 
+            .infoSection {
+                display: flex;
+                justify-content: center;
+            }
+
             ${theme.media.mobile} {
                 align-items: flex-start;
                 gap: 0.25rem;
@@ -61,23 +67,25 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
                     font-size: ${fontSize.body1};
                     font-weight: bold;
 
-                    ${theme.media.mobile} { font-size: ${fontSize.base}; }
+                    ${theme.media.tablet} { font-size: ${fontSize.base};}
+                    ${theme.media.mobile} { font-size: ${fontSize.smaller}; }
                 }
 
                 span {
                     font-size: ${fontSize.base};
 
-                    ${theme.media.mobile} { font-size: ${fontSize.smaller}; }
+                    ${theme.media.tablet} { font-size: ${fontSize.smaller};}
+                    ${theme.media.mobile} { font-size: 0.625rem; }
                 }
             }
 
             .majorInfo {
-                font-size: ${fontSize.base};
+                font-size: ${fontSize.smaller};
                 font-weight: bold;
                 color: ${colors.gray600};
 
                 ${theme.media.mobile} {
-                    font-size: ${fontSize.smaller};
+                    font-size: 0.625rem;
                     font-weight: 400;
                     color: ${colors.gray500};
                 }
@@ -107,6 +115,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
         .infoSection {
             display: flex;
             flex-direction: column;
+            justify-content: center;
             height: 4.875rem;
             gap: 0.75rem;
 
@@ -128,9 +137,14 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
         }
     `}
 
-    .imageContainer {
+    .imageSection {
         width: 7.5rem;
-        height: 7.5rem; 
+        height: 7.5rem;
+
+        ${theme.media.tablet} {
+            width: 5rem;
+            height: 5rem;
+        }
 
         img {
             width: 100%;

@@ -10,12 +10,14 @@ export const SinceText = styled.div`
 
     ${theme.media.mobile} {
         font-size: 0.875rem;
+        margin-bottom: 0;
     }
 `;
 
 export const OverviewWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    padding-top: 2rem;
     align-items: center;
     width: 100%;
 `;
@@ -45,7 +47,8 @@ export const MobileBgTextGrid = styled.div`
     ${theme.media.mobile} {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
+        gap: 1rem;
         position: absolute;
         top: 0;
         bottom: 0;
@@ -116,10 +119,10 @@ export const GlareEffect = styled.div`
     }
 
     ${theme.media.mobile} {
-        width: 15rem;
+        width: 20rem;
         height: 7.5rem;
-        // background: rgba(26, 142, 229, 0.2);
-        // filter: blur(3rem);
+        background: rgba(26, 142, 229, 0.5);
+        filter: blur(4rem);
     }
 `;
 
@@ -182,7 +185,6 @@ export const MobileOverviewHeader = styled.div`
         display: flex;
         flex-direction: column;
         width: 100%;
-        gap: 1rem;
         padding: 1.5rem 0 1rem;
 
         h2 {
@@ -191,6 +193,7 @@ export const MobileOverviewHeader = styled.div`
             line-height: 1.3;
             color: #111827;
             word-break: keep-all;
+            margin-bottom: 0.75rem;
 
             span { color: ${colors.primary500}; }
 

@@ -25,7 +25,7 @@ export const StyledFooter = styled.footer`
     }
 
     ${theme.media.tablet} {
-        padding-left: 7.5rem;
+        padding-left: 3.5rem;
         padding-right: 7.5rem;
     }
 
@@ -49,10 +49,6 @@ export const StyledFooter = styled.footer`
             font-size: ${fontSize.smaller};
             font-weight: 500;
 
-            ${theme.media.mobile} {
-                padding-left: 0;
-                margin-top: 0.25rem;
-            }
         }
     }
 
@@ -64,13 +60,6 @@ export const StyledFooter = styled.footer`
 
         color: white;
         padding-left: 2.5rem;
-
-        ${theme.media.mobile} {
-            width: 100%;
-            height: auto;
-            padding-left: 0;
-            gap: 0.5rem;
-        }
 
         .address {
             font-size: ${fontSize.smaller};

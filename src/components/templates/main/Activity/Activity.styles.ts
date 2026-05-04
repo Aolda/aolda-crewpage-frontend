@@ -6,7 +6,10 @@ export const ActivityWrapper = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    // align-items: center;
+
+    ${theme.media.mobile} {
+        align-items: center;
+    }
 `;
 
 /* 탭 메뉴 스타일 */
@@ -19,6 +22,7 @@ export const TabContainer = styled.div`
         flex-direction: column;
         width: 100%;
         gap: 1rem;
+        margin-bottom: 1.25rem;
     }
 
     ${theme.media.tablet} {
@@ -46,10 +50,11 @@ export const Tab = styled.div`
         height: auto;
         flex-direction: column;
         align-items: flex-start;
+        border-radius: 0.5rem;
         text-align: left;
-        padding: 1.5rem;
-        gap: 1rem;
-        font-size: ${fontSize.smaller};
+        padding: 1rem;
+        gap: 0.5rem;
+        font-size: 0.625rem;
 
         br {
             display: none;
@@ -73,6 +78,10 @@ export const Tab = styled.div`
         font-weight: 700;
         color: ${colors.primary500};
         margin: 0;
+
+        ${theme.media.mobile} {
+            font-size: 0.875rem;
+        }
     }
 
     p {
@@ -86,15 +95,20 @@ export const Tab = styled.div`
         ${theme.media.mobile} {
             text-align: left;
             word-break: keep-all;
+            font-size: 0.625rem;
         }
 
         ${theme.media.tablet} {
             text-align: center;
+            font-size: ${fontSize.smaller};
         }
 
         span {
             font-weight: 700;
             color: black;
+            ${theme.media.tabletDown} {
+                color: ${colors.primary500};
+            }
         }
     }
 `;

@@ -45,7 +45,7 @@ const CrewBlock: React.FC<CrewBlockProps> = ({
             style={{ cursor: 'pointer' }}
         >
             <section className="imageSection">
-                <Image src={member.profile.url} alt={`${member.crewName} profile`}  width={120} height={120}/>
+                <Image src={member.profile.url} alt={`${member.crewName} profile`}  width={100} height={100}/>
             </section>
 
             <section className="textSection">
