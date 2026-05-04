@@ -25,6 +25,11 @@ export const SectionWrapper = styled.section<{ $bgColor?: string }>`
         text-align: left;
     }
 
+    ${theme.media.desktopSm} {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+
     ${theme.media.tablet} {
         padding-left: 1.5rem;
         padding-right: 1.5rem;

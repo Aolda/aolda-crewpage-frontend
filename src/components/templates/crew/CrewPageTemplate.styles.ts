@@ -11,6 +11,11 @@ export const HeaderBackground = styled.header`
     padding-left: 15.9375rem;
     padding-right: 15.9375rem;
     padding-bottom: 3.75rem;
+
+    ${theme.media.desktopSm} {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
     
     background-image: url('/images/crew/crewbookBG.png');
     background-repeat: no-repeat;
