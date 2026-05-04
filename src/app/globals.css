@@ -1,9 +1,17 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Paperlogy';
+  src: url('/fonts/Paperlogy-7Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
   --font-noto-kr: var(--font-noto-kr);
+  --font-paperlogy: 'Paperlogy', sans-serif;
 }
 
 @theme inline {
@@ -11,6 +19,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-noto-kr), ui-sans-serif, system-ui;
   --font-cjk: "Noto Sans CJK KR", "Noto Sans KR", sans-serif;
+  --font-paperlogy: 'Paperlogy', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {

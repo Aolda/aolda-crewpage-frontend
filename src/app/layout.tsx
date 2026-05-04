@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from 'next/font/google';
-import localFont from 'next/font/local';
 import StyledComponentsRegistry from '@/lib/registry';
 // import { MSWComponent } from '@/components/MSWComponent';
 import Header from "@/components/organisms/Header";
@@ -11,12 +10,6 @@ const notoKR = Noto_Sans_KR({
     subsets: ['latin'],
     weight: ['400', '500', '700'],
     variable: '--font-noto-sans',
-});
-
-const paperlogy = localFont({
-    src: '../../public/fonts/Paperlogy-7Bold.ttf',
-    variable: '--font-paperlogy',
-    weight: '700',
 });
 
 export const metadata: Metadata = {
@@ -40,7 +33,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="ko" className={`${notoKR.variable} ${paperlogy.variable}`}>
+        <html lang="ko" className={`${notoKR.variable}`}>
             <head>
                 <link
                     rel="stylesheet"
