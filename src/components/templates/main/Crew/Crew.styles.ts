@@ -14,9 +14,10 @@ export const CrewGridWrapper = styled.div`
 
     ${theme.media.mobile} {
         position: relative;
-        border-radius: 1.25rem;
         overflow: hidden;
         padding: 1.5rem 1rem 2rem;
+        width: calc(100% + 2rem);
+        margin-left: -1rem;
 
         &::before {
             content: '';

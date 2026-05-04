@@ -12,7 +12,9 @@ export const VisionWrapper = styled.div`
 
     ${theme.media.mobile} {
         height: auto;
-        padding: 2rem 0;
+        padding: 2rem 1rem;
+        width: calc(100% + 2rem);
+        margin-left: -1rem;
     }
 
     ${theme.media.tablet} {
