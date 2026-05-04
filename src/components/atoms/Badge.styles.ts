@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { fontSize, colors } from '@/styles/theme';
+import { fontSize, colors, theme } from '@/styles/theme';
 import { BadgeVariant } from "./Badge";
 import { ActivityStatusKey } from "@/types/project";
 
@@ -15,7 +15,11 @@ export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: Activ
     height: 1.9375rem;
     padding: 0.4375rem 1rem;
     white-space: nowrap;
-    white-space: nowrap;
+
+    ${theme.media.tablet} {
+        height: 1.75rem;
+        font-size: 0.625rem;
+    }
 
     /* 1. Solid Variant (배경 있음 - [A-2] 활동중, [A-4] 진행중 등) */
     ${({ $variant, $status }) => $variant === 'solid' && css`

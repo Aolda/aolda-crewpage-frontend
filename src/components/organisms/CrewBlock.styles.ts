@@ -104,12 +104,19 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
         border-radius: 1.25rem;
         gap: 2.25rem;
 
+        ${theme.media.tablet} {
+            height: 8rem;
+            padding: 1rem;
+            gap: 1.5rem;
+        }
+
         .textSection {
             display: flex;
-            height: 7.5rem;
+            height: 5.875rem;
             flex-direction: column;
             justify-content: space-between;
             align-items: flex-start;
+            gap: 1rem;
         }
 
         .infoSection {
@@ -119,10 +126,21 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             height: 4.875rem;
             gap: 0.75rem;
 
+            ${theme.media.tablet} {
+                gap: 0.5rem;
+            }
+
             .nameInfo {
+                ${theme.media.tablet} {
+                    height: 1.5rem;
+                }
                 h2 {
                     font-size: ${fontSize.h3};
                     font-weight: bold;
+
+                    ${theme.media.tablet} {
+                        font-size: 1.25rem;
+                    }
                 }
 
                 span {
@@ -153,20 +171,20 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
     }
 
     .nameInfo {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            h2 {
-                font-size: ${(props) => props.$isCrewpage ? fontSize.h3 : fontSize.body1};
-            }
-            span {
-                font-size: ${(props) => props.$isCrewpage ? fontSize.body1 : fontSize.base};
-                color: ${colors.gray600};
-            }
-            
-            * {
-                margin: 0;
-            }
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        h2 {
+            font-size: ${(props) => props.$isCrewpage ? fontSize.h3 : fontSize.body1};
+        }
+        span {
+            font-size: ${(props) => props.$isCrewpage ? fontSize.body1 : fontSize.base};
+            color: ${colors.gray600};
+        }
+        
+        * {
+            margin: 0;
+        }
     }
 
     .statsSection {
@@ -174,8 +192,19 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
         align-items: center;
         gap: 1.5rem;
         img {
-            width: 1.125rem; !important
-            height: 1.125rem; !important
+            width: 1.125rem;
+            height: 1.125rem;
+        }
+
+        ${theme.media.tablet} {
+            height: 1.125rem;
+            img {
+                width: 1rem;
+                height: 1rem;
+            }
+            span {
+                font-size: ${fontSize.smaller};
+            }
         }
     }
 `;

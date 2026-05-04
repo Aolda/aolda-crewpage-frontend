@@ -69,6 +69,11 @@ export const ContentContainer = styled.main`
     margin: 0 auto;
     padding-top: 4.5rem;
 
+    ${theme.media.tablet} {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
     ${theme.media.mobile} {
         padding: 2.5rem 1.25rem;
     }
@@ -93,7 +98,6 @@ export const FilterBar = styled.section`
 export const AllButton = styled.button<{ $isActive: boolean }>`
     width: 4.4375rem;
     height: 2.9375rem;
-    padding: 0.75rem 1rem;
     border-radius: 0.5rem;
     border: none;
     background-color: ${props => props.$isActive ? '#111827' : '#E5E7EB'};
@@ -104,6 +108,12 @@ export const AllButton = styled.button<{ $isActive: boolean }>`
 
     &:hover {
         background-color: ${props => props.$isActive ? '#111827' : '#D1D5DB'};
+    }
+
+    ${theme.media.tablet} {
+        width: 3.875rem;
+        height: 1.9375rem;
+        font-size: ${fontSize.smaller};
     }
 
     ${theme.media.mobile} {

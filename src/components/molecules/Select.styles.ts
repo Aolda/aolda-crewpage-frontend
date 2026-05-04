@@ -6,14 +6,20 @@ export const SelectContainer = styled.div`
     position: relative;
     display: inline-flex;
     flex-direction: column;
-    min-width: 5.875rem; 
+    min-width: 5.875rem;
     width: auto;
+
+    ${theme.media.tablet} {
+        min-width: 4.9375rem;
+        width: 4.9375rem;
+    }
 `;
 
 export const SelectHeader = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 0.5rem;
     min-width: 5.875rem;
     height: 3rem;
     padding: 0.75rem 1rem;
@@ -21,6 +27,13 @@ export const SelectHeader = styled.div`
     border-radius: 0.5rem;
     background-color: white;
     cursor: pointer;
+
+    ${theme.media.tablet} {
+        min-width: 4.9375rem;
+        height: 1.875rem;
+        border: 0.5px solid #888888;
+        padding: 0.5rem 0.75rem;
+    }
 
     ${theme.media.mobile} {
         height: 2.5rem;
@@ -31,8 +44,11 @@ export const SelectHeader = styled.div`
 export const LabelText = styled.span`
     font-size: ${fontSize.body2};
     color: #555555;
-    margin-right: 0.5rem;
     pointer-events: none;
+
+    ${theme.media.tablet} {
+        font-size: ${fontSize.smaller};
+    }
 
     ${theme.media.mobile} {
         font-size: ${fontSize.smaller};
