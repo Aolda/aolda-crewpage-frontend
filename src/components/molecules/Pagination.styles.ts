@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { fontSize, theme } from '@/styles/theme';
 
 export const Container = styled.nav`
     display: flex;
@@ -23,6 +24,10 @@ export const PageItem = styled.li<{ $isActive: boolean }>`
     position: relative;
     padding-bottom: 0.25rem;
 
+    ${theme.media.tablet} {
+        font-size: ${fontSize.smaller};
+    }
+
   /* 활성화된 페이지 하단 파란색 밑줄 */
     &::after {
         content: '';
@@ -45,5 +50,9 @@ export const ArrowButton = styled.button`
     &:disabled {
         cursor: default;
         opacity: 0.5;
+    }
+
+    ${theme.media.tablet} {
+        font-size: ${fontSize.smaller};
     }
 `;
