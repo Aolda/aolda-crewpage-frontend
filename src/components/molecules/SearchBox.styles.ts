@@ -1,11 +1,15 @@
 'use client';
 
 import styled from "styled-components";
-import { fontSize, colors } from "@/styles/theme";
+import { fontSize, colors, theme } from "@/styles/theme";
 
 export const StyledSearchBox = styled.section`
     display: flex;
     width: 29.6875rem;
+
+    ${theme.media.tablet} {
+        width: 22.5rem;
+    }
     height: 3rem;
     background-color: white;
     justify-content: space-between;

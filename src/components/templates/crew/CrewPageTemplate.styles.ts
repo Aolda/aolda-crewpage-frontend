@@ -16,11 +16,17 @@ export const HeaderBackground = styled.header`
         padding-left: 2.5rem;
         padding-right: 2.5rem;
     }
-    
+
     background-image: url('/images/crew/crewbookBG.png');
     background-repeat: no-repeat;
     background-position: right bottom;
     background-size: contain;
+
+    ${theme.media.tablet} {
+        height: 25rem;
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
 
     ${theme.media.mobile} {
         position: relative;
@@ -44,6 +50,10 @@ export const HeaderContent = styled.div`
         line-height: 1.4;
         margin-bottom: 1.5rem;
         span { color: ${colors.primary500}; }
+
+        ${theme.media.tablet} {
+            font-size: ${fontSize.h3};
+        }
 
         ${theme.media.mobile} {
             font-size: 1.5rem;
