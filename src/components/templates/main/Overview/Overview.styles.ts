@@ -64,7 +64,7 @@ export const MobileBgTextRow = styled.div<{ $shifted?: boolean }>`
         transform: ${(props) => props.$shifted ? 'translateX(-18%)' : 'translateX(0)'};
 
         img {
-            width: 150%;
+            width: 60rem;
             max-width: unset;
             height: auto;
         }
@@ -214,9 +214,7 @@ export const DashedLine = styled.div`
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
 
     ${theme.media.mobile} {
-        margin-top: -5rem;
-        mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
-        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
+        display: none;
     }
 `;
 
