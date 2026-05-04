@@ -33,15 +33,15 @@ export const HeroWrapper = styled.section`
         background-position: center;
         background-repeat: no-repeat;
         
-        transform: translate(-20rem, -12rem) scale(1.8); 
+        transform: scale(1.8);
+        transform-origin: center center;
 
         /* 배경 투명도 유지*/
-        opacity: 0.15; 
+        opacity: 0.15;
         z-index: 0;
 
-        /* 모바일 배경 이미지 구도 조정 */
         ${theme.media.mobile} {
-            transform: translate(-5rem, -3rem) scale(1.8);
+            transform: scale(1.8);
         }
     }
     
