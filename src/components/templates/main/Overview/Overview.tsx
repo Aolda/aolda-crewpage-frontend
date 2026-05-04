@@ -14,7 +14,7 @@ const Overview = () => {
             title={
                 <>
                     <S.SinceText>since 2023</S.SinceText>
-                    아주대 유일무이 <span>클라우드 개발/운영 소학회</span>
+                    아주대 유일무이 <br className="mobile-only" /><span>클라우드 개발/운영 소학회</span>
                 </>
             }
             description={
@@ -89,7 +89,7 @@ const Overview = () => {
                 {/* 모바일 전용: since 2023 + 타이틀 + 설명 */}
                 <S.MobileOverviewHeader>
                     <S.SinceText>since 2023</S.SinceText>
-                    <h2>아주대 유일무이 <span>클라우드 개발/운영 소학회</span></h2>
+                    <h2>아주대 유일무이<br /><span>클라우드 개발/운영 소학회</span></h2>
                     <p>
                         아올다는 클라우드 인프라에 관심 있는 아주대학교 학생들이
                         단순한 호기심에서 시작하여 현재까지

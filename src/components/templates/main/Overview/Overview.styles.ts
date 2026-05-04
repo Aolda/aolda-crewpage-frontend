@@ -46,9 +46,13 @@ export const MobileBgTextGrid = styled.div`
     ${theme.media.mobile} {
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
+        justify-content: space-between;
         position: absolute;
-        inset: 0;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100vw;
         z-index: 0;
         pointer-events: none;
         user-select: none;
@@ -113,10 +117,10 @@ export const GlareEffect = styled.div`
     }
 
     ${theme.media.mobile} {
-        width: 14rem;
-        height: 7rem;
-        background: rgba(26, 142, 229, 0.2);
-        filter: blur(3rem);
+        width: 15rem;
+        height: 7.5rem;
+        // background: rgba(26, 142, 229, 0.2);
+        // filter: blur(3rem);
     }
 `;
 
@@ -183,17 +187,18 @@ export const MobileOverviewHeader = styled.div`
         padding: 1.5rem 0 1rem;
 
         h2 {
-            font-size: 1.75rem;
+            font-size: 1.25rem;
             font-weight: 700;
             line-height: 1.3;
             color: #111827;
             word-break: keep-all;
 
             span { color: ${colors.primary500}; }
+
         }
 
         p {
-            font-size: ${fontSize.smaller};
+            font-size: 0.625rem;
             line-height: 1.5;
             color: ${colors.gray500};
             word-break: keep-all;
@@ -260,6 +265,7 @@ export const InfoCard = styled.div`
         height: auto;
         padding: 0;
         text-align: left;
+        align-items: flex-start;
 
         br.pc-only {
             display: none;
@@ -306,10 +312,10 @@ export const CardText = styled.div`
         text-align: left;
         
         h3 {
-            font-size: 1.5rem;
+            font-size: ${fontSize.body1};
         }
         p {
-            font-size: ${fontSize.smaller};
+            font-size: 0.625rem;
         }
     }
 `;
