@@ -25,3 +25,14 @@ body {
   color: var(--foreground);
   font-family: var(--font-noto-kr), sans-serif;
 }
+
+html, body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
