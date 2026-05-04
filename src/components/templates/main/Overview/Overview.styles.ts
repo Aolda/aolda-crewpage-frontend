@@ -171,6 +171,36 @@ export const SphereImage = styled.div`
     }
 `;
 
+/* 모바일 전용: sphere 아래 타이틀 영역 */
+export const MobileOverviewHeader = styled.div`
+    display: none;
+
+    ${theme.media.mobile} {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+        padding: 1.5rem 0 1rem;
+
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            line-height: 1.3;
+            color: #111827;
+            word-break: keep-all;
+
+            span { color: ${colors.primary500}; }
+        }
+
+        p {
+            font-size: ${fontSize.smaller};
+            line-height: 1.5;
+            color: ${colors.gray500};
+            word-break: keep-all;
+        }
+    }
+`;
+
 /* 중앙: 연결 점선 */
 export const DashedLine = styled.div`
     background: url("/images/main/dashedLine.png");
@@ -230,8 +260,8 @@ export const InfoCard = styled.div`
         border: none;
         flex-direction: column;
         height: auto;
-        padding: 0.75rem 0.75rem;
-        text-align: center;
+        padding: 0;
+        text-align: left;
 
         br.pc-only {
             display: none;

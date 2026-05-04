@@ -86,6 +86,17 @@ const Overview = () => {
                 {/* 연결부 */}
                 <S.DashedLine />
 
+                {/* 모바일 전용: since 2023 + 타이틀 + 설명 */}
+                <S.MobileOverviewHeader>
+                    <S.SinceText>since 2023</S.SinceText>
+                    <h2>아주대 유일무이 <span>클라우드 개발/운영 소학회</span></h2>
+                    <p>
+                        아올다는 클라우드 인프라에 관심 있는 아주대학교 학생들이
+                        단순한 호기심에서 시작하여 현재까지
+                        함께 학습하고 프로젝트를 진행하며 성장하는 소학회입니다.
+                    </p>
+                </S.MobileOverviewHeader>
+
                 {/* 하단 카드 영역 */}
                 <S.InfoCard>
                     <S.CardText>
