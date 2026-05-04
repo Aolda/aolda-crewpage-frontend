@@ -31,7 +31,6 @@ export const SphereContainer = styled.div`
 
     ${theme.media.mobile} {
         height: 20rem;
-        overflow: hidden;
     }
 
     ${theme.media.tablet} {
