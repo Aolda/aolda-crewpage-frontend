@@ -16,7 +16,7 @@ export const SelectContainer = styled.div`
 
     ${theme.media.mobile} {
         min-width: 4.125rem;
-        width: 4.125rem;
+        width: auto;
     }
 `;
 
@@ -42,6 +42,7 @@ export const SelectHeader = styled.div<{ $isSelected?: boolean }>`
 
     ${theme.media.mobile} {
         min-width: 4.125rem;
+        width: auto;
         height: 2rem;
         padding: 0.4375rem 0.875rem;
         border-radius: 0.375rem;

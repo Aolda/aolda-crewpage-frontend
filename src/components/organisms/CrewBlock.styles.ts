@@ -172,12 +172,17 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
                 gap: 0.25rem;
             }
 
-            .nameInfo {
+            .infoSection .nameInfo {
                 h2 { font-size: 0.75rem; }
                 span { font-size: 0.625rem; }
             }
 
-            .badgeSection { gap: 0.25rem; }
+            .badgeSection {
+                flex-wrap: wrap;
+                gap: 0.25rem;
+
+                > span:nth-child(3) { flex-basis: 100%; }
+            }
         }
     `}
 
@@ -207,9 +212,14 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             font-size: ${(props) => props.$isCrewpage ? fontSize.body1 : fontSize.base};
             color: ${colors.gray600};
         }
-        
+
         * {
             margin: 0;
+        }
+
+        ${theme.media.mobile} {
+            h2 { font-size: 0.75rem; }
+            span { font-size: 0.625rem; }
         }
     }
 
