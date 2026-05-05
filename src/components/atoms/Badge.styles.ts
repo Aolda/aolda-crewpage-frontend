@@ -24,29 +24,34 @@ export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: Activ
     ${theme.media.mobile} {
         height: auto;
         font-size: 0.625rem;
-        padding: 0.125rem 0.375rem;
+        padding: 0;
+        border: none;
     }
 
     /* 1. Solid Variant (배경 있음 - [A-2] 활동중, [A-4] 진행중 등) */
     ${({ $variant, $status }) => $variant === 'solid' && css`
         background-color: ${() => {
-            // 1. 크루 활동 상태 처리 (boolean)
             if (typeof $status === 'boolean') {
                 return $status ? colors.primary500 : colors.gray600;
             }
-
-            // 2. 프로젝트 진행 상태 처리 (ActivityStatusKey 키값)
             switch ($status) {
-                case 'ACTIVITY_STATUS/RECRIUTING': // 모집중
-                case 'ACTIVITY_STATUS/ONBOARDING':  // 진행중
-                    return colors.primary500;     // Blue
-                case 'ACTIVITY_STATUS/COMPLETED':   // 완료
-                    return '#10B981';             // Green
+                case 'ACTIVITY_STATUS/RECRIUTING':
+                case 'ACTIVITY_STATUS/ONBOARDING':
+                    return colors.primary500;
+                case 'ACTIVITY_STATUS/COMPLETED':
+                    return '#10B981';
                 default:
-                    return '#E5E7EB';             // 기본 회색
+                    return '#E5E7EB';
             }
         }};
         color: white;
+
+        ${typeof $status === 'boolean' && css`
+            ${theme.media.mobile} {
+                background-color: transparent;
+                color: ${$status ? colors.primary500 : colors.gray600};
+            }
+        `}
     `}
 
     /* 2. Outline Variant (배경 없음 - [A-2] 기수, 학과 등) */
