@@ -29,19 +29,16 @@ export const HeaderBackground = styled.header`
     }
 
     ${theme.media.mobile} {
-        position: relative;
-        height: 22rem;
-        padding: 0 1.25rem 2.5rem;
-        background-size: 40%;
+        height: 7.5rem;
+        padding: 4rem 1rem 0;
         align-items: center;
+        background-image: none;
     }
 `;
 
 export const HeaderContent = styled.div`
-
     ${theme.media.mobile} {
-        position: absolute;
-        bottom: 2.5rem;
+        width: 100%;
     }
 
     h1 {
@@ -56,7 +53,7 @@ export const HeaderContent = styled.div`
         }
 
         ${theme.media.mobile} {
-            font-size: 1.5rem;
+            display: none;
         }
     }
 `;

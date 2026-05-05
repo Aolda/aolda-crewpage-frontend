@@ -10,6 +10,11 @@ export const StyledSearchBox = styled.section`
     ${theme.media.tablet} {
         width: 22.5rem;
     }
+
+    ${theme.media.mobile} {
+        width: 100%;
+    }
+
     height: 3rem;
     background-color: white;
     justify-content: space-between;
@@ -33,6 +38,12 @@ export const StyledSearchBox = styled.section`
             color: ${colors.gray600};
             font-size: ${fontSize.base};
             font-weight: 400;
+        }
+
+        ${theme.media.mobile} {
+            &::placeholder {
+                font-size: 0.625rem;
+            }
         }
     }
 
