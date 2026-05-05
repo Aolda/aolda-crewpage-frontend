@@ -43,6 +43,8 @@ export const StyledSearchBox = styled.section`
         }
 
         ${theme.media.mobile} {
+            height: 100%;
+            line-height: 2rem;
             &::placeholder {
                 font-size: 0.625rem;
             }
