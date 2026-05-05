@@ -29,9 +29,9 @@ export const HeaderBackground = styled.header`
     }
 
     ${theme.media.mobile} {
-        height: 7.5rem;
-        padding: 4rem 1rem 0;
-        align-items: center;
+        height: auto;
+        padding: 4rem 1rem 1rem;
+        align-items: flex-start;
         background-image: none;
     }
 `;
@@ -53,7 +53,8 @@ export const HeaderContent = styled.div`
         }
 
         ${theme.media.mobile} {
-            display: none;
+            font-size: ${fontSize.base};
+            margin-bottom: 0.5rem;
         }
     }
 `;
