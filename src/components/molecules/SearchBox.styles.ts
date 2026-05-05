@@ -14,6 +14,7 @@ export const StyledSearchBox = styled.section`
     ${theme.media.mobile} {
         width: 100%;
         height: 2rem;
+        padding: 0 0.75rem;
     }
 
     height: 3rem;
@@ -60,6 +61,11 @@ export const StyledSearchBox = styled.section`
         img {
             width: 1.25rem;
             height: 1.25rem;
+
+            ${theme.media.mobile} {
+                width: 0.75rem;
+                height: 0.75rem;
+            }
         }
     }
 `;
