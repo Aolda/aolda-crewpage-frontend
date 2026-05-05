@@ -21,6 +21,12 @@ export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: Activ
         font-size: 0.625rem;
     }
 
+    ${theme.media.mobile} {
+        height: auto;
+        font-size: 0.625rem;
+        padding: 0.125rem 0.375rem;
+    }
+
     /* 1. Solid Variant (배경 있음 - [A-2] 활동중, [A-4] 진행중 등) */
     ${({ $variant, $status }) => $variant === 'solid' && css`
         background-color: ${() => {

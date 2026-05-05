@@ -13,9 +13,14 @@ export const SelectContainer = styled.div`
         min-width: 4.9375rem;
         width: 4.9375rem;
     }
+
+    ${theme.media.mobile} {
+        min-width: 4.125rem;
+        width: 4.125rem;
+    }
 `;
 
-export const SelectHeader = styled.div`
+export const SelectHeader = styled.div<{ $isSelected?: boolean }>`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -36,12 +41,16 @@ export const SelectHeader = styled.div`
     }
 
     ${theme.media.mobile} {
-        height: 2.5rem;
-        padding: 0.5rem 0.75rem;
+        min-width: 4.125rem;
+        height: 2rem;
+        padding: 0.4375rem 0.875rem;
+        border-radius: 0.375rem;
+        background-color: ${props => props.$isSelected ? '#E8F4FC' : 'white'};
+        border-color: ${props => props.$isSelected ? colors.primary500 : '#888888'};
     }
 `;
 
-export const LabelText = styled.span`
+export const LabelText = styled.span<{ $isSelected?: boolean }>`
     font-size: ${fontSize.body2};
     color: #555555;
     pointer-events: none;
@@ -52,6 +61,7 @@ export const LabelText = styled.span`
 
     ${theme.media.mobile} {
         font-size: ${fontSize.smaller};
+        color: ${props => props.$isSelected ? colors.primary500 : '#555555'};
     }
 `;
 

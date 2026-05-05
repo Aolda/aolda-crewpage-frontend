@@ -104,12 +104,6 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
         border-radius: 1.25rem;
         gap: 2.25rem;
 
-        ${theme.media.tablet} {
-            height: 8rem;
-            padding: 1rem;
-            gap: 1.5rem;
-        }
-
         .textSection {
             display: flex;
             height: 5.875rem;
@@ -126,23 +120,11 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             height: 4.875rem;
             gap: 0.75rem;
 
-            ${theme.media.tablet} {
-                gap: 0.5rem;
-            }
-
             .nameInfo {
-                ${theme.media.tablet} {
-                    height: 1.5rem;
-                }
                 h2 {
                     font-size: ${fontSize.h3};
                     font-weight: bold;
-
-                    ${theme.media.tablet} {
-                        font-size: 1.25rem;
-                    }
                 }
-
                 span {
                     font-size: ${fontSize.body1};
                 }
@@ -152,6 +134,50 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
         .badgeSection {
             display: inline-flex;
             gap: 0.5rem;
+        }
+
+        ${theme.media.tablet} {
+            height: 8rem;
+            padding: 1rem;
+            gap: 1.5rem;
+
+            .infoSection {
+                gap: 0.5rem;
+                .nameInfo {
+                    height: 1.5rem;
+                    h2 { font-size: 1.25rem; }
+                }
+            }
+        }
+
+        ${theme.media.mobile} {
+            height: 5.3125rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            gap: 0;
+
+            .imageSection { display: none; }
+
+            .textSection {
+                width: 100%;
+                height: 100%;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+                gap: 0;
+            }
+
+            .infoSection {
+                height: auto;
+                gap: 0.25rem;
+            }
+
+            .nameInfo {
+                h2 { font-size: 0.75rem; }
+                span { font-size: 0.625rem; }
+            }
+
+            .badgeSection { gap: 0.25rem; }
         }
     `}
 
@@ -205,6 +231,21 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             span {
                 font-size: ${fontSize.smaller};
             }
+        }
+
+        ${theme.media.mobile} {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.25rem;
+            height: auto;
+
+            > section:nth-child(2) { display: none; }
+
+            img {
+                width: 0.75rem;
+                height: 0.75rem;
+            }
+            span { font-size: 0.625rem; }
         }
     }
 `;

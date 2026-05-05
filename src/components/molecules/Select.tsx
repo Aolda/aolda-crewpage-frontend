@@ -45,8 +45,8 @@ const Select: React.FC<SelectProps> = ({ label, options, onSelectChange, selecte
 
     return (
         <S.SelectContainer ref={selectRef}>
-            <S.SelectHeader onClick={() => setIsOpen(!isOpen)}>
-                <S.LabelText>{selectedValue || title}</S.LabelText>
+            <S.SelectHeader onClick={() => setIsOpen(!isOpen)} $isSelected={!!selectedValue}>
+                <S.LabelText $isSelected={!!selectedValue}>{selectedValue || title}</S.LabelText>
                 <S.ArrowIcon $isOpen={isOpen} />
             </S.SelectHeader>
 

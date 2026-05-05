@@ -30,7 +30,7 @@ export const HeaderBackground = styled.header`
 
     ${theme.media.mobile} {
         height: auto;
-        padding: 4rem 1rem 1rem;
+        padding: 5rem 1rem 1rem;
         align-items: flex-start;
         background-image: none;
     }
@@ -54,7 +54,7 @@ export const HeaderContent = styled.div`
 
         ${theme.media.mobile} {
             font-size: ${fontSize.base};
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.625rem;
         }
     }
 `;
@@ -115,9 +115,7 @@ export const AllButton = styled.button<{ $isActive: boolean }>`
     }
 
     ${theme.media.mobile} {
-        height: 2.5rem;
-        padding: 0.5rem 0.75rem;
-        font-size: ${fontSize.smaller};
+        display: none;
     }
 `;
 
@@ -125,6 +123,12 @@ export const CrewList = styled.section`
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
+    ${theme.media.mobile} {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
 `;
 
 export const EmptyState = styled.div`
