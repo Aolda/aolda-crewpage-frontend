@@ -122,7 +122,7 @@ export const TabButton = styled.button<{ $isActive: boolean }>`
         filter: ${(props) => (props.$isActive ? 'none' : 'grayscale(100%) opacity(0.6)')};
 
         ${theme.media.mobile} {
-            width: 1rem;
+            display: none;
         }
     }
 `;
