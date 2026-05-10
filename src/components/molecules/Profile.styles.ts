@@ -32,19 +32,13 @@ export const StyledProfile = styled.div`
     }
 
     ${theme.media.mobile} {
-        display: grid;
+        display: flex;
+        flex-direction: column;
         width: 100%;
         height: auto;
-        grid-template-areas:
-            "img info"
-            "followers followers"
-            "stats stats";
-
-        grid-template-columns: 7.5rem 1fr;
-        column-gap: 0.75rem;
-        row-gap: 0.5rem;
+        gap: 0.5rem;
         padding: 0;
-        align-items: start;
+        align-items: flex-start;
         text-align: left;
     }
 
@@ -77,6 +71,7 @@ export const StyledProfile = styled.div`
         ${theme.media.mobile} {
             width: 7.5rem;
             height: 7.5rem;
+            flex-shrink: 0;
 
             img {
                 width: 7.5rem;
@@ -118,7 +113,7 @@ export const StyledProfile = styled.div`
         }
 
         ${theme.media.mobile} {
-            grid-area: info;
+            width: 100%;
             height: auto;
             justify-content: flex-start;
             gap: 0.25rem;
