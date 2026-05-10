@@ -16,6 +16,13 @@ export const StyledMenuItem = styled.div`
         cursor: pointer;
     }
 
+    ${theme.media.tablet} {
+        width: 100%;
+        height: 7.5rem;
+        padding-bottom: 1.25rem;
+        gap: 0.75rem;
+    }
+
     ${theme.media.mobile} {
         width: 100%;
         height: auto;
@@ -28,7 +35,13 @@ export const StyledMenuItem = styled.div`
         height: 4.125rem;
         flex-direction: column;
         align-items: flex-start;
-        
+
+        ${theme.media.tablet} {
+            height: auto;
+            width: 100%;
+            gap: 0.25rem;
+        }
+
         ${theme.media.mobile} {
             height: auto;
             width: 100%;

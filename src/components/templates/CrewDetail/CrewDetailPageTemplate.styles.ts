@@ -19,6 +19,14 @@ export const TemplateWrapper = styled.div`
         padding-right: 2.5rem;
     }
 
+    ${theme.media.tablet} {
+        flex-direction: column;
+        gap: 0;
+        padding-top: 4rem;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
     ${theme.media.mobile} {
         flex-direction: column;
         padding: 6rem 1.25rem 2.5rem;
@@ -31,6 +39,11 @@ export const SidebarSection = styled.aside`
     flex-shrink: 0;
     width: 20rem;
 
+    ${theme.media.tablet} {
+        width: 100%;
+        padding: 2.25rem 2rem;
+    }
+
     ${theme.media.mobile} {
         width: 100%;
     }
@@ -41,12 +54,20 @@ export const ContentSection = styled.section`
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+
+    ${theme.media.tablet} {
+        padding: 2.25rem 2rem;
+    }
 `;
 
 /* 탭 메뉴 스타일 */
 export const TabWrapper = styled.div`
     display: flex;
     margin-bottom: 2.25rem;
+
+    ${theme.media.tablet} {
+        margin-bottom: 1.5rem;
+    }
 
     ${theme.media.mobile} {
         margin-bottom: 0;
@@ -70,6 +91,10 @@ export const TabButton = styled.button<{ $isActive: boolean }>`
     
     margin-bottom: -0.0625rem;
     transition: all 0.2s ease;
+
+    ${theme.media.tablet} {
+        font-size: 1rem;
+    }
 
     ${theme.media.mobile} {
         flex: 1;

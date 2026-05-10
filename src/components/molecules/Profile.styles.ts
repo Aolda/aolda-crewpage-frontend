@@ -13,17 +13,35 @@ export const StyledProfile = styled.div`
 
     gap: ${pxToRem(24)};
 
+    ${theme.media.tablet} {
+        display: grid;
+        width: 100%;
+        height: 12.5rem;
+        grid-template-areas:
+            "img info"
+            "img followers"
+            "img stats"
+            "img button";
+        grid-template-columns: 12.5rem 1fr;
+        grid-template-rows: auto auto auto 1fr;
+        column-gap: 1.5rem;
+        row-gap: 0.25rem;
+        padding: 0;
+        align-items: start;
+        text-align: left;
+    }
+
     ${theme.media.mobile} {
         display: grid;
         width: 100%;
         height: auto;
-        grid-template-areas: 
+        grid-template-areas:
             "img info"
             "description description"
             "button button"
             "followers followers"
             "stats stats";
-        
+
         grid-template-columns: 6rem 1fr;
         column-gap: 1.5rem;
         row-gap: 1.25rem; // 요소 간 간격 확보
@@ -40,6 +58,18 @@ export const StyledProfile = styled.div`
         img {
             border: solid 2px ${colors.border};
             border-radius: 50%;
+        }
+
+        ${theme.media.tablet} {
+            grid-area: img;
+            width: 12.5rem;
+            height: 12.5rem;
+
+            img {
+                width: 12.5rem;
+                height: 12.5rem;
+                object-fit: cover;
+            }
         }
 
         ${theme.media.mobile} {
@@ -65,6 +95,14 @@ export const StyledProfile = styled.div`
                 font-size: ${fontSize.h2};
                 font-weight: bold;
             }
+        }
+
+        ${theme.media.tablet} {
+            grid-area: info;
+            height: auto;
+            justify-content: flex-start;
+            .nameInfo .name { font-size: 1.25rem; }
+            .positionInfo { font-size: 0.75rem; }
         }
 
         ${theme.media.mobile} {
@@ -95,6 +133,18 @@ export const StyledProfile = styled.div`
 
             color: ${colors.white600};
         }
+
+        ${theme.media.tablet} {
+            grid-area: button;
+            align-self: end;
+            height: auto;
+
+            button {
+                width: 100%;
+                height: 2.9375rem;
+                font-size: 1rem;
+            }
+        }
     }
 
     .descriptionSection {
@@ -107,6 +157,10 @@ export const StyledProfile = styled.div`
         font-size: ${fontSize.body1};
         font-weight: 400;
         color: ${colors.gray600};
+
+        ${theme.media.tablet} {
+            display: none;
+        }
 
         ${theme.media.mobile} {
             font-size: ${fontSize.smaller};
@@ -123,11 +177,20 @@ export const StyledProfile = styled.div`
 
         font-size: ${fontSize.body1};
 
+        ${theme.media.tablet} {
+            grid-area: followers;
+            gap: 0.5rem;
+            font-size: 1rem;
+            img { display: block; width: 1.25rem; height: 1.25rem; }
+            .variable { font-size: 1rem; }
+            .nonvariable { font-size: 1rem; }
+        }
+
         ${theme.media.mobile} {
             padding: 0.5rem 0;
             border-top: 1px solid ${colors.gray500};
             font-size: ${fontSize.base};
-            
+
             img { display: none; }
         }
 
@@ -148,12 +211,18 @@ export const StyledProfile = styled.div`
         width: 100%;
         height: ${pxToRem(93)};
         flex-direction: column;
-        
+
         gap: ${pxToRem(12)};
+
+        ${theme.media.tablet} {
+            grid-area: stats;
+            height: auto;
+            gap: 0.25rem;
+        }
 
         ${theme.media.mobile} {
             padding-top: 0;
-            border-top: none; 
+            border-top: none;
         }
 
         .statContainer {
@@ -163,10 +232,15 @@ export const StyledProfile = styled.div`
             font-size: ${fontSize.base};
             font-weight: 700;
 
+            ${theme.media.tablet} {
+                font-size: 0.75rem;
+                img { width: 1.25rem; height: 1.25rem; }
+            }
+
             ${theme.media.mobile} {
                 font-size: ${fontSize.smaller};
                 color: ${colors.black500};
-                
+
                 img {
                     width: 1.125rem;
                     height: 1.125rem;
