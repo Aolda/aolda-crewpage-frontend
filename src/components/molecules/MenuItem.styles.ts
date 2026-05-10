@@ -26,7 +26,7 @@ export const StyledMenuItem = styled.div`
     ${theme.media.mobile} {
         width: 100%;
         height: 4.9375rem;
-        padding: 0.75rem 1rem;
+        padding: 0.5rem 1rem 0 0.75rem;
         border: 1px solid ${colors.border};
         border-radius: 0.5rem;
         gap: 0.375rem;
