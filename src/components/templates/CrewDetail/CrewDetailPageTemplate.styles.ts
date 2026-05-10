@@ -14,6 +14,11 @@ export const TemplateWrapper = styled.div`
     padding-left: 7.5rem;
     padding-right: 7.5rem;
 
+    ${theme.media.desktopSm} {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+
     ${theme.media.mobile} {
         flex-direction: column;
         padding: 6rem 1.25rem 2.5rem;
