@@ -39,13 +39,13 @@ const MenuItem: React.FC<MenuItemProps> = ({
 			<StyledMenuItem>
 				<section className="infoSection">
 					<section className="titleSection">
-						<h2 style={{"fontSize":fontSize.h3, "fontWeight":"bold"}}>{title}</h2>
+						<h2 className="title">{title}</h2>
 						{ (pageName==="activity") && status
 							&& <Badge variant="solid" status={status}>
 								{ACTIVITY_STATUS[status]}
 						</Badge> }
 					</section>
-					<span className='date' color='gray' style={{"fontSize":fontSize.base}}>{date}</span>
+					<span className='date'>{date}</span>
 				</section>
 				<section className="descriptionSection">
 					<p color='gray'>{description}</p>

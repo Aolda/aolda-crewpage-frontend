@@ -3,7 +3,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { CrewDetailResponse, CREW_ROLE } from "@/types/crew"; 
+import { CrewDetailResponse, CREW_ROLE } from "@/types/crew";
 import { StyledProfile } from "./Profile.styles";
 import Badge from "../atoms/Badge";
 import { fontSize } from "@/styles/theme";
@@ -25,12 +25,20 @@ const Profile: React.FC<ProfileProps> = ({
             <section className="infoSection">
                 <section className="nameInfo">
                     <span className="name">{member.crewName}</span>
-                    <Badge status={member.isActive} variant="solid">
-                        {member.isActive ? "활동중" : "비활동"}
-                    </Badge>
+                    <div className="nameBadgeWrapper">
+                        <Badge status={member.isActive} variant="solid">
+                            {member.isActive ? "활동중" : "비활동"}
+                        </Badge>
+                    </div>
+                    <button className="followBtnMobile">
+                        {member.connections.isFollowing ? 'Unfollow' : 'Follow'}
+                    </button>
                 </section>
                 <section className="positionInfo">
                     <span>{CREW_ROLE[currentRole]}</span>
+                    <span className="positionBadgeMobile">
+                        {`· ${member.isActive ? "활동중" : "비활동"}`}
+                    </span>
                 </section>
             </section>
             <section className="buttonSection">

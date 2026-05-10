@@ -25,9 +25,12 @@ export const StyledMenuItem = styled.div`
 
     ${theme.media.mobile} {
         width: 100%;
-        height: auto;
-        padding: 1.25rem 0;
-        gap: 1rem;
+        height: 4.9375rem;
+        padding: 0.75rem 1rem;
+        border: 1px solid ${colors.border};
+        border-bottom: 1px solid ${colors.border};
+        border-radius: 0.5rem;
+        gap: 0.375rem;
     }
 
     .infoSection {
@@ -45,7 +48,7 @@ export const StyledMenuItem = styled.div`
         ${theme.media.mobile} {
             height: auto;
             width: 100%;
-            gap: 0.25rem;
+            gap: 0.125rem;
         }
     }
 
@@ -59,19 +62,29 @@ export const StyledMenuItem = styled.div`
             margin: 0;
         }
 
+        .title {
+            font-size: ${fontSize.h3};
+            font-weight: bold;
+        }
+
+        ${theme.media.tablet} {
+            .title { font-size: ${fontSize.body1}; }
+        }
+
         ${theme.media.mobile} {
             display: flex;
             width: 100%;
             justify-content: space-between;
-            align-items: flex-start;
-            gap: 0;
+            align-items: center;
+            gap: 0.5rem;
 
-            /* 제목이 길어질 경우를 대비한 스타일 */
-            h3 {
-                font-size: 1.125rem;
+            .title {
+                font-size: 0.875rem;
                 flex: 1;
-                padding-right: 0.5rem;
                 word-break: keep-all;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
         }
     }
@@ -80,15 +93,18 @@ export const StyledMenuItem = styled.div`
         font-size: ${fontSize.base};
         color: ${colors.gray600};
 
-        ${theme.media.mobile} {
+        ${theme.media.tablet} {
             font-size: ${fontSize.smaller};
+        }
+
+        ${theme.media.mobile} {
+            font-size: 0.625rem;
         }
     }
 
     .descriptionSection {
         display: flex;
         width: 100%;
-
 
         p {
             margin: 0;
@@ -104,7 +120,8 @@ export const StyledMenuItem = styled.div`
             text-overflow: ellipsis;
 
             ${theme.media.mobile} {
-                font-size: ${fontSize.smaller};
+                font-size: 0.625rem;
+                -webkit-line-clamp: 1;
             }
         }
     }

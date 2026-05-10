@@ -37,18 +37,20 @@ export const StyledProfile = styled.div`
         height: auto;
         grid-template-areas:
             "img info"
-            "description description"
-            "button button"
             "followers followers"
             "stats stats";
 
-        grid-template-columns: 6rem 1fr;
-        column-gap: 1.5rem;
-        row-gap: 1.25rem; // 요소 간 간격 확보
+        grid-template-columns: 7.5rem 1fr;
+        column-gap: 0.75rem;
+        row-gap: 0.5rem;
         padding: 0;
         align-items: start;
         text-align: left;
     }
+
+    /* desktop/tablet: hide mobile-only elements */
+    .followBtnMobile { display: none; }
+    .positionBadgeMobile { display: none; }
 
     .imgSection {
         grid-area: img;
@@ -73,8 +75,14 @@ export const StyledProfile = styled.div`
         }
 
         ${theme.media.mobile} {
-            width: 5.5rem;
-            height: 5.5rem;
+            width: 7.5rem;
+            height: 7.5rem;
+
+            img {
+                width: 7.5rem;
+                height: 7.5rem;
+                object-fit: cover;
+            }
         }
     }
 
@@ -110,9 +118,47 @@ export const StyledProfile = styled.div`
         }
 
         ${theme.media.mobile} {
-            justify-content: center;
-            .nameInfo .name { font-size: 1.25rem; }
-            .positionInfo { font-size: ${fontSize.smaller}; color: ${colors.gray500}; }
+            grid-area: info;
+            height: auto;
+            justify-content: flex-start;
+            gap: 0.25rem;
+
+            .nameInfo {
+                justify-content: space-between;
+                align-items: center;
+                .name { font-size: 1.25rem; }
+                .nameBadgeWrapper { display: none; }
+                .followBtnMobile {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 3.5625rem;
+                    height: 1.8125rem;
+                    border-radius: 0.375rem;
+                    background-color: ${colors.primary600};
+                    color: ${colors.white600};
+                    font-size: 0.625rem;
+                    font-weight: 600;
+                    border: none;
+                    cursor: pointer;
+                    flex-shrink: 0;
+                }
+            }
+
+            .positionInfo {
+                display: flex;
+                align-items: center;
+                gap: 0.25rem;
+                font-size: 0.625rem;
+                color: ${colors.gray500};
+
+                .positionBadgeMobile {
+                    display: inline;
+                    font-size: 0.625rem;
+                    color: ${colors.primary500};
+                    font-weight: 600;
+                }
+            }
         }
 
         .positionInfo {
@@ -149,6 +195,10 @@ export const StyledProfile = styled.div`
                 font-size: 1rem;
             }
         }
+
+        ${theme.media.mobile} {
+            display: none;
+        }
     }
 
     .descriptionSection {
@@ -167,8 +217,7 @@ export const StyledProfile = styled.div`
         }
 
         ${theme.media.mobile} {
-            font-size: ${fontSize.smaller};
-            padding-top: 0.5rem;
+            display: none;
         }
     }
 
@@ -191,11 +240,11 @@ export const StyledProfile = styled.div`
         }
 
         ${theme.media.mobile} {
-            padding: 0.5rem 0;
-            border-top: 1px solid ${colors.gray500};
-            font-size: ${fontSize.base};
-
+            gap: 0.375rem;
+            font-size: 0.75rem;
             img { display: none; }
+            .variable { font-size: 0.75rem; }
+            .nonvariable { font-size: 0.75rem; }
         }
 
         .variable {
@@ -227,6 +276,14 @@ export const StyledProfile = styled.div`
         }
 
         ${theme.media.mobile} {
+            height: auto;
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.375rem;
+        }
+
+        ${theme.media.mobile} {
             padding-top: 0;
             border-top: none;
         }
@@ -244,12 +301,13 @@ export const StyledProfile = styled.div`
             }
 
             ${theme.media.mobile} {
-                font-size: ${fontSize.smaller};
+                font-size: 0.625rem;
+                gap: 0.25rem;
                 color: ${colors.black500};
 
                 img {
-                    width: 1.125rem;
-                    height: 1.125rem;
+                    width: 1rem;
+                    height: 1rem;
                 }
             }
         }
