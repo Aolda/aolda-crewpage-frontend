@@ -101,7 +101,11 @@ export const StyledProfile = styled.div`
             grid-area: info;
             height: auto;
             justify-content: flex-start;
-            .nameInfo .name { font-size: 1.25rem; }
+            .nameInfo {
+                justify-content: flex-start;
+                gap: 0.75rem;
+                .name { font-size: 1.25rem; }
+            }
             .positionInfo { font-size: 0.75rem; }
         }
 
@@ -217,7 +221,9 @@ export const StyledProfile = styled.div`
         ${theme.media.tablet} {
             grid-area: stats;
             height: auto;
-            gap: 0.25rem;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.75rem;
         }
 
         ${theme.media.mobile} {
