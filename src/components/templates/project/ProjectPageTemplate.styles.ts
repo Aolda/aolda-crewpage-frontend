@@ -139,6 +139,11 @@ export const ContentSection = styled.main`
     padding-left: 7.5rem;
     padding-right: 7.5rem;
 
+    ${theme.media.desktopSm} {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+
     ${theme.media.mobile} {
         padding: 0 1rem;
     }
