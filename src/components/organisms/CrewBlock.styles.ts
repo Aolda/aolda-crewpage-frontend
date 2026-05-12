@@ -7,6 +7,8 @@ interface CrewBlockProps {
 }
 
 export const StyledCrewBlock = styled.div<CrewBlockProps>`
+    box-sizing: border-box;
+
     ${(props) => (!props.$isCrewpage) ? css`
         display: flex;
         flex-direction: column;
@@ -174,8 +176,15 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             }
 
             .infoSection {
+                flex: 1;
+                min-width: 0;
                 height: auto;
                 gap: 0.25rem;
+                overflow: hidden;
+            }
+
+            .statsSection {
+                flex-shrink: 0;
             }
 
             .infoSection .nameInfo {
