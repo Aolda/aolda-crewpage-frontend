@@ -1,5 +1,6 @@
 // /src/components/templates/main/Activity/Activity.styles.ts
 import styled, { keyframes } from 'styled-components';
+import Link from 'next/link';
 import { colors, fontSize, theme } from '@/styles/theme';
 
 export const ActivityWrapper = styled.div`
@@ -165,7 +166,7 @@ export const MobileActivityGrid = styled.div`
     }
 `;
 
-export const MoreLink = styled.a`
+export const MoreLink = styled(Link)`
     display: none;
 
     ${theme.media.mobile} {
