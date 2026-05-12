@@ -63,7 +63,7 @@ export const ContentSection = styled.section`
     }
 
     ${theme.media.mobile} {
-        padding: 0 1rem;
+        padding: 0.75rem 1rem;
     }
 `;
 
@@ -79,7 +79,6 @@ export const TabWrapper = styled.div`
     ${theme.media.mobile} {
         height: 1.9375rem;
         margin-bottom: 0;
-        border-top: 1px solid ${colors.gray500};
         justify-content: space-around;
     }
 `;
@@ -112,8 +111,8 @@ export const TabButton = styled.button<{ $isActive: boolean }>`
         padding: 0;
         gap: 0.375rem;
         font-size: 0.75rem;
-        border-bottom: ${(props) => (props.$isActive ? `2px solid ${colors.black500}` : 'none')};
-        color: ${(props) => (props.$isActive ? colors.black500 : colors.gray500)};
+        border-bottom: ${(props) => (props.$isActive ? `2px solid ${colors.primary500}` : 'none')};
+        color: ${(props) => (props.$isActive ? colors.primary500 : colors.gray500)};
     }
 
     img {

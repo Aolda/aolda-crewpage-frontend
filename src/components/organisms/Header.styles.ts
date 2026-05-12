@@ -35,7 +35,7 @@ export const StyledHeader = styled.header`
         border-left: none;
         border-right: none;
         border-top: none;
-        height: 4rem;
+        height: 4.25rem;
         padding: 0 1.25rem;
     }
 

@@ -40,9 +40,10 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
 
         ${theme.media.tablet} {
             width: 100%;
-            height: auto;
-            padding: 1.25rem 0.75rem;
-            gap: 1rem;
+            height: 11.8125rem;
+            padding: 0.875rem 0.75rem;
+            gap: 0.75rem;
+            align-items: center;
         }
 
         .textSection {
@@ -51,10 +52,13 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             justify-content: center;
             align-items: center;
             gap: 0.75rem;
+            width: 100%;
+            overflow: hidden;
 
             .infoSection {
                 display: flex;
                 justify-content: center;
+                width: 100%;
             }
 
             ${theme.media.mobile} {
@@ -83,6 +87,10 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
                 font-size: ${fontSize.smaller};
                 font-weight: bold;
                 color: ${colors.gray600};
+                max-width: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
 
                 ${theme.media.mobile} {
                     font-size: 0.625rem;

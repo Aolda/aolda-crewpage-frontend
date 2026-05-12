@@ -15,7 +15,9 @@ export const StyledOverviewCard = styled.div`
     box-shadow: 0px 0.25rem 1.25rem 0px #1A8EE54D;
 
     ${theme.media.tablet} {
-        width: 13.5rem;
+        flex: 1;
+        max-width: 24rem;
+        width: auto;
         height: 5.5625rem;
         padding: 1.25rem 1rem;
         border-radius: 2.5rem 0.5rem 2.5rem 0.5rem;

@@ -6,12 +6,12 @@ import { fontSize, colors, theme } from "@/styles/theme";
 export const StyledProfile = styled.div`
     display: flex;
     flex-direction: column;
-    width: ${pxToRem(320)};
-    height: ${pxToRem(724)};
+    width: 20rem;
+    height: 45.25rem;
     justify-content: center;
     align-items: center;
 
-    gap: ${pxToRem(24)};
+    gap: 1.5rem;
 
     ${theme.media.tablet} {
         display: grid;
@@ -48,8 +48,8 @@ export const StyledProfile = styled.div`
 
     .imgSection {
         grid-area: img;
-        width: ${pxToRem(320)};
-        height: ${pxToRem(320)};
+        width: 20rem;
+        height: 20rem;
 
         img {
             border: solid 2px ${colors.border};
@@ -86,7 +86,7 @@ export const StyledProfile = styled.div`
         display: flex;
         flex-direction: column;
         width: 100%;
-        height: ${pxToRem(84)};
+        height: 5.25rem;
 
         .nameInfo {
             display: flex;
@@ -98,6 +98,11 @@ export const StyledProfile = styled.div`
                 font-size: ${fontSize.h2};
                 font-weight: bold;
             }
+        }
+
+        .positionInfo {
+            font-size: ${fontSize.body1};
+            font-weight: 400;
         }
 
         ${theme.media.tablet} {
@@ -130,7 +135,7 @@ export const StyledProfile = styled.div`
                     width: 3.5625rem;
                     height: 1.8125rem;
                     border-radius: 0.375rem;
-                    background-color: ${colors.primary600};
+                    background-color: ${colors.primary500};
                     color: ${colors.white600};
                     font-size: 0.625rem;
                     font-weight: 600;
@@ -155,26 +160,21 @@ export const StyledProfile = styled.div`
                 }
             }
         }
-
-        .positionInfo {
-            font-size: ${fontSize.body1};
-            font-weight: 400;
-        }
     }
 
     .buttonSection {
         grid-area: button;
         display: flex;
         width: 100%;
-        height: ${pxToRem(47)};
+        height: 2.9375rem;
         justify-content: center;
         align-items: center;
 
         button {
             width: 100%;
-            height: ${pxToRem(47)};
-            border-radius: ${pxToRem(8)};
-            background-color: ${colors.primary600};
+            height: 2.9375rem;
+            border-radius: 0.5rem;
+            background-color: ${colors.primary500};
 
             color: ${colors.white600};
         }
@@ -200,7 +200,7 @@ export const StyledProfile = styled.div`
         grid-area: description;
         diplay: flex;
         width: 100%;
-        height: ${pxToRem(30)};
+        height: 1.875rem;
         text-align: left;
 
         font-size: ${fontSize.body1};
@@ -221,7 +221,7 @@ export const StyledProfile = styled.div`
         display: inline-flex;
         width: 100%;
         align-items: center;
-        gap: ${pxToRem(12)};
+        gap: 0.75rem;
 
         font-size: ${fontSize.body1};
 
@@ -257,10 +257,10 @@ export const StyledProfile = styled.div`
         grid-area: stats;
         display: flex;
         width: 100%;
-        height: ${pxToRem(93)};
+        height: 5.8125rem;
         flex-direction: column;
 
-        gap: ${pxToRem(12)};
+        gap: 0.75rem;
 
         ${theme.media.tablet} {
             grid-area: stats;
@@ -285,7 +285,7 @@ export const StyledProfile = styled.div`
 
         .statContainer {
             display: inline-flex;
-            gap: ${pxToRem(12)};
+            gap: 0.75rem;
 
             font-size: ${fontSize.base};
             font-weight: 700;

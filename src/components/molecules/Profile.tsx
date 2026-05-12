@@ -42,7 +42,7 @@ const Profile: React.FC<ProfileProps> = ({
                 </section>
             </section>
             <section className="buttonSection">
-                <button>{member.connections.isFollowing ? 'unfollow' : 'follow'}</button>
+                <button>{member.connections.isFollowing ? 'unfollow' : 'Follow'}</button>
             </section>
             <section className="descriptionSection">
                 <span>{member.description}</span>

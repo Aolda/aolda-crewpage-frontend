@@ -124,7 +124,7 @@ export const CrewGrid = styled.div`
     }
 
     ${theme.media.tablet} {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 1rem;
         padding: 0;
     }
