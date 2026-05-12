@@ -6,45 +6,78 @@ import { fontSize, colors, theme } from "@/styles/theme";
 export const StyledProfile = styled.div`
     display: flex;
     flex-direction: column;
-    width: ${pxToRem(320)};
-    height: ${pxToRem(724)};
+    width: 20rem;
+    height: 45.25rem;
     justify-content: center;
     align-items: center;
 
-    gap: ${pxToRem(24)};
+    gap: 1.5rem;
 
-    ${theme.media.mobile} {
+    ${theme.media.tablet} {
         display: grid;
         width: 100%;
-        height: auto;
-        grid-template-areas: 
+        height: 12.5rem;
+        grid-template-areas:
             "img info"
-            "description description"
-            "button button"
-            "followers followers"
-            "stats stats";
-        
-        grid-template-columns: 6rem 1fr;
+            "img followers"
+            "img stats"
+            "img button";
+        grid-template-columns: 12.5rem 1fr;
+        grid-template-rows: auto auto auto 1fr;
         column-gap: 1.5rem;
-        row-gap: 1.25rem; // 요소 간 간격 확보
+        row-gap: 0.25rem;
         padding: 0;
         align-items: start;
         text-align: left;
     }
 
+    ${theme.media.mobile} {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        gap: 0.5rem;
+        padding: 0;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    /* desktop/tablet: hide mobile-only elements */
+    .followBtnMobile { display: none; }
+    .positionBadgeMobile { display: none; }
+
     .imgSection {
         grid-area: img;
-        width: ${pxToRem(320)};
-        height: ${pxToRem(320)};
+        width: 20rem;
+        height: 20rem;
 
         img {
             border: solid 2px ${colors.border};
             border-radius: 50%;
         }
 
+        ${theme.media.tablet} {
+            grid-area: img;
+            width: 12.5rem;
+            height: 12.5rem;
+
+            img {
+                width: 12.5rem;
+                height: 12.5rem;
+                object-fit: cover;
+            }
+        }
+
         ${theme.media.mobile} {
-            width: 5.5rem;
-            height: 5.5rem;
+            width: 7.5rem;
+            height: 7.5rem;
+            flex-shrink: 0;
+
+            img {
+                width: 7.5rem;
+                height: 7.5rem;
+                object-fit: cover;
+            }
         }
     }
 
@@ -53,7 +86,7 @@ export const StyledProfile = styled.div`
         display: flex;
         flex-direction: column;
         width: 100%;
-        height: ${pxToRem(84)};
+        height: 5.25rem;
 
         .nameInfo {
             display: flex;
@@ -67,15 +100,65 @@ export const StyledProfile = styled.div`
             }
         }
 
-        ${theme.media.mobile} {
-            justify-content: center;
-            .nameInfo .name { font-size: 1.25rem; }
-            .positionInfo { font-size: ${fontSize.smaller}; color: ${colors.gray500}; }
-        }
-
         .positionInfo {
             font-size: ${fontSize.body1};
             font-weight: 400;
+        }
+
+        ${theme.media.tablet} {
+            grid-area: info;
+            height: auto;
+            justify-content: flex-start;
+            .nameInfo {
+                justify-content: flex-start;
+                gap: 0.75rem;
+                .name { font-size: 1.25rem; }
+            }
+            .positionInfo { font-size: 0.75rem; }
+        }
+
+        ${theme.media.mobile} {
+            width: 100%;
+            height: auto;
+            justify-content: flex-start;
+            gap: 0.25rem;
+
+            .nameInfo {
+                justify-content: space-between;
+                align-items: center;
+                .name { font-size: 1.25rem; }
+                .nameBadgeWrapper { display: none; }
+                .followBtnMobile {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 3.5625rem;
+                    height: 1.8125rem;
+                    border-radius: 0.375rem;
+                    background-color: ${colors.primary500};
+                    color: ${colors.white600};
+                    font-size: 0.625rem;
+                    font-weight: 600;
+                    border: none;
+                    cursor: pointer;
+                    flex-shrink: 0;
+                }
+            }
+
+            .positionInfo {
+                display: flex;
+                align-items: center;
+                gap: 0.25rem;
+                font-size: 0.625rem;
+                color: ${colors.gray500};
+
+                .positionBadgeMobile {
+                    display: inline;
+                    font-size: 0.625rem;
+                    color: ${colors.primary500};
+                    font-weight: 600;
+                }
+            }
         }
     }
 
@@ -83,17 +166,33 @@ export const StyledProfile = styled.div`
         grid-area: button;
         display: flex;
         width: 100%;
-        height: ${pxToRem(47)};
+        height: 2.9375rem;
         justify-content: center;
         align-items: center;
 
         button {
             width: 100%;
-            height: ${pxToRem(47)};
-            border-radius: ${pxToRem(8)};
-            background-color: ${colors.primary600};
+            height: 2.9375rem;
+            border-radius: 0.5rem;
+            background-color: ${colors.primary500};
 
             color: ${colors.white600};
+        }
+
+        ${theme.media.tablet} {
+            grid-area: button;
+            align-self: end;
+            height: auto;
+
+            button {
+                width: 100%;
+                height: 2.9375rem;
+                font-size: 1rem;
+            }
+        }
+
+        ${theme.media.mobile} {
+            display: none;
         }
     }
 
@@ -101,16 +200,19 @@ export const StyledProfile = styled.div`
         grid-area: description;
         diplay: flex;
         width: 100%;
-        height: ${pxToRem(30)};
+        height: 1.875rem;
         text-align: left;
 
         font-size: ${fontSize.body1};
         font-weight: 400;
         color: ${colors.gray600};
 
+        ${theme.media.tablet} {
+            display: none;
+        }
+
         ${theme.media.mobile} {
-            font-size: ${fontSize.smaller};
-            padding-top: 0.5rem;
+            display: none;
         }
     }
 
@@ -119,16 +221,25 @@ export const StyledProfile = styled.div`
         display: inline-flex;
         width: 100%;
         align-items: center;
-        gap: ${pxToRem(12)};
+        gap: 0.75rem;
 
         font-size: ${fontSize.body1};
 
+        ${theme.media.tablet} {
+            grid-area: followers;
+            gap: 0.5rem;
+            font-size: 1rem;
+            img { display: block; width: 1.25rem; height: 1.25rem; }
+            .variable { font-size: 1rem; }
+            .nonvariable { font-size: 1rem; }
+        }
+
         ${theme.media.mobile} {
-            padding: 0.5rem 0;
-            border-top: 1px solid ${colors.gray500};
-            font-size: ${fontSize.base};
-            
+            gap: 0.375rem;
+            font-size: 0.75rem;
             img { display: none; }
+            .variable { font-size: 0.75rem; }
+            .nonvariable { font-size: 0.75rem; }
         }
 
         .variable {
@@ -146,30 +257,52 @@ export const StyledProfile = styled.div`
         grid-area: stats;
         display: flex;
         width: 100%;
-        height: ${pxToRem(93)};
+        height: 5.8125rem;
         flex-direction: column;
-        
-        gap: ${pxToRem(12)};
+
+        gap: 0.75rem;
+
+        ${theme.media.tablet} {
+            grid-area: stats;
+            height: auto;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        ${theme.media.mobile} {
+            height: auto;
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.375rem;
+        }
 
         ${theme.media.mobile} {
             padding-top: 0;
-            border-top: none; 
+            border-top: none;
         }
 
         .statContainer {
             display: inline-flex;
-            gap: ${pxToRem(12)};
+            gap: 0.75rem;
 
             font-size: ${fontSize.base};
             font-weight: 700;
 
+            ${theme.media.tablet} {
+                font-size: 0.75rem;
+                img { width: 1.25rem; height: 1.25rem; }
+            }
+
             ${theme.media.mobile} {
-                font-size: ${fontSize.smaller};
+                font-size: 0.625rem;
+                gap: 0.25rem;
                 color: ${colors.black500};
-                
+
                 img {
-                    width: 1.125rem;
-                    height: 1.125rem;
+                    width: 1rem;
+                    height: 1rem;
                 }
             }
         }

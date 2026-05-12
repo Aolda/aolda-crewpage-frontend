@@ -17,6 +17,12 @@ export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
     background-color: ${(props) => props.$bgColor};
     cursor: pointer;
 
+    ${theme.media.tablet} {
+        width: 100%;
+        height: 20rem;
+        border-radius: 1rem;
+    }
+
     ${theme.media.mobile} {
         width: 100%;
         height: 20rem;
@@ -49,19 +55,42 @@ export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
         justify-content: center;
         align-items: center;
         gap: 0.25rem;
+        width: 100%;
+        overflow: hidden;
+        padding: 0 0.5rem;
 
         h1 {
             font-size: 2.25rem;
             font-weight: bold;
-            
-            ${theme.media.mobile} { 
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: center;
+
+            ${theme.media.tablet} {
+                font-size: 1.5rem;
+                line-height: 1.2;
+            }
+
+            ${theme.media.mobile} {
                 font-size: 0.875rem;
                 line-height: 1.2;
             }
         }
 
         span {
-            ${theme.media.mobile} { 
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: center;
+
+            ${theme.media.tablet} {
+                font-size: 0.625rem !important;
+            }
+
+            ${theme.media.mobile} {
                 font-size: 0.5rem !important;
             }
         }

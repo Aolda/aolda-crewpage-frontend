@@ -11,8 +11,13 @@ export const Container = styled.div<{ $size: number }>`
     align-items: center;
     justify-content: center;
 
+    ${theme.media.tablet} {
+        width: 3.0625rem;
+        height: 3.0625rem;
+    }
+
     ${theme.media.mobile} {
-        width: 3.5rem; 
+        width: 3.5rem;
         height: 3.5rem;
     }
 `;
@@ -47,6 +52,10 @@ export const NumberLabel = styled.div`
     font-size: 1rem;
     font-weight: bold;
     color: ${colors.primary500};
+
+    ${theme.media.tablet} {
+        font-size: 1rem;
+    }
 
     ${theme.media.mobile} {
         font-size: 0.8rem;

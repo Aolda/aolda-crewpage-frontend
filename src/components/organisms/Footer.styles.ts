@@ -17,6 +17,10 @@ export const StyledFooter = styled.footer`
     gap: 0.75rem;
 
     font-family: var(--font-cjk);
+    
+    ${theme.media.desktopSm} {
+        padding-left: 2.5rem;
+    }
 
     ${theme.media.mobile} {
         height: auto;

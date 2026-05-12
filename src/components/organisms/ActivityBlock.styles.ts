@@ -71,15 +71,19 @@ export const StyledActivityBlock = styled.div`
 
     .titleSection {
         display: flex;
-        width: auto;
+        width: 100%;
         flex-direction: column;
         align-items: flex-start;
         text-align: left;
         gap: 0.5rem;
+        overflow: hidden;
 
         h2 {
             font-size: ${fontSize.body1};
             font-weight: bold;
+            width: 100%;
+            word-break: break-word;
+            overflow-wrap: break-word;
 
             ${theme.media.tablet} {
                 font-size: ${fontSize.smaller};
@@ -94,6 +98,9 @@ export const StyledActivityBlock = styled.div`
         span {
             font-size: ${fontSize.smaller};
             font-family: var(--font-cjk);
+            width: 100%;
+            word-break: break-word;
+            overflow-wrap: break-word;
 
             ${theme.media.tablet} {
                 font-size: 0.625rem;

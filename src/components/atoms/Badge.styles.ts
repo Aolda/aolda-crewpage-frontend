@@ -17,7 +17,7 @@ export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: Activ
     white-space: nowrap;
 
     ${theme.media.tablet} {
-        height: 1.75rem;
+        height: 1.625rem;
         font-size: 0.625rem;
     }
 

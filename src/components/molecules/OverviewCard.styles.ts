@@ -11,8 +11,17 @@ export const StyledOverviewCard = styled.div`
     height: 9.1875rem;
     padding: 1.9375rem 2.875rem;
     background-color: white;
-    border-radius: 3.75rem 0.75rem 3.75rem 0.75rem; 
+    border-radius: 3.75rem 0.75rem 3.75rem 0.75rem;
     box-shadow: 0px 0.25rem 1.25rem 0px #1A8EE54D;
+
+    ${theme.media.tablet} {
+        flex: 1;
+        max-width: 24rem;
+        width: auto;
+        height: 5.5625rem;
+        padding: 1.25rem 1rem;
+        border-radius: 2.5rem 0.5rem 2.5rem 0.5rem;
+    }
 
     ${theme.media.mobile} {
         flex: 1;
@@ -31,6 +40,12 @@ export const StyledOverviewCard = styled.div`
         gap: 1rem;
         flex-shrink: 0;
 
+        ${theme.media.tablet} {
+            width: auto;
+            flex: 1;
+            gap: 0.5rem;
+        }
+
         ${theme.media.mobile} {
             width: 100%;
             align-items: center;
@@ -43,6 +58,11 @@ export const StyledOverviewCard = styled.div`
         align-items: center;
         gap: 0.5rem;
 
+        ${theme.media.tablet} {
+            gap: 0.375rem;
+            img { width: 0.75rem; height: 0.75rem; }
+        }
+
         ${theme.media.mobile} {
             flex-direction: column;
             gap: 0.2rem;
@@ -54,6 +74,7 @@ export const StyledOverviewCard = styled.div`
             font-size: ${fontSize.body1};
             font-weight: 700;
 
+            ${theme.media.tablet} { font-size: 1rem; }
             ${theme.media.mobile} { font-size: 0.7rem; white-space: nowrap; }
         }
     }
@@ -62,6 +83,7 @@ export const StyledOverviewCard = styled.div`
         display: flex;
         gap: 1rem;
 
+        ${theme.media.tablet} { gap: 0.5rem; }
         ${theme.media.mobile} { gap: 0.4rem; }
     }
 
@@ -72,6 +94,7 @@ export const StyledOverviewCard = styled.div`
         font-size: ${fontSize.small};
         color: #555;
 
+        ${theme.media.tablet} { font-size: 0.75rem; gap: 0.25rem; }
         ${theme.media.mobile} { font-size: 0.6rem; span { display: none; } }
     }
 
@@ -92,5 +115,6 @@ export const ColorBox = styled.div<{ $color: string }>`
     border-radius: 0.25rem;
     background-color: ${(props) => props.$color};
 
+    ${theme.media.tablet} { width: 0.75rem; height: 0.75rem; }
     ${theme.media.mobile} { width: 0.6rem; height: 0.6rem; }
 `;

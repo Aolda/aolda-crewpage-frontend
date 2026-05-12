@@ -35,7 +35,7 @@ export const SelectHeader = styled.div<{ $isSelected?: boolean }>`
 
     ${theme.media.tablet} {
         min-width: 4.9375rem;
-        height: 1.875rem;
+        height: 1.9375rem;
         border: 0.5px solid #888888;
         padding: 0.5rem 0.75rem;
     }

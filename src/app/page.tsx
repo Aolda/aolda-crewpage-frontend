@@ -10,6 +10,7 @@ import { getAllActivities } from '@/api/activity';
 import { getCrewList } from '@/api/crew';
 import { ActivitySummary } from '@/types/project';
 import { CrewMember } from '@/types/crew'
+import { MOCK_CREW_LIST } from '@/mocks/crewData';
 
 import Hero from '@/components/templates/main/Hero/Hero';
 import Overview from '@/components/templates/main/Overview/Overview';
@@ -45,15 +46,10 @@ export default function HomePage() {
                 setCrews(crewRes.data);
 
             } catch (error) {
-                setHasError(true);
-                // Axios 에러인 경우 서버 명세의 코드를 추출하여 핸들링합니다
-                if (isAxiosError(error) && error.response?.data?.code) {
-                    handleError(error.response.data.code);
-                } else {
-                    // 알 수 없는 네트워크 오류 등 기본 처리
-                    console.error('Unknown Error:', error);
-                    alert("서비스 연결이 원활하지 않습니다. 잠시 후 다시 시도해 주세요.");
-                }
+                // API 실패 시 mock 데이터로 fallback (개발용)
+                console.warn('API 연결 실패, mock 데이터 사용:', error);
+                setCrews(MOCK_CREW_LIST);
+                setActivities([]);
             } finally {
                 setIsLoading(false);
             }

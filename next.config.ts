@@ -6,9 +6,21 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'cdn.aolda.io', // 에러 메시지에 표시된 호스트네임 등록
+        hostname: 'cdn.aolda.io',
         port: '',
-        pathname: '/**', // 해당 도메인의 모든 경로 허용
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'dummy.aolda.local',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.amazonaws.com',
+        port: '',
+        pathname: '/**',
       },
     ],
   },

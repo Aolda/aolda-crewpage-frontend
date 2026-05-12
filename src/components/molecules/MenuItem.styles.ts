@@ -12,27 +12,45 @@ export const StyledMenuItem = styled.div`
     border-bottom: solid 1px ${colors.border};
     gap: 1.25rem;
 
-    $:hover {
+    &:hover {
         cursor: pointer;
+    }
+
+    ${theme.media.tablet} {
+        width: 100%;
+        height: 7.5rem;
+        padding-bottom: 1.25rem;
+        gap: 0.75rem;
     }
 
     ${theme.media.mobile} {
         width: 100%;
-        height: auto;
-        padding: 1.25rem 0;
-        gap: 1rem;
+        height: 4.9375rem;
+        padding: 0.5rem 1rem 0 0.75rem;
+        border: 1px solid ${colors.border};
+        border-radius: 0.5rem;
+        gap: 0.375rem;
     }
+
+    /* desktop/tablet: inlineBadge 숨김 */
+    .inlineBadge { display: none; }
 
     .infoSection {
         display: flex;
         height: 4.125rem;
         flex-direction: column;
         align-items: flex-start;
-        
-        ${theme.media.mobile} {
+
+        ${theme.media.tablet} {
             height: auto;
             width: 100%;
             gap: 0.25rem;
+        }
+
+        ${theme.media.mobile} {
+            height: auto;
+            width: 100%;
+            gap: 0.125rem;
         }
     }
 
@@ -42,23 +60,44 @@ export const StyledMenuItem = styled.div`
         align-items: center;
         gap: 0.75rem;
 
-        * {
-            margin: 0;
+        * { margin: 0; }
+
+        .title {
+            font-size: ${fontSize.h3};
+            font-weight: bold;
+        }
+
+        ${theme.media.tablet} {
+            .title { font-size: ${fontSize.body1}; }
         }
 
         ${theme.media.mobile} {
-            display: flex;
             width: 100%;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 0;
-
-            /* 제목이 길어질 경우를 대비한 스타일 */
-            h3 {
-                font-size: 1.125rem;
+            .title {
+                font-size: 1rem;
+                font-weight: bold;
                 flex: 1;
-                padding-right: 0.5rem;
-                word-break: keep-all;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .badgeWrapper { display: none; }
+        }
+    }
+
+    .dateRow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        ${theme.media.mobile} {
+            gap: 0.375rem;
+
+            .inlineBadge {
+                display: inline;
+                font-size: 0.625rem;
+                font-weight: 600;
+                color: ${colors.primary500};
             }
         }
     }
@@ -67,15 +106,18 @@ export const StyledMenuItem = styled.div`
         font-size: ${fontSize.base};
         color: ${colors.gray600};
 
-        ${theme.media.mobile} {
+        ${theme.media.tablet} {
             font-size: ${fontSize.smaller};
+        }
+
+        ${theme.media.mobile} {
+            font-size: 0.625rem;
         }
     }
 
     .descriptionSection {
         display: flex;
         width: 100%;
-
 
         p {
             margin: 0;
@@ -91,7 +133,8 @@ export const StyledMenuItem = styled.div`
             text-overflow: ellipsis;
 
             ${theme.media.mobile} {
-                font-size: ${fontSize.smaller};
+                font-size: 0.625rem;
+                -webkit-line-clamp: 1;
             }
         }
     }

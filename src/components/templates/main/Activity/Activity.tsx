@@ -2,7 +2,6 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import MainSection from '../MainSection/MainSection';
 import * as S from './Activity.styles';
 import ActivityBlock from '@/components/organisms/ActivityBlock';
@@ -65,9 +64,7 @@ const Activity = ({ activities }: ActivityProps) => {
                         />
                     ))}
                 </S.MobileActivityGrid>
-                <Link href="/activity" passHref legacyBehavior>
-                    <S.MoreLink>활동 더보기</S.MoreLink>
-                </Link>
+                <S.MoreLink href="/activity">활동 더보기</S.MoreLink>
             </S.ActivityWrapper>
         </MainSection>
     );

@@ -8,7 +8,7 @@ export const HeaderSection = styled.header`
     position: relative;
     width: 100%;
     /* 전체 높이 설정 (디자인에 맞춰 조절 필요) */
-    height: 38.5rem; 
+    height: 38.5rem;
     background-color: #F9FAFB;
     overflow: hidden;
     display: flex;
@@ -16,6 +16,11 @@ export const HeaderSection = styled.header`
     align-items: center;
 
     padding-top: 8rem;
+
+    ${theme.media.tablet} {
+        height: 26.5rem;
+        padding-top: 4rem;
+    }
 
     ${theme.media.mobile} {
         height: 30rem;
@@ -33,6 +38,12 @@ export const HeaderSection = styled.header`
         border-radius: 50%;
         background: rgba(103, 132, 237, 0.8);
         z-index: 1;
+
+        ${theme.media.tablet} {
+            width: 40rem;
+            height: 40rem;
+            top: 9rem;
+        }
 
         ${theme.media.mobile} {
             width: 40rem;
@@ -70,6 +81,13 @@ export const HeaderSection = styled.header`
         filter: blur(46.7px);
         z-index: 0;
 
+        ${theme.media.tablet} {
+            width: 20rem;
+            height: 20rem;
+            right: -4rem;
+            top: -8rem;
+        }
+
         ${theme.media.mobile} {
             width: 18rem;
             height: 18rem;
@@ -103,11 +121,21 @@ export const HeaderSection = styled.header`
             color: white;
             gap: 1rem;
 
+            ${theme.media.tablet} {
+                margin-bottom: 1rem;
+                gap: 0.5rem;
+            }
+
             ${theme.media.mobile} {
                 margin-bottom: 0;
             }
 
             .mascot {
+                ${theme.media.tablet} {
+                    width: 7.5rem;
+                    height: 7.5rem;
+                }
+
                 ${theme.media.mobile} {
                     width: 8rem;
                     height: auto;
@@ -119,6 +147,7 @@ export const HeaderSection = styled.header`
                 font-weight: 700;
                 line-height: 1.4;
 
+                ${theme.media.tablet} { font-size: 1.5rem; }
                 ${theme.media.mobile} { font-size: 1.5rem; }
             }
 
@@ -126,6 +155,7 @@ export const HeaderSection = styled.header`
                 font-size: ${fontSize.body1};
                 word-break: keep-all;
 
+                ${theme.media.tablet} { font-size: 1rem; }
                 ${theme.media.mobile} { font-size: ${fontSize.smaller}; }
             }
         }
@@ -139,6 +169,20 @@ export const ContentSection = styled.main`
     padding-left: 7.5rem;
     padding-right: 7.5rem;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    ${theme.media.desktopSm} {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+
+    ${theme.media.tablet} {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+
     ${theme.media.mobile} {
         padding: 0 1rem;
     }
@@ -147,15 +191,22 @@ export const ContentSection = styled.main`
 export const StatsSection = styled.section`
     display: flex;
     max-width: 75rem;
-    width: 100%
+    width: 100%;
     justify-content: center;
     gap: 1.5rem;
 
     padding-top: 3.75rem;
     z-index: 10;
 
+    ${theme.media.tablet} {
+        justify-content: space-between;
+        gap: 1rem;
+        padding-top: 2.5rem;
+        max-width: 100%;
+    }
+
     ${theme.media.mobile} {
-        flex-direction: row; 
+        flex-direction: row;
         justify-content: space-between;
         gap: 0.5rem;
         padding: 2rem 0.5rem 0;
@@ -164,16 +215,22 @@ export const StatsSection = styled.section`
 
 /* 필터 및 그리드 섹션 */
 export const FilterBar = styled.div`
-    width: 75rem;
+    max-width: 75rem;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     padding-top: 3.75rem;
 
+    ${theme.media.tablet} {
+        width: 100%;
+        padding-top: 2rem;
+    }
+
     ${theme.media.mobile} {
         width: 100%;
-        flex-direction: row; 
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
         gap: 1rem;
@@ -187,23 +244,28 @@ export const FilterButton = styled.button<{ $isActive: boolean }>`
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;
     border: none;
-    
+
     /* 2. 폰트 설정 */
     font-size: ${fontSize.base};
     font-weight: 700;
     line-height: 1.5;
-    
+
     /* 3. 상태별 색상 */
     background-color: ${props => props.$isActive ? colors.primary500 : 'none'};
     color: ${props => props.$isActive ? '#FFFFFF' : '#6B7280'};
-    
+
     /* 4. 인터랙션 */
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 
+    ${theme.media.tablet} {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+    }
+
     ${theme.media.mobile} {
-        padding: 0.4rem 0.75rem; 
-        font-size: ${fontSize.smaller}; 
+        padding: 0.4rem 0.75rem;
+        font-size: ${fontSize.smaller};
     }
 
     &:hover {
@@ -234,17 +296,25 @@ export const LeftButtonGroup = styled.div`
 `;
 
 export const ProjectGrid = styled.section`
-    width: 75rem;
+    max-width: 75rem;
+    width: 100%;
     display: grid;
     /* 피그마 [A-5] 디자인: 4열 그리드 */
     grid-template-columns: repeat(4, 1fr);
     gap: 2.25rem;
     padding: 2rem 0 10rem 0;
 
+    ${theme.media.tablet} {
+        width: 100%;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem 1.25rem;
+        padding: 2rem 0 5rem 0;
+    }
+
     ${theme.media.mobile} {
         width: 100%;
-        grid-template-columns: repeat(3, 1fr); 
-        gap: 0.75rem; // 카드 간격 좁히기
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.75rem;
         padding-bottom: 5rem;
     }
 `;
