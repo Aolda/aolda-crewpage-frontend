@@ -82,9 +82,8 @@ export const StyledActivityBlock = styled.div`
             font-size: ${fontSize.body1};
             font-weight: bold;
             width: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            word-break: break-word;
+            overflow-wrap: break-word;
 
             ${theme.media.tablet} {
                 font-size: ${fontSize.smaller};
@@ -93,7 +92,6 @@ export const StyledActivityBlock = styled.div`
             ${theme.media.mobile} {
                 font-size: ${fontSize.smaller};
                 word-break: keep-all;
-                white-space: normal;
             }
         }
 
@@ -101,9 +99,8 @@ export const StyledActivityBlock = styled.div`
             font-size: ${fontSize.smaller};
             font-family: var(--font-cjk);
             width: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            word-break: break-word;
+            overflow-wrap: break-word;
 
             ${theme.media.tablet} {
                 font-size: 0.625rem;
