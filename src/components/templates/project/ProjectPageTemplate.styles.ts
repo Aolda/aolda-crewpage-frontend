@@ -39,6 +39,12 @@ export const HeaderSection = styled.header`
         background: rgba(103, 132, 237, 0.8);
         z-index: 1;
 
+        ${theme.media.tablet} {
+            width: 40rem;
+            height: 40rem;
+            top: 7rem;
+        }
+
         ${theme.media.mobile} {
             width: 40rem;
             height: 40rem;
