@@ -81,6 +81,13 @@ export const HeaderSection = styled.header`
         filter: blur(46.7px);
         z-index: 0;
 
+        ${theme.media.tablet} {
+            width: 20rem;
+            height: 20rem;
+            right: -4rem;
+            top: -8rem;
+        }
+
         ${theme.media.mobile} {
             width: 18rem;
             height: 18rem;
