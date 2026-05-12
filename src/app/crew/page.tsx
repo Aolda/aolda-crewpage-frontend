@@ -61,7 +61,7 @@ export default function CrewListPage() {
     }, [currentPage, searchParams, handleError]);
 
     const handleDetailNavigation = (id: number) => {
-        router.push(`/crew/${id}/activity`);
+        router.push(`/crew/${id}`);
     };
 
     if (isLoading) {
