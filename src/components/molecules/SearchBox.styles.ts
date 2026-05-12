@@ -8,7 +8,8 @@ export const StyledSearchBox = styled.section`
     width: 29.6875rem;
 
     ${theme.media.tablet} {
-        width: 22.5rem;
+        width: 20.5625rem;
+        height: 3rem;
     }
 
     ${theme.media.mobile} {
