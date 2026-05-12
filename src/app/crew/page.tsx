@@ -1,30 +1,21 @@
 //src/app/crew/page.tsx
 'use client';
 
-import React, { useEffect, useState, useCallback } from 'react';
-import { useRouter, useSearchParams, usePathname } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { isAxiosError } from "axios";
 
 import { useErrorHandler } from "@/hooks/useErrorHandler";
-import { getCrewList, getDepartmentList, CrewQueryParams } from '@/api/crew';
+import { getCrewList, getDepartmentList } from '@/api/crew';
 import { CrewMember, DepartmentMap } from '@/types/crew';
 
 import CrewPageTemplate from '@/components/templates/crew/CrewPagetemplate';
-import Pagination from '@/components/molecules/Pagination';
-
-const ITEMS_PER_PAGE = 6;
 
 export default function CrewListPage() {
     const router = useRouter();
-    const pathname = usePathname();
-    const searchParams = useSearchParams();
     const { handleError } = useErrorHandler();
 
-    // 현재 페이지 수 추출(기본은 1)
-    const currentPage = Number(searchParams.get('page')) || 1;
-
     const [crews, setCrews] = useState<CrewMember[]>([]);
-    const [totalCount, setTotalCount] = useState<number>(0);
     const [departments, setDepartments] = useState<DepartmentMap>({});
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [hasError, setHasError] = useState(false);
@@ -35,22 +26,23 @@ export default function CrewListPage() {
                 setIsLoading(true);
                 setHasError(false);
 
-                const params: CrewQueryParams = {
-                    page: currentPage,
-                    generation: searchParams.get('generation') ? Number(searchParams.get('generation')) : undefined,
-                    role: searchParams.get('role') || undefined,
-                    univDepartment: searchParams.get('univDepartment') || undefined,
-                };
+                const params = {};
 
                 // 크루 목록과 부서 목록을 병렬 fetch
-                const [crewResponse, departmentMap] = await Promise.all([
+                // 부서 목록은 실패해도 크루 목록 표시에 영향 없도록 독립 처리
+                const [crewResponse, departmentResult] = await Promise.allSettled([
                     getCrewList(params),
                     getDepartmentList(),
                 ]);
 
-                setCrews(crewResponse.data);
-                setTotalCount(crewResponse.total);
-                setDepartments(departmentMap);
+                if (crewResponse.status === 'rejected') throw crewResponse.reason;
+
+                setCrews(crewResponse.value.data);
+                if (departmentResult.status === 'fulfilled') {
+                    setDepartments(departmentResult.value);
+                } else {
+                    console.warn('/team/department 로드 실패 (CORS 또는 서버 오류):', departmentResult.reason);
+                }
             } catch (error) {
                 setHasError(true);
                 if (isAxiosError(error) && error.response?.data?.code) {
@@ -64,7 +56,7 @@ export default function CrewListPage() {
         };
 
         fetchCrews();
-    }, [currentPage, searchParams, handleError]);
+    }, [handleError]);
 
     const handleDetailNavigation = (id: number) => {
         router.push(`/crew/${id}`);
@@ -88,13 +80,6 @@ export default function CrewListPage() {
     }
 
     return (
-        <CrewPageTemplate crewList={crews} departments={departments} onDetailClick={handleDetailNavigation}>
-            <Pagination 
-                current={currentPage} 
-                total={totalCount} 
-                pageSize={ITEMS_PER_PAGE} 
-                onPageChange={(page) => {}} 
-            /> 
-        </CrewPageTemplate>
+        <CrewPageTemplate crewList={crews} departments={departments} onDetailClick={handleDetailNavigation} />
     );
 }

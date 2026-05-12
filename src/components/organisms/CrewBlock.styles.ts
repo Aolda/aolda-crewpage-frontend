@@ -114,18 +114,16 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
 
         .textSection {
             display: flex;
-            height: 5.875rem;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
             align-items: flex-start;
-            gap: 1rem;
+            gap: 0.75rem;
         }
 
         .infoSection {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            height: 4.875rem;
             gap: 0.75rem;
 
             .nameInfo {

@@ -1,12 +1,15 @@
 // /src/components/templates/crew/CrewPageTemplate.tsx
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { CrewMember, DepartmentMap } from '@/types/crew';
 import * as S from './CrewPageTemplate.styles';
 import CrewBlock from '@/components/organisms/CrewBlock';
 import SearchBox from '@/components/molecules/SearchBox';
 import Select from '@/components/molecules/Select';
+import Pagination from '@/components/molecules/Pagination';
+
+const ITEMS_PER_PAGE = 8;
 
 // 필터 옵션에 표시하지 않을 더미 코드
 const HIDDEN_DEPARTMENT_CODES = ['DUMMY_TEAM_NOT_FETCHED_YET'];
@@ -14,14 +17,12 @@ const HIDDEN_DEPARTMENT_CODES = ['DUMMY_TEAM_NOT_FETCHED_YET'];
 interface CrewPageTemplateProps {
     crewList: CrewMember[];                 // 실제 서버나 Mock에서 올 데이터
     departments: DepartmentMap;             // /team/department API 응답
-    children: React.ReactNode;
     onDetailClick: (id: number) => void;    // 클릭 이벤트 발생시 실행될 함수(디테일 페이지 라우팅)
 }
 
 const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
     crewList,
     departments,
-    children,
     onDetailClick
 }) => {
     const [searchValue, setSearchValue] = useState("");
@@ -30,6 +31,7 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
         role: "",
         department: "",
     });
+    const [currentPage, setCurrentPage] = useState(1);
 
     // 기수 옵션
     const genOptions = useMemo(() =>
@@ -65,6 +67,17 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
             return matchesSearch && matchesGen && matchesRole && matchesDept;
         }).sort((a, b) => a.crewId - b.crewId); // position 대신 crewId로 정렬
     }, [crewList, departments, searchValue, filters]);
+
+    // 필터 or 검색어 변경 시 1페이지로 리셋
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [searchValue, filters]);
+
+    // 현재 페이지에 맞게 슬라이싱
+    const displayedCrew = useMemo(() => {
+        const start = (currentPage - 1) * ITEMS_PER_PAGE;
+        return filteredCrew.slice(start, start + ITEMS_PER_PAGE);
+    }, [filteredCrew, currentPage]);
 
     //필터링 초기화
     const resetFilters = () => {
@@ -115,8 +128,8 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
                 </S.FilterBar>
 
                 <S.CrewList>
-                    {filteredCrew.length > 0 ? (
-                        filteredCrew.map((member) => (
+                    {displayedCrew.length > 0 ? (
+                        displayedCrew.map((member) => (
                             <CrewBlock
                                 key={member.crewId}
                                 member={member}
@@ -129,7 +142,12 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
                     )}
                 </S.CrewList>
             </S.ContentContainer>
-            {children}
+            <Pagination
+                current={currentPage}
+                total={filteredCrew.length}
+                pageSize={ITEMS_PER_PAGE}
+                onPageChange={setCurrentPage}
+            />
         </>
     );
 };
