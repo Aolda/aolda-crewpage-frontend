@@ -6,8 +6,8 @@ import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { isAxiosError } from "axios";
 
 import { useErrorHandler } from "@/hooks/useErrorHandler";
-import { getCrewList, CrewQueryParams } from '@/api/crew';
-import { CrewMember } from '@/types/crew';
+import { getCrewList, getDepartmentList, CrewQueryParams } from '@/api/crew';
+import { CrewMember, DepartmentMap } from '@/types/crew';
 
 import CrewPageTemplate from '@/components/templates/crew/CrewPagetemplate';
 import Pagination from '@/components/molecules/Pagination';
@@ -25,6 +25,7 @@ export default function CrewListPage() {
 
     const [crews, setCrews] = useState<CrewMember[]>([]);
     const [totalCount, setTotalCount] = useState<number>(0);
+    const [departments, setDepartments] = useState<DepartmentMap>({});
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [hasError, setHasError] = useState(false);
 
@@ -32,8 +33,8 @@ export default function CrewListPage() {
         const fetchCrews = async () => {
             try {
                 setIsLoading(true);
-                setHasError(false); // 재시도 시 초기화
-                
+                setHasError(false);
+
                 const params: CrewQueryParams = {
                     page: currentPage,
                     generation: searchParams.get('generation') ? Number(searchParams.get('generation')) : undefined,
@@ -41,12 +42,17 @@ export default function CrewListPage() {
                     univDepartment: searchParams.get('univDepartment') || undefined,
                 };
 
-                const response = await getCrewList(params);
-                setCrews(response.data);
-                setTotalCount(response.total);
+                // 크루 목록과 부서 목록을 병렬 fetch
+                const [crewResponse, departmentMap] = await Promise.all([
+                    getCrewList(params),
+                    getDepartmentList(),
+                ]);
+
+                setCrews(crewResponse.data);
+                setTotalCount(crewResponse.total);
+                setDepartments(departmentMap);
             } catch (error) {
                 setHasError(true);
-                // Axios 에러 코드 추출 및 핸들링
                 if (isAxiosError(error) && error.response?.data?.code) {
                     handleError(error.response.data.code);
                 } else {
@@ -72,10 +78,9 @@ export default function CrewListPage() {
         );
     }
 
-    // 에러 발생 시 UI 처리
     if (hasError) {
         return (
-            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', gap: '1rem' }}>
                 <p>크루 정보를 불러오는 중 서버 오류가 발생했습니다.</p>
                 <button onClick={() => window.location.reload()}>새로고침</button>
             </div>
@@ -83,7 +88,7 @@ export default function CrewListPage() {
     }
 
     return (
-        <CrewPageTemplate crewList={crews} onDetailClick={handleDetailNavigation}>
+        <CrewPageTemplate crewList={crews} departments={departments} onDetailClick={handleDetailNavigation}>
             <Pagination 
                 current={currentPage} 
                 total={totalCount} 

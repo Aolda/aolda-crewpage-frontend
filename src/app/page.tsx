@@ -10,7 +10,6 @@ import { getAllActivities } from '@/api/activity';
 import { getCrewList } from '@/api/crew';
 import { ActivitySummary } from '@/types/project';
 import { CrewMember } from '@/types/crew'
-import { MOCK_CREW_LIST } from '@/mocks/crewData';
 
 import Hero from '@/components/templates/main/Hero/Hero';
 import Overview from '@/components/templates/main/Overview/Overview';
@@ -46,10 +45,12 @@ export default function HomePage() {
                 setCrews(crewRes.data);
 
             } catch (error) {
-                // API 실패 시 mock 데이터로 fallback (개발용)
-                console.warn('API 연결 실패, mock 데이터 사용:', error);
-                setCrews(MOCK_CREW_LIST);
-                setActivities([]);
+                setHasError(true);
+                if (isAxiosError(error) && error.response?.data?.code) {
+                    handleError(error.response.data.code);
+                } else {
+                    console.error('메인 데이터 로드 실패:', error);
+                }
             } finally {
                 setIsLoading(false);
             }
