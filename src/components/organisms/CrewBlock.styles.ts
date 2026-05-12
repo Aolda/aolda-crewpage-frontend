@@ -187,17 +187,16 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
     `}
 
     .imageSection {
+        position: relative;
         width: 7.5rem;
         height: 7.5rem;
+        flex-shrink: 0;
+        border-radius: 50%;
+        overflow: hidden;
 
         ${theme.media.tablet} {
             width: 5rem;
             height: 5rem;
-        }
-
-        img {
-            width: 100%;
-            border-radius: 50%;
         }
     }
 
