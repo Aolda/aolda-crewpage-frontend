@@ -182,8 +182,8 @@ export const StatsSection = styled.section`
     z-index: 10;
 
     ${theme.media.tablet} {
-        justify-content: flex-start;
-        gap: 1rem;
+        justify-content: space-between;
+        gap: 0;
         padding-top: 2.5rem;
         max-width: 100%;
     }
