@@ -47,9 +47,11 @@ export const HeaderSection = styled.header`
         }
 
         ${theme.media.mobile} {
-            width: 40rem;
-            height: 40rem;
-            top: 10rem;
+            width: 18.056rem;
+            height: 18.056rem;
+            top: 9.704rem;
+            left: 7.759rem;
+            transform: none;
         }
     }
 
@@ -65,8 +67,9 @@ export const HeaderSection = styled.header`
         z-index: 0;
 
         ${theme.media.mobile} {
-            width: 15rem;
-            height: 15rem;
+            width: 10.815rem;
+            height: 10.815rem;
+            top: 8.5rem;
             left: -5rem;
         }
     }
@@ -90,9 +93,10 @@ export const HeaderSection = styled.header`
         }
 
         ${theme.media.mobile} {
-            width: 18rem;
-            height: 18rem;
-            right: -4rem;
+            width: 12.593rem;
+            height: 12.593rem;
+            left: 21.741rem;
+            right: auto;
             top: -5rem;
         }
     }
