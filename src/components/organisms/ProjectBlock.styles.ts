@@ -17,76 +17,16 @@ export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
     background-color: ${(props) => props.$bgColor};
     cursor: pointer;
 
-    ${theme.media.tablet} {
-        width: 100%;
-        height: 20rem;
-        border-radius: 1rem;
-    }
-
-    ${theme.media.mobile} {
-        width: 100%;
-        height: auto;
-        border-radius: 0.75rem;
-
-        .imgSection { display: none; }
-
-        .infoSection {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            padding: 0.75rem 0.625rem;
-            gap: 0;
-        }
-
-        .textSection {
-            display: contents;
-        }
-
-        h1 {
-            order: 1;
-            flex: 1;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-align: left;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .countLine {
-            order: 2;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.125rem;
-            font-size: 0.5rem;
-            flex-shrink: 0;
-            white-space: nowrap;
-            .crewIcon { display: inline-block; }
-        }
-
-        .badgeWrapper {
-            order: 10;
-            width: 100%;
-            margin-top: 0.25rem;
-        }
-
-        .enName {
-            order: 20;
-            width: 100%;
-            font-size: 0.5rem;
-            opacity: 0.8;
-            text-align: left;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            margin-top: 0.125rem;
-        }
-    }
-
     * {
         margin: 0;
         color: white;
     }
+
+    .crewIcon {
+        display: none;
+    }
+
+    /* ── 기본 섹션 스타일 ── */
 
     .infoSection {
         display: flex;
@@ -94,12 +34,7 @@ export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
         justify-content: center;
         align-items: center;
         gap: 0.75rem;
-
         padding: 1.25rem 0 0 0;
-    }
-
-    .crewIcon {
-        display: none;
     }
 
     .textSection {
@@ -120,33 +55,30 @@ export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
             overflow: hidden;
             text-overflow: ellipsis;
             text-align: center;
-
-            ${theme.media.tablet} {
-                font-size: 1.5rem;
-                line-height: 1.2;
-            }
-
-            ${theme.media.mobile} {
-                font-size: 0.875rem;
-                line-height: 1.2;
-            }
         }
 
-        span {
+        .countLine {
             width: 100%;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             text-align: center;
-
-            ${theme.media.tablet} {
-                font-size: 0.625rem !important;
-            }
-
-            ${theme.media.mobile} {
-                font-size: 0.5rem !important;
-            }
+            font-size: ${fontSize.base};
         }
+    }
+
+    .enName {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: center;
+        font-size: ${fontSize.base};
+    }
+
+    .badgeWrapper {
+        display: flex;
+        justify-content: center;
     }
 
     .imgSection {
@@ -164,4 +96,83 @@ export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
         }
     }
 
+    /* ── 태블릿 ── */
+    ${theme.media.tablet} {
+        width: 100%;
+        height: 20rem;
+        border-radius: 1rem;
+
+        .textSection h1 {
+            font-size: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .textSection .countLine,
+        .enName {
+            font-size: 0.625rem;
+        }
+    }
+
+    /* ── 모바일 (기본 스타일 뒤에 위치해야 우선 적용) ── */
+    ${theme.media.mobile} {
+        width: 100%;
+        height: auto;
+        border-radius: 0.75rem;
+
+        .imgSection {
+            display: none;
+        }
+
+        .infoSection {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0.75rem 0.625rem;
+            gap: 0.25rem;
+        }
+
+        /* 텍스트섹션: h1 + countLine 한 줄 */
+        .textSection {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0;
+            gap: 0.25rem;
+            overflow: visible;
+
+            h1 {
+                flex: 1;
+                min-width: 0;
+                font-size: 0.75rem;
+                font-weight: 700;
+                text-align: left;
+                line-height: 1.3;
+            }
+
+            .countLine {
+                flex-shrink: 0;
+                width: auto;
+                font-size: 0.5rem;
+                text-align: right;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.125rem;
+                white-space: nowrap;
+
+                .crewIcon {
+                    display: inline-block;
+                }
+            }
+        }
+
+        .badgeWrapper {
+            width: 100%;
+            justify-content: flex-start;
+        }
+
+        .enName {
+            font-size: 0.5rem;
+            opacity: 0.8;
+            text-align: left;
+        }
+    }
 `;

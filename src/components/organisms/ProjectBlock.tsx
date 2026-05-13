@@ -34,11 +34,11 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
                         {project.participantsCount}명 참여
                     </span>
                     <h1>{project.activityNames.brief}</h1>
-                    <span className="enName">{project.activityNames.en}</span>
                 </section>
                 <div className="badgeWrapper">
                     <Badge variant="transparent" status={project.status}>{ACTIVITY_STATUS[project.status]}</Badge>
                 </div>
+                <span className="enName">{project.activityNames.en}</span>
             </section>
 			<section className="imgSection">
 				<Image

@@ -23,9 +23,9 @@ export const HeaderSection = styled.header`
     }
 
     ${theme.media.mobile} {
-        height: 12.5rem;
-        padding-top: 5.5rem;
-        padding-bottom: 0.8125rem;
+        height: auto;
+        padding-top: 4.75rem;
+        padding-bottom: 1.5rem;
     }
 
     /* 배경 원형 그래픽 요소들 */
