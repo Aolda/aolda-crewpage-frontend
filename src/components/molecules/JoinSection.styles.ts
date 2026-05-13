@@ -29,6 +29,10 @@ export const Container = styled.section`
             word-break: keep-all;
             padding: 0 1rem;
         }
+
+        [data-theme="dark"] & {
+            color: #F9FAFB;
+        }
     }
 `;
 
@@ -110,4 +114,10 @@ export const OutlineButton = styled(PrimaryButton)`
     background: white;
     color: #111827;
     border: 1px solid ${colors.gray600};
+
+    [data-theme="dark"] & {
+        background: #363636;
+        color: #F9FAFB;
+        border-color: rgba(255, 255, 255, 0.2);
+    }
 `;

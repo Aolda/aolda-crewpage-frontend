@@ -17,6 +17,10 @@ export const HeaderSection = styled.header`
 
     padding-top: 8rem;
 
+    [data-theme="dark"] & {
+        background-color: #1e2533;
+    }
+
     ${theme.media.tablet} {
         height: 26.5rem;
         padding-top: 4rem;
@@ -277,6 +281,10 @@ export const FilterButton = styled.button<{ $isActive: boolean }>`
     &:hover {
         /* 활성화 상태면 유지, 비활성화면 살짝 더 진한 회색으로 */
         background-color: ${props => props.$isActive ? colors.primary500 : '#E5E7EB'};
+    }
+
+    [data-theme="dark"] & {
+        color: ${props => props.$isActive ? '#FFFFFF' : '#9CA3AF'};
     }
 
     /* 버튼 사이의 간격을 위해 (부모 LeftButtonGroup에서 gap을 주지만 개별 설정도 가능) */

@@ -80,7 +80,7 @@ export const HeroBgText = styled.div`
 export const HeroContent = styled.div`
     position: relative;
     z-index: 1;
-    
+
     h1 {
         font-size: ${fontSize.h3};
         font-weight: 700;
@@ -93,6 +93,10 @@ export const HeroContent = styled.div`
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
         }
+
+        [data-theme="dark"] & {
+            color: #F9FAFB;
+        }
     }
 
     .team-name {
@@ -103,7 +107,7 @@ export const HeroContent = styled.div`
         ${theme.media.mobile} {
             font-size: 2.5rem;
         }
-        
+
         span:not(.font-paperlogy) {
             font-size: ${fontSize.h3};
             color: ${colors.black600};
@@ -113,10 +117,14 @@ export const HeroContent = styled.div`
                 font-size: 1.5rem;
                 margin-right: 0.5rem;
             }
+
+            [data-theme="dark"] & {
+                color: #F9FAFB;
+            }
         }
 
         .font-paperlogy {
-            font-family: var(--font-paperlogy); 
+            font-family: var(--font-paperlogy);
             font-size: 3.75rem;
             font-weight: 700;
             line-height: 1;

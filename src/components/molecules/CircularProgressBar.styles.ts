@@ -35,6 +35,10 @@ export const CircleBackground = styled.circle`
     stroke-width: 16;
 
     ${theme.media.mobile} { stroke-width: 8; }
+
+    [data-theme="dark"] & {
+        stroke: #4B5563;
+    }
 `;
 
 export const CircleProgress = styled.circle<{ $offset: number; $circumference: number }>`

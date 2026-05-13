@@ -16,7 +16,7 @@ export const StyledVisionCard = styled.div `
 
     padding: 2rem 2.25rem;
     gap: 2.25rem;
-    
+
     ${theme.media.mobile} {
         border-radius: 0.5rem;
         flex-direction: row;
@@ -38,6 +38,11 @@ export const StyledVisionCard = styled.div `
         padding: 3rem 1rem;
         gap: 1rem;
         margin: 0;
+    }
+
+    [data-theme="dark"] & {
+        background-color: #363636;
+        border-color: rgba(255, 255, 255, 0.1);
     }
 
     img {
@@ -102,6 +107,10 @@ export const TextContainer = styled.section`
         ${theme.media.tablet} {
             font-size: ${fontSize.smaller};
             white-space: normal;
+        }
+
+        [data-theme="dark"] & {
+            color: #9CA3AF;
         }
     }
 `;

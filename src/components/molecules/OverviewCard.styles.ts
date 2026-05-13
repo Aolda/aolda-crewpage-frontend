@@ -14,6 +14,11 @@ export const StyledOverviewCard = styled.div`
     border-radius: 3.75rem 0.75rem 3.75rem 0.75rem;
     box-shadow: 0px 0.25rem 1.25rem 0px #1A8EE54D;
 
+    [data-theme="dark"] & {
+        background-color: #363636;
+        box-shadow: 0px 0.25rem 1.25rem 0px rgba(26, 142, 229, 0.2);
+    }
+
     ${theme.media.tablet} {
         flex: 1;
         max-width: 24rem;
@@ -96,6 +101,10 @@ export const StyledOverviewCard = styled.div`
 
         ${theme.media.tablet} { font-size: 0.75rem; gap: 0.25rem; }
         ${theme.media.mobile} { font-size: 0.6rem; span { display: none; } }
+
+        [data-theme="dark"] & {
+            color: #9CA3AF;
+        }
     }
 
     .rightSection {

@@ -8,6 +8,11 @@ export const StyledActivityBlock = styled.div`
     display: flex;
     border: 1px solid #E2E2E2;
     border-radius: 1.25rem;
+
+    [data-theme="dark"] & {
+        border-color: rgba(255, 255, 255, 0.1);
+        background-color: #363636;
+    }
     width: 15rem;
     height: 20rem;
     padding: 1.25rem;

@@ -4,6 +4,7 @@ import StyledComponentsRegistry from '@/lib/registry';
 // import { MSWComponent } from '@/components/MSWComponent';
 import Header from "@/components/organisms/Header";
 import Footer from "@/components/organisms/Footer";
+import DarkModeApplier from "@/components/DarkModeApplier";
 import "./globals.css";
 
 const notoKR = Noto_Sans_KR({
@@ -42,6 +43,7 @@ export default function RootLayout({
             </head>
             <body className={notoKR.className}>
                 <StyledComponentsRegistry>
+                    <DarkModeApplier />
                     <Header />
                     {/* <MSWComponent> */}
                         <main style={{"marginBottom": "5rem", "minHeight": "80vh"}}>{children}</main>

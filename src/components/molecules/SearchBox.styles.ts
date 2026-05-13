@@ -30,6 +30,11 @@ export const StyledSearchBox = styled.section`
 
     cursor: text;
 
+    [data-theme="dark"] & {
+        background-color: #363636;
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
 
     input {
         border: none;
@@ -37,6 +42,7 @@ export const StyledSearchBox = styled.section`
         width: fit-content;
         height: 1.5rem;
         font-size: ${fontSize.base};
+        background: transparent;
 
         &::placeholder {
             color: ${colors.gray600};
@@ -51,6 +57,10 @@ export const StyledSearchBox = styled.section`
             &::placeholder {
                 font-size: 0.625rem;
             }
+        }
+
+        [data-theme="dark"] & {
+            color: #F9FAFB;
         }
     }
 

@@ -34,6 +34,10 @@ export const HeaderBackground = styled.header`
         align-items: flex-start;
         background-image: none;
     }
+
+    [data-theme="dark"] & {
+        background: linear-gradient(108deg, #1a3a4f 0%, #1e2d4a 100%);
+    }
 `;
 
 export const HeaderContent = styled.div`
@@ -55,6 +59,10 @@ export const HeaderContent = styled.div`
         ${theme.media.mobile} {
             font-size: ${fontSize.base};
             margin-bottom: 0.625rem;
+        }
+
+        [data-theme="dark"] & {
+            color: #F9FAFB;
         }
     }
 `;
@@ -116,6 +124,11 @@ export const AllButton = styled.button<{ $isActive: boolean }>`
 
     ${theme.media.mobile} {
         display: none;
+    }
+
+    [data-theme="dark"] & {
+        background-color: ${props => props.$isActive ? '#F9FAFB' : '#444444'};
+        color: ${props => props.$isActive ? '#111827' : '#9CA3AF'};
     }
 `;
 

@@ -37,6 +37,19 @@ export const SolutionCard = styled.div`
             border-bottom: none;
         }
     }
+
+    [data-theme="dark"] & {
+        background: #363636;
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    ${theme.media.mobile} {
+        [data-theme="dark"] & {
+            background: transparent;
+            border-color: transparent;
+            border-bottom-color: rgba(255, 255, 255, 0.08);
+        }
+    }
 `;
 
 export const SolutionTitle = styled.h3`
@@ -87,5 +100,15 @@ export const SolutionDescription = styled.p`
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+
+    [data-theme="dark"] & {
+        color: #9CA3AF;
+    }
+
+    ${theme.media.mobile} {
+        [data-theme="dark"] & {
+            color: #D1D5DB;
+        }
     }
 `;

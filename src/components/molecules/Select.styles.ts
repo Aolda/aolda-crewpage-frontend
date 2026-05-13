@@ -51,6 +51,11 @@ export const SelectHeader = styled.div<{ $isSelected?: boolean }>`
         background-color: ${props => props.$isSelected ? '#E8F4FC' : 'white'};
         border-color: ${props => props.$isSelected ? colors.primary500 : '#888888'};
     }
+
+    [data-theme="dark"] & {
+        background-color: #363636;
+        border-color: rgba(255, 255, 255, 0.2);
+    }
 `;
 
 export const LabelText = styled.span<{ $isSelected?: boolean }>`
@@ -66,6 +71,10 @@ export const LabelText = styled.span<{ $isSelected?: boolean }>`
     ${theme.media.mobile} {
         font-size: ${fontSize.smaller};
         color: ${props => props.$isSelected ? colors.primary500 : '#555555'};
+    }
+
+    [data-theme="dark"] & {
+        color: #D1D5DB;
     }
 `;
 
@@ -96,13 +105,18 @@ export const OptionsList = styled.ul`
     right: 0;
     width: max-content;
     min-width: 10rem;
-    
+
     background: white;
     border-radius: 0.75rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* 부드러운 그림자 */
     padding: 0.5rem;
     z-index: 100;
     list-style: none;
+
+    [data-theme="dark"] & {
+        background: #444444;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
 
     ${theme.media.mobile} {
         right: auto;
@@ -132,7 +146,7 @@ export const OptionItem = styled.li<{ $isSelected?: boolean }>`
 
     /* 선택된 항목에 체크 표시나 색상 변경 */
     background-color: ${props => props.$isSelected ? '#f5f5f5' : 'transparent'};
-    
+
     &:hover {
         background-color: #f0f0f0;
     }
@@ -146,5 +160,14 @@ export const OptionItem = styled.li<{ $isSelected?: boolean }>`
         content: '✓';
         margin-right: 0.5rem;
         visibility: ${props => props.$isSelected ? 'visible' : 'hidden'};
+    }
+
+    [data-theme="dark"] & {
+        color: #D1D5DB;
+        background-color: ${props => props.$isSelected ? '#555555' : 'transparent'};
+
+        &:hover {
+            background-color: #555555;
+        }
     }
 `;

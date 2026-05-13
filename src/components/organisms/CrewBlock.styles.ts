@@ -203,6 +203,10 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
         }
     `}
 
+    [data-theme="dark"] & {
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
     .imageSection {
         position: relative;
         width: 7.5rem;

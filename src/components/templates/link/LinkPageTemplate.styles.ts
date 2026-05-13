@@ -7,6 +7,10 @@ export const PageWrapper = styled.div`
     width: 100%;
     overflow: hidden;
     background: #FFFFFF;
+
+    [data-theme="dark"] & {
+        background: #2A2A2A;
+    }
 `;
 
 /* 배경 원형 그래픽 요소들 */
@@ -148,6 +152,10 @@ export const PageHeader = styled.div`
         line-height: 1.4;
         color: #111827;
         strong { color: ${colors.primary500}; }
+
+        [data-theme="dark"] & {
+            color: #F9FAFB;
+        }
     }
 
     ${theme.media.mobile} {
@@ -238,6 +246,10 @@ export const UnderSection = styled.section`
         ${theme.media.mobile} {
             font-size: 1.25rem;
             margin-top: 2rem;
+        }
+
+        [data-theme="dark"] & {
+            color: #F9FAFB;
         }
     }
 `;

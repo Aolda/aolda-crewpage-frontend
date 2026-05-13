@@ -34,6 +34,10 @@ export const SectionWrapper = styled.section<{ $bgColor?: string }>`
         padding-left: 1.5rem;
         padding-right: 1.5rem;
     }
+
+    [data-theme="dark"] & {
+        background-color: #2A2A2A;
+    }
 `;
 
 export const Header = styled.div<{ $hideOnMobile?: boolean }>`
@@ -61,6 +65,10 @@ export const GrayBar = styled.div`
     ${theme.media.mobile} {
         display: none;
     }
+
+    [data-theme="dark"] & {
+        border-color: #6B7280;
+    }
 `;
 
 export const Label = styled.span`
@@ -79,6 +87,10 @@ export const Label = styled.span`
         font-size: 0.625rem;
         margin-bottom: 1rem;
     }
+
+    [data-theme="dark"] & {
+        color: #F9FAFB;
+    }
 `;
 
 export const Title = styled.h2`
@@ -88,7 +100,7 @@ export const Title = styled.h2`
     color: #111827;
     margin-bottom: 1.5rem;
     word-break: keep-all;
-    
+
     br.mobile-only {
         display: none;
     }
@@ -106,6 +118,10 @@ export const Title = styled.h2`
         br.mobile-only {
             display: inline-block;
         }
+    }
+
+    [data-theme="dark"] & {
+        color: #F9FAFB;
     }
 `;
 

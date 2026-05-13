@@ -88,6 +88,10 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
             ${theme.media.mobile} {
                 font-size: ${fontSize.h3};
             }
+
+            [data-theme="dark"] & {
+                color: #F9FAFB;
+            }
         }
 
         p {
@@ -107,6 +111,10 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
             span {
                 color: ${colors.primary500};
             }
+
+            [data-theme="dark"] & {
+                color: #9CA3AF;
+            }
         }
     }
 
@@ -125,6 +133,15 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
 
         &:hover {
             background-color: #FAFAFA;
+        }
+
+        [data-theme="dark"] & {
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #F9FAFB;
+
+            &:hover {
+                background-color: #444444;
+            }
         }
     }
 `;

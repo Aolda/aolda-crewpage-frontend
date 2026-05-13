@@ -197,6 +197,9 @@ export const MobileOverviewHeader = styled.div`
 
             span { color: ${colors.primary500}; }
 
+            [data-theme="dark"] & {
+                color: #F9FAFB;
+            }
         }
 
         p {
@@ -276,13 +279,18 @@ export const InfoCard = styled.div`
             display: flex;
         }
     }
+
+    [data-theme="dark"] & {
+        background: #363636;
+        border-color: rgba(255, 255, 255, 0.1);
+    }
 `;
 
 export const CardText = styled.div`
     display: flex;
     flex-direction: column;
     gap: 3rem;
-    
+
     span {
             color: ${colors.primary500};
     }
@@ -301,7 +309,7 @@ export const CardText = styled.div`
     }
     ${theme.media.tablet} {
         gap: 0.75rem;
-        
+
         h3 {
             font-size: ${fontSize.h2};
         }
@@ -312,12 +320,21 @@ export const CardText = styled.div`
     ${theme.media.mobile} {
         gap: 0.75rem;
         text-align: left;
-        
+
         h3 {
             font-size: ${fontSize.body1};
         }
         p {
             font-size: 0.625rem;
+        }
+    }
+
+    [data-theme="dark"] & {
+        h3 {
+            color: #F9FAFB;
+        }
+        p {
+            color: #9CA3AF;
         }
     }
 `;

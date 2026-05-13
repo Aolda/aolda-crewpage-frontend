@@ -151,4 +151,8 @@ export const ListWrapper = styled.div`
             border-bottom: none;
         }
     }
+
+    [data-theme="dark"] & > *:not(:last-child) {
+        border-bottom-color: rgba(255, 255, 255, 0.08);
+    }
 `;

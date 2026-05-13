@@ -14,6 +14,11 @@
   --font-paperlogy: 'Paperlogy', sans-serif;
 }
 
+[data-theme="dark"] {
+  --background: #2A2A2A;
+  --foreground: #F9FAFB;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

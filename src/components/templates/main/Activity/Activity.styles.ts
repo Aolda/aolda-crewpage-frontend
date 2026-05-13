@@ -110,7 +110,16 @@ export const Tab = styled.div`
             ${theme.media.tabletDown} {
                 color: ${colors.primary500};
             }
+
+            [data-theme="dark"] & {
+                color: #F9FAFB;
+            }
         }
+    }
+
+    [data-theme="dark"] & {
+        background: #363636;
+        border-color: rgba(255, 255, 255, 0.1);
     }
 `;
 

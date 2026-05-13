@@ -82,15 +82,15 @@ export const GenButton = styled.button<{ $isActive: boolean }>`
     padding: 0.5rem 1.25rem;
     background: transparent;
     border: none;
-    
+
     /* 글씨 스타일 */
     font-size: ${fontSize.base};
     font-weight: ${(props) => (props.$isActive ? '700' : '400')};
     color: ${(props) => (props.$isActive ? colors.primary500 : colors.gray500)};
-    
+
     /* 선택된 탭 하단 파란색 밑줄 */
     border-bottom: 2px solid ${(props) => (props.$isActive ? colors.primary500 : 'transparent')};
-    
+
     cursor: pointer;
     transition: all 0.2s ease;
 
@@ -101,6 +101,10 @@ export const GenButton = styled.button<{ $isActive: boolean }>`
 
     &:hover {
         color: ${colors.primary500};
+    }
+
+    [data-theme="dark"] & {
+        color: ${(props) => (props.$isActive ? colors.primary500 : '#6B7280')};
     }
 `;
 

@@ -32,6 +32,10 @@ export const StyledMenuItem = styled.div`
         gap: 0.375rem;
     }
 
+    [data-theme="dark"] & {
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
     /* desktop/tablet: inlineBadge 숨김 */
     .inlineBadge { display: none; }
 

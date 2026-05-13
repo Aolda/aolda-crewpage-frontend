@@ -15,12 +15,17 @@ export const StyledHeader = styled.header`
     border: solid 1px ${colors.border};
     border-radius: 0.75rem;
     background-color: white;
-    
+
     position: absolute;
     top: 2.5rem;
     left: 50%;
     transform: translate(-50%);
     z-index: 110;
+
+    [data-theme="dark"] & {
+        background-color: #2A2A2A;
+        border-color: rgba(255, 255, 255, 0.12);
+    }
 
     box-sizing: border-box;
 
@@ -204,6 +209,10 @@ export const MobileMenuContainer = styled.div<{ $isOpen: boolean }>`
         height: 100%;
         background-color: white;
         z-index: 101;
+
+        [data-theme="dark"] & {
+            background-color: #363636;
+        }
         padding: 6rem 1.5rem 2rem;
         box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
         

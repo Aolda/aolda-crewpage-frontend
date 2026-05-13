@@ -35,6 +35,10 @@ export const MobileTitle = styled.div`
             font-weight: 700;
             color: #111827;
             margin: 0 0 0.25rem;
+
+            [data-theme="dark"] & {
+                color: #F9FAFB;
+            }
         }
 
         p {
@@ -143,15 +147,25 @@ export const Section = styled.section<{ $isCard?: boolean }>`
 
     ${theme.media.mobile} {
         margin-bottom: 1.5rem;
-        p { 
+        p {
             color: #111827;
-            font-size: 0.625rem;:     
+            font-size: 0.625rem;
         }
 
         ${props => props.$isCard && css`
             border: 1px solid #E5E7EB;
             border-radius: 0.5rem;
             padding: 1rem;
+        `}
+    }
+
+    [data-theme="dark"] & {
+        p {
+            color: #9CA3AF;
+        }
+
+        ${props => props.$isCard && css`
+            border-color: rgba(255, 255, 255, 0.1);
         `}
     }
 `;
@@ -175,6 +189,10 @@ export const SectionTitle = styled.h2`
         gap: 0.5rem;
         margin-bottom: 0.75rem;
         img { width: 1rem; height: 1rem; } /* 16px */
+    }
+
+    [data-theme="dark"] & {
+        color: #F9FAFB;
     }
 `;
 
@@ -231,6 +249,10 @@ export const BlogCard = styled.div`
         font-weight: 700;
         margin-bottom: 0.5rem;
         color: #111827;
+
+        [data-theme="dark"] & {
+            color: #F9FAFB;
+        }
     }
 
     .meta {
@@ -276,6 +298,11 @@ export const BlogCard = styled.div`
             font-size: 0.625rem; /* 10px */
             -webkit-line-clamp: 2;
         }
+    }
+
+    [data-theme="dark"] & {
+        background: #363636;
+        border-color: rgba(255, 255, 255, 0.1);
     }
 `;
 
