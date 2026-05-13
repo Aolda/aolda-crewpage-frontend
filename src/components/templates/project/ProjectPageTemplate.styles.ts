@@ -50,8 +50,8 @@ export const HeaderSection = styled.header`
             width: 18.056rem;
             height: 18.056rem;
             top: 9.704rem;
-            left: 7.759rem;
-            transform: none;
+            left: 50%;
+            transform: translateX(-50%);
         }
     }
 
