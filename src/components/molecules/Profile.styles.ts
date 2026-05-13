@@ -50,10 +50,15 @@ export const StyledProfile = styled.div`
         grid-area: img;
         width: 20rem;
         height: 20rem;
+        border-radius: 50%;
+        overflow: hidden;
+        border: solid 2px ${colors.border};
+        flex-shrink: 0;
 
         img {
-            border: solid 2px ${colors.border};
-            border-radius: 50%;
+            width: 20rem;
+            height: 20rem;
+            object-fit: cover;
         }
 
         ${theme.media.tablet} {
@@ -71,7 +76,6 @@ export const StyledProfile = styled.div`
         ${theme.media.mobile} {
             width: 7.5rem;
             height: 7.5rem;
-            flex-shrink: 0;
 
             img {
                 width: 7.5rem;
