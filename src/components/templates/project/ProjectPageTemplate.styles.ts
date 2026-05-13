@@ -49,7 +49,7 @@ export const HeaderSection = styled.header`
         ${theme.media.mobile} {
             width: 18.056rem;
             height: 18.056rem;
-            top: 9.704rem;
+            top: 7rem;
             left: 50%;
             transform: translateX(-50%);
         }
