@@ -11,7 +11,7 @@ export const SelectContainer = styled.div`
 
     ${theme.media.tablet} {
         min-width: 4.9375rem;
-        width: 4.9375rem;
+        width: auto;
     }
 
     ${theme.media.mobile} {
@@ -35,9 +35,11 @@ export const SelectHeader = styled.div<{ $isSelected?: boolean }>`
 
     ${theme.media.tablet} {
         min-width: 4.9375rem;
+        width: auto;
         height: 1.9375rem;
         border: 0.5px solid #888888;
         padding: 0.5rem 0.75rem;
+        white-space: nowrap;
     }
 
     ${theme.media.mobile} {
@@ -58,6 +60,7 @@ export const LabelText = styled.span<{ $isSelected?: boolean }>`
 
     ${theme.media.tablet} {
         font-size: ${fontSize.smaller};
+        white-space: nowrap;
     }
 
     ${theme.media.mobile} {
@@ -90,8 +93,8 @@ export const ArrowIcon = styled.div<{ $isOpen: boolean }>`
 export const OptionsList = styled.ul`
     position: absolute;
     top: calc(100% + 4px);
-    left: 0;
-    width: 100%;
+    right: 0;
+    width: max-content;
     min-width: 10rem;
     
     background: white;
@@ -102,6 +105,8 @@ export const OptionsList = styled.ul`
     list-style: none;
 
     ${theme.media.mobile} {
+        right: auto;
+        left: 0;
         max-height: 12rem;
         overflow-y: auto;
         min-width: 8rem;

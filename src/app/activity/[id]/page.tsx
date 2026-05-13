@@ -10,8 +10,9 @@ import { getProjectDetail } from '@/api/project';
 
 import { ProjectDetailResponse } from '@/types/project';
 import ProjectDetailPageTemplate from '@/components/templates/ProjectDetail/ProjectDetailPageTemplate';
+import { MOCK_PROJECT_DETAIL } from '@/mocks/projectData';
 
-const USE_MOCK = false;
+const USE_MOCK = true;
 
 export default function ProjectPage() {
     const params = useParams();
@@ -28,10 +29,15 @@ export default function ProjectPage() {
                 setIsLoading(true);
                 setHasError(false);
 
+                if (USE_MOCK) {
+                    setProject(MOCK_PROJECT_DETAIL);
+                    return;
+                }
+
                 // API 호출
                 const response = await getProjectDetail(activityId);
-                setProject(response as any); 
-                
+                setProject(response as any);
+
             } catch (err: any) {
                 setHasError(true);
                 // 명세에 정의된 403, 404, 503 에러 코드를 핸들러로 전달합니다

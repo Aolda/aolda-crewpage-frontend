@@ -168,11 +168,22 @@ export const LinkWrapper = styled.main`
     gap: 7.5rem;
     max-width: 90rem;
     width: 100%;
-    
+
     padding-top: 10rem;
-    paddinf-left: 7.5rem;
-    paddinf-right: 7.5rem;
+    padding-left: 7.5rem;
+    padding-right: 7.5rem;
     margin: 0 auto;
+
+    ${theme.media.desktopSm} {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+
+    ${theme.media.tablet} {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+        gap: 5rem;
+    }
 
     ${theme.media.mobile} {
         width: 100%;
@@ -195,6 +206,11 @@ export const UnderSection = styled.section`
     margin: 0 auto;
     padding: 12.5rem 7.5rem 0;
 
+    ${theme.media.tablet} {
+        width: 100%;
+        padding: 8rem 2.5rem 0;
+    }
+
     ${theme.media.mobile} {
         width: 100%;
         padding: 6rem 1.25rem 0;
@@ -202,6 +218,9 @@ export const UnderSection = styled.section`
 
     .img-container {
         width: 65.8rem;
+        ${theme.media.tablet} {
+            width: 100%;
+        }
         ${theme.media.mobile} {
             width: 100%;
         }

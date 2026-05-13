@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { colors, fontSize } from '@/styles/theme';
+import { colors, fontSize, theme } from '@/styles/theme';
 
 export const SolutionCard = styled.div`
-    padding: 2.4rem;
+    padding: 1.25rem 1.5rem;
     border-radius: 10px;
     border: 1px solid #e0e0e0;
     background: #ffffff;
@@ -15,6 +15,10 @@ export const SolutionCard = styled.div`
     min-height: 5rem;
     width: 100%;
     height: 8rem;
+
+    ${theme.media.tablet} {
+        gap: 0.5rem;
+    }
 `;
 
 export const SolutionTitle = styled.h3`
@@ -23,6 +27,10 @@ export const SolutionTitle = styled.h3`
     font-weight: 700;
     color: ${colors.primary500};
     text-align: center;
+
+    ${theme.media.tablet} {
+        font-size: ${fontSize.base};
+    }
 `;
 
 export const SolutionDescription = styled.p`
@@ -31,5 +39,10 @@ export const SolutionDescription = styled.p`
     color: ${colors.gray600};
     line-height: 1.6;
     text-align: center;
+
+    ${theme.media.tablet} {
+        font-size: ${fontSize.smaller};
+        padding: 1.25rem;
+    }
 `;
 

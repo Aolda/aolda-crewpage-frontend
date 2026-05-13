@@ -8,6 +8,14 @@ export const PageWrapper = styled.div`
     margin: 0 auto;
     padding: 3.75rem 7.5rem;
 
+    ${theme.media.desktopSm} {
+        padding: 3.75rem 2.5rem;
+    }
+
+    ${theme.media.tablet} {
+        padding: 3.75rem 2.5rem;
+    }
+
     ${theme.media.mobile} {
         width: 100%;
         padding: 2.5rem 1.25rem;
@@ -17,15 +25,14 @@ export const PageWrapper = styled.div`
 export const HeaderSection = styled.header`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: flex-start;
 
     max-width: 75rem;
     width: 100%;
-    height: 100%;
 
     margin: 0 auto;
-    padding: 4rem 1rem 2rem 1rem;
+    padding: 13.5625rem 1rem 3.875rem 1rem;
 
     .titleGroup {
         display: flex;
@@ -37,12 +44,19 @@ export const HeaderSection = styled.header`
         font-size: 2.25rem;
         font-weight: 700;
         color: #FFFFFF;
-        margin: 0.5rem 0;
+        margin: 0.75rem 0;
     }
     
     p {
         color: ${colors.white600};
         font-size: ${fontSize.base};
+    }
+
+    ${theme.media.tablet} {
+        justify-content: center;
+        padding: 13.5625rem 2rem 3.875rem 2rem;
+        width: 100%;
+        .titleGroup { gap: 0.125rem; }
     }
 
     ${theme.media.mobile} {
@@ -56,7 +70,7 @@ export const HeaderBackground = styled.div<{ $bgColor: string }>`
     display: flex;
     position: relative;
     width: 100%;
-    height: 25rem;
+    height: 31rem;
     background: ${(props) => props.$bgColor};
 
     & > header {
@@ -83,10 +97,14 @@ export const HeaderBackground = styled.div<{ $bgColor: string }>`
 `;
 
 export const Section = styled.section`
-    margin-bottom: 8rem;
+    margin-bottom: 5rem;
     p {
         color: ${colors.gray500};
         line-height: 1;
+    }
+
+    ${theme.media.tablet} {
+        margin-bottom: 2rem;
     }
 
     ${theme.media.mobile} {
@@ -102,6 +120,11 @@ export const SectionTitle = styled.h2`
     font-weight: 700;
     margin-bottom: 1.25rem;
     color: ${colors.black600};
+
+    ${theme.media.tablet} {
+        font-size: 1.25rem;
+        img { width: 1.5rem; height: 1.5rem; }
+    }
 
     ${theme.media.mobile} {
         font-size: 1.25rem;
@@ -123,6 +146,7 @@ export const InfoGrid = styled.div`
     & > *:nth-child(n+4) {
         grid-column: span 3;
     }
+
 
     ${theme.media.mobile} {
         grid-template-columns: 1fr;
@@ -198,7 +222,11 @@ export const CrewGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 1.5rem;
-    
+
+    ${theme.media.tablet} {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
     ${theme.media.mobile} {
         grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
@@ -215,7 +243,7 @@ export const CardRow = styled.div`
 
 export const GalleryGrid = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.6rem;
     margin-top: 1.6rem;
 

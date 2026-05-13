@@ -5,11 +5,18 @@ import { colors, fontSize, theme } from "@/styles/theme";
 export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
     display: flex;
     align-items: center;
-    gap: 7.5rem;
+    gap: 1.5rem;
 
     /* PC: 인덱스에 따라 좌우 교차 배치 */
     flex-direction: ${(props) => (props.$isEven ? "row-reverse" : "row")};
     text-align: ${(props) => (props.$isEven ? "right" : "left")};
+
+    ${theme.media.tablet} {
+        flex-direction: column;
+        text-align: left;
+        gap: 2rem;
+        width: 100%;
+    }
 
     ${theme.media.mobile} {
         flex-direction: column;
@@ -19,8 +26,13 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
     }
 
     .imgSection {
-        width: 36.75rem;
+        width: 37rem;
         height: 27.5625rem;
+
+        ${theme.media.tablet} {
+            width: 100%;
+            height: auto;
+        }
 
         ${theme.media.mobile} {
             width: 100%;
@@ -38,11 +50,17 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
     .textSection {
         display: flex;
         flex-direction: column;
-        width: 36.75rem;
+        width: 36.5rem;
         gap: 2rem;
 
         /* PC 배치에 따른 정렬 */
         align-items: ${(props) => (props.$isEven ? "flex-end" : "flex-start")};
+
+        ${theme.media.tablet} {
+            width: 100%;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
 
         ${theme.media.mobile} {
             width: 100%;
