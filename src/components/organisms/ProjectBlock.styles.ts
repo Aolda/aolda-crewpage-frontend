@@ -135,7 +135,7 @@ export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
-            padding: 0;
+            padding: 0 0 0.75rem 0;
             gap: 0.25rem;
             overflow: visible;
 
