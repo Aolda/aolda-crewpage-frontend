@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import * as S from "./Header.styles";
 
 const NAV_ITEMS = [
@@ -15,6 +15,7 @@ const NAV_ITEMS = [
 
 const Header = () => {
     const pathname = usePathname();
+    const router = useRouter();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -23,8 +24,12 @@ const Header = () => {
         <>
             <S.StyledHeader>
                 <section className="iconSection">
+                    {/* 모바일 전용 뒤로가기 버튼 */}
+                    <button className="backButton" onClick={() => router.back()} aria-label="뒤로가기">
+                        <span className="backChevron" />
+                    </button>
                     <Link href="/" className='logoWrapper'>
-                        <Image src="/images/aoldaIcon.svg" alt="icon" width={35} height={36}/>
+                        <Image src="/images/aoldaIcon.svg" alt="icon" width={35} height={36} className="logoIcon"/>
                         <span className="logoText">AOLDA</span>
                     </Link>
                 </section>

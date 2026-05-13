@@ -17,8 +17,8 @@ export const Container = styled.div<{ $size: number }>`
     }
 
     ${theme.media.mobile} {
-        width: 3.5rem;
-        height: 3.5rem;
+        width: 3.75rem;
+        height: 3.75rem;
     }
 `;
 
@@ -32,7 +32,9 @@ export const Svg = styled.svg`
 export const CircleBackground = styled.circle`
     fill: none;
     stroke: #e5e7eb;
-    stroke-width: 16; 
+    stroke-width: 16;
+
+    ${theme.media.mobile} { stroke-width: 8; }
 `;
 
 export const CircleProgress = styled.circle<{ $offset: number; $circumference: number }>`
@@ -44,7 +46,7 @@ export const CircleProgress = styled.circle<{ $offset: number; $circumference: n
     stroke-dasharray: ${(props) => props.$circumference};
     stroke-dashoffset: ${(props) => props.$offset};
 
-    ${theme.media.mobile} { stroke-width: 12; }
+    ${theme.media.mobile} { stroke-width: 8; }
 `;
 
 export const NumberLabel = styled.div`
@@ -58,6 +60,6 @@ export const NumberLabel = styled.div`
     }
 
     ${theme.media.mobile} {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
 `;

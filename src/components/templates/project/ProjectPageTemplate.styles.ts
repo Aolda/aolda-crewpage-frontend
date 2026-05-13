@@ -23,8 +23,8 @@ export const HeaderSection = styled.header`
     }
 
     ${theme.media.mobile} {
-        height: 30rem;
-        padding-top: 7rem;
+        height: 12.5rem;
+        padding-top: 4.25rem;
     }
 
     /* 배경 원형 그래픽 요소들 */
@@ -109,7 +109,7 @@ export const HeaderSection = styled.header`
         padding: 0 1.25rem;
 
         ${theme.media.mobile} {
-            gap: 1rem;
+            gap: 0.5rem;
         }
 
         /* 마스코트, 타이틀, 설명을 감싸는 내부 섹션 */
@@ -128,6 +128,7 @@ export const HeaderSection = styled.header`
 
             ${theme.media.mobile} {
                 margin-bottom: 0;
+                gap: 0.25rem;
             }
 
             .mascot {
@@ -137,7 +138,7 @@ export const HeaderSection = styled.header`
                 }
 
                 ${theme.media.mobile} {
-                    width: 8rem;
+                    width: 5rem;
                     height: auto;
                 }
             }
@@ -148,7 +149,7 @@ export const HeaderSection = styled.header`
                 line-height: 1.4;
 
                 ${theme.media.tablet} { font-size: 1.5rem; }
-                ${theme.media.mobile} { font-size: 1.5rem; }
+                ${theme.media.mobile} { font-size: 1rem; }
             }
 
             p {
@@ -156,7 +157,7 @@ export const HeaderSection = styled.header`
                 word-break: keep-all;
 
                 ${theme.media.tablet} { font-size: 1rem; }
-                ${theme.media.mobile} { font-size: ${fontSize.smaller}; }
+                ${theme.media.mobile} { display: none; }
             }
         }
     }
@@ -231,10 +232,10 @@ export const FilterBar = styled.div`
     ${theme.media.mobile} {
         width: 100%;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
-        gap: 1rem;
-        padding-top: 2rem;
+        gap: 0.5rem;
+        padding-top: 1.5rem;
         overflow: visible;
     }
 `;
@@ -285,13 +286,16 @@ export const LeftButtonGroup = styled.div`
     gap: 1.5rem;
 
     ${theme.media.mobile} {
-        flex: 1; 
-        overflow-x: auto;
-        white-space: nowrap;
-        gap: 0.5rem;
-        padding-bottom: 0.25rem;
-        
-        &::-webkit-scrollbar { display: none; }
+        display: none;
+    }
+`;
+
+export const MobileCategorySelect = styled.div`
+    display: none;
+
+    ${theme.media.mobile} {
+        display: flex;
+        align-items: center;
     }
 `;
 
@@ -314,7 +318,8 @@ export const ProjectGrid = styled.section`
     ${theme.media.mobile} {
         width: 100%;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 0.75rem;
+        column-gap: 0.75rem;
+        row-gap: 0.5rem;
         padding-bottom: 5rem;
     }
 `;

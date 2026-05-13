@@ -50,6 +50,12 @@ export const StyledHeader = styled.header`
             text-decoration: none;
         }
 
+        .logoIcon {
+            ${theme.media.mobile} {
+                display: none;
+            }
+        }
+
         .logoText {
             display: none;
 
@@ -60,6 +66,36 @@ export const StyledHeader = styled.header`
                 font-family: var(--font-paperlogy);
                 color: ${colors.primary500};
                 letter-spacing: -0.02em;
+            }
+
+            ${theme.media.mobile} {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                white-space: nowrap;
+            }
+        }
+
+        .backButton {
+            display: none;
+
+            ${theme.media.mobile} {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 0.25rem;
+            }
+
+            .backChevron {
+                display: block;
+                width: 0.5rem;
+                height: 0.5rem;
+                border-left: 2px solid ${colors.gray500};
+                border-bottom: 2px solid ${colors.gray500};
+                transform: rotate(45deg);
             }
         }
     }

@@ -56,6 +56,25 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
         return ["전체 기간", ...apiSeasons];
     }, [data.data.filters.seasons]);
 
+    // 모바일 카테고리 Select용 옵션 및 상태 변환
+    const statusOptions = useMemo(() => {
+        return ["전체", ...Object.values(data.data.filters.status).map(f => f.value)];
+    }, [data.data.filters.status]);
+
+    const selectedStatusValue = useMemo(() => {
+        if (selectedStatus === "") return "전체";
+        return Object.values(data.data.filters.status).find(f => f.key === selectedStatus)?.value ?? "전체";
+    }, [selectedStatus, data.data.filters.status]);
+
+    const handleStatusSelectChange = (value: string) => {
+        if (value === "전체") {
+            setSelectedStatus("");
+        } else {
+            const match = Object.values(data.data.filters.status).find(f => f.value === value);
+            if (match) setSelectedStatus(match.key);
+        }
+    };
+
     //프로젝트 필터링
     const filteredProjects = useMemo(() => {
         const query = searchValue.trim().toLowerCase();
@@ -112,8 +131,9 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
                 </S.StatsSection>
 
                 <S.FilterBar>
+                    {/* 데스크탑/태블릿: 버튼 그룹 */}
                     <S.LeftButtonGroup>
-                        <S.FilterButton 
+                        <S.FilterButton
                             $isActive={selectedStatus === ""}
                             onClick={() => setSelectedStatus("")}
                         >
@@ -122,7 +142,7 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
 
                         {/* 나머지 상태 버튼들 */}
                         {Object.values(data.data.filters.status).map((filter) => (
-                            <S.FilterButton 
+                            <S.FilterButton
                                 key={filter.key}
                                 $isActive={selectedStatus === filter.key}
                                 onClick={() => setSelectedStatus(filter.key)}
@@ -131,8 +151,18 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
                             </S.FilterButton>
                         ))}
                     </S.LeftButtonGroup>
-                    
-                    <Select 
+
+                    {/* 모바일: 카테고리 셀렉트 */}
+                    <S.MobileCategorySelect>
+                        <Select
+                            label="category"
+                            options={statusOptions}
+                            selectedValue={selectedStatusValue}
+                            onSelectChange={handleStatusSelectChange}
+                        />
+                    </S.MobileCategorySelect>
+
+                    <Select
                         label="season" // TITLE_MAP에 의해 "전체 기간"으로 표시됨
                         options={seasonOptions}
                         selectedValue={selectedSeasonValue}

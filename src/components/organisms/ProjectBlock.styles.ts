@@ -25,8 +25,11 @@ export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
 
     ${theme.media.mobile} {
         width: 100%;
-        height: 20rem;
+        height: auto;
         border-radius: 0.75rem;
+
+        .infoSection { display: none; }
+        .imgSection { display: none; }
     }
 
     * {
@@ -103,15 +106,58 @@ export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
         border-radius: 1.25rem;
         overflow: hidden;
 
-        ${theme.media.mobile} {
-            height: 35%;
-        }
-
         img {
             position: absolute;
             width: 100%;
             height: auto;
             bottom: 0;
+        }
+    }
+
+    /* 모바일 전용 카드 레이아웃 */
+    .mobileCard {
+        display: none;
+
+        ${theme.media.mobile} {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.75rem 0.625rem;
+            width: 100%;
+        }
+
+        .mobileRow1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.25rem;
+        }
+
+        .mobileName {
+            font-size: 0.75rem;
+            font-weight: 700;
+            flex: 1;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .mobileParticipants {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.125rem;
+            font-size: 0.5rem;
+            flex-shrink: 0;
+            white-space: nowrap;
+            opacity: 0.9;
+        }
+
+        .mobileSubtitle {
+            font-size: 0.5rem;
+            opacity: 0.75;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
     }
 `;

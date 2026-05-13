@@ -4,7 +4,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import * as S from "./Select.styles";
 
-type LabelType = "generation" | "role" | "department" | "season";
+type LabelType = "generation" | "role" | "department" | "season" | "category";
 
 interface SelectProps {
     label: LabelType;
@@ -19,6 +19,7 @@ const TITLE_MAP: Record<LabelType, string> = {
     role: "역할",
     department: "학과",
     season: "전체 기간",
+    category: "카테고리",
 };
 
 const Select: React.FC<SelectProps> = ({ label, options, onSelectChange, selectedValue }) => {

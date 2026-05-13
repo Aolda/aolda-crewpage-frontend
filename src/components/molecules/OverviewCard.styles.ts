@@ -84,7 +84,7 @@ export const StyledOverviewCard = styled.div`
         gap: 1rem;
 
         ${theme.media.tablet} { gap: 0.5rem; }
-        ${theme.media.mobile} { gap: 0.4rem; }
+        ${theme.media.mobile} { display: none; }
     }
 
     .legendItem {
