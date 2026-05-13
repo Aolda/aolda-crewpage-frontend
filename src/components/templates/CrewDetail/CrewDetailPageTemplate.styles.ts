@@ -11,6 +11,7 @@ export const TemplateWrapper = styled.div`
 
     margin: 0 auto;
     padding-top: 12.5rem;
+    padding-bottom: 12.5rem;
     padding-left: 7.5rem;
     padding-right: 7.5rem;
 
