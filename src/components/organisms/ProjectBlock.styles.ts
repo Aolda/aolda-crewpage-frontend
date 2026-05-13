@@ -116,7 +116,7 @@ export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
     /* ── 모바일 (기본 스타일 뒤에 위치해야 우선 적용) ── */
     ${theme.media.mobile} {
         width: 100%;
-        height: auto;
+        height: 5.375rem;
         border-radius: 0.75rem;
 
         .imgSection {

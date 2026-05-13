@@ -29,11 +29,11 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
 		>
 			<section className="infoSection">
                 <section className="textSection">
+                    <h1>{project.activityNames.brief}</h1>
                     <span className="countLine">
                         <Image className="crewIcon" src="/images/project/CrewImg.png" alt="" width={10} height={10} />
                         {project.participantsCount}명 참여
                     </span>
-                    <h1>{project.activityNames.brief}</h1>
                 </section>
                 <div className="badgeWrapper">
                     <Badge variant="transparent" status={project.status}>{ACTIVITY_STATUS[project.status]}</Badge>
