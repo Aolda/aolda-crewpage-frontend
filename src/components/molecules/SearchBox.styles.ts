@@ -14,6 +14,7 @@ export const StyledSearchBox = styled.section`
 
     ${theme.media.mobile} {
         width: 100%;
+        max-width: 16.25rem;
         height: 2rem;
         padding: 0 0.75rem;
     }
