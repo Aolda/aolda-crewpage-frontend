@@ -29,8 +29,7 @@ export const HeaderBackground = styled.header`
         height: auto;
         padding: 5rem 1rem 1rem;
         align-items: flex-start;
-        background:
-            linear-gradient(to top right, #F1F7FC 0%, #FCFFFF 100%);
+        background: #ffffff;
     }
 
     [data-theme="dark"] & {
