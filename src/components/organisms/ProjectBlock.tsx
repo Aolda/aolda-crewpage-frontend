@@ -27,14 +27,18 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
 			$bgColor={project.background?.color || "#1A8EE5"}
 			onClick={() => onDetailClick?.(project.activityId)}
 		>
-			{/* 데스크탑/태블릿 레이아웃 */}
 			<section className="infoSection">
                 <section className="textSection">
-                    <span>{project.participantsCount}명 참여</span>
+                    <span className="countLine">
+                        <Image className="crewIcon" src="/images/project/CrewImg.png" alt="" width={10} height={10} />
+                        {project.participantsCount}명 참여
+                    </span>
                     <h1>{project.activityNames.brief}</h1>
-                    <span>{project.activityNames.en}</span>
+                    <span className="enName">{project.activityNames.en}</span>
                 </section>
-                <Badge variant="transparent" status={project.status}>{ACTIVITY_STATUS[project.status]}</Badge>
+                <div className="badgeWrapper">
+                    <Badge variant="transparent" status={project.status}>{ACTIVITY_STATUS[project.status]}</Badge>
+                </div>
             </section>
 			<section className="imgSection">
 				<Image
@@ -43,19 +47,6 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
 					width={300}
 					height={300}
 				/>
-			</section>
-
-			{/* 모바일 전용 레이아웃 */}
-			<section className="mobileCard">
-				<section className="mobileRow1">
-					<span className="mobileName">{project.activityNames.brief}</span>
-					<span className="mobileParticipants">
-						<Image src="/images/project/CrewImg.png" alt="" width={10} height={10} />
-						{project.participantsCount}명 참여
-					</span>
-				</section>
-				<Badge variant="transparent" status={project.status}>{ACTIVITY_STATUS[project.status]}</Badge>
-				<span className="mobileSubtitle">{project.activityNames.en}</span>
 			</section>
 		</StyledProjectBlock>
 	);

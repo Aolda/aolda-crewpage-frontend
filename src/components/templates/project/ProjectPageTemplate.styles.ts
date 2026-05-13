@@ -24,7 +24,8 @@ export const HeaderSection = styled.header`
 
     ${theme.media.mobile} {
         height: 12.5rem;
-        padding-top: 4.25rem;
+        padding-top: 5.5rem;
+        padding-bottom: 0.8125rem;
     }
 
     /* 배경 원형 그래픽 요소들 */
@@ -317,7 +318,7 @@ export const ProjectGrid = styled.section`
 
     ${theme.media.mobile} {
         width: 100%;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         column-gap: 0.75rem;
         row-gap: 0.5rem;
         padding-bottom: 5rem;

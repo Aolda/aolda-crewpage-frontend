@@ -60,13 +60,13 @@ export const StyledOverviewCard = styled.div`
 
         ${theme.media.tablet} {
             gap: 0.375rem;
-            img { width: 0.75rem; height: 0.75rem; }
+            img { display: none; }
         }
 
         ${theme.media.mobile} {
             flex-direction: column;
             gap: 0.2rem;
-            img { width: 1rem; height: auto; }
+            img { display: none; }
         }
 
         h3 {
@@ -102,10 +102,6 @@ export const StyledOverviewCard = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-
-        ${theme.media.mobile} {
-            order: -1;
-        }
     }
 `;
 

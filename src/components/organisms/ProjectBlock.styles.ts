@@ -28,8 +28,59 @@ export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
         height: auto;
         border-radius: 0.75rem;
 
-        .infoSection { display: none; }
         .imgSection { display: none; }
+
+        .infoSection {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 0.75rem 0.625rem;
+            gap: 0;
+        }
+
+        .textSection {
+            display: contents;
+        }
+
+        h1 {
+            order: 1;
+            flex: 1;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .countLine {
+            order: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.125rem;
+            font-size: 0.5rem;
+            flex-shrink: 0;
+            white-space: nowrap;
+            .crewIcon { display: inline-block; }
+        }
+
+        .badgeWrapper {
+            order: 10;
+            width: 100%;
+            margin-top: 0.25rem;
+        }
+
+        .enName {
+            order: 20;
+            width: 100%;
+            font-size: 0.5rem;
+            opacity: 0.8;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-top: 0.125rem;
+        }
     }
 
     * {
@@ -43,13 +94,12 @@ export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
         justify-content: center;
         align-items: center;
         gap: 0.75rem;
-        
-        padding: 1.25rem 0 0 0;
 
-        ${theme.media.mobile} {
-            padding: 0.5rem 0.25rem 0;
-            gap: 0.125rem;
-        }
+        padding: 1.25rem 0 0 0;
+    }
+
+    .crewIcon {
+        display: none;
     }
 
     .textSection {
@@ -114,50 +164,4 @@ export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
         }
     }
 
-    /* 모바일 전용 카드 레이아웃 */
-    .mobileCard {
-        display: none;
-
-        ${theme.media.mobile} {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-            padding: 0.75rem 0.625rem;
-            width: 100%;
-        }
-
-        .mobileRow1 {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 0.25rem;
-        }
-
-        .mobileName {
-            font-size: 0.75rem;
-            font-weight: 700;
-            flex: 1;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
-
-        .mobileParticipants {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.125rem;
-            font-size: 0.5rem;
-            flex-shrink: 0;
-            white-space: nowrap;
-            opacity: 0.9;
-        }
-
-        .mobileSubtitle {
-            font-size: 0.5rem;
-            opacity: 0.75;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
-    }
 `;
