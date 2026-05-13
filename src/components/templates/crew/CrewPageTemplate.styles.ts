@@ -73,7 +73,7 @@ export const ContentContainer = styled.main`
     }
 
     ${theme.media.mobile} {
-        padding: 2.5rem 1.25rem;
+        padding: 0 1.25rem;
     }
 `;
 
@@ -86,7 +86,7 @@ export const FilterBar = styled.section`
     ${theme.media.mobile} {
         overflow-x: auto;
         white-space: nowrap;
-        padding-bottom: 12rem;
+        padding-bottom: 11rem;
         margin-bottom: -10rem;
         
         &::-webkit-scrollbar { display: none; }
