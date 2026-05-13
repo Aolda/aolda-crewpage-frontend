@@ -44,10 +44,14 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
                 </S.HeaderSection>
             </S.HeaderBackground>
             <S.PageWrapper>
-                {/* 2. 헤더 섹션 */}
+                {/* 모바일 전용 타이틀 */}
+                <S.MobileTitle>
+                    <h1>{project.activityNames.en}</h1>
+                    <p>{project.activityNames.ko}</p>
+                </S.MobileTitle>
 
                 {/* 3. 기획 정보 섹션 */}
-                <S.Section>
+                <S.Section $isCard>
                     <S.SectionTitle>
                         <Image 
                             src='/images/project/detail/designIcon.png'
@@ -56,16 +60,13 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
                             height={30}/>
                         기획 정보
                     </S.SectionTitle>
-                    <p style={{
-                        fontSize: "1rem", 
-                        whiteSpace: "pre-wrap" // \n, \t 처리를 위해 필수
-                    }}>
+                    <p>
                         {project.contents.ideaBackground}
                     </p>
                 </S.Section>
 
                 {/* 4. 활동 정보 섹션 */}
-                <S.Section>
+                <S.Section $isCard>
                     <S.SectionTitle>
                         <Image 
                             src='/images/project/detail/activityIcon.png'

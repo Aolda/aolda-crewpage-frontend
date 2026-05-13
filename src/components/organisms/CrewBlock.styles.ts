@@ -66,6 +66,8 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             ${theme.media.mobile} {
                 align-items: flex-start;
                 gap: 0.25rem;
+
+                .infoSection { justify-content: flex-start; }
             }
 
             .nameInfo {

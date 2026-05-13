@@ -1,5 +1,5 @@
 // /src/components/templates/ProjectDetail/ProjectDetailPageTemplate.styles.ts
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { colors, fontSize, theme } from '@/styles/theme';
 
 export const PageWrapper = styled.div`
@@ -18,7 +18,30 @@ export const PageWrapper = styled.div`
 
     ${theme.media.mobile} {
         width: 100%;
-        padding: 2.5rem 1.25rem;
+        padding: 1.5rem 1.25rem 2.5rem;
+    }
+`;
+
+/* 모바일 전용 타이틀 블록 */
+export const MobileTitle = styled.div`
+    display: none;
+
+    ${theme.media.mobile} {
+        display: block;
+        margin-bottom: 1.5rem;
+
+        h1 {
+            font-size: 1.25rem; /* 20px */
+            font-weight: 700;
+            color: #111827;
+            margin: 0 0 0.25rem;
+        }
+
+        p {
+            font-size: 0.625rem; /* 10px */
+            color: ${colors.gray500};
+            margin: 0;
+        }
     }
 `;
 
@@ -39,14 +62,14 @@ export const HeaderSection = styled.header`
         flex-direction: column;
         gap: 0.25rem;
     }
-    
+
     h1 {
         font-size: 2.25rem;
         font-weight: 700;
         color: #FFFFFF;
         margin: 0.75rem 0;
     }
-    
+
     p {
         color: ${colors.white600};
         font-size: ${fontSize.base};
@@ -60,8 +83,8 @@ export const HeaderSection = styled.header`
     }
 
     ${theme.media.mobile} {
-        width: 100%;
-        .titleGroup { gap: 0.125rem; }
+        /* 헤더 내부 콘텐츠 전부 숨김 — 타이틀은 MobileTitle로 이동 */
+        & > * { display: none; }
     }
 `;
 
@@ -86,21 +109,22 @@ export const HeaderBackground = styled.div<{ $bgColor: string }>`
         height: auto;
 
         ${theme.media.mobile} {
-            width: 12rem;
-            opacity: 0.3;
+            width: 100%;
+            opacity: 1;
         }
     }
 
     ${theme.media.mobile} {
-        height: 18rem;
+        height: 13rem;
     }
 `;
 
-export const Section = styled.section`
+export const Section = styled.section<{ $isCard?: boolean }>`
     margin-bottom: 5rem;
     p {
         color: ${colors.gray500};
-        line-height: 1;
+        line-height: 1.6;
+        white-space: pre-wrap;
     }
 
     ${theme.media.tablet} {
@@ -108,7 +132,17 @@ export const Section = styled.section`
     }
 
     ${theme.media.mobile} {
-        margin-bottom: 4rem;
+        margin-bottom: 1.5rem;
+        p { 
+            color: #111827;
+            font-size: 0.625rem;:     
+        }
+
+        ${props => props.$isCard && css`
+            border: 1px solid #E5E7EB;
+            border-radius: 0.5rem;
+            padding: 1rem;
+        `}
     }
 `;
 
@@ -127,8 +161,10 @@ export const SectionTitle = styled.h2`
     }
 
     ${theme.media.mobile} {
-        font-size: 1.25rem;
-        img { width: 1.5rem; height: 1.5rem; }
+        font-size: 0.75rem; /* 12px */
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+        img { width: 1rem; height: 1rem; } /* 16px */
     }
 `;
 
@@ -147,28 +183,29 @@ export const InfoGrid = styled.div`
         grid-column: span 3;
     }
 
-
     ${theme.media.mobile} {
         grid-template-columns: 1fr;
-        gap: 0.75rem;
+        gap: 0;
         & > * { grid-column: span 1 !important; }
     }
 `;
 
 export const BlogGrid = styled.div`
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
     margin-top: 1.5rem;
 
     ${theme.media.mobile} {
         grid-template-columns: 1fr;
+        gap: 0.75rem;
+        margin-top: 0.75rem;
     }
 `;
 
 export const BlogCard = styled.div`
     background: #FFFFFF;
-    border: 1px solid #E5E7EB; // 연한 회색 테두리
+    border: 1px solid #E5E7EB;
     border-radius: 0.75rem;
     padding: 1.5rem;
     cursor: pointer;
@@ -187,14 +224,16 @@ export const BlogCard = styled.div`
     }
 
     .meta {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
         font-size: 0.875rem;
-        margin-bottom: 1rem;
-        
+        margin-bottom: 0.75rem;
+
         .author {
             color: #4B5563;
-            margin-right: 0.75rem;
         }
-        
+
         .date {
             color: #9CA3AF;
         }
@@ -204,16 +243,29 @@ export const BlogCard = styled.div`
         font-size: 0.875rem;
         color: #6B7280;
         line-height: 1.5;
-        /* 두 줄 이상일 때 말줄임표 처리 */
         display: -webkit-box;
-        -webkit-line-clamp: 1; 
+        -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
 
     ${theme.media.mobile} {
-        padding: 1.25rem;
-        h3 { font-size: 1rem; }
+        padding: 0.875rem 1rem;
+
+        h3 {
+            font-size: 0.8125rem; /* 13px */
+            margin-bottom: 0.25rem;
+        }
+
+        .meta {
+            font-size: 0.625rem; /* 10px */
+            margin-bottom: 0.375rem;
+        }
+
+        .preview {
+            font-size: 0.625rem; /* 10px */
+            -webkit-line-clamp: 2;
+        }
     }
 `;
 
@@ -228,7 +280,7 @@ export const CrewGrid = styled.div`
     }
 
     ${theme.media.mobile} {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
         justify-items: center;
     }
@@ -248,8 +300,8 @@ export const GalleryGrid = styled.div`
     margin-top: 1.6rem;
 
     ${theme.media.mobile} {
-        grid-template-columns: repeat(2, 1fr); // 모바일에서 2열
-        gap: 0.75rem;
+        gap: 0.375rem;
+        margin-top: 0.75rem;
     }
 `;
 
