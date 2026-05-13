@@ -83,8 +83,9 @@ export const HeaderSection = styled.header`
     }
 
     ${theme.media.mobile} {
+        padding: 0;
         /* 헤더 내부 콘텐츠 전부 숨김 — 타이틀은 MobileTitle로 이동 */
-        & > * { display: none; }
+        & > * { display: none !important; }
     }
 `;
 
@@ -110,12 +111,21 @@ export const HeaderBackground = styled.div<{ $bgColor: string }>`
 
         ${theme.media.mobile} {
             width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            object-fit: cover;
+            object-position: center;
             opacity: 1;
         }
     }
 
     ${theme.media.mobile} {
-        height: 13rem;
+        margin-top: 4.25rem;
+        height: 17.5rem;
+        overflow: hidden;
     }
 `;
 
