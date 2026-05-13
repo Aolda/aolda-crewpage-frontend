@@ -69,12 +69,14 @@ const CrewBlock: React.FC<CrewBlockProps> = ({
                 ) : (
                     <section className="statsSection">
                         <section style={{"display":"inline-flex", "gap":"0.75rem", "alignItems":"center"}}>
-                            <Image src="/images/crew/CategoryImg.png" alt="categoryimg" width={18} height={18}/>
+                            <Image className="icon-gray" src="/images/crew/CategoryImg.png" alt="categoryimg" width={18} height={18}/>
+                            <Image className="icon-blue" src="/images/crew/CategoryImgBlue.png" alt="categoryimg" width={18} height={18}/>
                             <span style={{"color":colors.gray500}}>{member.totalActivities || 0}</span>
                         </section>
                         <section>·</section>
                         <section style={{"display":"inline-flex", "gap":"0.75rem", "alignItems":"center"}}>
-                            <Image src="/images/crew/BlogingImg.png" alt="blogingimg" width={18} height={18}/>
+                            <Image className="icon-gray" src="/images/crew/BlogingImg.png" alt="blogingimg" width={18} height={18}/>
+                            <Image className="icon-blue" src="/images/crew/BlogingImgBlue.png" alt="blogingimg" width={18} height={18}/>
                             <span style={{"color":colors.gray500}}>{member.totalBloggings || 0}</span>
                         </section>
                     </section>

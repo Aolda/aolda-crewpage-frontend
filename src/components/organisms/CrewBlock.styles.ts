@@ -246,6 +246,8 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             height: 1.125rem;
         }
 
+        .icon-blue { display: none; }
+
         ${theme.media.tablet} {
             height: 1.125rem;
             img {
@@ -264,6 +266,9 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             height: auto;
 
             > section:nth-child(2) { display: none; }
+
+            .icon-gray { display: none; }
+            .icon-blue { display: block; }
 
             img {
                 width: 0.75rem;
