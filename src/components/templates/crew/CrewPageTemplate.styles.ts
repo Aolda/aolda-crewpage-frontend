@@ -6,7 +6,7 @@ export const HeaderBackground = styled.header`
     height: 30rem;
     background:
         url('/images/crew/crewbookBG.png') right bottom / contain no-repeat,
-        linear-gradient(108deg, #E0F2FE 0%, #DBEAFE 100%);
+        linear-gradient(to top right, #F1F7FC 0%, #FCFFFF 100%);
     display: flex;
     align-items: end;
 
@@ -30,7 +30,7 @@ export const HeaderBackground = styled.header`
         padding: 5rem 1rem 1rem;
         align-items: flex-start;
         background:
-            linear-gradient(108deg, #E0F2FE 0%, #DBEAFE 100%);
+            linear-gradient(to top right, #F1F7FC 0%, #FCFFFF 100%);
     }
 
     [data-theme="dark"] & {
