@@ -8,30 +8,43 @@ function isNightTime(): boolean {
 
 /**
  * 다크모드 활성화 여부를 반환합니다.
- * 아래 두 조건 중 하나라도 충족하면 다크모드가 활성화됩니다:
- * 1. 브라우저/OS가 다크모드로 설정된 경우 (prefers-color-scheme: dark)
- * 2. 현재 시간이 19:00 ~ 07:00 사이인 경우
+ * 우선순위:
+ * 1. 브라우저/OS가 라이트모드로 명시적 설정 → 항상 라이트 (시간 무관)
+ * 2. 브라우저/OS가 다크모드로 명시적 설정 → 다크
+ * 3. 설정 없음 → 19:00 ~ 07:00 사이이면 다크, 아니면 라이트
  */
 export function useDarkMode(): boolean {
     const [isDark, setIsDark] = useState(false);
 
     useEffect(() => {
-        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        const lightQuery = window.matchMedia('(prefers-color-scheme: light)');
 
         const update = () => {
-            setIsDark(mediaQuery.matches || isNightTime());
+            if (lightQuery.matches) {
+                // 사용자가 명시적으로 라이트 모드 설정 → 항상 라이트
+                setIsDark(false);
+            } else if (darkQuery.matches) {
+                // 사용자가 명시적으로 다크 모드 설정
+                setIsDark(true);
+            } else {
+                // 설정 없음 → 시간대로 결정
+                setIsDark(isNightTime());
+            }
         };
 
         update();
 
-        // OS 다크모드 변경 감지
-        mediaQuery.addEventListener('change', update);
+        // OS 테마 변경 감지
+        darkQuery.addEventListener('change', update);
+        lightQuery.addEventListener('change', update);
 
         // 1분마다 시간 조건 재확인
         const interval = setInterval(update, 60_000);
 
         return () => {
-            mediaQuery.removeEventListener('change', update);
+            darkQuery.removeEventListener('change', update);
+            lightQuery.removeEventListener('change', update);
             clearInterval(interval);
         };
     }, []);
