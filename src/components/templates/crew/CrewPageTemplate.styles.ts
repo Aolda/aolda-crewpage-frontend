@@ -36,7 +36,7 @@ export const HeaderBackground = styled.header`
     [data-theme="dark"] & {
         background:
             url('/images/crew/crewbookBG.png') right bottom / contain no-repeat,
-            linear-gradient(108deg, #1a3a4f 0%, #1e2d4a 100%);
+            linear-gradient(108deg, #1a2535 0%, #0f2040 100%);
     }
 
     ${theme.media.mobile} {
