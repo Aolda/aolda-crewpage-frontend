@@ -4,7 +4,9 @@ import { colors, fontSize, theme } from '@/styles/theme';
 export const HeaderBackground = styled.header`
     width: 100%;
     height: 30rem;
-    background: linear-gradient(108deg, #E0F2FE 0%, #DBEAFE 100%);
+    background:
+        url('/images/crew/crewbookBG.png') right bottom / contain no-repeat,
+        linear-gradient(108deg, #E0F2FE 0%, #DBEAFE 100%);
     display: flex;
     align-items: end;
 
@@ -17,11 +19,6 @@ export const HeaderBackground = styled.header`
         padding-right: 2.5rem;
     }
 
-    background-image: url('/images/crew/crewbookBG.png');
-    background-repeat: no-repeat;
-    background-position: right bottom;
-    background-size: contain;
-
     ${theme.media.tablet} {
         height: 25rem;
         padding-left: 2.5rem;
@@ -32,11 +29,20 @@ export const HeaderBackground = styled.header`
         height: auto;
         padding: 5rem 1rem 1rem;
         align-items: flex-start;
-        background-image: none;
+        background:
+            linear-gradient(108deg, #E0F2FE 0%, #DBEAFE 100%);
     }
 
     [data-theme="dark"] & {
-        background: linear-gradient(108deg, #1a3a4f 0%, #1e2d4a 100%);
+        background:
+            url('/images/crew/crewbookBG.png') right bottom / contain no-repeat,
+            linear-gradient(108deg, #1a3a4f 0%, #1e2d4a 100%);
+    }
+
+    ${theme.media.mobile} {
+        [data-theme="dark"] & {
+            background: linear-gradient(108deg, #1a3a4f 0%, #1e2d4a 100%);
+        }
     }
 `;
 
