@@ -59,6 +59,11 @@ export const ContentSection = styled.section`
     display: flex;
     flex-direction: column;
 
+    ${theme.media.desktopSm} {
+        flex-grow: 0;
+        width: 44rem;
+    }
+
     ${theme.media.tablet} {
         padding: 2.25rem 2rem;
     }
