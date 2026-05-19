@@ -17,6 +17,7 @@ import Vision from '@/components/templates/main/Vision/Vision';
 import Activity from '@/components/templates/main/Activity/Activity';
 import Crew from '@/components/templates/main/Crew/Crew';
 import JoinSection from '@/components/molecules/JoinSection';
+import LoadingScreen from '@/components/atoms/LoadingScreen';
 
 export default function HomePage() {
     const router = useRouter();
@@ -67,20 +68,13 @@ export default function HomePage() {
 
     // 로딩 중일 때의 처리 (추후 스켈레톤 UI로 대체)
     if (isLoading) {
-        return (
-            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                데이터를 불러오는 중입니다...
-            </div>
-        )
+        return <LoadingScreen />;
     }
 
     // 에러 발생 시 아무것도 렌더링하지 않거나, 에러 전용 UI 표시
     if (hasError) {
         return (
-            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <h2>데이터 로드에 실패했습니다.</h2>
-                <button onClick={() => window.location.reload()}>다시 시도</button>
-            </div>
+            <LoadingScreen message="데이터를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요." />
         );
     }
 
