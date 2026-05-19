@@ -17,7 +17,6 @@ import Vision from '@/components/templates/main/Vision/Vision';
 import Activity from '@/components/templates/main/Activity/Activity';
 import Crew from '@/components/templates/main/Crew/Crew';
 import JoinSection from '@/components/molecules/JoinSection';
-import FadeInUp from '@/components/atoms/FadeInUp';
 
 export default function HomePage() {
     const router = useRouter();
@@ -87,18 +86,18 @@ export default function HomePage() {
 
     return (
         <>
-            {/* 1. 최상단 Hero 섹션: 진입 시 바로 보이므로 애니메이션 제외 */}
+            {/* 1. 최상단 Hero 섹션 */}
             <Hero />
 
-            <FadeInUp><Overview /></FadeInUp>
+            <Overview />
 
-            <FadeInUp delay={0.05}><Vision /></FadeInUp>
+            <Vision />
 
-            <FadeInUp delay={0.05}><Activity activities={activities}/></FadeInUp>
+            <Activity activities={activities}/>
 
-            <FadeInUp delay={0.05}><Crew crews={crews} onCrewClick={handleDetailNavigation}/></FadeInUp>
+            <Crew crews={crews} onCrewClick={handleDetailNavigation}/>
 
-            <FadeInUp delay={0.05}><JoinSection /></FadeInUp>
+            <JoinSection />
         </>
     );
 }

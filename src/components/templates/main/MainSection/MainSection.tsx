@@ -3,6 +3,7 @@
 
 import React from 'react';
 import * as S from './MainSection.styles';
+import FadeInUp from '@/components/atoms/FadeInUp';
 
 interface MainSectionProps {
     label?: string;
@@ -23,15 +24,28 @@ const MainSection: React.FC<MainSectionProps> = ({
 }) => {
     return (
         <S.SectionWrapper $bgColor={bgColor}>
-            <S.Header $hideOnMobile={hideHeaderOnMobile}>
-                <S.GrayBar />
-                {label && <S.Label>{label}</S.Label>}
-                <S.Title>{title}</S.Title>
-                {description && <S.Description>{description}</S.Description>}
-            </S.Header>
-            <S.Content>
-                {children}
-            </S.Content>
+            {hideHeaderOnMobile ? (
+                <S.Header $hideOnMobile={hideHeaderOnMobile}>
+                    <S.GrayBar />
+                    {label && <S.Label>{label}</S.Label>}
+                    <S.Title>{title}</S.Title>
+                    {description && <S.Description>{description}</S.Description>}
+                </S.Header>
+            ) : (
+                <FadeInUp>
+                    <S.Header>
+                        <S.GrayBar />
+                        {label && <S.Label>{label}</S.Label>}
+                        <S.Title>{title}</S.Title>
+                        {description && <S.Description>{description}</S.Description>}
+                    </S.Header>
+                </FadeInUp>
+            )}
+            <FadeInUp delay={0.15}>
+                <S.Content>
+                    {children}
+                </S.Content>
+            </FadeInUp>
         </S.SectionWrapper>
     );
 };
