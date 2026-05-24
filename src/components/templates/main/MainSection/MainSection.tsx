@@ -41,11 +41,17 @@ const MainSection: React.FC<MainSectionProps> = ({
                     </S.Header>
                 </FadeInUp>
             )}
-            <FadeInUp delay={0.15}>
+            {hideHeaderOnMobile ? (
                 <S.Content>
                     {children}
                 </S.Content>
-            </FadeInUp>
+            ) : (
+                <FadeInUp delay={0.15}>
+                    <S.Content>
+                        {children}
+                    </S.Content>
+                </FadeInUp>
+            )}
         </S.SectionWrapper>
     );
 };
