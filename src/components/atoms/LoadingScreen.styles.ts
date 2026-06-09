@@ -24,10 +24,12 @@ export const Wrapper = styled.div`
     align-items: center;
     gap: 2rem;
     background-color: #ffffff;
+    color: #171717;
     animation: ${fadeIn} 0.4s ease-out;
 
     [data-theme="dark"] & {
         background-color: #2A2A2A;
+        color: #F9FAFB;
     }
 `;
 
@@ -58,6 +60,11 @@ export const Spinner = styled.div`
     border-top-color: ${colors.primary500};
     border-radius: 50%;
     animation: ${spin} 0.8s linear infinite;
+
+    [data-theme="dark"] & {
+        border-color: rgba(255, 255, 255, 0.12);
+        border-top-color: ${colors.primary500};
+    }
 `;
 
 export const Dots = styled.div`
@@ -78,4 +85,8 @@ export const Message = styled.p`
     font-size: 0.875rem;
     color: #9CA3AF;
     margin: 0;
+
+    [data-theme="dark"] & {
+        color: #D1D5DB;
+    }
 `;
