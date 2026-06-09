@@ -13,6 +13,22 @@ const notoKR = Noto_Sans_KR({
     variable: '--font-noto-sans',
 });
 
+const themeInitScript = `
+    (function () {
+        try {
+            var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            var lightQuery = window.matchMedia('(prefers-color-scheme: light)');
+            var hour = new Date().getHours();
+            var isNightTime = hour >= 19 || hour < 7;
+            var isDark = lightQuery.matches ? false : darkQuery.matches ? true : isNightTime;
+
+            document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+        } catch (_) {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+    })();
+`;
+
 export const metadata: Metadata = {
     title: "Aolda",
     description: "Aolda",
@@ -36,6 +52,7 @@ export default function RootLayout({
     return (
         <html lang="ko" className={`${notoKR.variable}`}>
             <head>
+                <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
                 <link
                     rel="stylesheet"
                     href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
