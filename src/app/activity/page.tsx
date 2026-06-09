@@ -11,6 +11,7 @@ import { getProjectList } from '@/api/project';
 import { ProjectListResponse } from '@/types/project';
 
 import ProjectPageTemplate from '@/components/templates/project/ProjectPagetemplate';
+import LoadingScreen from '@/components/atoms/LoadingScreen';
 
 export default function ProjectsPage() {
     const router = useRouter();
@@ -46,7 +47,7 @@ export default function ProjectsPage() {
     }, [handleError]);
 
     if (isLoading) {
-        return null;
+        return <LoadingScreen />;
     };
 
     // 에러 발생 시 UI 처리

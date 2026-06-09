@@ -10,6 +10,7 @@ import { getCrewList, getDepartmentList } from '@/api/crew';
 import { CrewMember, DepartmentMap } from '@/types/crew';
 
 import CrewPageTemplate from '@/components/templates/crew/CrewPagetemplate';
+import LoadingScreen from '@/components/atoms/LoadingScreen';
 
 export default function CrewListPage() {
     const router = useRouter();
@@ -63,7 +64,7 @@ export default function CrewListPage() {
     };
 
     if (isLoading) {
-        return null;
+        return <LoadingScreen />;
     }
 
     if (hasError) {

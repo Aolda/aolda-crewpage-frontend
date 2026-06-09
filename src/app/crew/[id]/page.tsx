@@ -10,6 +10,7 @@ import { CrewDetailResponse } from '@/types/crew';
 
 import CrewDetailPageTemplate from '@/components/templates/CrewDetail/CrewDetailPageTemplate';
 import MenuItem from '@/components/molecules/MenuItem';
+import LoadingScreen from '@/components/atoms/LoadingScreen';
 
 export default function CrewDetailPage() {
     const { id } = useParams();
@@ -40,7 +41,7 @@ export default function CrewDetailPage() {
     }, [id, handleError]);
 
     if (isLoading) {
-        return null;
+        return <LoadingScreen />;
     }
 
     if (!crew) return null;

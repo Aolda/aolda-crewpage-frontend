@@ -11,6 +11,7 @@ import { getProjectDetail } from '@/api/project';
 import { ProjectDetailResponse } from '@/types/project';
 import ProjectDetailPageTemplate from '@/components/templates/ProjectDetail/ProjectDetailPageTemplate';
 import { MOCK_PROJECT_DETAIL } from '@/mocks/projectData';
+import LoadingScreen from '@/components/atoms/LoadingScreen';
 
 const USE_MOCK = true;
 
@@ -55,7 +56,7 @@ export default function ProjectPage() {
     }, [activityId, handleError]);
 
     if (isLoading) {
-        return null;
+        return <LoadingScreen />;
     };
     if (hasError || !project) return null;
     
