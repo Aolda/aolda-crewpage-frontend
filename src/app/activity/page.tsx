@@ -46,11 +46,7 @@ export default function ProjectsPage() {
     }, [handleError]);
 
     if (isLoading) {
-        return (
-            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                주요 활동 목록을 불러오는 중...
-            </div>
-        )
+        return null;
     };
 
     // 에러 발생 시 UI 처리

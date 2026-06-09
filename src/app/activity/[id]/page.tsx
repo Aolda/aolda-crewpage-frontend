@@ -55,11 +55,7 @@ export default function ProjectPage() {
     }, [activityId, handleError]);
 
     if (isLoading) {
-        return (
-            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                데이터를 불러오는 중...
-            </div>
-        )
+        return null;
     };
     if (hasError || !project) return null;
     

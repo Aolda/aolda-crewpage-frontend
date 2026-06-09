@@ -63,11 +63,7 @@ export default function CrewListPage() {
     };
 
     if (isLoading) {
-        return (
-            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                크루 목록을 불러오는 중...
-            </div>
-        );
+        return null;
     }
 
     if (hasError) {
