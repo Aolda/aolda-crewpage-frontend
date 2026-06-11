@@ -24,6 +24,7 @@ export default function CrewDetailPage() {
         const fetchData = async () => {
             try {
                 setIsLoading(true);
+
                 const data = await getCrewDetail(id as string);
                 setCrew(data);
             } catch (error) {
@@ -62,7 +63,7 @@ export default function CrewDetailPage() {
                             title={item.activityNames.en}
                             date={item.startedAt}
                             description={item.description}
-                            status={item.status as any}
+                            status={item.status}
                         />
                     ))
                 ) : (
