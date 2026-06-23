@@ -22,18 +22,31 @@ export const CrewGridWrapper = styled.div`
         &::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background-image: url('/images/crew/crewbookBG.png');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.12;
+            width: 11.6875rem;
+            height: 19.5625rem;
+            left: 0;
+            top: 19.125rem;
+            background: linear-gradient(270deg, #48A4EA 0%, rgba(72, 164, 234, 0.3) 100%);
+            filter: blur(0.25rem);
+            border-radius: 5.84375rem 5.84375rem 0 0;
+            transform: matrix(0, -1, -1, 0, 0, 0);
             z-index: 0;
             pointer-events: none;
         }
 
-        & > * {
-            position: relative;
-            z-index: 1;
+        &::after {
+            content: '';
+            position: absolute;
+            width: 11.6875rem;
+            height: 19.5625rem;
+            right: 7.875rem;
+            top: 25.8125rem;
+            background: linear-gradient(270deg, #1A8EE5 0%, rgba(26, 142, 229, 0.3) 100%);
+            filter: blur(0.25rem);
+            border-radius: 5.84375rem 5.84375rem 0 0;
+            transform: rotate(-90deg);
+            z-index: 0;
+            pointer-events: none;
         }
     }
 `;
@@ -117,13 +130,35 @@ export const CrewGrid = styled.div`
     margin: 0 auto;
 
     ${theme.media.mobile} {
+        position: relative;
         grid-template-columns: repeat(2, 1fr);
         justify-items: stretch;
         gap: 0.75rem;
         padding: 0;
+        z-index: 1;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 11.6875rem;
+            height: 13.875rem;
+            left: 9.5625rem;
+            top: -12.125rem;
+            background: linear-gradient(90deg, #A3D2F5 0%, rgba(163, 210, 245, 0.3) 100%);
+            filter: blur(0.25rem);
+            border-radius: 5.84375rem 5.84375rem 0 0;
+            transform: matrix(0, 1, 1, 0, 0, 0);
+            z-index: 0;
+            pointer-events: none;
+        }
 
         & > :nth-child(n + 11) {
             display: none;
+        }
+
+        & > * {
+            position: relative;
+            z-index: 1;
         }
     }
 
