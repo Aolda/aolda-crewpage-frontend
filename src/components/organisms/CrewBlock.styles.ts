@@ -18,6 +18,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
         height: 16.75rem;
 
         padding: 1.5rem 2.25rem;
+        background-color: ${colors.white600};
         border: 1px solid ${colors.border};
         border-radius: 1.25rem;
         gap: 2.25rem;
@@ -204,6 +205,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
     `}
 
     [data-theme="dark"] & {
+        background-color: #161B22;
         border-color: rgba(255, 255, 255, 0.1);
     }
 

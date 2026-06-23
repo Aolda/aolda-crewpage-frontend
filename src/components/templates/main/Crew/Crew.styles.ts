@@ -25,7 +25,7 @@ export const CrewGridWrapper = styled.div`
             width: 11.6875rem;
             height: 19.5625rem;
             left: 0;
-            top: -5.5rem;
+            top: 0;
             background: linear-gradient(270deg, #48A4EA 0%, rgba(72, 164, 234, 0.3) 100%);
             filter: blur(0.25rem);
             border-radius: 5.84375rem 5.84375rem 0 0;
@@ -40,7 +40,7 @@ export const CrewGridWrapper = styled.div`
             width: 11.6875rem;
             height: 19.5625rem;
             right: 7.875rem;
-            top: 0.25rem;
+            top: 8.5rem;
             background: linear-gradient(270deg, #1A8EE5 0%, rgba(26, 142, 229, 0.3) 100%);
             filter: blur(0.25rem);
             border-radius: 5.84375rem 5.84375rem 0 0;
