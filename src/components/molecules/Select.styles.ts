@@ -28,7 +28,7 @@ export const SelectHeader = styled.div<{ $isSelected?: boolean }>`
     min-width: 5.875rem;
     height: 3rem;
     padding: 0.75rem 1rem;
-    border: 1px solid #888888;
+    border: 1px solid #777777;
     border-radius: 0.5rem;
     background-color: white;
     cursor: pointer;
@@ -37,7 +37,6 @@ export const SelectHeader = styled.div<{ $isSelected?: boolean }>`
         min-width: 4.9375rem;
         width: auto;
         height: 1.9375rem;
-        border: 0.5px solid #888888;
         padding: 0.5rem 0.75rem;
         white-space: nowrap;
     }
@@ -49,7 +48,7 @@ export const SelectHeader = styled.div<{ $isSelected?: boolean }>`
         padding: 0.4375rem 0.875rem;
         border-radius: 0.375rem;
         background-color: ${props => props.$isSelected ? '#E8F4FC' : 'white'};
-        border-color: ${props => props.$isSelected ? colors.primary500 : '#888888'};
+        border-color: ${props => props.$isSelected ? colors.primary500 : '#777777'};
     }
 
     [data-theme="dark"] & {

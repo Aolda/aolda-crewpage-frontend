@@ -52,8 +52,8 @@ export default function HomePage() {
 
     // 상세 페이지 이동 함수
     const handleDetailNavigation = (id: number) => {
-        // 기본 페이지를 activity로 설정: /crew/[id]/activity
-        router.push(`/crew/${id}/activity`);
+        // 기본 페이지를 activity로 설정: /crew/[id]/
+        router.push(`/crew/${id}/`);
     };
 
     // 로딩 중일 때의 처리 (추후 스켈레톤 UI로 대체)

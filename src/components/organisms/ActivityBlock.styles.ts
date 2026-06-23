@@ -1,5 +1,5 @@
 // /src/components/organisms/ActivityBlock/styles/ts
-import { fontSize, theme } from "@/styles/theme";
+import { colors, fontSize, theme } from "@/styles/theme";
 
 import styled from "styled-components"
 
@@ -32,13 +32,16 @@ export const StyledActivityBlock = styled.div`
     ${theme.media.tablet} {
         width: 9.6875rem;
         height: 15rem;
+        padding: 1rem;
     }
 
     ${theme.media.mobile} {
         width: 100%;
         height: auto;
-        min-height: 5rem;
-        padding: 0 0.75rem;
+        min-height: 3.8125rem;
+        padding: 0.75rem;
+        gap: 0.5rem;
+        border: 1px solid #EFEFEF;
         border-radius: 0.5rem;
         justify-content: center;
     }
@@ -49,8 +52,7 @@ export const StyledActivityBlock = styled.div`
         ${theme.media.mobile} {
             display: block;
             font-size: 0.625rem;
-            color: #A0A0A0;
-            margin-top: 0.375rem;
+            color: ${colors.gray600};
         }
     }
 

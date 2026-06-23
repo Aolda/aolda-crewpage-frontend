@@ -185,7 +185,8 @@ export const MobileOverviewHeader = styled.div`
         display: flex;
         flex-direction: column;
         width: 100%;
-        padding: 1.5rem 0 1rem;
+        padding-top: 1.5rem;
+        margin-bottom: 2rem;
 
         h2 {
             font-size: 1.25rem;

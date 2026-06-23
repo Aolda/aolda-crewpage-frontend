@@ -51,6 +51,7 @@ export const Tab = styled.div`
         height: auto;
         flex-direction: column;
         align-items: flex-start;
+        border: 1px solid #EFEFEF;
         border-radius: 0.5rem;
         text-align: left;
         padding: 1rem;
@@ -74,14 +75,18 @@ export const Tab = styled.div`
         justify-content: flex-start;
     }
 
-    h4 {
-        font-size: ${fontSize.body1};
+    h2 {
+        font-size: ${fontSize.h3};
         font-weight: 700;
         color: ${colors.primary500};
         margin: 0;
 
+        ${theme.media.tablet} {
+            font-size: ${fontSize.base};
+        }
+
         ${theme.media.mobile} {
-            font-size: 0.875rem;
+            font-size: ${fontSize.smaller};
         }
     }
 

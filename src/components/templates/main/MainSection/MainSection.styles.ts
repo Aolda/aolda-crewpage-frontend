@@ -81,11 +81,11 @@ export const Label = styled.span`
     ${theme.media.mobile} {
         display: inline-block;
         color: ${colors.primary500};
-        border: 1.5px solid ${colors.primary500};
-        border-radius: 0.375rem;
-        padding: 0.125rem 0.625rem;
+        border: 1px solid ${colors.primary500};
+        border-radius: 0.25rem;
+        padding: 0.25rem 0.5rem;
         font-size: 0.625rem;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
     }
 
     [data-theme="dark"] & {

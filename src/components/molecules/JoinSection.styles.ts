@@ -48,13 +48,14 @@ export const ButtonGrid = styled.div`
         gap: 1rem;
 
         ${theme.media.mobile} {
+            align-items: flex-start;
             gap: 0.5rem;
         }
 
         span {
             font-size: ${fontSize.base};
             font-weight: 400;
-            color: ${colors.gray500};
+            color: ${colors.gray600};
             line-height: 1.5;
 
             ${theme.media.mobile} {
@@ -101,8 +102,8 @@ export const PrimaryButton = styled.a`
 
     ${theme.media.mobile} {
         width: 100%;
+        padding: 0.5rem 0.75rem;
         font-size: 0.625rem;
-        font-weight: 500;
 
         img {
             width: 1rem;

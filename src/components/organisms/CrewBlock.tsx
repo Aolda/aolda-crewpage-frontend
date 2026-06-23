@@ -59,13 +59,13 @@ const CrewBlock: React.FC<CrewBlockProps> = ({
                         <section className="badgeSection">
                             <Badge variant="solid" status={member.isActive}>{member.isActive ? "활동중" : "비활동"}</Badge>
                             <Badge variant="outline">{member.joinedGen}기</Badge>
-                            <Badge variant="outline">{`${member.univDepartment} ${member.univJoinedYear}학번`}</Badge>
+                            <Badge variant="outline">{`${member.univDepartment} ${member.univJoinedYear.slice(-2)}학번`}</Badge>
                         </section>
                     )}
                 </section>
 
                 {!isCrewpage ? (
-                    <span className="majorInfo">{member.univDepartment} {member.univJoinedYear}</span>
+                    <h4 className="majorInfo">{member.univDepartment} {member.univJoinedYear.slice(-2)}</h4>
                 ) : (
                     <section className="statsSection">
                         <section style={{"display":"inline-flex", "gap":"0.75rem", "alignItems":"center"}}>

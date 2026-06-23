@@ -46,6 +46,11 @@ export const StyledFooter = styled.footer`
         height: 2rem;
         flex-shrink: 0;
 
+        ${theme.media.mobile} {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
         img {
             width: 100%;
             height: 100%;
@@ -118,8 +123,8 @@ export const StyledFooter = styled.footer`
         }
 
         .logoSection {
-            width: 2rem;
-            height: 2rem;
+            width: 1.25rem;
+            height: 1.25rem;
         }
 
         .textSection {
@@ -127,13 +132,13 @@ export const StyledFooter = styled.footer`
         }
 
         .brandName {
-            font-size: 2.25rem;
+            font-size: ${fontSize.h3};
         }
 
         .description,
         .addressSection .address,
         .addressSection .managementSection {
-            font-size: ${fontSize.smaller};
+            font-size: 0.625rem;
         }
     }
 `;

@@ -10,7 +10,7 @@ export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: Activ
     justify-content: center;
     font-weight: 700;
     font-size: ${fontSize.smaller};
-    border-radius: 0.625rem;
+    border-radius: 0.5rem;
     width: fit-content;
     height: 1.9375rem;
     padding: 0.4375rem 1rem;
@@ -18,7 +18,7 @@ export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: Activ
 
     ${theme.media.tablet} {
         height: 1.625rem;
-        font-size: 0.625rem;
+        font-size: ${fontSize.smaller};
     }
 
     ${theme.media.mobile} {
@@ -57,7 +57,8 @@ export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: Activ
     /* 2. Outline Variant (배경 없음 - [A-2] 기수, 학과 등) */
     ${({ $variant }) => $variant === 'outline' && css`
         background-color: transparent;
-        border: 1px solid #D1D5DB;
+        font-weight: 500;
+        border: 1px solid #EFEFEF;
         color: ${colors.gray600};
     `}
 

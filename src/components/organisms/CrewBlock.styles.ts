@@ -89,7 +89,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             }
 
             .majorInfo {
-                font-size: ${fontSize.smaller};
+                font-size: ${fontSize.base};
                 font-weight: bold;
                 color: ${colors.gray600};
                 max-width: 100%;
@@ -97,10 +97,14 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
                 overflow: hidden;
                 text-overflow: ellipsis;
 
+                ${theme.media.tablet} {
+                    font-size: ${fontSize.smaller};
+                    font-weight: 700;
+                }
+
                 ${theme.media.mobile} {
                     font-size: 0.625rem;
                     font-weight: 400;
-                    color: ${colors.gray500};
                 }
             }
         }
@@ -157,6 +161,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
                 .nameInfo {
                     height: 1.5rem;
                     h2 { font-size: 1.25rem; }
+                    span { font-size: 1rem; }
                 }
             }
         }
@@ -198,8 +203,6 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             .badgeSection {
                 flex-wrap: wrap;
                 gap: 0.25rem;
-
-                > span:nth-child(3) { flex-basis: 100%; }
             }
         }
     `}

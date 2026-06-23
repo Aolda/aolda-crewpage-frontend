@@ -129,7 +129,7 @@ export const MOCK_CREW_LIST: CrewMember[] = [
     },
 ];
 
-export const MOCK_CREW_DETAIL = {
+export const MOCK_CREW_DETAIL: CrewDetailResponse = {
     crewId: 1,
     profile: { url: "/images/CrewImg.png" },
     crewName: "정우재",

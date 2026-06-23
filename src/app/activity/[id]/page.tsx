@@ -13,7 +13,7 @@ import ProjectDetailPageTemplate from '@/components/templates/ProjectDetail/Proj
 import { MOCK_PROJECT_DETAIL } from '@/mocks/projectData';
 import LoadingScreen from '@/components/atoms/LoadingScreen';
 
-const USE_MOCK = true;
+const USE_MOCK = false;
 
 export default function ProjectPage() {
     const params = useParams();
@@ -37,13 +37,13 @@ export default function ProjectPage() {
 
                 // API 호출
                 const response = await getProjectDetail(activityId);
-                setProject(response as any);
+                setProject(response);
 
-            } catch (err: any) {
+            } catch (err: unknown) {
                 setHasError(true);
                 // 명세에 정의된 403, 404, 503 에러 코드를 핸들러로 전달합니다
                 if (isAxiosError(err) && err.response?.data?.code) {
-                    handleError(err.response.data.code);
+                    handleError(String(err.response.data.code));
                 } else {
                     console.error('Project Detail Fetch Error:', err);
                 }
