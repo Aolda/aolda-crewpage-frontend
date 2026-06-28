@@ -174,6 +174,9 @@ export const CrewGrid = styled.div`
     ${theme.media.mobile} {
         position: relative;
         grid-template-columns: repeat(2, 1fr);
+        height: 21.4375rem;
+        align-content: flex-start;
+        align-items: flex-start;
         justify-items: stretch;
         gap: 0.75rem;
         padding: 0;
