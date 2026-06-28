@@ -22,7 +22,7 @@ export const TabContainer = styled.div`
     ${theme.media.mobile} {
         flex-direction: column;
         width: 100%;
-        gap: 1rem;
+        gap: 0.75rem;
         margin-bottom: 1.25rem;
     }
 
@@ -39,12 +39,15 @@ export const Tab = styled.div`
     height: 7.5rem;
 
     padding: 1.5rem 2.25rem;
-    background: #FFFFFF;
-    border: 2px solid #E2E2E2;
+    border: 2px solid #EFEFEF;
     border-radius: 1rem;
 
     justify-content: space-between;
     text-align: left;
+
+    [data-theme="dark"] & {
+        border-color: #444444;
+    }
 
     ${theme.media.mobile} {
         width: 100%;
@@ -54,8 +57,8 @@ export const Tab = styled.div`
         border: 1px solid #EFEFEF;
         border-radius: 0.5rem;
         text-align: left;
-        padding: 1rem;
-        gap: 0.5rem;
+        padding: 0.75rem;
+        gap: 0.25rem;
         font-size: 0.625rem;
 
         br {
@@ -69,10 +72,10 @@ export const Tab = styled.div`
         height: auto;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         text-align: left;
-        padding: 1.5rem;
+        padding: 1rem 1.25rem;
         gap: 1rem;
-        justify-content: flex-start;
     }
 
     h2 {
@@ -93,10 +96,14 @@ export const Tab = styled.div`
     p {
         margin: 0;
         font-size: ${fontSize.smaller};
-        color: #6B7280;
+        color: #777777;
         line-height: 1.5;
         text-align: right;
         font-weight: 400;
+
+        [data-theme="dark"] & {
+            color: #EFEFEF;
+        }
 
         ${theme.media.mobile} {
             text-align: left;
@@ -117,14 +124,15 @@ export const Tab = styled.div`
             }
 
             [data-theme="dark"] & {
-                color: #F9FAFB;
+                color: ${colors.primary500};
             }
         }
-    }
 
-    [data-theme="dark"] & {
-        background: #363636;
-        border-color: rgba(255, 255, 255, 0.1);
+        br.pc-only {
+            ${theme.media.tablet} {
+                display: none;
+            }
+        }
     }
 `;
 
@@ -192,10 +200,6 @@ export const MoreLink = styled(Link)`
         font-weight: 600;
         color: ${colors.primary500};
         text-decoration: none;
-
-        &::after {
-            content: '→';
-        }
     }
 `;
 

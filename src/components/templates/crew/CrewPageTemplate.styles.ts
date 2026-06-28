@@ -111,7 +111,7 @@ export const AllButton = styled.button<{ $isActive: boolean }>`
     height: 2.9375rem;
     border-radius: 0.5rem;
     border: none;
-    background-color: ${props => props.$isActive ? '#111827' : '#E5E7EB'};
+    background-color: ${props => props.$isActive ? '#181818' : '#E5E7EB'};
     color: ${props => props.$isActive ? 'white' : '#6B7280'};
     font-weight: 600;
     cursor: pointer;

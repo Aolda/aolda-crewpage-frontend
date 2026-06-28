@@ -11,10 +11,14 @@ export const Container = styled.section`
     align-items: center;
     gap: 1.5rem;
 
+    ${theme.media.tablet} {
+        padding-top: 3.75rem;
+    }
+
     ${theme.media.mobile} {
         text-align: left;
         align-items: flex-start;
-        padding-top: 5rem;
+        padding-top: 2.5rem;
         padding-bottom: 0;
         gap: 1rem;
     }
@@ -24,6 +28,10 @@ export const Container = styled.section`
         font-weight: 700;
         line-height: 1.4;
 
+        ${theme.media.tablet} {
+            font-size: ${fontSize.h3};
+        }
+
         ${theme.media.mobile} {
             font-size: 1.5rem;
             word-break: keep-all;
@@ -31,7 +39,7 @@ export const Container = styled.section`
         }
 
         [data-theme="dark"] & {
-            color: #F9FAFB;
+            color: #FAFAFA;
         }
     }
 `;
@@ -39,6 +47,14 @@ export const Container = styled.section`
 export const ButtonGrid = styled.div`
     display: flex;
     gap: 2rem;
+
+    ${theme.media.tablet} {
+        gap: 1.5rem;
+    }
+
+    ${theme.media.mobile} {
+        gap: 0.75rem;
+    }
 
     .btn-wrapper {
         display: flex;
@@ -58,8 +74,16 @@ export const ButtonGrid = styled.div`
             color: ${colors.gray600};
             line-height: 1.5;
 
+            ${theme.media.tablet} {
+                font-size: ${fontSize.smaller};
+            }
+
             ${theme.media.mobile} {
                 font-size: 0.625rem;
+            }
+
+            [data-theme="dark"] & {
+                color: #EFEFEF;
             }
         }
 
@@ -100,6 +124,17 @@ export const PrimaryButton = styled.a`
     font-weight: 700;
     cursor: pointer;
 
+    ${theme.media.tablet} {
+        width: 10rem;
+        height: 2.375rem;
+        font-size: ${fontSize.smaller};
+
+        img {
+            width: 1rem;
+            height: 1rem;
+        }
+    }
+
     ${theme.media.mobile} {
         width: 100%;
         padding: 0.5rem 0.75rem;
@@ -112,13 +147,11 @@ export const PrimaryButton = styled.a`
 `;
 
 export const OutlineButton = styled(PrimaryButton)`
-    background: white;
-    color: #111827;
-    border: 1px solid ${colors.gray600};
+    background: #FFFFFF;
+    color: #181818;
+    border: 1px solid #BFBFBF;
 
     [data-theme="dark"] & {
-        background: #363636;
-        color: #F9FAFB;
-        border-color: rgba(255, 255, 255, 0.2);
+
     }
 `;

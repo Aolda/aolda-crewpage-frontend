@@ -31,6 +31,7 @@ export const SectionWrapper = styled.section<{ $bgColor?: string }>`
     }
 
     ${theme.media.tablet} {
+        padding-top: 3.75rem;
         padding-left: 1.5rem;
         padding-right: 1.5rem;
     }
@@ -47,6 +48,10 @@ export const Header = styled.div<{ $hideOnMobile?: boolean }>`
     margin-bottom: 3.75rem;
     padding: 0 1.25rem;
 
+    ${theme.media.tablet} {
+        margin-bottom: 1.5rem;
+    }
+
     ${theme.media.mobile} {
         display: ${(props) => props.$hideOnMobile ? 'none' : 'flex'};
         align-items: flex-start;
@@ -58,16 +63,21 @@ export const Header = styled.div<{ $hideOnMobile?: boolean }>`
 export const GrayBar = styled.div`
     width: 3rem;
     height: 0;
-    border: solid 1.5px #636363;
+    border: solid 1.5px #777777;
     border-radius: 4px;
     margin-bottom: 0.5rem;
+
+    ${theme.media.tablet} {
+        width: 1.5rem;
+        border: solid 1px #777777;
+    }
 
     ${theme.media.mobile} {
         display: none;
     }
 
     [data-theme="dark"] & {
-        border-color: #6B7280;
+        border-color: #EFEFEF;
     }
 `;
 
@@ -77,6 +87,10 @@ export const Label = styled.span`
     font-weight: 600;
     color: ${colors.black600};
     margin-bottom: 1.5rem;
+
+    ${theme.media.tablet} {
+        margin-bottom: 0.75rem;
+    }
 
     ${theme.media.mobile} {
         display: inline-block;
@@ -89,7 +103,7 @@ export const Label = styled.span`
     }
 
     [data-theme="dark"] & {
-        color: #F9FAFB;
+        color: ${colors.primary500};
     }
 `;
 
@@ -97,7 +111,7 @@ export const Title = styled.h2`
     font-size: ${fontSize.h2};
     font-weight: 700;
     line-height: 1.3;
-    color: #111827;
+    color: #181818;
     margin-bottom: 1.5rem;
     word-break: keep-all;
 
@@ -107,6 +121,11 @@ export const Title = styled.h2`
 
     span {
         color: ${colors.primary500};
+    }
+
+    ${theme.media.tablet} {
+        font-size: ${fontSize.h3};
+        margin-bottom: 0.75rem;
     }
 
     ${theme.media.mobile} {
@@ -121,7 +140,7 @@ export const Title = styled.h2`
     }
 
     [data-theme="dark"] & {
-        color: #F9FAFB;
+        color: #FAFAFA;
     }
 `;
 
@@ -133,11 +152,19 @@ export const Description = styled.p`
     margin: 0 auto;
     word-break: keep-all;
 
+    ${theme.media.tablet} {
+        font-size: ${fontSize.smaller};
+    }
+
     ${theme.media.mobile} {
         font-size: 0.625rem;
         line-height: 1.5;
         margin: 0;
         text-align: left;
+    }
+
+    [data-theme="dark"] & {
+        color: #EFEFEF;
     }
 `;
 

@@ -9,10 +9,6 @@ export const StyledActivityBlock = styled.div`
     border: 1px solid #E2E2E2;
     border-radius: 1.25rem;
 
-    [data-theme="dark"] & {
-        border-color: rgba(255, 255, 255, 0.1);
-        background-color: #363636;
-    }
     width: 15rem;
     height: 20rem;
     padding: 1.25rem;
@@ -52,7 +48,7 @@ export const StyledActivityBlock = styled.div`
         ${theme.media.mobile} {
             display: block;
             font-size: 0.625rem;
-            color: ${colors.gray600};
+            color: #EFEFEF;
         }
     }
 
@@ -104,6 +100,7 @@ export const StyledActivityBlock = styled.div`
 
         span {
             font-size: ${fontSize.smaller};
+            color: #777777;
             font-family: var(--font-cjk);
             width: 100%;
             word-break: break-word;
@@ -140,6 +137,7 @@ export const StyledActivityBlock = styled.div`
             height: 3.375rem;
             white-space: pre-wrap;
             font-size: ${fontSize.smaller};
+            color: #777777;
             font-family: var(--font-cjk);
             overflow: hidden;
             text-overflow: ellipsis;
@@ -148,6 +146,28 @@ export const StyledActivityBlock = styled.div`
             ${theme.media.tablet} {
                 width: 5.6875rem;
                 font-size:  0.625rem;
+            }
+        }
+    }
+
+    [data-theme="dark"] & {
+        border-color: #444444;
+        background-color: #2A2A2A;
+        color: #EFEFEF;
+
+        .titleSection {
+            h2 {
+                color: ${colors.primary500};
+            }
+
+            span {
+                color: #EFEFEF;
+            }
+        }
+
+        .bottomSection {
+            p {
+                color: #EFEFEF;
             }
         }
     }

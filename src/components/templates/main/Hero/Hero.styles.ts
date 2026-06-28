@@ -14,9 +14,7 @@ export const HeroWrapper = styled.section`
 
     overflow: hidden;
 
-    ${theme.media.mobile} {
-        display: none;
-    }
+
 
     /* 배경 전용 가상 요소 */
     &::before {
@@ -33,47 +31,24 @@ export const HeroWrapper = styled.section`
         background-position: center;
         background-repeat: no-repeat;
         
-        transform: scale(1.8);
+        transform: scale(2.0);
         transform-origin: center center;
 
         /* 배경 투명도 유지*/
         opacity: 0.15;
         z-index: 0;
 
-        ${theme.media.mobile} {
-            transform: scale(1.8);
+        ${theme.media.tablet} {
+            transform: scale(2.3);
         }
     }
     
     ${theme.media.mobile} {
-        height: 25rem;
+        display: none;
     }
 
     ${theme.media.tablet} {
-        height: 35rem;
-    }
-`;
-
-export const HeroBgText = styled.div`
-    display: none;
-
-    ${theme.media.mobile} {
-        display: block;
-        position: absolute;
-        width: 100%;
-        overflow: hidden;
-        opacity: 0.15;
-        z-index: 0;
-        pointer-events: none;
-        user-select: none;
-
-        img {
-            max-width: unset;
-            width: 50rem;
-            position: relative;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+        height: 25rem;
     }
 `;
 
@@ -89,6 +64,11 @@ export const HeroContent = styled.div`
         margin-bottom: 2rem;
         word-break: keep-all;
 
+        ${theme.media.tablet} {
+            font-size: ${fontSize.base};
+            margin-bottom: 0.75rem;
+        }
+
         ${theme.media.mobile} {
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
@@ -100,18 +80,14 @@ export const HeroContent = styled.div`
     }
 
     .team-name {
-        font-size: 3.75rem;
-        font-weight: 700;
-        color: ${colors.primary500};
-
-        ${theme.media.mobile} {
-            font-size: 2.5rem;
-        }
-
         span:not(.font-paperlogy) {
             font-size: ${fontSize.h3};
             color: ${colors.black600};
             margin-right: 1rem;
+
+            ${theme.media.tablet} {
+                font-size: ${fontSize.base};
+            }
 
             ${theme.media.mobile} {
                 font-size: 1.5rem;
@@ -125,9 +101,14 @@ export const HeroContent = styled.div`
 
         .font-paperlogy {
             font-family: var(--font-paperlogy);
+            color: ${colors.primary500};
             font-size: 3.75rem;
             font-weight: 700;
             line-height: 1;
+
+            ${theme.media.tablet} {
+                font-size: ${fontSize.h2};
+            }
 
             ${theme.media.mobile} {
                 font-size: 2.5rem;

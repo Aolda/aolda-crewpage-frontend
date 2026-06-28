@@ -16,9 +16,9 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
         align-items: center;
         width: 13.8rem;
         height: 16.75rem;
+        background-color: #FEFEFE;
 
         padding: 1.5rem 2.25rem;
-        background-color: ${colors.white600};
         border: 1px solid ${colors.border};
         border-radius: 1.25rem;
         gap: 2.25rem;
@@ -32,8 +32,8 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
 
         ${theme.media.mobile} {
             width: 100%;
-            height: auto;
-            padding: 0.875rem 0.75rem;
+            height: 3.6875rem;
+            padding: 0.75rem;
             gap: 0.5rem;
             align-items: flex-start;
             border-radius: 0.5rem;
@@ -44,8 +44,8 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
         ${theme.media.tablet} {
             width: 100%;
             height: 11.8125rem;
-            padding: 0.875rem 0.75rem;
-            gap: 0.75rem;
+            padding: 1.5rem 2.25rem;
+            gap: 1.25rem;
             align-items: center;
         }
 
@@ -54,9 +54,8 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
             width: 100%;
-            overflow: hidden;
 
             .infoSection {
                 display: flex;
@@ -78,6 +77,10 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
 
                     ${theme.media.tablet} { font-size: ${fontSize.base};}
                     ${theme.media.mobile} { font-size: ${fontSize.smaller}; }
+
+                    [data-theme="dark"] & {
+                        color: #EFEFEF;
+                    }
                 }
 
                 span {
@@ -85,6 +88,10 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
 
                     ${theme.media.tablet} { font-size: ${fontSize.smaller};}
                     ${theme.media.mobile} { font-size: 0.625rem; }
+
+                    [data-theme="dark"] & {
+                        color: #EFEFEF;
+                    }
                 }
             }
 
@@ -105,6 +112,10 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
                 ${theme.media.mobile} {
                     font-size: 0.625rem;
                     font-weight: 400;
+                }
+
+                [data-theme="dark"] & {
+                    color: #EFEFEF;
                 }
             }
         }
@@ -208,7 +219,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
     `}
 
     [data-theme="dark"] & {
-        background-color: #161B22;
+        background-color: #2A2A2A;
         border-color: rgba(255, 255, 255, 0.1);
     }
 
@@ -229,7 +240,7 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
     .nameInfo {
         display: inline-flex;
         align-items: center;
-        gap: 0.75rem;
+        gap: 0.5rem;
         h2 {
             font-size: ${(props) => props.$isCrewpage ? fontSize.h3 : fontSize.body1};
         }

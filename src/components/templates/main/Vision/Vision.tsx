@@ -36,6 +36,10 @@ const Vision = () => {
         >
             <S.VisionWrapper>
                 <S.GlareEffect />
+                <S.RectangleWrapper>
+                    <S.Rectangle1 />
+                    <S.Rectangle2 />
+                </S.RectangleWrapper>
                 <S.CardGrid>
                     {VISION_DATA.map((item) => (
                         <VisionCard key={item.id} src={item.icon} title={item.title} description={item.description} />

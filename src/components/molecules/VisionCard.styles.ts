@@ -6,9 +6,9 @@ export const StyledVisionCard = styled.div `
     display: flex;
     width: 24rem;
     height: 25rem;
-    border: 2px solid ${colors.border};;
+    border: 2px solid ${colors.border};
     border-radius: 1rem;
-    background-color: white;
+    background-color: #FEFEFE;
 
     justify-content: center;
     align-items: center;
@@ -22,27 +22,29 @@ export const StyledVisionCard = styled.div `
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        border: 1px solid ${colors.border};
         gap: 1rem;
         padding: 0.75rem;
         width: 100%;
-        height: auto;
-        min-height: 4.5rem;
+        height: 4.5rem;
     }
 
     ${theme.media.tablet} {
+        border: 1px solid ${colors.border};
+        border-radius: 0.75rem;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         width: 100%;
         height: auto;
-        padding: 3rem 1rem;
+        padding: 1.5rem 1rem;
         gap: 1rem;
         margin: 0;
     }
 
     [data-theme="dark"] & {
-        background-color: #363636;
-        border-color: rgba(255, 255, 255, 0.1);
+        background-color: #2A2A2A;
+        border-color: #444444;
     }
 
     img {
@@ -90,7 +92,7 @@ export const TextContainer = styled.section`
         }
 
         ${theme.media.tablet} {
-            font-size: 1.25rem;
+            font-size: ${fontSize.base};
         }
     }
 
@@ -110,7 +112,7 @@ export const TextContainer = styled.section`
         }
 
         [data-theme="dark"] & {
-            color: #9CA3AF;
+            color: #EFEFEF;
         }
     }
 `;

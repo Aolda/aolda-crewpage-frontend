@@ -1,6 +1,6 @@
 // /src/components/templates/main/Vision/Vision.style.ts
 import styled from 'styled-components';
-import { fontSize, colors, theme } from '@/styles/theme';
+import { theme } from '@/styles/theme';
 
 export const VisionWrapper = styled.div`
     position: relative;
@@ -23,6 +23,58 @@ export const VisionWrapper = styled.div`
     }
 `;
 
+export const RectangleWrapper = styled.div`
+    display: none;
+
+    ${theme.media.mobile} {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        top: 1rem;
+    }
+`;
+
+const rectangleBase = styled.div`
+    display: none;
+
+    ${theme.media.mobile} {
+        display: block;
+        position: relative;
+    }
+`;
+
+export const Rectangle1 = styled.div`
+    ${rectangleBase}
+
+    content: '';
+    position: absolute;
+    width: clamp(13.875rem, 59.2vw, 27rem);
+    height: 11.6875rem;
+    left: -6%;
+    top: -1rem;
+    background: linear-gradient(180deg, #A3D2F5 0%, #A3D2F54D 100%);
+    filter: blur(0.25rem);
+    border-radius: 0 5.84375rem 5.84375rem 0;
+    z-index: 0;
+    pointer-events: none;
+`;
+
+export const Rectangle2 = styled.div`
+    ${rectangleBase}
+
+    content: '';
+    position: absolute;
+    width: clamp(19.5625rem, 83.5vw, 38rem);
+    height: 11.6875rem;
+    left: 15%;
+    top: 3.5rem;
+    background: linear-gradient(180deg, #48A4EA 0%, #48A4EA4D 100%);
+    filter: blur(0.25rem);
+    border-radius: 5.84375rem 0 0 5.84375rem;
+    z-index: 1;
+    pointer-events: none;
+`;
+
 export const GlareEffect = styled.div`
     position: absolute;
     top: 50%;
@@ -42,10 +94,13 @@ export const GlareEffect = styled.div`
     z-index: 0;
     pointer-events: none;
 
+    ${theme.media.tablet} {
+        width: 15rem;
+        height: 15rem;
+    }
+
     ${theme.media.mobile} {
-        width: 18rem;
-        height: 18rem;
-        filter: blur(5rem);
+        display: none;
     }
 `;
 

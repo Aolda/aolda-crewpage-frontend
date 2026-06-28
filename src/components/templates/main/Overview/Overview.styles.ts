@@ -3,41 +3,45 @@ import styled from 'styled-components';
 import { colors, fontSize, theme } from '@/styles/theme';
 
 export const SinceText = styled.div`
-    font-size: 1rem;
-    font-weight: normal;
-    color: #9CA3AF;
+    font-size: ${fontSize.base};
+    font-weight: 300;
+    color: #777777;
     margin-bottom: 0.75rem;
+
+    ${theme.media.tablet} {
+        font-size: ${fontSize.smaller};
+        margin-bottom: 0.5rem;
+    }
 
     ${theme.media.mobile} {
         font-size: 0.875rem;
         margin-bottom: 0;
+    }
+
+    [data-theme="dark"] & {
+        color: #EFEFEF;
     }
 `;
 
 export const OverviewWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    padding-top: 2rem;
     align-items: center;
     width: 100%;
+
+    ${theme.media.mobile} {
+        margin-top: 5.5rem;
+    }
 `;
 
 /* 상단: 구체 및 배경 텍스트 영역 */
 export const SphereContainer = styled.div`
     position: relative;
     width: 100%;
-    height: 31.25rem; /* 500px */
+    // height: 31.25rem; /* 500px */
     display: flex;
     justify-content: center;
     align-items: center;
-
-    ${theme.media.mobile} {
-        height: 20rem;
-    }
-
-    ${theme.media.tablet} {
-        height: 26rem;
-    }
 `;
 
 /* 모바일 전용: 배경 글씨 4개 세로 배열 */
@@ -98,7 +102,7 @@ export const BgText = styled.div`
     }
 
     img {
-        max-width: unset;
+        min-width: 66.5rem;
         position: relative;
         left: 50%;
         transform: translateX(-50%);
@@ -114,8 +118,10 @@ export const GlareEffect = styled.div`
     z-index: 1;
 
     ${theme.media.tablet} {
-        width: 30rem;
-        height: 15rem;
+        width: 20rem;
+        height: 10rem;
+        background: rgba(26, 142, 229, 0.3);
+        filter: blur(4rem);
     }
 
     ${theme.media.mobile} {
@@ -136,7 +142,8 @@ export const ShadowWrapper = styled.div`
     height: auto;
     
     ${theme.media.tablet} {
-        width: 15rem;
+        top: 75%;
+        width: 10rem;
     }
     
     ${theme.media.mobile} {
@@ -165,8 +172,8 @@ export const SphereImage = styled.div`
     }
 
     ${theme.media.tablet} {
-        width: 18rem;
-        height: 18rem;
+        width: 12rem;
+        height: 12rem;
     }
 
     img {
@@ -185,13 +192,13 @@ export const MobileOverviewHeader = styled.div`
         display: flex;
         flex-direction: column;
         width: 100%;
-        padding-top: 1.5rem;
+        padding-top: 3.5rem;
         margin-bottom: 2rem;
 
         h2 {
             font-size: 1.25rem;
             font-weight: 700;
-            line-height: 1.3;
+            line-height: 120%;
             color: #111827;
             word-break: keep-all;
             margin-bottom: 0.75rem;
@@ -199,30 +206,66 @@ export const MobileOverviewHeader = styled.div`
             span { color: ${colors.primary500}; }
 
             [data-theme="dark"] & {
-                color: #F9FAFB;
+                color: #FAFAFA;
             }
         }
 
         p {
             font-size: 0.625rem;
-            line-height: 1.5;
             color: ${colors.gray500};
             word-break: keep-all;
+
+            [data-theme="dark"] & {
+                color: #FAFAFA;
+            }
         }
     }
 `;
 
 /* 중앙: 연결 점선 */
 export const DashedLine = styled.div`
-    background: url("/images/main/dashedLine.png");
-    width: 1rem;
-    height: 11rem;
-    margin-bottom: 2rem;
-    background-repeat: no-repeat;
-    background-size: contain;
+    position: relative;
+    width: 0.1875rem;
+    height: 10rem;
+    margin: 0.5rem 0 2.25rem;
 
-    mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, #76BBEF 0%, rgba(118, 187, 239, 0.2) 100%);
+        mask-image: repeating-linear-gradient(
+            to bottom,
+            #000 0,
+            #000 0.375rem,
+            transparent 0.375rem,
+            transparent 0.75rem
+        );
+        -webkit-mask-image: repeating-linear-gradient(
+            to bottom,
+            #000 0,
+            #000 0.375rem,
+            transparent 0.375rem,
+            transparent 0.75rem
+        );
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 1rem;
+        height: 1rem;
+        background: #76BBEF;
+        border-radius: 50%;
+        transform: translate(-50%, 50%);
+    }
+
+    ${theme.media.tablet} {
+        height: 5.5rem;
+        margin: 0.25rem 0 1.5rem;
+    }
 
     ${theme.media.mobile} {
         display: none;
@@ -234,7 +277,6 @@ export const InfoCard = styled.div`
     width: 100%;
     height: 23.5rem;
     max-width: 75rem;
-    background: #FFFFFF;
     border: 2px solid rgba(226, 226, 226, 1); /* 1px */
     border-radius: 1.5rem;
     padding: 3.75rem;
@@ -254,7 +296,7 @@ export const InfoCard = styled.div`
         border: none;
         flex-direction: column;
         height: auto;
-        padding: 0.75rem 0.75rem;
+        padding: 2.5rem 3.75rem;
         text-align: center;
 
         br.pc-only {
@@ -282,8 +324,7 @@ export const InfoCard = styled.div`
     }
 
     [data-theme="dark"] & {
-        background: #363636;
-        border-color: rgba(255, 255, 255, 0.1);
+        border-color: #444444;
 
         ${theme.media.mobile} {
             background: transparent;
@@ -302,26 +343,32 @@ export const CardText = styled.div`
     h3 {
         font-size: ${fontSize.h2};
         font-weight: 700;
-        line-height: 1.4;
+        line-height: 1.2;
         color: #111827;
         word-break: keep-all;
     }
-    p {
+    p.not-mobile {
+        display: block
         font-size: ${fontSize.base};
-        line-height: 1.6;
+        line-height: 1.5;
         color: ${colors.gray500};
-        word-break: keep-all;
     }
+
+    p.mobile-only {
+        display: none;
+    }
+
     ${theme.media.tablet} {
         gap: 0.75rem;
 
         h3 {
-            font-size: ${fontSize.h2};
+            font-size: ${fontSize.h3};
         }
-        p {
-            font-size: ${fontSize.base};
+        p.not-mobile {
+            font-size: ${fontSize.smaller};
         }
     }
+
     ${theme.media.mobile} {
         gap: 0.75rem;
         text-align: left;
@@ -329,17 +376,24 @@ export const CardText = styled.div`
         h3 {
             font-size: ${fontSize.body1};
         }
-        p {
+
+        p.not-mobile {
+            display: none;
+        }
+
+        p.mobile-only {
+            display: block;
             font-size: 0.625rem;
+            color: ${colors.gray500};
         }
     }
 
     [data-theme="dark"] & {
         h3 {
-            color: #F9FAFB;
+            color: #FAFAFA;
         }
         p {
-            color: #9CA3AF;
+            color: #EFEFEF;
         }
     }
 `;

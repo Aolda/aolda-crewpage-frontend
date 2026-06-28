@@ -58,8 +58,9 @@ export const SelectHeader = styled.div<{ $isSelected?: boolean }>`
 `;
 
 export const LabelText = styled.span<{ $isSelected?: boolean }>`
-    font-size: ${fontSize.body2};
-    color: #555555;
+    font-size: ${fontSize.base};
+    font-weight: 700;
+    color: #777777;
     pointer-events: none;
 
     ${theme.media.tablet} {

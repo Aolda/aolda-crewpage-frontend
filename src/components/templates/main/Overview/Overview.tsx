@@ -100,12 +100,19 @@ const Overview = () => {
                 {/* 하단 카드 영역 */}
                 <S.InfoCard>
                     <S.CardText>
-                        <h3>아올다는<br className="pc-only" />목표를 향한<br className="mobile-only" />
+                        <h3>아올다는<br className="pc-only" />목표를 향한 <br className="mobile-only" />
                         <span>도전 속 새로운 배움</span>을 위해<br />나아가고 있습니다</h3>
-                        <p>
+                        <p className="not-mobile">
                             <span>아올다</span>는 클라우드 개발과 운영 중 발생하는 문제들을 해결하고,<br />
                             불편한 기능과 환경을 새롭게 개발/개선하는 과정을 통해<br />
                             팀원 개개인의 목표를 향한 역량을 기르고 배움을 얻고자 노력합니다.
+                        </p>
+                        <p className="mobile-only">
+                            아올다는 클라우드 인프라에 관심있는 아주대학교 학생들이 단순한 <br />
+                            호기심에서 시작하여 현재까지 아올다는 클라우드 개발과 운영 중 <br />
+                            발생하는 문제들을 해결하고, 불편한 기능과 환경을 새롭게 개발/개선하는 <br />
+                            과정을 통해 팀원 개개인의 목표를 향한 역량을 기르고 배움을 얻고자 <br />
+                            노력합니다.
                         </p>
                     </S.CardText>
                     <S.CardIllustration>

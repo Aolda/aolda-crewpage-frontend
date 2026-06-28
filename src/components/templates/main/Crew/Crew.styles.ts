@@ -7,6 +7,15 @@ export const CrewSection = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
+    gap: 2.25rem;
+
+    ${theme.media.tablet} {
+        gap: 1.5rem;
+    }
+
+    ${theme.media.mobile} {
+        gap: 0rem;
+    }
 `;
 
 export const CrewGridWrapper = styled.div`
@@ -14,41 +23,77 @@ export const CrewGridWrapper = styled.div`
 
     ${theme.media.mobile} {
         position: relative;
-        overflow: hidden;
-        padding: 1.5rem 1rem 2rem;
+        padding: 1.25rem 1rem;
         width: calc(100% + 2rem);
-        margin-left: -1rem;
-
-        &::before {
-            content: '';
-            position: absolute;
-            width: 11.6875rem;
-            height: 19.5625rem;
-            left: 0;
-            top: 0;
-            background: linear-gradient(270deg, #48A4EA 0%, rgba(72, 164, 234, 0.3) 100%);
-            filter: blur(0.25rem);
-            border-radius: 5.84375rem 5.84375rem 0 0;
-            transform: matrix(0, -1, -1, 0, 0, 0);
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        &::after {
-            content: '';
-            position: absolute;
-            width: 11.6875rem;
-            height: 19.5625rem;
-            right: 7.875rem;
-            top: 8.5rem;
-            background: linear-gradient(270deg, #1A8EE5 0%, rgba(26, 142, 229, 0.3) 100%);
-            filter: blur(0.25rem);
-            border-radius: 5.84375rem 5.84375rem 0 0;
-            transform: rotate(-90deg);
-            z-index: 0;
-            pointer-events: none;
-        }
     }
+`;
+
+export const RectangleWrapper = styled.div`
+    display: none;
+
+    ${theme.media.mobile} {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        top: 1rem;
+    }
+`;
+
+const rectangleBase = styled.div`
+    display: none;
+
+    ${theme.media.mobile} {
+        display: block;
+        position: relative;
+    }
+`;
+
+export const Rectangle1 = styled.div`
+    ${rectangleBase}
+
+    content: '';
+    position: absolute;
+    width: clamp(13.875rem, 59.2vw, 27rem);
+    height: 11.6875rem;
+    left: 40%;
+    top: -1rem;
+    background: linear-gradient(180deg, #A3D2F5 0%, #A3D2F54D 100%);
+    filter: blur(0.25rem);
+    border-radius: 5.84375rem 0 0 5.84375rem;
+    z-index: 0;
+    pointer-events: none;
+`;
+
+export const Rectangle2 = styled.div`
+    ${rectangleBase}
+
+    content: '';
+    position: absolute;
+    width: clamp(19.5625rem, 83.5vw, 38rem);
+    height: 11.6875rem;
+    left: -6%;
+    top: 5rem;
+    background: linear-gradient(180deg, #48A4EA 0%, #48A4EA4D 100%);
+    filter: blur(0.25rem);
+    border-radius: 0 5.84375rem 5.84375rem 0;
+    z-index: 1;
+    pointer-events: none;
+`;
+
+export const Rectangle3 = styled.div`
+    ${rectangleBase}
+
+    content: '';
+    position: absolute;
+    width: clamp(19.5625rem, 83.5vw, 38rem);
+    height: 11.6875rem;
+    left: 15%;
+    top: 10.5rem;
+    background: linear-gradient(180deg, #1A8EE5 0%, #1A8EE54D 100%);
+    filter: blur(0.25rem);
+    border-radius: 5.84375rem 0 0 5.84375rem;
+    z-index: 1;
+    pointer-events: none;
 `;
 
 export const CrewMoreLink = styled.a`
@@ -58,15 +103,10 @@ export const CrewMoreLink = styled.a`
         display: inline-flex;
         align-items: center;
         gap: 0.375rem;
-        margin-top: 1.5rem;
         font-size: ${fontSize.smaller};
         font-weight: 600;
         color: ${colors.primary500};
         text-decoration: none;
-
-        &::after {
-            content: '→';
-        }
     }
 `;
 
@@ -74,17 +114,14 @@ export const CrewMoreLink = styled.a`
 export const GenerationPagination = styled.div`
     display: flex;
     justify-content: center;
-    margin-bottom: 3rem;
     width: 100%;
     max-width: 75rem;
 
     ${theme.media.mobile} {
-        margin-bottom: 2rem;
         /* 기수가 많아질 경우를 대비해 가로 스크롤 허용 */
         overflow-x: auto;
         white-space: nowrap;
         justify-content: center;
-        padding-bottom: 0.5rem;
         
         &::-webkit-scrollbar { display: none; }
     }
@@ -107,6 +144,11 @@ export const GenButton = styled.button<{ $isActive: boolean }>`
     cursor: pointer;
     transition: all 0.2s ease;
 
+    ${theme.media.tablet} {
+        padding: 0.5rem 1rem;
+        font-size: 0.625rem;
+    }
+
     ${theme.media.mobile} {
         font-size: ${fontSize.smaller};
         padding: 0.5rem 1rem; // 모바일에서 터치 영역 확보 및 간격 조정
@@ -117,7 +159,7 @@ export const GenButton = styled.button<{ $isActive: boolean }>`
     }
 
     [data-theme="dark"] & {
-        color: ${(props) => (props.$isActive ? colors.primary500 : '#6B7280')};
+        color: ${(props) => (props.$isActive ? colors.primary500 : '#EFEFEF')};
     }
 `;
 
@@ -137,28 +179,13 @@ export const CrewGrid = styled.div`
         padding: 0;
         z-index: 1;
 
-        &::before {
-            content: '';
-            position: absolute;
-            width: 11.6875rem;
-            height: 13.875rem;
-            left: 9.5625rem;
-            top: -12.125rem;
-            background: linear-gradient(90deg, #A3D2F5 0%, rgba(163, 210, 245, 0.3) 100%);
-            filter: blur(0.25rem);
-            border-radius: 5.84375rem 5.84375rem 0 0;
-            transform: matrix(0, 1, 1, 0, 0, 0);
-            z-index: 0;
-            pointer-events: none;
-        }
-
         & > :nth-child(n + 11) {
             display: none;
         }
 
         & > * {
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
     }
 

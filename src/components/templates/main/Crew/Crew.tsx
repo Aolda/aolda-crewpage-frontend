@@ -28,8 +28,13 @@ const Crew = ({ crews, onCrewClick }: CrewProps) => {
         return gens.sort((a, b) => a - b);
     }, [crews]);
 
-    // 초기값 설정 (기수가 없을 경우를 대비한 방어 로직 추가)
-    const [activeGen, setActiveGen] = useState<number>(generations[0] || 0);
+    const defaultGen = useMemo(() => {
+        return generations.includes(0) ? 0 : (generations[0] || 0);
+    }, [generations]);
+
+    // 초기값 설정 (피그마 기준 0기를 우선 노출)
+    const [selectedGen, setSelectedGen] = useState<number | null>(null);
+    const activeGen = selectedGen !== null && generations.includes(selectedGen) ? selectedGen : defaultGen;
 
     // 3. 현재 기수의 크루들을 직책순으로 정렬하여 필터링
     const displayCrews = useMemo(() => {
@@ -62,7 +67,7 @@ const Crew = ({ crews, onCrewClick }: CrewProps) => {
                         <S.GenButton
                             key={gen}
                             $isActive={activeGen === gen}
-                            onClick={() => setActiveGen(gen)}
+                            onClick={() => setSelectedGen(gen)}
                         >
                             {gen}기
                         </S.GenButton>
@@ -71,6 +76,12 @@ const Crew = ({ crews, onCrewClick }: CrewProps) => {
 
                 {/* 크루 그리드 (모바일: 배경 이미지 래퍼) */}
                 <S.CrewGridWrapper>
+                    <S.RectangleWrapper>
+                        <S.Rectangle1 />
+                        <S.Rectangle2 />
+                        <S.Rectangle3 />
+                    </S.RectangleWrapper>
+
                     <S.CrewGrid>
                         {displayCrews.map((member) => (
                             <CrewBlock
@@ -81,6 +92,7 @@ const Crew = ({ crews, onCrewClick }: CrewProps) => {
                             />
                         ))}
                     </S.CrewGrid>
+
                 </S.CrewGridWrapper>
 
                 <Link href="/crew" passHref legacyBehavior>

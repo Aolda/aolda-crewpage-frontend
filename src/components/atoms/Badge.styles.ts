@@ -41,7 +41,7 @@ export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: Activ
                 case 'ACTIVITY_STATUS/COMPLETED':
                     return '#10B981';
                 default:
-                    return '#E5E7EB';
+                    return '#EFEFEF';
             }
         }};
         color: white;

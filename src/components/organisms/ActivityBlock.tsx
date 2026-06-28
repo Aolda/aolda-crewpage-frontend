@@ -29,11 +29,11 @@ const ActivityBlock: React.FC<ActivityBlockProps> = ({
                 </section>
 			    <section className="titleSection">
                     <h2>{title}</h2>
-			        <span style={{"color":"#777777"}}>{subtitle}</span>
+			        <span>{subtitle}</span>
                 </section>
             </section>
 			<section className="bottomSection">
-                <p style={{"color":"#777777"}}>{description}</p>
+                <p>{description}</p>
             </section>
             <span className="mobileStatus">{ACTIVITY_STATUS[status]}</span>
 		</StyledActivityBlock>

@@ -1,6 +1,5 @@
 // src/components/organisms/Header.styles.ts
 import styled from "styled-components"
-import { pxToRem } from "@/styles/utils";
 import { fontSize, colors, theme } from "@/styles/theme";
 
 
@@ -24,7 +23,7 @@ export const StyledHeader = styled.header`
 
     [data-theme="dark"] & {
         background-color: #2A2A2A;
-        border-color: rgba(255, 255, 255, 0.12);
+        border-color: #444444;
     }
 
     box-sizing: border-box;
@@ -106,20 +105,36 @@ export const StyledHeader = styled.header`
                 background-color: ${colors.gray500}; // 회색 색상 적용 (테마 변수 활용)
                 border-radius: 2px; // 끝부분을 약간 둥글게 처리하여 부드러운 느낌
                 transition: all 0.3s ease-in-out; // 추후 애니메이션을 위한 준비
+
+                [data-theme="dark"] & {
+                    background-color: #EFEFEF;
+                }
             }
 
             &.open {
                 span:nth-child(1) {
                     transform: translateY(5px) rotate(45deg); // 1번 막대를 아래로 밀고 회전
                     background-color: ${colors.gray500}; // 강조를 위해 색상 변경 가능
+
+                    [data-theme="dark"] & {
+                        background-color: #EFEFEF;
+                    }
                 }
                 span:nth-child(2) {
                     opacity: 0; // 중간 막대 숨김
                     transform: translateX(-10px);
+
+                    [data-theme="dark"] & {
+                        background-color: #EFEFEF;
+                    }
                 }
                 span:nth-child(3) {
                     transform: translateY(-5px) rotate(-45deg); // 3번 막대를 위로 밀고 회전
                     background-color: ${colors.gray500};
+
+                    [data-theme="dark"] & {
+                        background-color: #EFEFEF;
+                    }
                 }
             }
         }
@@ -134,6 +149,10 @@ export const NavLink = styled.span<{ $isActive: boolean }>`
     font-weight: 400;
 
     color: ${props => props.$isActive ? colors.primary500 : colors.gray500};
+
+    [data-theme="dark"] & {
+        color: #EFEFEF;
+    }
 
     text-decoration: none;
     transition: color 0.2s ease;
@@ -196,6 +215,10 @@ export const MobileMenuContainer = styled.div<{ $isOpen: boolean }>`
             color: ${colors.gray500};
             padding: 0.75rem 0;
             border-bottom: 1px solid ${colors.border};
+
+            [data-theme="dark"] & {
+                color: #EFEFEF;
+            }
 
             &.active {
                 color: ${colors.primary500};
