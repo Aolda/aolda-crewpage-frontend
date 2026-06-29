@@ -1,7 +1,7 @@
 // /src/components/templates/crew/CrewPageTemplate.tsx
 'use client';
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useSyncExternalStore } from 'react';
 import { CrewMember, DepartmentMap } from '@/types/crew';
 import * as S from './CrewPageTemplate.styles';
 import CrewBlock from '@/components/organisms/CrewBlock';
@@ -10,9 +10,20 @@ import Select from '@/components/molecules/Select';
 import Pagination from '@/components/molecules/Pagination';
 
 const ITEMS_PER_PAGE = 8;
+const MOBILE_QUERY = '(max-width: 743px)';
 
 // 필터 옵션에 표시하지 않을 더미 코드
 const HIDDEN_DEPARTMENT_CODES = ['DUMMY_TEAM_NOT_FETCHED_YET'];
+
+const subscribeToMobileQuery = (callback: () => void) => {
+    const mediaQuery = window.matchMedia(MOBILE_QUERY);
+    mediaQuery.addEventListener('change', callback);
+
+    return () => mediaQuery.removeEventListener('change', callback);
+};
+
+const getMobileSnapshot = () => window.matchMedia(MOBILE_QUERY).matches;
+const getServerMobileSnapshot = () => false;
 
 interface CrewPageTemplateProps {
     crewList: CrewMember[];                 // 실제 서버나 Mock에서 올 데이터
@@ -32,6 +43,21 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
         department: "",
     });
     const [currentPage, setCurrentPage] = useState(1);
+    const isMobile = useSyncExternalStore(
+        subscribeToMobileQuery,
+        getMobileSnapshot,
+        getServerMobileSnapshot
+    );
+
+    const handleSearchChange = (value: string) => {
+        setSearchValue(value);
+        setCurrentPage(1);
+    };
+
+    const handleFilterChange = (key: keyof typeof filters, value: string) => {
+        setFilters(prev => ({ ...prev, [key]: value }));
+        setCurrentPage(1);
+    };
 
     // 기수 옵션
     const genOptions = useMemo(() =>
@@ -68,21 +94,21 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
         }).sort((a, b) => a.crewId - b.crewId); // position 대신 crewId로 정렬
     }, [crewList, departments, searchValue, filters]);
 
-    // 필터 or 검색어 변경 시 1페이지로 리셋
-    useEffect(() => {
-        setCurrentPage(1);
-    }, [searchValue, filters]);
-
     // 현재 페이지에 맞게 슬라이싱
     const displayedCrew = useMemo(() => {
+        if (isMobile) {
+            return filteredCrew;
+        }
+
         const start = (currentPage - 1) * ITEMS_PER_PAGE;
         return filteredCrew.slice(start, start + ITEMS_PER_PAGE);
-    }, [filteredCrew, currentPage]);
+    }, [filteredCrew, currentPage, isMobile]);
 
     //필터링 초기화
     const resetFilters = () => {
         setFilters({ generation: "", role: "", department: "" });
         setSearchValue("");
+        setCurrentPage(1);
     };
 
     return (
@@ -92,7 +118,7 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
                     <h1>아올다와 함께 성장하는<br />핵심 인재들</h1>
                     <SearchBox 
                         value={searchValue}
-                        onChange={(e) => {setSearchValue(e.target.value)}}
+                        onChange={(e) => handleSearchChange(e.target.value)}
                         placeholder="크루를 검색해 보세요."
                     />
                 </S.HeaderContent>
@@ -111,19 +137,22 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
                         label="generation" 
                         options={genOptions} 
                         selectedValue={filters.generation}
-                        onSelectChange={(val) => setFilters(p => ({ ...p, generation: val }))} 
+                        clearOptionLabel="전체 기수"
+                        onSelectChange={(val) => handleFilterChange('generation', val)}
                     />
                     <Select 
                         label="role" 
                         options={roleOptions}
                         selectedValue={filters.role}
-                        onSelectChange={(val) => setFilters(p => ({ ...p, role: val }))} 
+                        clearOptionLabel="전체 역할"
+                        onSelectChange={(val) => handleFilterChange('role', val)}
                     />
                     <Select 
                         label="department" 
                         options={deptOptions} 
                         selectedValue={filters.department}
-                        onSelectChange={(val) => setFilters(p => ({ ...p, department: val }))} 
+                        clearOptionLabel="전체 학과"
+                        onSelectChange={(val) => handleFilterChange('department', val)}
                     />
                 </S.FilterBar>
 
@@ -142,12 +171,14 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
                     )}
                 </S.CrewList>
             </S.ContentContainer>
-            <Pagination
-                current={currentPage}
-                total={filteredCrew.length}
-                pageSize={ITEMS_PER_PAGE}
-                onPageChange={setCurrentPage}
-            />
+            {!isMobile && (
+                <Pagination
+                    current={currentPage}
+                    total={filteredCrew.length}
+                    pageSize={ITEMS_PER_PAGE}
+                    onPageChange={setCurrentPage}
+                />
+            )}
         </>
     );
 };
