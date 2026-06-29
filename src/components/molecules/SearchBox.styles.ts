@@ -8,13 +8,13 @@ export const StyledSearchBox = styled.section`
     width: 29.6875rem;
 
     ${theme.media.tablet} {
-        width: 20.5625rem;
+        width: 22.5rem;
         height: 3rem;
     }
 
     ${theme.media.mobile} {
         width: 100%;
-        max-width: 16.25rem;
+        max-width: 30rem;
         height: 2rem;
         padding: 0 0.75rem;
     }
@@ -31,8 +31,8 @@ export const StyledSearchBox = styled.section`
     cursor: text;
 
     [data-theme="dark"] & {
-        background-color: #363636;
-        border-color: rgba(255, 255, 255, 0.2);
+        background-color: #2A2A2A;
+        border-color: #444444;
     }
 
 
@@ -48,6 +48,10 @@ export const StyledSearchBox = styled.section`
             color: ${colors.gray600};
             font-size: ${fontSize.base};
             font-weight: 400;
+
+            [data-theme="dark"] & {
+                color: #EFEFEF;
+            }
         }
 
         ${theme.media.mobile} {

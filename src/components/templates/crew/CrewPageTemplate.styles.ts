@@ -5,7 +5,7 @@ export const HeaderBackground = styled.header`
     width: 100%;
     height: 30rem;
     background:
-        url('/images/crew/crewbookBG.png') right bottom / contain no-repeat,
+        url('/images/crew/crewbookBG.png') right bottom / auto 108% no-repeat,
         linear-gradient(to top right, #F1F7FC 0%, #FCFFFF 100%);
     display: flex;
     align-items: end;
@@ -34,13 +34,13 @@ export const HeaderBackground = styled.header`
 
     [data-theme="dark"] & {
         background:
-            url('/images/crew/crewbookBG.png') right bottom / contain no-repeat,
+            url('/images/crew/crewbookBG.png') right bottom / auto 108% no-repeat,
             linear-gradient(to top, #32383D 0%, #3B3F3F 100%);
     }
 
     ${theme.media.mobile} {
         [data-theme="dark"] & {
-            background: linear-gradient(108deg, #1a3a4f 0%, #1e2d4a 100%);
+            background: #2A2A2A;
         }
     }
 `;
@@ -67,7 +67,7 @@ export const HeaderContent = styled.div`
         }
 
         [data-theme="dark"] & {
-            color: #F9FAFB;
+            color: ${colors.primary500};
         }
     }
 `;
@@ -96,8 +96,11 @@ export const FilterBar = styled.section`
     margin-bottom: 2rem;
     align-items: center;
 
+    ${theme.media.tablet} {
+        margin-bottom: 1.5rem;
+    }
+
     ${theme.media.mobile} {
-        overflow-x: auto;
         white-space: nowrap;
         padding-bottom: 11rem;
         margin-bottom: -10rem;
@@ -111,9 +114,9 @@ export const AllButton = styled.button<{ $isActive: boolean }>`
     height: 2.9375rem;
     border-radius: 0.5rem;
     border: none;
-    background-color: ${props => props.$isActive ? '#181818' : '#E5E7EB'};
-    color: ${props => props.$isActive ? 'white' : '#6B7280'};
-    font-weight: 600;
+    background-color: ${props => props.$isActive ? '#181818' : '#444444'};
+    color: ${props => props.$isActive ? 'white' : '#777777'};
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.2s ease;
 
@@ -132,8 +135,8 @@ export const AllButton = styled.button<{ $isActive: boolean }>`
     }
 
     [data-theme="dark"] & {
-        background-color: ${props => props.$isActive ? '#F9FAFB' : '#444444'};
-        color: ${props => props.$isActive ? '#111827' : '#9CA3AF'};
+        background-color: ${props => props.$isActive ? '#181818' : '#444444'};
+        color: ${props => props.$isActive ? '#FFFFFF' : '#9CA3AF'};
     }
 `;
 

@@ -48,7 +48,7 @@ export const StyledActivityBlock = styled.div`
         ${theme.media.mobile} {
             display: block;
             font-size: 0.625rem;
-            color: #EFEFEF;
+            color: #777777;
         }
     }
 

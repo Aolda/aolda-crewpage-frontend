@@ -17,13 +17,14 @@ export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: Activ
     white-space: nowrap;
 
     ${theme.media.tablet} {
-        height: 1.625rem;
-        font-size: ${fontSize.smaller};
+        height: 1.75rem;
+        font-size: 0.625rem;
     }
 
     ${theme.media.mobile} {
         height: auto;
         font-size: 0.625rem;
+        font-weight: 400;
         padding: 0;
         border: none;
     }
@@ -60,6 +61,11 @@ export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: Activ
         font-weight: 500;
         border: 1px solid #EFEFEF;
         color: ${colors.gray600};
+
+        [data-theme="dark"] & {
+            border-color: #444444;
+            color: #EFEFEF;
+}
     `}
 
     /* 3. Transparent Variant (반투명 배경 - [A-5] 프로젝트 리스트) */

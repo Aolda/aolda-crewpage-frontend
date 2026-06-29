@@ -210,7 +210,7 @@ export const MobileMenuContainer = styled.div<{ $isOpen: boolean }>`
         }
 
         .mobileNavLink {
-            font-size: 1.25rem;
+            font-size: ${fontSize.base};
             font-weight: 500;
             color: ${colors.gray500};
             padding: 0.75rem 0;
@@ -222,7 +222,13 @@ export const MobileMenuContainer = styled.div<{ $isOpen: boolean }>`
 
             &.active {
                 color: ${colors.primary500};
+                border-bottom: 1px solid ${colors.primary500};
                 font-weight: 700;
+            }
+
+            &:hover {
+                color:${colors.primary600};
+                border-bottom: 1px solid ${colors.primary600};
             }
         }
     }

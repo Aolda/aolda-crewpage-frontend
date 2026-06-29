@@ -33,6 +33,11 @@ export const SelectHeader = styled.div<{ $isSelected?: boolean }>`
     background-color: white;
     cursor: pointer;
 
+    [data-theme="dark"] & {
+        background-color: #2A2A2A;
+        border-color: #777777;
+    }
+
     ${theme.media.tablet} {
         min-width: 4.9375rem;
         width: auto;
@@ -48,12 +53,13 @@ export const SelectHeader = styled.div<{ $isSelected?: boolean }>`
         padding: 0.4375rem 0.875rem;
         border-radius: 0.375rem;
         background-color: ${props => props.$isSelected ? '#E8F4FC' : 'white'};
-        border-color: ${props => props.$isSelected ? colors.primary500 : '#777777'};
-    }
+        border-color: ${props => props.$isSelected ? colors.primary500 : '#EFEFEF'};
 
-    [data-theme="dark"] & {
-        background-color: #363636;
-        border-color: rgba(255, 255, 255, 0.2);
+        [data-theme="dark"] & {
+            background-color: ${props => props.$isSelected ? '#E8F4FC' : 'transparent'};
+            color: ${props => props.$isSelected ? colors.primary500 : '#EFEFEF'};
+            border-color: ${props => props.$isSelected ? colors.primary500 : '#444444'};
+        }
     }
 `;
 
@@ -70,25 +76,27 @@ export const LabelText = styled.span<{ $isSelected?: boolean }>`
 
     ${theme.media.mobile} {
         font-size: ${fontSize.smaller};
-        color: ${props => props.$isSelected ? colors.primary500 : '#555555'};
-    }
+        font-weight: 400;
+        color: ${props => props.$isSelected ? colors.primary500 : '#777777'};
 
-    [data-theme="dark"] & {
-        color: #D1D5DB;
+        [data-theme="dark"] & {
+            background-color: ${props => props.$isSelected ? '#E8F4FC' : 'transparent'};
+            color: ${props => props.$isSelected ? colors.primary500 : '#EFEFEF'};
+        }
     }
 `;
 
-export const ArrowIcon = styled.div<{ $isOpen: boolean }>`
+export const ArrowIcon = styled.div<{ $isOpen: boolean, $isSelected?: boolean }>`
     display: flex;
     align-items: center;
-    margin-left: 0.5rem;
+    justify-content: space-between;
 
     &::after {
         content: '';
         width: 0.5rem;
         height: 0.5rem;
-        border-right: 2px solid ${colors.gray600};
-        border-bottom: 2px solid ${colors.gray600};
+        border-right: 2px solid #777777;
+        border-bottom: 2px solid #777777;
         
         transition: transform 0.3s ease;
         
@@ -96,6 +104,13 @@ export const ArrowIcon = styled.div<{ $isOpen: boolean }>`
         
         margin-top: ${props => props.$isOpen ? '0.25rem' : '0'};
         margin-bottom: ${props => props.$isOpen ? '0' : '0.25rem'};
+
+        ${theme.media.mobile} {
+            width: 6px;
+            height: 6px;
+            border-right: 1px solid ${props => props.$isSelected ? colors.primary500 : '#444444'};
+            border-bottom: 1px solid ${props => props.$isSelected ? colors.primary500 : '#444444'};
+        }
     }
 `;
 
@@ -138,7 +153,7 @@ export const OptionsList = styled.ul`
 
 export const OptionItem = styled.li<{ $isSelected?: boolean }>`
     padding: 0.75rem 1rem;
-    font-size: ${fontSize.body2};
+    font-size: ${fontSize.base};
     border-radius: 0.5rem;
     cursor: pointer;
     display: flex;
@@ -149,6 +164,10 @@ export const OptionItem = styled.li<{ $isSelected?: boolean }>`
 
     &:hover {
         background-color: #f0f0f0;
+    }
+
+    ${theme.media.tablet} {
+        font-size: 0.75rem;
     }
 
     ${theme.media.mobile} {
