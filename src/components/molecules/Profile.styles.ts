@@ -1,6 +1,5 @@
 // /src/components/molecules/Profile.styles.ts
 import styled from "styled-components"
-import { pxToRem } from "@/styles/utils";
 import { fontSize, colors, theme } from "@/styles/theme";
 
 export const StyledProfile = styled.div`
@@ -25,7 +24,7 @@ export const StyledProfile = styled.div`
         grid-template-columns: 12.5rem 1fr;
         grid-template-rows: auto auto auto 1fr;
         column-gap: 1.5rem;
-        row-gap: 0.25rem;
+        row-gap: 0.5rem;
         padding: 0;
         align-items: start;
         text-align: left;
@@ -36,7 +35,7 @@ export const StyledProfile = styled.div`
         flex-direction: column;
         width: 100%;
         height: auto;
-        gap: 0.5rem;
+        gap: 0.25rem;
         padding: 0;
         align-items: flex-start;
         text-align: left;
@@ -52,8 +51,12 @@ export const StyledProfile = styled.div`
         height: 20rem;
         border-radius: 50%;
         overflow: hidden;
-        border: solid 2px ${colors.border};
+        border: solid 2px #EFEFEF;
         flex-shrink: 0;
+
+        [data-theme="dark"] & {
+            border-color: #444444;
+        }
 
         img {
             width: 20rem;
@@ -65,6 +68,7 @@ export const StyledProfile = styled.div`
             grid-area: img;
             width: 12.5rem;
             height: 12.5rem;
+            border: solid 1px #EFEFEF;
 
             img {
                 width: 12.5rem;
@@ -76,6 +80,7 @@ export const StyledProfile = styled.div`
         ${theme.media.mobile} {
             width: 7.5rem;
             height: 7.5rem;
+            margin-bottom: 0.5rem;
 
             img {
                 width: 7.5rem;
@@ -87,6 +92,7 @@ export const StyledProfile = styled.div`
 
     .infoSection {
         grid-area: info;
+        gap: 0.5rem;
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -100,13 +106,23 @@ export const StyledProfile = styled.div`
 
             .name {
                 font-size: ${fontSize.h2};
-                font-weight: bold;
+                color: #232527;
+                font-weight: 700;
+
+                [data-theme="dark"] & {
+                    color: ${colors.primary500};
+                }
             }
         }
 
         .positionInfo {
             font-size: ${fontSize.body1};
+            color: #777777;
             font-weight: 400;
+
+            [data-theme="dark"] & {
+                color: #EFEFEF;
+            }
         }
 
         ${theme.media.tablet} {
@@ -138,7 +154,7 @@ export const StyledProfile = styled.div`
                     justify-content: center;
                     width: 3.5625rem;
                     height: 1.8125rem;
-                    border-radius: 0.375rem;
+                    border-radius: 0.5rem;
                     background-color: ${colors.primary500};
                     color: ${colors.white600};
                     font-size: 0.625rem;
@@ -154,7 +170,8 @@ export const StyledProfile = styled.div`
                 align-items: center;
                 gap: 0.25rem;
                 font-size: 0.625rem;
-                color: ${colors.gray500};
+                color: #777777;
+                font-weight: 700;
 
                 .positionBadgeMobile {
                     display: inline;
@@ -178,7 +195,7 @@ export const StyledProfile = styled.div`
             width: 100%;
             height: 2.9375rem;
             border-radius: 0.5rem;
-            background-color: ${colors.primary500};
+            background-color: ${colors.primary600};
 
             color: ${colors.white600};
         }
@@ -202,14 +219,19 @@ export const StyledProfile = styled.div`
 
     .descriptionSection {
         grid-area: description;
-        diplay: flex;
+        display: flex;
         width: 100%;
         height: 1.875rem;
+        overflow: hidden;
         text-align: left;
 
         font-size: ${fontSize.body1};
         font-weight: 400;
         color: ${colors.gray600};
+
+        [data-theme="dark"] & {
+            color: #EFEFEF;
+        }
 
         ${theme.media.tablet} {
             display: none;
@@ -239,7 +261,7 @@ export const StyledProfile = styled.div`
         }
 
         ${theme.media.mobile} {
-            gap: 0.375rem;
+            gap: 0.275rem;
             font-size: 0.75rem;
             img { display: none; }
             .variable { font-size: 0.75rem; }
@@ -249,11 +271,19 @@ export const StyledProfile = styled.div`
         .variable {
             color: ${colors.black500};
             font-weight: 700;
+
+            [data-theme="dark"] & {
+                color: ${colors.primary500};
+            }
         }
 
         .nonvariable {
             color: ${colors.gray600};
             font-weight: 400;
+
+            [data-theme="dark"] & {
+                color: #EFEFEF;
+            }
         }
     }
 
@@ -263,15 +293,20 @@ export const StyledProfile = styled.div`
         width: 100%;
         height: 5.8125rem;
         flex-direction: column;
+        color: #232527;
 
         gap: 0.75rem;
+
+        [data-theme="dark"] & {
+            color: #FAFAFA;
+        }
 
         ${theme.media.tablet} {
             grid-area: stats;
             height: auto;
             flex-direction: row;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
         }
 
         ${theme.media.mobile} {
@@ -296,13 +331,13 @@ export const StyledProfile = styled.div`
 
             ${theme.media.tablet} {
                 font-size: 0.75rem;
-                img { width: 1.25rem; height: 1.25rem; }
+                gap: 0.5rem;
+                img { width: 1rem; height: 1rem; }
             }
 
             ${theme.media.mobile} {
                 font-size: 0.625rem;
-                gap: 0.25rem;
-                color: ${colors.black500};
+                gap: 0.5rem;
 
                 img {
                     width: 1rem;

@@ -1,6 +1,6 @@
 // /src/components/templates/CrewDetail/CrewDetailPageTemplate.styles.ts
 import styled from 'styled-components';
-import { fontSize, colors, theme } from '@/styles/theme';
+import { colors, theme } from '@/styles/theme';
 
 export const TemplateWrapper = styled.div`
     display: flex;
@@ -10,10 +10,7 @@ export const TemplateWrapper = styled.div`
     width: 100%;
 
     margin: 0 auto;
-    padding-top: 12.5rem;
-    padding-bottom: 12.5rem;
-    padding-left: 7.5rem;
-    padding-right: 7.5rem;
+    padding: 12.5rem 7.5rem;
 
     ${theme.media.desktopSm} {
         padding-left: 2.5rem;
@@ -99,11 +96,15 @@ export const TabButton = styled.button<{ $isActive: boolean }>`
     border-bottom: 0.125rem solid ${(props) => (props.$isActive ? colors.primary500 : 'transparent')};
 
     color: ${(props) => (props.$isActive ? colors.primary500 : colors.gray500)};
-    font-weight: ${(props) => (props.$isActive ? '700' : '500')};
+    font-weight: ${(props) => (props.$isActive ? '700' : '400')};
     cursor: pointer;
 
     margin-bottom: -0.0625rem;
     transition: all 0.2s ease;
+
+    [data-theme="dark"] & {
+        color: ${(props) => (props.$isActive ? colors.primary500 : '#EFEFEF')};
+    }
 
     ${theme.media.tablet} {
         font-size: 1rem;
@@ -116,7 +117,7 @@ export const TabButton = styled.button<{ $isActive: boolean }>`
         justify-content: center;
         padding: 0;
         gap: 0.375rem;
-        font-size: 0.75rem;
+        font-size: 0.625rem;
         border-bottom: ${(props) => (props.$isActive ? `2px solid ${colors.primary500}` : 'none')};
         color: ${(props) => (props.$isActive ? colors.primary500 : colors.gray500)};
     }
@@ -125,6 +126,11 @@ export const TabButton = styled.button<{ $isActive: boolean }>`
         width: 1.25rem;
         height: auto;
         filter: ${(props) => (props.$isActive ? 'none' : 'grayscale(100%) opacity(0.6)')};
+
+        ${theme.media.tablet} {
+            width: 1.125rem;
+            height: 1.125rem;
+        }
 
         ${theme.media.mobile} {
             display: none;
@@ -144,7 +150,7 @@ export const ListWrapper = styled.div`
     }
 
     ${theme.media.mobile} {
-        padding-top: 0.75rem;
+        padding-top: 1rem;
         gap: 1rem;
         /* 모바일에서는 카드 스타일이므로 구분선 제거 */
         & > *:not(:last-child) {

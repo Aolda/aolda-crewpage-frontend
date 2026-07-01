@@ -35,9 +35,9 @@ const Profile: React.FC<ProfileProps> = ({
                     </button>
                 </section>
                 <section className="positionInfo">
-                    <span>{CREW_ROLE[currentRole]}</span>
+                    <span>{CREW_ROLE[currentRole]} ·</span>
                     <span className="positionBadgeMobile">
-                        {`· ${member.isActive ? "활동중" : "비활동"}`}
+                        {` ${member.isActive ? "활동중" : "비활동"}`}
                     </span>
                 </section>
             </section>
@@ -45,7 +45,7 @@ const Profile: React.FC<ProfileProps> = ({
                 <button>{member.connections.isFollowing ? 'unfollow' : 'Follow'}</button>
             </section>
             <section className="descriptionSection">
-                <span>{member.description}</span>
+                <p>{member.description}</p>
             </section>
             <section className="followerSection">
                 <Image src="/images/crew/infoLogo.svg" alt="infoLogo" width={20} height={20}/>

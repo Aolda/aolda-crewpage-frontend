@@ -19,21 +19,22 @@ export const StyledMenuItem = styled.div`
     ${theme.media.tablet} {
         width: 100%;
         height: 7.5rem;
-        padding-bottom: 1.25rem;
+        padding: 0 1rem 1.5rem 1rem;
+        border-bottom: solid 1px #FEFEFE;
         gap: 0.75rem;
     }
 
     ${theme.media.mobile} {
         width: 100%;
         height: 4.9375rem;
-        padding: 0.5rem 1rem 0 0.75rem;
-        border: 1px solid ${colors.border};
+        padding: 0.5rem 0.75rem 0.75rem 0.75rem;
+        border: 1px solid #EFEFEF;
         border-radius: 0.5rem;
-        gap: 0.375rem;
+        gap: 0.5rem;
     }
 
     [data-theme="dark"] & {
-        border-color: rgba(255, 255, 255, 0.1);
+        border-color: #444444;
     }
 
     /* desktop/tablet: inlineBadge 숨김 */
@@ -44,6 +45,7 @@ export const StyledMenuItem = styled.div`
         height: 4.125rem;
         flex-direction: column;
         align-items: flex-start;
+        gap: 0.5rem;
 
         ${theme.media.tablet} {
             height: auto;
@@ -68,18 +70,27 @@ export const StyledMenuItem = styled.div`
 
         .title {
             font-size: ${fontSize.h3};
-            font-weight: bold;
+            color: #232527;
+            font-weight: 700;
+
+            [data-theme="dark"] & {
+                color: #EFEFEF;
+            }
         }
 
         ${theme.media.tablet} {
             .title { font-size: ${fontSize.body1}; }
+
+            [data-theme="dark"] & {
+                color: #EFEFEF;
+            }
         }
 
         ${theme.media.mobile} {
             width: 100%;
             .title {
                 font-size: 1rem;
-                font-weight: bold;
+                font-weight: 700;
                 flex: 1;
                 white-space: nowrap;
                 overflow: hidden;
@@ -95,12 +106,10 @@ export const StyledMenuItem = styled.div`
         gap: 0.5rem;
 
         ${theme.media.mobile} {
-            gap: 0.375rem;
-
             .inlineBadge {
                 display: inline;
                 font-size: 0.625rem;
-                font-weight: 600;
+                font-weight: 400;
                 color: ${colors.primary500};
             }
         }
@@ -108,14 +117,27 @@ export const StyledMenuItem = styled.div`
 
     .date {
         font-size: ${fontSize.base};
-        color: ${colors.gray600};
+        font-weight: 400;
+        color: #777777;
+
+        [data-theme="dark"] & {
+            color: #EFEFEF;
+        }
 
         ${theme.media.tablet} {
             font-size: ${fontSize.smaller};
+
+            [data-theme="dark"] & {
+                color: #EFEFEF;
+            }
         }
 
         ${theme.media.mobile} {
             font-size: 0.625rem;
+
+            [data-theme="dark"] & {
+                color: #EFEFEF;
+            }
         }
     }
 
@@ -127,6 +149,7 @@ export const StyledMenuItem = styled.div`
             margin: 0;
             color: ${colors.gray600};
             font-size: ${fontSize.base};
+            font-weight: 400;
             line-height: 1.5;
             text-align: left;
 
@@ -136,9 +159,17 @@ export const StyledMenuItem = styled.div`
             overflow: hidden;
             text-overflow: ellipsis;
 
+            ${theme.media.tablet} {
+                font-size: ${fontSize.smaller};
+            }
+
             ${theme.media.mobile} {
                 font-size: 0.625rem;
                 -webkit-line-clamp: 1;
+            }
+
+            [data-theme="dark"] & {
+                color: #EFEFEF;
             }
         }
     }

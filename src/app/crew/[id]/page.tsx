@@ -12,6 +12,9 @@ import CrewDetailPageTemplate from '@/components/templates/CrewDetail/CrewDetail
 import MenuItem from '@/components/molecules/MenuItem';
 import LoadingScreen from '@/components/atoms/LoadingScreen';
 
+const EMPTY_POST_MESSAGE = '작성된 포스트가 없습니다.';
+const EMPTY_POST_STYLE = { color: '#9CA3AF', padding: '2rem 0' };
+
 export default function CrewDetailPage() {
     const { id } = useParams();
     const { handleError } = useErrorHandler();
@@ -67,7 +70,7 @@ export default function CrewDetailPage() {
                         />
                     ))
                 ) : (
-                    <p>참여한 활동이 없습니다.</p>
+                    <p style={EMPTY_POST_STYLE}>{EMPTY_POST_MESSAGE}</p>
                 )
             ) : (
                 crew.bloggings.length > 0 ? (
@@ -82,7 +85,7 @@ export default function CrewDetailPage() {
                         />
                     ))
                 ) : (
-                    <p style={{ color: '#9CA3AF', padding: '2rem 0' }}>작성된 블로그 포스트가 없습니다.</p>
+                    <p style={EMPTY_POST_STYLE}>{EMPTY_POST_MESSAGE}</p>
                 )
             )}
         </CrewDetailPageTemplate>
