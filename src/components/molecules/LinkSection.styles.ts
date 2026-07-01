@@ -4,7 +4,7 @@ import { colors, fontSize, theme } from "@/styles/theme";
 
 export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 1.5rem;
 
     /* PC: 인덱스에 따라 좌우 교차 배치 */
@@ -14,14 +14,15 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
     ${theme.media.tablet} {
         flex-direction: column;
         text-align: left;
-        gap: 2rem;
+        gap: 0.75rem;
         width: 100%;
     }
 
     ${theme.media.mobile} {
+        align-items: center;
         flex-direction: column;
         text-align: center;
-        gap: 2rem;
+        gap: 0.75rem;
         width: 100%;
     }
 
@@ -36,7 +37,6 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
 
         ${theme.media.mobile} {
             width: 100%;
-            max-width: 25rem;
             height: auto;
         }
 
@@ -64,15 +64,27 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
 
         ${theme.media.mobile} {
             width: 100%;
-            align-items: center;
+            align-items: flex-start;
             gap: 1rem;
         }
 
+        .titleSection {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+
+            ${theme.media.mobile} {
+                align-items: flex-start;
+            }
+        }
+
         .indexNumber {
+            font-family: var(--font-pretendard);
             font-size: ${fontSize.display1};
             color: ${colors.primary500};
             font-weight: 700;
             margin: 0;
+            line-height: 1;
 
             ${theme.media.mobile} {
                 font-size: 2.5rem;
@@ -83,6 +95,7 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
             font-size: ${fontSize.h2};
             font-weight: 700;
             margin: 0;
+            color: #232527;
             span { color: ${colors.primary500}; }
 
             ${theme.media.mobile} {
@@ -90,7 +103,7 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
             }
 
             [data-theme="dark"] & {
-                color: #F9FAFB;
+                color: #FAFAFA;
             }
         }
 
@@ -101,11 +114,26 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
             font-weight: 400;
             line-height: 1.5;
 
-            white-space: pre-wrap;
+            // white-space: pre-wrap;
+
+            ${theme.media.tablet} {
+                width: 100%;
+                font-size: ${fontSize.base};
+                text-align: left;
+
+                .pc-br {
+                    display: none;
+                }
+            }
 
             ${theme.media.mobile} {
                 font-size: ${fontSize.smaller};
                 br { display: none; }
+                text-align: left;
+
+                .pc-br {
+                    display: none;
+                }
             }
 
             span {
@@ -113,7 +141,7 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
             }
 
             [data-theme="dark"] & {
-                color: #9CA3AF;
+                color: #EFEFEF;
             }
         }
     }
@@ -125,10 +153,22 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
         padding: 0.75rem 1rem;
         cursor: pointer;
         transition: all 0.2s;
+        color: #232527;
+        font-size: ${fontSize.base};
+        font-weight: 700;
+
+        ${theme.media.tablet} {
+            width: 100%;
+            border: 1px solid #EFEFEF;
+            font-size: ${fontSize.smaller};
+            padding: 1rem;
+        }
 
         ${theme.media.mobile} {
             width: 100%;
-            max-width: 15rem;
+            border: 1px solid #EFEFEF;
+            font-size: ${fontSize.smaller};
+            padding: 0.75rem 1rem;
         }
 
         &:hover {
@@ -136,8 +176,16 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
         }
 
         [data-theme="dark"] & {
-            border-color: rgba(255, 255, 255, 0.2);
-            color: #F9FAFB;
+            border-color: #FAFAFA;
+            color: #FAFAFA;
+
+            ${theme.media.tablet} {
+                border-color: #444444;
+            }
+
+            ${theme.media.mobile} {
+                border-color: #444444;
+            }
 
             &:hover {
                 background-color: #444444;

@@ -1,3 +1,4 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 @import "tailwindcss";
 
 @font-face {
@@ -8,15 +9,16 @@
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FEFEFE;
+  --foreground: #232527;
   --font-noto-kr: var(--font-noto-kr);
   --font-paperlogy: 'Paperlogy', sans-serif;
+  --font-pretendard: 'Pretendard', sans-serif;
 }
 
 [data-theme="dark"] {
   --background: #2A2A2A;
-  --foreground: #F9FAFB;
+  --foreground: #FAFAFA;
 }
 
 @theme inline {
@@ -25,6 +27,7 @@
   --font-sans: var(--font-noto-kr), ui-sans-serif, system-ui;
   --font-cjk: "Noto Sans CJK KR", "Noto Sans KR", sans-serif;
   --font-paperlogy: 'Paperlogy', sans-serif;
+  --font-pretendard: 'Pretendard', sans-serif;
 }
 
 

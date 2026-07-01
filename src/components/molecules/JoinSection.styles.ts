@@ -12,7 +12,7 @@ export const Container = styled.section`
     gap: 1.5rem;
 
     ${theme.media.tablet} {
-        padding-top: 3.75rem;
+        padding-top: 5rem;
     }
 
     ${theme.media.mobile} {

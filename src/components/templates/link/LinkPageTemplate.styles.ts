@@ -158,6 +158,10 @@ export const PageHeader = styled.div`
         }
     }
 
+    ${theme.media.tablet} {
+        padding-top: 7.5rem;
+    }
+
     ${theme.media.mobile} {
         padding-top: 8rem;
 
@@ -182,15 +186,11 @@ export const LinkWrapper = styled.main`
     padding-right: 7.5rem;
     margin: 0 auto;
 
-    ${theme.media.desktopSm} {
-        padding-left: 2.5rem;
-        padding-right: 2.5rem;
-    }
-
     ${theme.media.tablet} {
-        padding-left: 2.5rem;
-        padding-right: 2.5rem;
-        gap: 5rem;
+        padding-left: 4.75rem;
+        padding-right: 4.75rem;
+        padding-top: 5rem;
+        gap: 2rem;
     }
 
     ${theme.media.mobile} {
@@ -216,7 +216,7 @@ export const UnderSection = styled.section`
 
     ${theme.media.tablet} {
         width: 100%;
-        padding: 8rem 2.5rem 0;
+        padding: 2rem 2rem 0 2rem;
     }
 
     ${theme.media.mobile} {
@@ -228,6 +228,7 @@ export const UnderSection = styled.section`
         width: 65.8rem;
         ${theme.media.tablet} {
             width: 100%;
+            padding: 5rem 2.75rem 0;
         }
         ${theme.media.mobile} {
             width: 100%;
@@ -240,7 +241,7 @@ export const UnderSection = styled.section`
         font-size: ${fontSize.h2};
         font-weight: 700;
         line-height: 1.4;
-        color: #111827;
+        color: #232527;
         span { color: ${colors.primary500}; }
 
         ${theme.media.mobile} {
@@ -249,7 +250,7 @@ export const UnderSection = styled.section`
         }
 
         [data-theme="dark"] & {
-            color: #F9FAFB;
+            color: #FAFAFA;
         }
     }
 `;
