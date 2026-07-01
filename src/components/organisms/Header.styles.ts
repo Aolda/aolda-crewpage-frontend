@@ -36,9 +36,7 @@ export const StyledHeader = styled.header`
         left: 0;
         transform: none;
         border-radius: 0;
-        border-left: none;
-        border-right: none;
-        border-top: none;
+        border: none;
         height: 4.25rem;
         padding: 0 1.25rem;
     }

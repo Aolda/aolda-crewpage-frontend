@@ -18,6 +18,7 @@ export const TabContainer = styled.div`
     display: flex;
     gap: 1.5rem;
     margin-bottom: 2.25rem;
+    justify-content: center;
 
     ${theme.media.mobile} {
         flex-direction: column;
