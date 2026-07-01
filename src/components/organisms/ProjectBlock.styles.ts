@@ -43,37 +43,48 @@ export const StyledProjectBlock = styled.div<StyledProjectBlockProps>`
         justify-content: center;
         align-items: center;
         gap: 0.25rem;
-        width: 100%;
-        overflow: hidden;
-        padding: 0 0.5rem;
-
-        h1 {
-            font-size: 2.25rem;
-            font-weight: bold;
-            width: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            text-align: center;
-        }
-
-        .countLine {
-            width: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            text-align: center;
-            font-size: ${fontSize.base};
-        }
     }
 
-    .enName {
+    .countLine {
         width: 100%;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         text-align: center;
         font-size: ${fontSize.base};
+        font-weight: 300;
+        color: #FEFEFE;
+    }
+
+    .nameSection {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        overflow: hidden;
+        padding: 0 0.5rem;
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: center;
+            color: #FEFEFE;
+        }
+
+        .enName {
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: center;
+            font-size: ${fontSize.smaller};
+            font-weight: 400;
+        }
     }
 
     .badgeWrapper {

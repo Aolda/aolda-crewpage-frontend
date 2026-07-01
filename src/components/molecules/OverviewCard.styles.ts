@@ -1,7 +1,7 @@
 // /src/components/molecules/OverviewCard.styles.ts
 
 import styled from 'styled-components';
-import { fontSize, theme } from '@/styles/theme';
+import { fontSize, theme, colors } from '@/styles/theme';
 
 export const StyledOverviewCard = styled.div`
     display: flex;
@@ -10,12 +10,12 @@ export const StyledOverviewCard = styled.div`
     width: 24rem;
     height: 9.1875rem;
     padding: 1.9375rem 2.875rem;
-    background-color: white;
+    background-color: #FEFEFE;
     border-radius: 3.75rem 0.75rem 3.75rem 0.75rem;
     box-shadow: 0px 0.25rem 1.25rem 0px #1A8EE54D;
 
     [data-theme="dark"] & {
-        background-color: #363636;
+        background-color: #2A2A2A;
         box-shadow: 0px 0.25rem 1.25rem 0px rgba(26, 142, 229, 0.2);
     }
 
@@ -25,17 +25,24 @@ export const StyledOverviewCard = styled.div`
         width: auto;
         height: 5.5625rem;
         padding: 1.25rem 1rem;
-        border-radius: 2.5rem 0.5rem 2.5rem 0.5rem;
+        border-radius: 1.25rem 0.5rem 1.25rem 0.5rem;
     }
 
     ${theme.media.mobile} {
         flex: 1;
         flex-direction: column;
         height: auto;
-        padding: 1rem 0.25rem;
-        gap: 0.75rem;
-        border-radius: 1.5rem 0.5rem;
+        padding: 1rem 0.5rem;
+        gap: 0.3125rem;
+        border: 1px solid #EFEFEF;
+        border-radius: 0.5rem;
         min-width: 0;
+        box-shadow: none;
+
+        [data-theme="dark"] & {
+            border: 1px solid #444444;
+            box-shadow: none;
+        }
     }
 
     .leftSection {
@@ -78,6 +85,11 @@ export const StyledOverviewCard = styled.div`
             margin: 0;
             font-size: ${fontSize.body1};
             font-weight: 700;
+            color: #232527;
+
+            [data-theme="dark"] & {
+                color: #FAFAFA;
+            }
 
             ${theme.media.tablet} { font-size: 1rem; }
             ${theme.media.mobile} { font-size: 0.7rem; white-space: nowrap; }
@@ -96,14 +108,38 @@ export const StyledOverviewCard = styled.div`
         display: flex;
         align-items: center;
         gap: 0.375rem;
-        font-size: ${fontSize.small};
-        color: #555;
+        font-size: ${fontSize.base};
+        color: #777777;
+
+        > div {
+            background-color: #E2E2E2;
+        }
+
+        &:last-child {
+            color: ${colors.primary500};
+
+            > div {
+                background-color: ${colors.primary500};
+            }
+        }
 
         ${theme.media.tablet} { font-size: 0.75rem; gap: 0.25rem; }
         ${theme.media.mobile} { font-size: 0.6rem; span { display: none; } }
 
         [data-theme="dark"] & {
-            color: #9CA3AF;
+            color: #EFEFEF;
+
+            > div {
+                background-color: #EFEFEF;
+            }
+        }
+
+        [data-theme="dark"] &:last-child {
+            color: ${colors.primary500};
+
+            > div {
+                background-color: ${colors.primary500};
+            }
         }
     }
 

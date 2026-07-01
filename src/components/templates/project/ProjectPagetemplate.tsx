@@ -1,7 +1,7 @@
 //src/app/project/page.tsx
 'use client';
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import * as S from './ProjectPageTemplate.styles';
 import ProjectBlock from '@/components/organisms/ProjectBlock';
@@ -9,7 +9,7 @@ import SearchBox from '@/components/molecules/SearchBox';
 import Select from '@/components/molecules/Select';
 import OverviewCard from '@/components/molecules/OverviewCard';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
-import { ProjectListResponse, ActivityStatusKey } from '@/types/project';
+import { ProjectListResponse } from '@/types/project';
 
 interface ProjectPageTemplateProps {
     data: ProjectListResponse; 
@@ -167,6 +167,7 @@ const ProjectPageTemplate: React.FC<ProjectPageTemplateProps> = ({
                         options={seasonOptions}
                         selectedValue={selectedSeasonValue}
                         onSelectChange={(value) => setSelectedSeasonValue(value)}
+                        className="time-select"
                     />
                 </S.FilterBar>
                 

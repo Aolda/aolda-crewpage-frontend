@@ -70,9 +70,10 @@ export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: Activ
 
     /* 3. Transparent Variant (반투명 배경 - [A-5] 프로젝트 리스트) */
     ${({ $variant }) => $variant === 'transparent' && css`
+        height: 2.375rem;
         background-color: rgba(255, 255, 255, 0.2); // 흰색 반투명
         backdrop-filter: blur(4px);
-        color: white;
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        font-weight: 400;
+        color: #FEFEFE;
     `}
 `;

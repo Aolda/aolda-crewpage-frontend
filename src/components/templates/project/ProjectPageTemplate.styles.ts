@@ -1,7 +1,6 @@
 // /src/components/templates/project/ProjectPageTemplate.styles.ts
 import styled from 'styled-components';
 import { fontSize, colors, theme } from '@/styles/theme';
-import { pxToRem } from '@/styles/utils';
 
 /* 헤더 섹션: 복합 그라데이션과 마스코트 배치 */
 export const HeaderSection = styled.header`
@@ -18,7 +17,7 @@ export const HeaderSection = styled.header`
     padding-top: 8rem;
 
     [data-theme="dark"] & {
-        background-color: #1e2533;
+        background-color: #2A2A2A;
     }
 
     ${theme.media.tablet} {
@@ -119,6 +118,10 @@ export const HeaderSection = styled.header`
 
         ${theme.media.mobile} {
             gap: 0.5rem;
+
+            :last-child {
+                width: 15rem;
+            }
         }
 
         /* 마스코트, 타이틀, 설명을 감싸는 내부 섹션 */
@@ -156,6 +159,7 @@ export const HeaderSection = styled.header`
                 font-size: ${fontSize.h2};
                 font-weight: 700;
                 line-height: 1.4;
+                color: #FEFEFE;
 
                 ${theme.media.tablet} { font-size: 1.5rem; }
                 ${theme.media.mobile} { font-size: 1rem; }
@@ -163,9 +167,11 @@ export const HeaderSection = styled.header`
 
             p {
                 font-size: ${fontSize.body1};
+                font-weight: 400;
                 word-break: keep-all;
+                color: #FEFEFE;
 
-                ${theme.media.tablet} { font-size: 1rem; }
+                ${theme.media.tablet} { font-size: 1rem; font-weight: 300;}
                 ${theme.media.mobile} { display: none; }
             }
         }
@@ -218,8 +224,8 @@ export const StatsSection = styled.section`
     ${theme.media.mobile} {
         flex-direction: row;
         justify-content: space-between;
-        gap: 0.5rem;
-        padding: 2rem 0.5rem 0;
+        gap: 0.75rem;
+        padding-top: 1rem;
     }
 `;
 
@@ -233,6 +239,44 @@ export const FilterBar = styled.div`
 
     padding-top: 3.75rem;
 
+    .time-select {
+        .select {
+            border: 1px solid #EFEFEF;
+
+            [data-theme="dark"] & {
+                border: 1px solid #444444;
+            }
+
+            .select-title {
+                font-size: ${fontSize.base};
+                font-weight: 400;
+                color: #777777;
+
+                [data-theme="dark"] & {
+                    color: #EFEFEF;
+                }
+
+                ${theme.media.tablet} { font-size: ${fontSize.smaller}; }
+                ${theme.media.mobile} { font-size: ${fontSize.smaller}; }
+            }
+
+            .select-arrow {
+                &::after {
+                    border-right: 1.5px solid #777777;
+                    border-bottom: 1.5px solid #777777;
+
+                    [data-theme="dark"] & {
+                        border-right: 1.5px solid #EFEFEF;
+                        border-bottom: 1.5px solid #EFEFEF;
+                    }
+
+                    ${theme.media.tablet} { border-right: 1px solid #777777; border-bottom: 1px solid #777777; }
+                    ${theme.media.mobile} { border-right: 1px solid #777777; border-bottom: 1px solid #777777; }
+                }
+            }
+        }
+    }
+
     ${theme.media.tablet} {
         width: 100%;
         padding-top: 2rem;
@@ -244,7 +288,7 @@ export const FilterBar = styled.div`
         justify-content: flex-start;
         align-items: center;
         gap: 0.5rem;
-        padding-top: 1.5rem;
+        padding-top: 1rem;
         overflow: visible;
     }
 `;
@@ -257,12 +301,12 @@ export const FilterButton = styled.button<{ $isActive: boolean }>`
 
     /* 2. 폰트 설정 */
     font-size: ${fontSize.base};
-    font-weight: 700;
+    font-weight: ${props => props.$isActive ? '700' : '400'};
     line-height: 1.5;
 
     /* 3. 상태별 색상 */
     background-color: ${props => props.$isActive ? colors.primary500 : 'none'};
-    color: ${props => props.$isActive ? '#FFFFFF' : '#6B7280'};
+    color: ${props => props.$isActive ? '#FEFEFE' : '#232527'};
 
     /* 4. 인터랙션 */
     cursor: pointer;
@@ -333,6 +377,6 @@ export const ProjectGrid = styled.section`
         grid-template-columns: repeat(2, minmax(0, 1fr));
         column-gap: 0.75rem;
         row-gap: 0.5rem;
-        padding-bottom: 5rem;
+        padding: 1rem 0;
     }
 `;

@@ -39,7 +39,8 @@ export const StyledSearchBox = styled.section`
     input {
         border: none;
         outline: none;
-        width: fit-content;
+        flex: 1;
+        min-width: 0;
         height: 1.5rem;
         font-size: ${fontSize.base};
         background: transparent;
@@ -76,6 +77,16 @@ export const StyledSearchBox = styled.section`
         cursor: pointer;
         display: flex;
         align-items: center;
+        justify-content: center;
+        flex: 0 0 1.25rem;
+        width: 1.25rem;
+        height: 1.25rem;
+
+        ${theme.media.mobile} {
+            flex-basis: 0.75rem;
+            width: 0.75rem;
+            height: 0.75rem;
+        }
     
         img {
             width: 1.25rem;

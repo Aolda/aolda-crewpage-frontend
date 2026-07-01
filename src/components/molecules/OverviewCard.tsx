@@ -63,12 +63,12 @@ const OverviewCard: React.FC<OverviewCardProps> = ({
                 </section>
                 <section className="legendSection">
                     <section className="legendItem">
-                        <ColorBox $color="#E2E2E2" />
-                        <span style={{"color": "#777777"}}>{totalText}</span>
+                        <ColorBox $color="#777777" />
+                        <span>{totalText}</span>
                     </section>
                     <section className="legendItem">
                         <ColorBox $color="#1A8EE5" />
-                        <span style={{"color": "#1A8EE5"}}>{onGoingText}</span>
+                        <span>{onGoingText}</span>
                     </section>
                 </section>
             </section>

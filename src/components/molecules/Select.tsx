@@ -13,6 +13,7 @@ interface SelectProps {
     // 현재 선택된 값을 보여주고 싶다면 추가 (선택사항)
     selectedValue?: string;
     clearOptionLabel?: string;
+    className?: string;
 }
 
 const TITLE_MAP: Record<LabelType, string> = {
@@ -23,7 +24,7 @@ const TITLE_MAP: Record<LabelType, string> = {
     category: "카테고리",
 };
 
-const Select: React.FC<SelectProps> = ({ label, options, onSelectChange, selectedValue, clearOptionLabel }) => {
+const Select: React.FC<SelectProps> = ({ label, options, onSelectChange, selectedValue, clearOptionLabel, className }) => {
     const title = TITLE_MAP[label];
     const [isOpen, setIsOpen] = useState(false);
     const selectRef = useRef<HTMLDivElement>(null);
@@ -49,10 +50,10 @@ const Select: React.FC<SelectProps> = ({ label, options, onSelectChange, selecte
     };
 
     return (
-        <S.SelectContainer ref={selectRef}>
-            <S.SelectHeader onClick={() => setIsOpen(!isOpen)} $isSelected={!!selectedValue}>
-                <S.LabelText $isSelected={!!selectedValue}>{selectedValue || title}</S.LabelText>
-                <S.ArrowIcon $isOpen={isOpen} $isSelected={!!selectedValue}/>
+        <S.SelectContainer ref={selectRef} className={className}>
+            <S.SelectHeader onClick={() => setIsOpen(!isOpen)} $isSelected={!!selectedValue} className="select">
+                <S.LabelText $isSelected={!!selectedValue} className="select-title">{selectedValue || title}</S.LabelText>
+                <S.ArrowIcon $isOpen={isOpen} $isSelected={!!selectedValue} className="select-arrow"/>
             </S.SelectHeader>
 
             {isOpen && (
