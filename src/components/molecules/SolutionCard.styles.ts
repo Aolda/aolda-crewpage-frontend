@@ -4,14 +4,12 @@ import { colors, fontSize, theme } from '@/styles/theme';
 export const SolutionCard = styled.div`
     padding: 1.25rem 1.5rem;
     border-radius: 10px;
-    border: 1px solid #e0e0e0;
-    background: #ffffff;
+    border: 1px solid #EFEFEF;
+    background: #FEFEFE;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 0.8rem;
+    justify-content: space-around;
     min-height: 5rem;
     width: 100%;
     height: 8rem;
@@ -28,7 +26,6 @@ export const SolutionCard = styled.div`
         height: auto;
         min-height: auto;
         border: none;
-        border-bottom: 1px solid #F3F4F6;
         border-radius: 0;
         padding: 0.625rem 0;
         background: transparent;
@@ -36,25 +33,22 @@ export const SolutionCard = styled.div`
         &:last-child {
             border-bottom: none;
         }
-    }
 
-    [data-theme="dark"] & {
-        background: #363636;
-        border-color: rgba(255, 255, 255, 0.1);
-    }
-
-    ${theme.media.mobile} {
         [data-theme="dark"] & {
             background: transparent;
             border-color: transparent;
-            border-bottom-color: rgba(255, 255, 255, 0.08);
         }
+    }
+
+    [data-theme="dark"] & {
+        background: #2A2A2A;
+        border-color: #444444;
     }
 `;
 
 export const SolutionTitle = styled.h3`
     margin: 0;
-    font-size: ${fontSize.h3};
+    font-size: ${fontSize.body1};
     font-weight: 700;
     color: ${colors.primary500};
     text-align: center;
@@ -68,14 +62,20 @@ export const SolutionTitle = styled.h3`
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-width: 4.5rem;
-        padding: 0.1875rem 0.5rem;
-        background: #F3F4F6;
+        width: 4.5rem;
+        height: 1.625rem;
+        padding: 0.375rem 1rem;
+        background: #EFEFEF;
         border-radius: 0.25rem;
         font-size: 0.625rem;
-        font-weight: 500;
-        color: #6B7280;
+        font-weight: 700;
+        color: #777777;
         white-space: nowrap;
+
+        [data-theme="dark"] & {
+            background-color: #444444;
+            color: #EFEFEF;
+        }
     }
 `;
 
@@ -83,7 +83,6 @@ export const SolutionDescription = styled.p`
     margin: 0;
     font-size: ${fontSize.base};
     color: ${colors.gray600};
-    line-height: 1.6;
     text-align: center;
 
     ${theme.media.tablet} {
@@ -93,9 +92,8 @@ export const SolutionDescription = styled.p`
 
     ${theme.media.mobile} {
         font-size: 0.75rem;
-        color: #111827;
+        color: #181818;
         text-align: left;
-        line-height: 1.4;
         padding: 0;
         white-space: nowrap;
         overflow: hidden;
@@ -103,12 +101,12 @@ export const SolutionDescription = styled.p`
     }
 
     [data-theme="dark"] & {
-        color: #9CA3AF;
+        color: #EFEFEF;
     }
 
     ${theme.media.mobile} {
         [data-theme="dark"] & {
-            color: #D1D5DB;
+            color: ${colors.primary500};
         }
     }
 `;

@@ -13,7 +13,7 @@ import ProjectDetailPageTemplate from '@/components/templates/ProjectDetail/Proj
 import { MOCK_PROJECT_DETAIL } from '@/mocks/projectData';
 import LoadingScreen from '@/components/atoms/LoadingScreen';
 
-const USE_MOCK = false;
+const USE_MOCK = true;
 
 export default function ProjectPage() {
     const params = useParams();

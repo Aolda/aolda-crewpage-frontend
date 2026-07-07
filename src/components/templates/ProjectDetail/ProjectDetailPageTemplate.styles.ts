@@ -9,16 +9,16 @@ export const PageWrapper = styled.div`
     padding: 3.75rem 7.5rem;
 
     ${theme.media.desktopSm} {
-        padding: 3.75rem 2.5rem;
+        padding: 3.75rem 2rem;
     }
 
     ${theme.media.tablet} {
-        padding: 3.75rem 2.5rem;
+        padding: 2rem;
     }
 
     ${theme.media.mobile} {
         width: 100%;
-        padding: 1.5rem 1.25rem 2.5rem;
+        padding: 1.5rem 1.5rem 2.5rem;
     }
 `;
 
@@ -28,23 +28,28 @@ export const MobileTitle = styled.div`
 
     ${theme.media.mobile} {
         display: block;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.25rem;
 
         h1 {
             font-size: 1.25rem; /* 20px */
             font-weight: 700;
-            color: #111827;
+            color: #181818;
             margin: 0 0 0.25rem;
 
             [data-theme="dark"] & {
-                color: #F9FAFB;
+                color: ${colors.primary500};
             }
         }
 
         p {
             font-size: 0.625rem; /* 10px */
-            color: ${colors.gray500};
+            font-weight: 400;
+            color: #777777;
             margin: 0;
+
+            [data-theme="dark"] & {
+                color: #EFEFEF;
+            }
         }
     }
 `;
@@ -70,13 +75,14 @@ export const HeaderSection = styled.header`
     h1 {
         font-size: 2.25rem;
         font-weight: 700;
-        color: #FFFFFF;
+        color: #FEFEFE;
         margin: 0.75rem 0;
     }
 
     p {
-        color: ${colors.white600};
+        color: #FEFEFE;
         font-size: ${fontSize.base};
+        font-weight: 400;
     }
 
     ${theme.media.tablet} {
@@ -98,7 +104,7 @@ export const HeaderBackground = styled.div<{ $bgColor: string }>`
     display: flex;
     position: relative;
     width: 100%;
-    height: 31rem;
+    height: 25rem;
     background: ${(props) => props.$bgColor};
 
     & > header {
@@ -134,11 +140,22 @@ export const HeaderBackground = styled.div<{ $bgColor: string }>`
 `;
 
 export const Section = styled.section<{ $isCard?: boolean }>`
-    margin-bottom: 5rem;
+    margin-bottom: 3.75rem;
+
     p {
-        color: ${colors.gray500};
-        line-height: 1.6;
-        white-space: pre-wrap;
+        color: #777777;
+        line-height: 1.5;
+        font-weight: 400;
+    }
+
+    [data-theme="dark"] & {
+        p {
+            color: #EFEFEF;
+        }
+
+        ${props => props.$isCard && css`
+            border-color: #444444;
+        `}
     }
 
     ${theme.media.tablet} {
@@ -146,38 +163,61 @@ export const Section = styled.section<{ $isCard?: boolean }>`
     }
 
     ${theme.media.mobile} {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.25rem;
         p {
-            color: #111827;
+            color: #181818;
             font-size: 0.625rem;
+
+            [data-theme="dark"] & {
+                color: #FAFAFA;
+            }
+        }
+
+        &.planningInfoSection {
+            p {
+                [data-theme="dark"] & {
+                    color: ${colors.primary500};
+                }
+            }
         }
 
         ${props => props.$isCard && css`
-            border: 1px solid #E5E7EB;
+            border: 1px solid #EFEFEF;
             border-radius: 0.5rem;
-            padding: 1rem;
+            padding: 1rem 0.75rem;
         `}
     }
+`;
 
-    [data-theme="dark"] & {
-        p {
-            color: #9CA3AF;
-        }
+export const InfoSectionGroup = styled.section`
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3.75rem;
 
-        ${props => props.$isCard && css`
-            border-color: rgba(255, 255, 255, 0.1);
-        `}
+    ${Section} {
+        margin-bottom: 0;
+    }
+
+    ${theme.media.tablet} {
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    ${theme.media.mobile} {
+        gap: 1.25rem;
+        margin-bottom: 1.25rem;
     }
 `;
 
 export const SectionTitle = styled.h2`
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.75rem;
     font-size: ${fontSize.h3};
     font-weight: 700;
     margin-bottom: 1.25rem;
-    color: ${colors.black600};
+    color: #232527;
 
     ${theme.media.tablet} {
         font-size: 1.25rem;
@@ -186,13 +226,17 @@ export const SectionTitle = styled.h2`
 
     ${theme.media.mobile} {
         font-size: 0.75rem; /* 12px */
-        gap: 0.5rem;
-        margin-bottom: 0.75rem;
+        gap: 0.25rem;
+        margin-bottom: 0.5rem;
         img { width: 1rem; height: 1rem; } /* 16px */
     }
 
     [data-theme="dark"] & {
-        color: #F9FAFB;
+        color: #FAFAFA;
+
+        ${theme.media.mobile} {
+            color: ${colors.primary500};
+        }
     }
 `;
 
@@ -222,22 +266,36 @@ export const BlogGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
-    margin-top: 1.5rem;
 
-    ${theme.media.mobile} {
+    ${theme.media.tabletDown} {
         grid-template-columns: 1fr;
         gap: 0.75rem;
-        margin-top: 0.75rem;
+
+        & > *:nth-child(n + 5) {
+            display: none;
+        }
+    }
+
+    ${theme.media.mobile} {
+        gap: 0.5rem;
     }
 `;
 
 export const BlogCard = styled.div`
-    background: #FFFFFF;
-    border: 1px solid #E5E7EB;
+    background: #FEFEFE;
+    border: 1px solid #EFEFEF;
     border-radius: 0.75rem;
-    padding: 1.5rem;
+    padding: 1.25rem 1.5rem;
     cursor: pointer;
     transition: transform 0.2s;
+
+    ${theme.media.tablet} {
+        padding: 0.75rem 1rem;
+    }
+
+    ${theme.media.mobile} {
+        padding: 0.5rem 0.75rem;
+    }
 
     &:hover {
         transform: translateY(-4px);
@@ -248,61 +306,80 @@ export const BlogCard = styled.div`
         font-size: 1.125rem;
         font-weight: 700;
         margin-bottom: 0.5rem;
-        color: #111827;
+        color: #232527;
 
         [data-theme="dark"] & {
-            color: #F9FAFB;
+            color: #FAFAFA;
         }
+
+        ${theme.media.tablet} {
+            font-size: ${fontSize.base};
+        }
+
+        ${theme.media.mobile} {
+            font-size: ${fontSize.smaller};
+            margin-bottom: 0.25rem;
+        }
+
     }
 
     .meta {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        font-size: 0.875rem;
-        margin-bottom: 0.75rem;
+        gap: 1rem;
+        font-size: ${fontSize.base};
+        margin-bottom: 1rem;
+
+        ${theme.media.tablet} {
+            font-size: ${fontSize.smaller};
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        ${theme.media.mobile} {
+            font-size: 0.625rem;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
 
         .author {
-            color: #4B5563;
+            color: #232527;
+
+            [data-theme="dark"] & {
+                color: #FAFAFA;
+            }
         }
 
         .date {
-            color: #9CA3AF;
+            color: #777777;
+
+            [data-theme="dark"] & {
+                color: #EFEFEF;
+            }
         }
     }
 
     .preview {
-        font-size: 0.875rem;
-        color: #6B7280;
+        font-size: ${fontSize.base};
+        color: #777777;
         line-height: 1.5;
         display: -webkit-box;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
         overflow: hidden;
-    }
 
-    ${theme.media.mobile} {
-        padding: 0.875rem 1rem;
-
-        h3 {
-            font-size: 0.8125rem; /* 13px */
-            margin-bottom: 0.25rem;
+        ${theme.media.tablet} {
+            font-size: ${fontSize.smaller};
         }
 
-        .meta {
-            font-size: 0.625rem; /* 10px */
-            margin-bottom: 0.375rem;
-        }
-
-        .preview {
-            font-size: 0.625rem; /* 10px */
-            -webkit-line-clamp: 2;
+        ${theme.media.mobile} {
+            font-size: 0.625rem;
         }
     }
 
     [data-theme="dark"] & {
-        background: #363636;
-        border-color: rgba(255, 255, 255, 0.1);
+        background: #2A2A2A;
+        border-color: #444444;
     }
 `;
 
@@ -318,7 +395,7 @@ export const CrewGrid = styled.div`
 
     ${theme.media.mobile} {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+        gap: 0.75rem;
         justify-items: center;
     }
 `;
