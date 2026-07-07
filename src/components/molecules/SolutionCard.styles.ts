@@ -1,11 +1,12 @@
 import styled from 'styled-components';
-import { colors, fontSize, theme } from '@/styles/theme';
+import { fontSize, theme } from '@/styles/theme';
+import { semanticColors, typography, radius } from '@/styles/tokens';
 
 export const SolutionCard = styled.div`
     padding: 1.25rem 1.5rem;
-    border-radius: 10px;
-    border: 1px solid #EFEFEF;
-    background: #FEFEFE;
+    border-radius: ${radius.lg};
+    border: 1px solid ${semanticColors.border.default};
+    background: ${semanticColors.background.card};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,16 +42,16 @@ export const SolutionCard = styled.div`
     }
 
     [data-theme="dark"] & {
-        background: #2A2A2A;
-        border-color: #444444;
+        background: ${semanticColors.background.card};
+        border-color: ${semanticColors.border.default};
     }
 `;
 
 export const SolutionTitle = styled.h3`
     margin: 0;
-    font-size: ${fontSize.body1};
+    ${typography('Body1')};
     font-weight: 700;
-    color: ${colors.primary500};
+    color: ${semanticColors.text.brand};
     text-align: center;
 
     ${theme.media.tablet} {
@@ -65,24 +66,24 @@ export const SolutionTitle = styled.h3`
         width: 4.5rem;
         height: 1.625rem;
         padding: 0.375rem 1rem;
-        background: #EFEFEF;
-        border-radius: 0.25rem;
-        font-size: 0.625rem;
+        background: ${semanticColors.background.elevated};
+        border-radius: ${radius.sm};
+        ${typography('Caption2')};
         font-weight: 700;
-        color: #777777;
+        color: ${semanticColors.text.secondary};
         white-space: nowrap;
 
         [data-theme="dark"] & {
-            background-color: #444444;
-            color: #EFEFEF;
+            background-color: ${semanticColors.background.elevated};
+            color: ${semanticColors.text.secondary};
         }
     }
 `;
 
 export const SolutionDescription = styled.p`
     margin: 0;
-    font-size: ${fontSize.base};
-    color: ${colors.gray600};
+    ${typography('Body2')};
+    color: ${semanticColors.text.secondary};
     text-align: center;
 
     ${theme.media.tablet} {
@@ -92,7 +93,7 @@ export const SolutionDescription = styled.p`
 
     ${theme.media.mobile} {
         font-size: 0.75rem;
-        color: #181818;
+        color: ${semanticColors.text.primary};
         text-align: left;
         padding: 0;
         white-space: nowrap;
@@ -101,12 +102,12 @@ export const SolutionDescription = styled.p`
     }
 
     [data-theme="dark"] & {
-        color: #EFEFEF;
+        color: ${semanticColors.text.secondary};
     }
 
     ${theme.media.mobile} {
         [data-theme="dark"] & {
-            color: ${colors.primary500};
+            color: ${semanticColors.text.primary};
         }
     }
 `;

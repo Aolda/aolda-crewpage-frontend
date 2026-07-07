@@ -1,6 +1,7 @@
 // /src/components/templates/ProjectDetail/ProjectDetailPageTemplate.styles.ts
 import styled, { css } from 'styled-components';
-import { colors, fontSize, theme } from '@/styles/theme';
+import { fontSize, theme } from '@/styles/theme';
+import { radius, semanticColors, typography } from '@/styles/tokens';
 
 export const PageWrapper = styled.div`
     max-width: 90rem;
@@ -31,25 +32,20 @@ export const MobileTitle = styled.div`
         margin-bottom: 1.25rem;
 
         h1 {
-            font-size: 1.25rem; /* 20px */
+            ${typography('Body1')};
             font-weight: 700;
-            color: #181818;
+            color: ${semanticColors.text.primary};
             margin: 0 0 0.25rem;
 
             [data-theme="dark"] & {
-                color: ${colors.primary500};
+                color: ${semanticColors.text.brand};
             }
         }
 
         p {
-            font-size: 0.625rem; /* 10px */
-            font-weight: 400;
-            color: #777777;
+            ${typography('Caption2')};
+            color: ${semanticColors.text.secondary};
             margin: 0;
-
-            [data-theme="dark"] & {
-                color: #EFEFEF;
-            }
         }
     }
 `;
@@ -75,12 +71,12 @@ export const HeaderSection = styled.header`
     h1 {
         font-size: 2.25rem;
         font-weight: 700;
-        color: #FEFEFE;
+        color: ${semanticColors.text.inverse};
         margin: 0.75rem 0;
     }
 
     p {
-        color: #FEFEFE;
+        color: ${semanticColors.text.inverse};
         font-size: ${fontSize.base};
         font-weight: 400;
     }
@@ -143,18 +139,14 @@ export const Section = styled.section<{ $isCard?: boolean }>`
     margin-bottom: 3.75rem;
 
     p {
-        color: #777777;
+        color: ${semanticColors.text.secondary};
         line-height: 1.5;
         font-weight: 400;
     }
 
     [data-theme="dark"] & {
-        p {
-            color: #EFEFEF;
-        }
-
         ${props => props.$isCard && css`
-            border-color: #444444;
+            border-color: ${semanticColors.border.default};
         `}
     }
 
@@ -165,24 +157,20 @@ export const Section = styled.section<{ $isCard?: boolean }>`
     ${theme.media.mobile} {
         margin-bottom: 1.25rem;
         p {
-            color: #181818;
+            color: ${semanticColors.text.primary};
             font-size: 0.625rem;
-
-            [data-theme="dark"] & {
-                color: #FAFAFA;
-            }
         }
 
         &.planningInfoSection {
             p {
                 [data-theme="dark"] & {
-                    color: ${colors.primary500};
+                    color: ${semanticColors.text.brand};
                 }
             }
         }
 
         ${props => props.$isCard && css`
-            border: 1px solid #EFEFEF;
+            border: 1px solid ${semanticColors.border.default};
             border-radius: 0.5rem;
             padding: 1rem 0.75rem;
         `}
@@ -214,10 +202,9 @@ export const SectionTitle = styled.h2`
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    font-size: ${fontSize.h3};
-    font-weight: 700;
+    ${typography('Title1')};
     margin-bottom: 1.25rem;
-    color: #232527;
+    color: ${semanticColors.text.primary};
 
     ${theme.media.tablet} {
         font-size: 1.25rem;
@@ -232,10 +219,10 @@ export const SectionTitle = styled.h2`
     }
 
     [data-theme="dark"] & {
-        color: #FAFAFA;
+        color: ${semanticColors.text.primary};
 
         ${theme.media.mobile} {
-            color: ${colors.primary500};
+            color: ${semanticColors.text.brand};
         }
     }
 `;
@@ -282,9 +269,9 @@ export const BlogGrid = styled.div`
 `;
 
 export const BlogCard = styled.div`
-    background: #FEFEFE;
-    border: 1px solid #EFEFEF;
-    border-radius: 0.75rem;
+    background: ${semanticColors.background.card};
+    border: 1px solid ${semanticColors.border.default};
+    border-radius: ${radius.lg};
     padding: 1.25rem 1.5rem;
     cursor: pointer;
     transition: transform 0.2s;
@@ -303,14 +290,10 @@ export const BlogCard = styled.div`
     }
 
     h3 {
-        font-size: 1.125rem;
+        ${typography('Body2')};
         font-weight: 700;
         margin-bottom: 0.5rem;
-        color: #232527;
-
-        [data-theme="dark"] & {
-            color: #FAFAFA;
-        }
+        color: ${semanticColors.text.primary};
 
         ${theme.media.tablet} {
             font-size: ${fontSize.base};
@@ -327,7 +310,7 @@ export const BlogCard = styled.div`
         display: flex;
         align-items: center;
         gap: 1rem;
-        font-size: ${fontSize.base};
+        ${typography('Body2')};
         margin-bottom: 1rem;
 
         ${theme.media.tablet} {
@@ -343,26 +326,17 @@ export const BlogCard = styled.div`
         }
 
         .author {
-            color: #232527;
-
-            [data-theme="dark"] & {
-                color: #FAFAFA;
-            }
+            color: ${semanticColors.text.primary};
         }
 
         .date {
-            color: #777777;
-
-            [data-theme="dark"] & {
-                color: #EFEFEF;
-            }
+            color: ${semanticColors.text.secondary};
         }
     }
 
     .preview {
-        font-size: ${fontSize.base};
-        color: #777777;
-        line-height: 1.5;
+        ${typography('Body2')};
+        color: ${semanticColors.text.secondary};
         display: -webkit-box;
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
@@ -374,12 +348,16 @@ export const BlogCard = styled.div`
 
         ${theme.media.mobile} {
             font-size: 0.625rem;
+
+            [data-theme="dark"] & {
+                color: ${semanticColors.text.primary};
+            }
         }
     }
 
     [data-theme="dark"] & {
-        background: #2A2A2A;
-        border-color: #444444;
+        background: ${semanticColors.background.card};
+        border-color: ${semanticColors.border.default};
     }
 `;
 
