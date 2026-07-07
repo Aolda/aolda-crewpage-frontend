@@ -1,11 +1,12 @@
 // src/components/templates/main/Overview/Overview.styles.ts
 import styled from 'styled-components';
-import { colors, fontSize, theme } from '@/styles/theme';
+import { fontSize, theme } from '@/styles/theme';
+import { radius, semanticColors, typography } from '@/styles/tokens';
 
 export const SinceText = styled.div`
     font-size: ${fontSize.base};
     font-weight: 300;
-    color: #777777;
+    color: ${semanticColors.text.secondary};
     margin-bottom: 0.75rem;
 
     ${theme.media.tablet} {
@@ -18,9 +19,6 @@ export const SinceText = styled.div`
         margin-bottom: 0;
     }
 
-    [data-theme="dark"] & {
-        color: #EFEFEF;
-    }
 `;
 
 export const OverviewWrapper = styled.div`
@@ -199,25 +197,17 @@ export const MobileOverviewHeader = styled.div`
             font-size: 1.25rem;
             font-weight: 700;
             line-height: 120%;
-            color: #111827;
+            color: ${semanticColors.text.primary};
             word-break: keep-all;
             margin-bottom: 0.75rem;
 
-            span { color: ${colors.primary500}; }
-
-            [data-theme="dark"] & {
-                color: #FAFAFA;
-            }
+            span { color: ${semanticColors.text.brand}; }
         }
 
         p {
             font-size: 0.625rem;
-            color: ${colors.gray500};
+            color: ${semanticColors.text.secondary};
             word-break: keep-all;
-
-            [data-theme="dark"] & {
-                color: #FAFAFA;
-            }
         }
     }
 `;
@@ -277,8 +267,8 @@ export const InfoCard = styled.div`
     width: 100%;
     height: 23.5rem;
     max-width: 75rem;
-    border: 2px solid rgba(226, 226, 226, 1); /* 1px */
-    border-radius: 1.5rem;
+    border: 2px solid ${semanticColors.border.default};
+    border-radius: ${radius.xl};
     padding: 3.75rem;
     display: flex;
     justify-content: space-between;
@@ -324,7 +314,7 @@ export const InfoCard = styled.div`
     }
 
     [data-theme="dark"] & {
-        border-color: #444444;
+        border-color: ${semanticColors.border.default};
 
         ${theme.media.mobile} {
             background: transparent;
@@ -338,20 +328,19 @@ export const CardText = styled.div`
     gap: 3rem;
 
     span {
-            color: ${colors.primary500};
+        color: ${semanticColors.text.brand};
     }
     h3 {
-        font-size: ${fontSize.h2};
+        ${typography('Heading2')};
         font-weight: 700;
         line-height: 1.2;
-        color: #111827;
+        color: ${semanticColors.text.primary};
         word-break: keep-all;
     }
     p.not-mobile {
         display: block
-        font-size: ${fontSize.base};
-        line-height: 1.5;
-        color: ${colors.gray500};
+        ${typography('Body2')};
+        color: ${semanticColors.text.secondary};
     }
 
     p.mobile-only {
@@ -384,16 +373,7 @@ export const CardText = styled.div`
         p.mobile-only {
             display: block;
             font-size: 0.625rem;
-            color: ${colors.gray500};
-        }
-    }
-
-    [data-theme="dark"] & {
-        h3 {
-            color: #FAFAFA;
-        }
-        p {
-            color: #EFEFEF;
+            color: ${semanticColors.text.secondary};
         }
     }
 `;

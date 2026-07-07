@@ -23,7 +23,7 @@ export const SelectContainer = styled.div`
 export const SelectHeader = styled.div<{ $isSelected?: boolean }>`
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     gap: 0.5rem;
     min-width: 5.875rem;
     height: 3rem;

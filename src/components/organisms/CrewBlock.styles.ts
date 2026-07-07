@@ -1,6 +1,7 @@
 // /src/components/organisms/CrewBlock.style.ts
 import styled, { css } from "styled-components";
-import { fontSize, colors, theme } from "@/styles/theme";
+import { fontSize, theme } from "@/styles/theme";
+import { radius, semanticColors, typography } from "@/styles/tokens";
 
 interface CrewBlockProps {
     $isCrewpage: boolean;
@@ -9,11 +10,11 @@ interface CrewBlockProps {
 const baseCardStyle = css`
     box-sizing: border-box;
     display: flex;
-    border-radius: 1.25rem;
+    border-radius: ${radius.xxl};
 
     [data-theme="dark"] & {
-        background-color: #2A2A2A;
-        border-color: rgba(255, 255, 255, 0.1);
+        background-color: ${semanticColors.background.card};
+        border-color: ${semanticColors.border.default};
     }
 
     .imageSection {
@@ -51,8 +52,8 @@ const mainCrewCardStyle = css`
     height: 16.75rem;
     padding: 1.5rem 2.25rem;
     gap: 2.25rem;
-    background-color: #FEFEFE;
-    border: 1px solid ${colors.border};
+    background-color: ${semanticColors.background.card};
+    border: 1px solid ${semanticColors.border.default};
     transition: transform 0.2s;
 
     &:hover {
@@ -77,20 +78,20 @@ const mainCrewCardStyle = css`
 
     .nameInfo {
         h2 {
-            color: #232527;
-            font-size: ${fontSize.body1};
+            ${typography('Body1')};
+            color: ${semanticColors.text.primary};
             font-weight: bold;
         }
 
         span {
-            color: ${colors.gray600};
-            font-size: ${fontSize.base};
+            ${typography('Body2')};
+            color: ${semanticColors.text.secondary};
         }
 
         [data-theme="dark"] & {
             h2,
             span {
-                color: #EFEFEF;
+                color: ${semanticColors.text.primary};
             }
         }
     }
@@ -99,14 +100,14 @@ const mainCrewCardStyle = css`
         max-width: 100%;
         margin: 0;
         overflow: hidden;
-        color: ${colors.gray600};
-        font-size: ${fontSize.base};
+        ${typography('Body2')};
+        color: ${semanticColors.text.secondary};
         font-weight: bold;
         text-overflow: ellipsis;
         white-space: nowrap;
 
         [data-theme="dark"] & {
-            color: #EFEFEF;
+            color: ${semanticColors.text.primary};
         }
     }
 
@@ -116,6 +117,7 @@ const mainCrewCardStyle = css`
         padding: 1.5rem 2.25rem;
         gap: 1.25rem;
         align-items: center;
+        border-radius: ${radius.lg};
 
         .nameInfo {
             h2 { font-size: ${fontSize.base}; }
@@ -134,7 +136,7 @@ const mainCrewCardStyle = css`
         padding: 0.75rem;
         gap: 0.5rem;
         align-items: flex-start;
-        border-radius: 0.5rem;
+        border-radius: ${radius.md};
 
         .imageSection { display: none; }
 
@@ -165,7 +167,7 @@ const crewPageCardStyle = css`
     height: 10.5rem;
     padding: 1.5rem 2.25rem;
     gap: 2.25rem;
-    border: 1px solid #E2E2E2;
+    border: 1px solid ${semanticColors.border.default};
 
     .textSection {
         display: flex;
@@ -184,19 +186,19 @@ const crewPageCardStyle = css`
 
     .nameInfo {
         h2 {
-            color: #232527;
-            font-size: ${fontSize.h3};
+            ${typography('Title1')};
+            color: ${semanticColors.text.primary};
             font-weight: bold;
         }
 
         span {
-            color: ${colors.gray600};
-            font-size: ${fontSize.body1};
+            ${typography('Body1')};
+            color: ${semanticColors.text.secondary};
         }
 
         [data-theme="dark"] & {
-            h2 { color: ${colors.primary500}; }
-            span { color: #EFEFEF; }
+            h2 { color: ${semanticColors.text.brand}; }
+            span { color: ${semanticColors.text.primary}; }
         }
     }
 
@@ -213,10 +215,10 @@ const crewPageCardStyle = css`
         display: flex;
         align-items: center;
         gap: 1.5rem;
-        color: #777777;
+        color: ${semanticColors.text.secondary};
 
         [data-theme="dark"] & {
-            color: #EFEFEF;
+            color: ${semanticColors.text.primary};
         }
 
         img {
@@ -263,7 +265,7 @@ const crewPageCardStyle = css`
         height: 5.3125rem;
         padding: 0.75rem;
         gap: 0;
-        border-radius: 0.5rem;
+        border-radius: ${radius.md};
 
         .imageSection { display: none; }
 

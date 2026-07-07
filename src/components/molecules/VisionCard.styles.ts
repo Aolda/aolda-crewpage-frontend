@@ -1,14 +1,15 @@
 // /src/components/molecules/VisionCard.styles.ts
 import styled from "styled-components"
-import { colors, fontSize, theme } from "@/styles/theme";
+import { fontSize, theme } from "@/styles/theme";
+import { radius, semanticColors, typography } from "@/styles/tokens";
 
 export const StyledVisionCard = styled.div `
     display: flex;
     width: 24rem;
     height: 25rem;
-    border: 2px solid ${colors.border};
-    border-radius: 1rem;
-    background-color: #FEFEFE;
+    border: 2px solid ${semanticColors.border.default};
+    border-radius: ${radius.xl};
+    background-color: ${semanticColors.background.card};
 
     justify-content: center;
     align-items: center;
@@ -18,11 +19,11 @@ export const StyledVisionCard = styled.div `
     gap: 2.25rem;
 
     ${theme.media.mobile} {
-        border-radius: 0.5rem;
+        border-radius: ${radius.md};
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        border: 1px solid ${colors.border};
+        border: 1px solid ${semanticColors.border.default};
         gap: 1rem;
         padding: 0.75rem;
         width: 100%;
@@ -30,8 +31,8 @@ export const StyledVisionCard = styled.div `
     }
 
     ${theme.media.tablet} {
-        border: 1px solid ${colors.border};
-        border-radius: 0.75rem;
+        border: 1px solid ${semanticColors.border.default};
+        border-radius: ${radius.lg};
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -43,8 +44,8 @@ export const StyledVisionCard = styled.div `
     }
 
     [data-theme="dark"] & {
-        background-color: #2A2A2A;
-        border-color: #444444;
+        background-color: ${semanticColors.background.card};
+        border-color: ${semanticColors.border.default};
     }
 
     img {
@@ -83,9 +84,9 @@ export const TextContainer = styled.section`
     }
 
     h1 {
-        font-size: ${fontSize.h2};
+        ${typography('Heading2')};
         font-weight: 700;
-        color: ${colors.primary500};
+        color: ${semanticColors.text.brand};
 
         ${theme.media.mobile} {
             font-size: ${fontSize.smaller};
@@ -97,8 +98,8 @@ export const TextContainer = styled.section`
     }
 
     p {
-        color: ${colors.gray600};
-        font-size: ${fontSize.base};
+        ${typography('Body2')};
+        color: ${semanticColors.text.secondary};
         white-space: pre-wrap;
         word-break: keep-all;
 
@@ -111,8 +112,5 @@ export const TextContainer = styled.section`
             white-space: normal;
         }
 
-        [data-theme="dark"] & {
-            color: #EFEFEF;
-        }
     }
 `;

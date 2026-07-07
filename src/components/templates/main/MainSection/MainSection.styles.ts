@@ -1,6 +1,7 @@
 // /src/components/templates/main/MainSection/MainSection.styles.ts
 import styled from 'styled-components';
-import { fontSize, colors, theme } from '@/styles/theme';
+import { fontSize, theme } from '@/styles/theme';
+import { radius, semanticColors, typography } from '@/styles/tokens';
 
 export const SectionWrapper = styled.section<{ $bgColor?: string }>`
     display: flex;
@@ -12,7 +13,7 @@ export const SectionWrapper = styled.section<{ $bgColor?: string }>`
     padding-left: 7.5rem;
     padding-right: 7.5rem;
 
-    background-color: ${(props) => props.$bgColor || '#FFFFFF'};
+    background-color: ${(props) => props.$bgColor || semanticColors.background.page};
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -37,7 +38,7 @@ export const SectionWrapper = styled.section<{ $bgColor?: string }>`
     }
 
     [data-theme="dark"] & {
-        background-color: #2A2A2A;
+        background-color: ${(props) => props.$bgColor || semanticColors.background.page};
     }
 `;
 
@@ -63,29 +64,26 @@ export const Header = styled.div<{ $hideOnMobile?: boolean }>`
 export const GrayBar = styled.div`
     width: 3rem;
     height: 0;
-    border: solid 1.5px #777777;
-    border-radius: 4px;
+    border: solid 1.5px ${semanticColors.border.strong};
+    border-radius: ${radius.xs};
     margin-bottom: 0.5rem;
 
     ${theme.media.tablet} {
         width: 1.5rem;
-        border: solid 1px #777777;
+        border: solid 1px ${semanticColors.border.strong};
     }
 
     ${theme.media.mobile} {
         display: none;
     }
 
-    [data-theme="dark"] & {
-        border-color: #EFEFEF;
-    }
 `;
 
 export const Label = styled.span`
     display: block;
-    font-size: ${fontSize.body1};
+    ${typography('Body1')};
     font-weight: 600;
-    color: ${colors.black600};
+    color: ${semanticColors.text.primary};
     margin-bottom: 1.5rem;
 
     ${theme.media.tablet} {
@@ -94,24 +92,23 @@ export const Label = styled.span`
 
     ${theme.media.mobile} {
         display: inline-block;
-        color: ${colors.primary500};
-        border: 1px solid ${colors.primary500};
-        border-radius: 0.25rem;
+        color: ${semanticColors.text.brand};
+        border: 1px solid ${semanticColors.border.brand};
+        border-radius: ${radius.sm};
         padding: 0.25rem 0.5rem;
         font-size: 0.625rem;
         margin-bottom: 0.5rem;
     }
 
     [data-theme="dark"] & {
-        color: ${colors.primary500};
+        color: ${semanticColors.text.brand};
     }
 `;
 
 export const Title = styled.h2`
-    font-size: ${fontSize.h2};
-    font-weight: 700;
+    ${typography('Heading2')};
     line-height: 1.3;
-    color: #181818;
+    color: ${semanticColors.text.primary};
     margin-bottom: 1.5rem;
     word-break: keep-all;
 
@@ -120,7 +117,7 @@ export const Title = styled.h2`
     }
 
     span {
-        color: ${colors.primary500};
+        color: ${semanticColors.text.brand};
     }
 
     ${theme.media.tablet} {
@@ -139,15 +136,12 @@ export const Title = styled.h2`
         }
     }
 
-    [data-theme="dark"] & {
-        color: #FAFAFA;
-    }
 `;
 
 export const Description = styled.p`
-    font-size: ${fontSize.base};
+    ${typography('Body2')};
     line-height: 1.6;
-    color: ${colors.gray500};
+    color: ${semanticColors.text.secondary};
     max-width: 43.75rem;
     margin: 0 auto;
     word-break: keep-all;
@@ -163,9 +157,6 @@ export const Description = styled.p`
         text-align: left;
     }
 
-    [data-theme="dark"] & {
-        color: #EFEFEF;
-    }
 `;
 
 export const Content = styled.div`

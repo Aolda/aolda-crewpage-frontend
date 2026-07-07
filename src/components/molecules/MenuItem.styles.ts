@@ -1,6 +1,7 @@
 // /src/components/molecules/MenuItem.styles.ts
 import styled from "styled-components";
-import { fontSize, colors, theme } from "@/styles/theme";
+import { fontSize, theme } from "@/styles/theme";
+import { radius, semanticColors, typography } from "@/styles/tokens";
 
 export const StyledMenuItem = styled.div`
     display: flex;
@@ -9,7 +10,7 @@ export const StyledMenuItem = styled.div`
     width: 52.75rem;
     height: 9.875rem;
     padding-bottom: 1.5rem;
-    border-bottom: solid 1px ${colors.border};
+    border-bottom: solid 1px ${semanticColors.border.default};
     gap: 1.25rem;
 
     &:hover {
@@ -20,7 +21,7 @@ export const StyledMenuItem = styled.div`
         width: 100%;
         height: 7.5rem;
         padding: 0 1rem 1.5rem 1rem;
-        border-bottom: solid 1px #FEFEFE;
+        border-bottom: solid 1px ${semanticColors.border.default};
         gap: 0.75rem;
     }
 
@@ -28,13 +29,13 @@ export const StyledMenuItem = styled.div`
         width: 100%;
         height: 4.9375rem;
         padding: 0.5rem 0.75rem 0.75rem 0.75rem;
-        border: 1px solid #EFEFEF;
-        border-radius: 0.5rem;
+        border: 1px solid ${semanticColors.border.default};
+        border-radius: ${radius.md};
         gap: 0.5rem;
     }
 
     [data-theme="dark"] & {
-        border-color: #444444;
+        border-color: ${semanticColors.border.default};
     }
 
     /* desktop/tablet: inlineBadge 숨김 */
@@ -70,20 +71,12 @@ export const StyledMenuItem = styled.div`
 
         .title {
             font-size: ${fontSize.h3};
-            color: #232527;
+            color: ${semanticColors.text.primary};
             font-weight: 700;
-
-            [data-theme="dark"] & {
-                color: #EFEFEF;
-            }
         }
 
         ${theme.media.tablet} {
             .title { font-size: ${fontSize.body1}; }
-
-            [data-theme="dark"] & {
-                color: #EFEFEF;
-            }
         }
 
         ${theme.media.mobile} {
@@ -110,7 +103,7 @@ export const StyledMenuItem = styled.div`
                 display: inline;
                 font-size: 0.625rem;
                 font-weight: 400;
-                color: ${colors.primary500};
+                color: ${semanticColors.text.brand};
             }
         }
     }
@@ -118,26 +111,16 @@ export const StyledMenuItem = styled.div`
     .date {
         font-size: ${fontSize.base};
         font-weight: 400;
-        color: #777777;
-
-        [data-theme="dark"] & {
-            color: #EFEFEF;
-        }
+        color: ${semanticColors.text.secondary};
 
         ${theme.media.tablet} {
             font-size: ${fontSize.smaller};
 
-            [data-theme="dark"] & {
-                color: #EFEFEF;
-            }
         }
 
         ${theme.media.mobile} {
             font-size: 0.625rem;
 
-            [data-theme="dark"] & {
-                color: #EFEFEF;
-            }
         }
     }
 
@@ -147,10 +130,8 @@ export const StyledMenuItem = styled.div`
 
         p {
             margin: 0;
-            color: ${colors.gray600};
-            font-size: ${fontSize.base};
-            font-weight: 400;
-            line-height: 1.5;
+            ${typography('Body2')};
+            color: ${semanticColors.text.secondary};
             text-align: left;
 
             display: -webkit-box;
@@ -168,9 +149,6 @@ export const StyledMenuItem = styled.div`
                 -webkit-line-clamp: 1;
             }
 
-            [data-theme="dark"] & {
-                color: #EFEFEF;
-            }
         }
     }
 `;

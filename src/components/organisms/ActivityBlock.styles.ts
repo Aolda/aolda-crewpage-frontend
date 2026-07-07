@@ -1,13 +1,15 @@
 // /src/components/organisms/ActivityBlock/styles/ts
-import { colors, fontSize, theme } from "@/styles/theme";
+import { fontSize, theme } from "@/styles/theme";
+import { radius, semanticColors, typography } from "@/styles/tokens";
 
 import styled from "styled-components"
 
 export const StyledActivityBlock = styled.div`
 
     display: flex;
-    border: 1px solid #E2E2E2;
-    border-radius: 1.25rem;
+    border: 1px solid ${semanticColors.border.default};
+    border-radius: ${radius.xl};
+    background-color: ${semanticColors.background.card};
 
     width: 15rem;
     height: 20rem;
@@ -37,8 +39,8 @@ export const StyledActivityBlock = styled.div`
         min-height: 3.8125rem;
         padding: 0.75rem;
         gap: 0.5rem;
-        border: 1px solid #EFEFEF;
-        border-radius: 0.5rem;
+        border: 1px solid ${semanticColors.border.default};
+        border-radius: ${radius.md};
         justify-content: center;
     }
 
@@ -48,7 +50,7 @@ export const StyledActivityBlock = styled.div`
         ${theme.media.mobile} {
             display: block;
             font-size: 0.625rem;
-            color: #777777;
+            color: ${semanticColors.text.secondary};
         }
     }
 
@@ -82,8 +84,9 @@ export const StyledActivityBlock = styled.div`
         overflow: hidden;
 
         h2 {
-            font-size: ${fontSize.body1};
+            ${typography('Body1')};
             font-weight: bold;
+            color: ${semanticColors.text.primary};
             width: 100%;
             word-break: break-word;
             overflow-wrap: break-word;
@@ -100,7 +103,7 @@ export const StyledActivityBlock = styled.div`
 
         span {
             font-size: ${fontSize.smaller};
-            color: #777777;
+            color: ${semanticColors.text.secondary};
             font-family: var(--font-cjk);
             width: 100%;
             word-break: break-word;
@@ -137,7 +140,7 @@ export const StyledActivityBlock = styled.div`
             height: 3.375rem;
             white-space: pre-wrap;
             font-size: ${fontSize.smaller};
-            color: #777777;
+            color: ${semanticColors.text.secondary};
             font-family: var(--font-cjk);
             overflow: hidden;
             text-overflow: ellipsis;
@@ -151,23 +154,23 @@ export const StyledActivityBlock = styled.div`
     }
 
     [data-theme="dark"] & {
-        border-color: #444444;
-        background-color: #2A2A2A;
-        color: #EFEFEF;
+        border-color: ${semanticColors.border.default};
+        background-color: ${semanticColors.background.card};
+        color: ${semanticColors.text.primary};
 
         .titleSection {
             h2 {
-                color: ${colors.primary500};
+                color: ${semanticColors.text.brand};
             }
 
             span {
-                color: #EFEFEF;
+                color: ${semanticColors.text.primary};
             }
         }
 
         .bottomSection {
             p {
-                color: #EFEFEF;
+                color: ${semanticColors.text.primary};
             }
         }
     }

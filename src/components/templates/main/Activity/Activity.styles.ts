@@ -1,7 +1,8 @@
 // /src/components/templates/main/Activity/Activity.styles.ts
 import styled, { keyframes } from 'styled-components';
 import Link from 'next/link';
-import { colors, fontSize, theme } from '@/styles/theme';
+import { fontSize, theme } from '@/styles/theme';
+import { radius, semanticColors, typography } from '@/styles/tokens';
 
 export const ActivityWrapper = styled.div`
     width: 100%;
@@ -40,14 +41,14 @@ export const Tab = styled.div`
     height: 7.5rem;
 
     padding: 1.5rem 2.25rem;
-    border: 2px solid #EFEFEF;
-    border-radius: 1rem;
+    border: 2px solid ${semanticColors.border.default};
+    border-radius: ${radius.lg};
 
     justify-content: space-between;
     text-align: left;
 
     [data-theme="dark"] & {
-        border-color: #444444;
+        border-color: ${semanticColors.border.default};
     }
 
     ${theme.media.mobile} {
@@ -55,8 +56,8 @@ export const Tab = styled.div`
         height: auto;
         flex-direction: column;
         align-items: flex-start;
-        border: 1px solid #EFEFEF;
-        border-radius: 0.5rem;
+        border: 1px solid ${semanticColors.border.default};
+        border-radius: ${radius.md};
         text-align: left;
         padding: 0.75rem;
         gap: 0.25rem;
@@ -80,9 +81,9 @@ export const Tab = styled.div`
     }
 
     h2 {
-        font-size: ${fontSize.h3};
+        ${typography('Title1')};
         font-weight: 700;
-        color: ${colors.primary500};
+        color: ${semanticColors.text.brand};
         margin: 0;
 
         ${theme.media.tablet} {
@@ -97,14 +98,10 @@ export const Tab = styled.div`
     p {
         margin: 0;
         font-size: ${fontSize.smaller};
-        color: #777777;
+        color: ${semanticColors.text.secondary};
         line-height: 1.5;
         text-align: right;
         font-weight: 400;
-
-        [data-theme="dark"] & {
-            color: #EFEFEF;
-        }
 
         ${theme.media.mobile} {
             text-align: left;
@@ -119,13 +116,13 @@ export const Tab = styled.div`
 
         span {
             font-weight: 700;
-            color: black;
+            color: ${semanticColors.text.primary};
             ${theme.media.tabletDown} {
-                color: ${colors.primary500};
+                color: ${semanticColors.text.brand};
             }
 
             [data-theme="dark"] & {
-                color: ${colors.primary500};
+                color: ${semanticColors.text.brand};
             }
         }
 
@@ -199,7 +196,7 @@ export const MoreLink = styled(Link)`
         margin-top: 1.5rem;
         font-size: ${fontSize.smaller};
         font-weight: 600;
-        color: ${colors.primary500};
+        color: ${semanticColors.text.brand};
         text-decoration: none;
     }
 `;

@@ -1,6 +1,7 @@
 // /src/components/templates/main/Hero/Hero.styles.ts
 import styled from 'styled-components';
-import { fontSize, colors, theme } from '@/styles/theme';
+import { fontSize, theme } from '@/styles/theme';
+import { semanticColors } from '@/styles/tokens';
 
 export const HeroWrapper = styled.section`
     width: 100%;
@@ -60,7 +61,7 @@ export const HeroContent = styled.div`
         font-size: ${fontSize.h3};
         font-weight: 700;
         line-height: 1.4;
-        color: ${colors.black600};
+        color: ${semanticColors.text.primary};
         margin-bottom: 2rem;
         word-break: keep-all;
 
@@ -74,15 +75,13 @@ export const HeroContent = styled.div`
             margin-bottom: 1.5rem;
         }
 
-        [data-theme="dark"] & {
-            color: #F9FAFB;
-        }
     }
 
     .team-name {
         span:not(.font-paperlogy) {
             font-size: ${fontSize.h3};
-            color: ${colors.black600};
+            font-weight: 700;
+            color: ${semanticColors.text.primary};
             margin-right: 1rem;
 
             ${theme.media.tablet} {
@@ -94,14 +93,11 @@ export const HeroContent = styled.div`
                 margin-right: 0.5rem;
             }
 
-            [data-theme="dark"] & {
-                color: #F9FAFB;
-            }
         }
 
         .font-paperlogy {
             font-family: var(--font-paperlogy);
-            color: ${colors.primary500};
+            color: ${semanticColors.text.brand};
             font-size: 3.75rem;
             font-weight: 700;
             line-height: 1;

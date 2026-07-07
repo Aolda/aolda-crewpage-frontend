@@ -1,6 +1,7 @@
 // /src/components/molecules/JoinSection.styles.ts
 import styled from "styled-components";
-import { fontSize, colors, theme } from "@/styles/theme";
+import { fontSize, theme } from "@/styles/theme";
+import { primitiveColors, radius, semanticColors, typography } from "@/styles/tokens";
 // Styles (고정 rem 적용)
 export const Container = styled.section`
     padding-top: 10rem;
@@ -24,9 +25,8 @@ export const Container = styled.section`
     }
 
     h3 {
-        font-size: ${fontSize.h2};
-        font-weight: 700;
-        line-height: 1.4;
+        ${typography('Heading2')};
+        color: ${semanticColors.text.primary};
 
         ${theme.media.tablet} {
             font-size: ${fontSize.h3};
@@ -36,10 +36,6 @@ export const Container = styled.section`
             font-size: 1.5rem;
             word-break: keep-all;
             padding: 0 1rem;
-        }
-
-        [data-theme="dark"] & {
-            color: #FAFAFA;
         }
     }
 `;
@@ -69,10 +65,8 @@ export const ButtonGrid = styled.div`
         }
 
         span {
-            font-size: ${fontSize.base};
-            font-weight: 400;
-            color: ${colors.gray600};
-            line-height: 1.5;
+            ${typography('Body2')};
+            color: ${semanticColors.text.secondary};
 
             ${theme.media.tablet} {
                 font-size: ${fontSize.smaller};
@@ -82,9 +76,6 @@ export const ButtonGrid = styled.div`
                 font-size: 0.625rem;
             }
 
-            [data-theme="dark"] & {
-                color: #EFEFEF;
-            }
         }
 
         br.not-mobile {
@@ -109,12 +100,12 @@ export const ButtonGrid = styled.div`
 `;
 
 export const PrimaryButton = styled.a`
-    background: ${colors.primary600};
-    color: white;
+    background: ${semanticColors.brand.hover};
+    color: ${primitiveColors.white[600]};
     border: none;
 
     padding: 0.75rem 1rem;
-    border-radius: 0.5rem;
+    border-radius: ${radius.md};
 
     display: flex;
     align-items: center;
@@ -147,11 +138,7 @@ export const PrimaryButton = styled.a`
 `;
 
 export const OutlineButton = styled(PrimaryButton)`
-    background: #FFFFFF;
-    color: #181818;
-    border: 1px solid #BFBFBF;
-
-    [data-theme="dark"] & {
-
-    }
+    background: ${semanticColors.background.card};
+    color: ${semanticColors.text.primary};
+    border: 1px solid ${semanticColors.border.strong};
 `;

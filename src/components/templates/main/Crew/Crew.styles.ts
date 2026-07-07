@@ -1,6 +1,7 @@
 // /src/components/templates/main/Crew/Crew/styles/ts
 import styled from 'styled-components';
-import { fontSize, colors, theme } from '@/styles/theme';
+import { fontSize, theme } from '@/styles/theme';
+import { semanticColors } from '@/styles/tokens';
 
 export const CrewSection = styled.div`
     display: flex;
@@ -105,7 +106,7 @@ export const CrewMoreLink = styled.a`
         gap: 0.375rem;
         font-size: ${fontSize.smaller};
         font-weight: 600;
-        color: ${colors.primary500};
+        color: ${semanticColors.text.brand};
         text-decoration: none;
     }
 `;
@@ -136,10 +137,10 @@ export const GenButton = styled.button<{ $isActive: boolean }>`
     /* 글씨 스타일 */
     font-size: ${fontSize.base};
     font-weight: ${(props) => (props.$isActive ? '700' : '400')};
-    color: ${(props) => (props.$isActive ? colors.primary500 : colors.gray500)};
+    color: ${(props) => (props.$isActive ? semanticColors.text.brand : semanticColors.text.secondary)};
 
     /* 선택된 탭 하단 파란색 밑줄 */
-    border-bottom: 2px solid ${(props) => (props.$isActive ? colors.primary500 : 'transparent')};
+    border-bottom: 2px solid ${(props) => (props.$isActive ? semanticColors.border.brand : 'transparent')};
 
     cursor: pointer;
     transition: all 0.2s ease;
@@ -155,11 +156,11 @@ export const GenButton = styled.button<{ $isActive: boolean }>`
     }
 
     &:hover {
-        color: ${colors.primary500};
+        color: ${semanticColors.text.brand};
     }
 
     [data-theme="dark"] & {
-        color: ${(props) => (props.$isActive ? colors.primary500 : '#EFEFEF')};
+        color: ${(props) => (props.$isActive ? semanticColors.text.brand : semanticColors.text.primary)};
     }
 `;
 
