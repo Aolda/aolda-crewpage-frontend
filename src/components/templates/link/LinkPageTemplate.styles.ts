@@ -1,16 +1,13 @@
 // /src/components/templates/link/LinkPageTempalte.styles.ts
 import styled from "styled-components";
-import { fontSize, colors, theme } from "@/styles/theme";
+import { theme } from "@/styles/theme";
+import { semanticColors, typography } from "@/styles/tokens";
 
 export const PageWrapper = styled.div`
     position: relative;
     width: 100%;
     overflow: hidden;
-    background: #FFFFFF;
-
-    [data-theme="dark"] & {
-        background: #2A2A2A;
-    }
+    background: ${semanticColors.background.page};
 `;
 
 /* 배경 원형 그래픽 요소들 */
@@ -147,15 +144,10 @@ export const PageHeader = styled.div`
     text-align: center;
 
     h2 {
-        font-size: ${fontSize.h2};
+        ${typography('Heading2')};
         font-weight: 700;
-        line-height: 1.4;
-        color: #111827;
-        strong { color: ${colors.primary500}; }
-
-        [data-theme="dark"] & {
-            color: #F9FAFB;
-        }
+        color: ${semanticColors.text.primary};
+        strong { color: ${semanticColors.text.brand}; }
     }
 
     ${theme.media.tablet} {
@@ -238,19 +230,13 @@ export const UnderSection = styled.section`
     h2 {
         margin-top: 3.75rem;
         text-align: center;
-        font-size: ${fontSize.h2};
-        font-weight: 700;
-        line-height: 1.4;
-        color: #232527;
-        span { color: ${colors.primary500}; }
+        ${typography('Heading2')};
+        color: ${semanticColors.text.primary};
+        span { color: ${semanticColors.text.brand}; }
 
         ${theme.media.mobile} {
             font-size: 1.25rem;
             margin-top: 2rem;
-        }
-
-        [data-theme="dark"] & {
-            color: #FAFAFA;
         }
     }
 `;

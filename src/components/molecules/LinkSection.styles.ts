@@ -1,6 +1,7 @@
 // /src/components/molecules/LinkSection.styles.ts
 import styled from "styled-components";
-import { colors, fontSize, theme } from "@/styles/theme";
+import { fontSize, theme } from "@/styles/theme";
+import { radius, semanticColors, typography } from "@/styles/tokens";
 
 export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
     display: flex;
@@ -81,7 +82,7 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
         .indexNumber {
             font-family: var(--font-pretendard);
             font-size: ${fontSize.display1};
-            color: ${colors.primary500};
+            color: ${semanticColors.text.brand};
             font-weight: 700;
             margin: 0;
             line-height: 1;
@@ -92,27 +93,21 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
         }
 
         .title {
-            font-size: ${fontSize.h2};
+            ${typography('Heading2')};
             font-weight: 700;
             margin: 0;
-            color: #232527;
-            span { color: ${colors.primary500}; }
+            color: ${semanticColors.text.primary};
+            span { color: ${semanticColors.text.brand}; }
 
             ${theme.media.mobile} {
                 font-size: ${fontSize.h3};
-            }
-
-            [data-theme="dark"] & {
-                color: #FAFAFA;
             }
         }
 
         p {
             margin: 0;
-            color: #777777;
-            font-size: ${fontSize.body1};
-            font-weight: 400;
-            line-height: 1.5;
+            ${typography('Body1')};
+            color: ${semanticColors.text.secondary};
 
             // white-space: pre-wrap;
 
@@ -137,58 +132,53 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
             }
 
             span {
-                color: ${colors.primary500};
-            }
-
-            [data-theme="dark"] & {
-                color: #EFEFEF;
+                color: ${semanticColors.text.brand};
             }
         }
     }
 
     .linkButton {
         background: none;
-        border: solid 1px #777777;
-        border-radius: 0.5rem;
+        border: solid 1px ${semanticColors.border.strong};
+        border-radius: ${radius.md};
         padding: 0.75rem 1rem;
         cursor: pointer;
         transition: all 0.2s;
-        color: #232527;
-        font-size: ${fontSize.base};
-        font-weight: 700;
+        color: ${semanticColors.text.primary};
+        ${typography('Button1')};
 
         ${theme.media.tablet} {
             width: 100%;
-            border: 1px solid #EFEFEF;
+            border: 1px solid ${semanticColors.border.default};
             font-size: ${fontSize.smaller};
             padding: 1rem;
         }
 
         ${theme.media.mobile} {
             width: 100%;
-            border: 1px solid #EFEFEF;
+            border: 1px solid ${semanticColors.border.default};
             font-size: ${fontSize.smaller};
             padding: 0.75rem 1rem;
         }
 
         &:hover {
-            background-color: #FAFAFA;
+            background-color: ${semanticColors.background.elevated};
         }
 
         [data-theme="dark"] & {
-            border-color: #FAFAFA;
-            color: #FAFAFA;
+            border-color: ${semanticColors.border.strong};
+            color: ${semanticColors.text.primary};
 
             ${theme.media.tablet} {
-                border-color: #444444;
+                border-color: ${semanticColors.border.default};
             }
 
             ${theme.media.mobile} {
-                border-color: #444444;
+                border-color: ${semanticColors.border.default};
             }
 
             &:hover {
-                background-color: #444444;
+                background-color: ${semanticColors.background.elevated};
             }
         }
     }
