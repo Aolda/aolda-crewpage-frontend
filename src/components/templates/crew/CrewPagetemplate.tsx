@@ -1,7 +1,7 @@
 // /src/components/templates/crew/CrewPageTemplate.tsx
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { CrewMember, DEPARTMENT_TYPE } from '@/types/crew';
 import * as S from './CrewPageTemplate.styles';
 import CrewBlock from '@/components/organisms/CrewBlock';
@@ -25,6 +25,7 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
         role: "",
         department: "",
     });
+    const generationWasChosen = useRef(false);
 
     //카테고리 항목(위에서부터 기수, 역할, 학과)
     const genOptions = useMemo(() => 
@@ -36,6 +37,27 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
         Array.from(new Set(crewList.map(c => c.univDepartment))).sort(), 
         [crewList]
     );
+
+    useEffect(() => {
+        if (
+            generationWasChosen.current ||
+            filters.generation ||
+            crewList.length === 0 ||
+            !window.matchMedia('(max-width: 767px)').matches
+        ) {
+            return;
+        }
+
+        const latestGeneration = Math.max(...crewList.map((crew) => crew.joinedGen));
+        const timer = window.setTimeout(() => {
+            setFilters((previous) => ({
+                ...previous,
+                generation: `${latestGeneration}기`,
+            }));
+        }, 0);
+
+        return () => window.clearTimeout(timer);
+    }, [crewList, filters.generation]);
 
     //검색 또는 카테고리로 필터링된 크루
     const filteredCrew = useMemo(() => {
@@ -54,6 +76,7 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
 
     //필터링 초기화
     const resetFilters = () => {
+        generationWasChosen.current = true;
         setFilters({ generation: "", role: "", department: "" });
         setSearchValue("");
     };
@@ -84,7 +107,10 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
                         label="generation" 
                         options={genOptions} 
                         selectedValue={filters.generation}
-                        onSelectChange={(val) => setFilters(p => ({ ...p, generation: val }))} 
+                        onSelectChange={(val) => {
+                            generationWasChosen.current = true;
+                            setFilters(p => ({ ...p, generation: val }));
+                        }}
                     />
                     <Select 
                         label="role" 

@@ -1,6 +1,6 @@
 // /src/components/templates/CrewDetail/CrewDetailPageTemplate.styles.ts
 import styled from 'styled-components';
-import { fontSize, colors, theme } from '@/styles/theme';
+import { colors, theme } from '@/styles/theme';
 
 export const TemplateWrapper = styled.div`
     display: flex;
@@ -11,8 +11,8 @@ export const TemplateWrapper = styled.div`
 
     margin: 0 auto;
     padding-top: 12.5rem;
-    padding-left: 7.5rem;
-    padding-right: 7.5rem;
+    padding-left: max(2.5rem, calc((100% - 75rem) / 2));
+    padding-right: max(2.5rem, calc((100% - 75rem) / 2));
 
     ${theme.media.mobile} {
         flex-direction: column;

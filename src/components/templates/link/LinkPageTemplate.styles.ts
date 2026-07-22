@@ -1,6 +1,6 @@
 // /src/components/templates/link/LinkPageTempalte.styles.ts
 import styled from "styled-components";
-import { fontSize, colors, theme } from "@/styles/theme";
+import { fontSize, colors } from "@/styles/theme";
 
 export const PageWrapper = styled.div`
     position: relative;
@@ -16,7 +16,7 @@ export const Ellipse = styled.div`
     z-index: 0;
     pointer-events: none;
 
-    ${theme.media.mobile} {
+    @media (max-width: 1279px) {
         opacity: 0.1; 
         filter: blur(50px);
     }
@@ -29,7 +29,7 @@ export const Ellipse = styled.div`
         background: rgba(26, 142, 229, 0.1);
         filter: blur(100px);
 
-        ${theme.media.mobile} {
+        @media (max-width: 1279px) {
             width: 20rem;
             height: 20rem;
             top: 25rem;
@@ -45,7 +45,7 @@ export const Ellipse = styled.div`
         background: rgba(0, 146, 255, 0.2);
         filter: blur(80px);
 
-        ${theme.media.mobile} {
+        @media (max-width: 1279px) {
             width: 22rem;
             height: 22rem;
             top: 5rem;
@@ -65,7 +65,7 @@ export const Ellipse = styled.div`
         backdrop-filter: blur(4.159375rem);
         transform: matrix(0, 1, 1, 0, 0, 0);
 
-        ${theme.media.mobile} {
+        @media (max-width: 1279px) {
             width: 35rem;
             height: 35rem;
             top: 50rem;
@@ -86,7 +86,7 @@ export const Ellipse = styled.div`
         backdrop-filter: blur(4.159375rem);
         transform: matrix(-1, 0, 0, 1, 0, 0);
 
-        ${theme.media.mobile} {
+        @media (max-width: 1279px) {
             width: 28rem;
             height: 28rem;
             top: -10rem;
@@ -106,7 +106,7 @@ export const Ellipse = styled.div`
         backdrop-filter: blur(4.159375rem);
         transform: matrix(-0.57, 0.82, 0.82, 0.57, 0, 0);
 
-        ${theme.media.mobile} {
+        @media (max-width: 1279px) {
             width: 40rem;
             height: 40rem;
             left: -15rem;
@@ -125,7 +125,7 @@ export const Ellipse = styled.div`
         filter: blur(1.9375rem);
         transform: matrix(-1, 0, 0, 1, 0, 0);
 
-        ${theme.media.mobile} {
+        @media (max-width: 1279px) {
             width: 12rem;
             height: 12rem;
             top: 2rem;
@@ -150,8 +150,8 @@ export const PageHeader = styled.div`
         strong { color: ${colors.primary500}; }
     }
 
-    ${theme.media.mobile} {
-        padding-top: 8rem;
+    @media (max-width: 1279px) {
+        padding-top: 5rem;
 
         h2 { font-size: 1.5rem; }
     }
@@ -174,9 +174,9 @@ export const LinkWrapper = styled.main`
     paddinf-right: 7.5rem;
     margin: 0 auto;
 
-    ${theme.media.mobile} {
+    @media (max-width: 1279px) {
         width: 100%;
-        padding: 5rem 1.25rem 0;
+        padding: 2.5rem 1.25rem 0;
         gap: 4rem;
     }
 `;
@@ -195,14 +195,14 @@ export const UnderSection = styled.section`
     margin: 0 auto;
     padding: 12.5rem 7.5rem 0;
 
-    ${theme.media.mobile} {
+    @media (max-width: 1279px) {
         width: 100%;
         padding: 6rem 1.25rem 0;
     }
 
     .img-container {
         width: 65.8rem;
-        ${theme.media.mobile} {
+        @media (max-width: 1279px) {
             width: 100%;
         }
     }
@@ -216,7 +216,7 @@ export const UnderSection = styled.section`
         color: #111827;
         span { color: ${colors.primary500}; }
 
-        ${theme.media.mobile} {
+        @media (max-width: 1279px) {
             font-size: 1.25rem;
             margin-top: 2rem;
         }

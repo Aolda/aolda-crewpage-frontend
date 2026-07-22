@@ -1,6 +1,6 @@
 // /src/components/molecules/JoinSection.styles.ts
 import styled from "styled-components";
-import { fontSize, colors, theme } from "@/styles/theme";
+import { fontSize, colors } from "@/styles/theme";
 // Styles (고정 rem 적용)
 export const Container = styled.section`
     padding-top: 10rem;
@@ -11,7 +11,7 @@ export const Container = styled.section`
     align-items: center;
     gap: 1.5rem;
 
-    ${theme.media.mobile} {
+    @media (max-width: 1279px) {
         padding-top: 5rem;
         padding-bottom: 5rem;
         gap: 1rem;
@@ -22,7 +22,7 @@ export const Container = styled.section`
         font-weight: 700;
         line-height: 1.4;
 
-        ${theme.media.mobile} {
+        @media (max-width: 1279px) {
             font-size: 1.5rem;
             word-break: keep-all;
             padding: 0 1rem;
@@ -46,7 +46,7 @@ export const ButtonGrid = styled.div`
             color: ${colors.gray500};
             line-height: 1.5;
 
-            ${theme.media.mobile} {
+            @media (max-width: 1279px) {
                 font-size: ${fontSize.small};
             }
         }
@@ -69,7 +69,7 @@ export const PrimaryButton = styled.a`
     font-weight: 700;
     cursor: pointer;
 
-    ${theme.media.mobile} {
+    @media (max-width: 1279px) {
         width: 10rem;
         font-size: ${fontSize.small};
         font-weight: 500;
@@ -80,4 +80,9 @@ export const OutlineButton = styled(PrimaryButton)`
     background: white;
     color: #111827;
     border: 1px solid ${colors.gray600};
+
+    &[aria-disabled='true'] {
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
 `;

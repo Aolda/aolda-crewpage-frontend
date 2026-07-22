@@ -113,12 +113,15 @@ export const StyledCrewBlock = styled.div<CrewBlockProps>`
         }
     `}
 
-    .imageContainer {
+    .imageSection {
         width: 7.5rem;
-        height: 7.5rem; 
+        height: 7.5rem;
+        flex-shrink: 0;
 
         img {
             width: 100%;
+            height: 100%;
+            object-fit: contain;
             border-radius: 50%;
         }
     }

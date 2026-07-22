@@ -132,3 +132,17 @@ export const CardList = styled.div<{ $count: number }>`
 
     padding-right: 1.5rem;
 `;
+
+export const EmptyState = styled.div`
+    width: 100%;
+    min-height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border: 1px solid ${colors.border};
+    border-radius: 1rem;
+    color: ${colors.gray600};
+    background: #ffffff;
+    font-size: ${fontSize.base};
+`;

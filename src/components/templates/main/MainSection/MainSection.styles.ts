@@ -1,6 +1,6 @@
 // /src/components/templates/main/MainSection/MainSection.styles.ts
 import styled from 'styled-components';
-import { fontSize, colors, theme } from '@/styles/theme';
+import { fontSize, colors } from '@/styles/theme';
 
 export const SectionWrapper = styled.section<{ $bgColor?: string }>`
     display: flex;
@@ -18,8 +18,8 @@ export const SectionWrapper = styled.section<{ $bgColor?: string }>`
     text-align: center;
 
     /* 750px 반응형 대응 */
-    ${theme.media.mobile} {
-        padding-top: 5rem; // 상단 여백 축소
+    @media (max-width: 744px) {
+        padding-top: 2.5rem;
         padding-left: 1.25rem; // 좌우 여백을 시안에 맞춰 좁게 설정
         padding-right: 1.25rem;
     }
@@ -32,8 +32,8 @@ export const Header = styled.div`
     margin-bottom: 3.75rem;
     padding: 0 1.25rem;
 
-    ${theme.media.mobile} {
-        margin-bottom: 2rem;
+    @media (max-width: 744px) {
+        margin-bottom: 1.5rem;
     }
 `;
 
@@ -65,7 +65,7 @@ export const Title = styled.h2`
         color: ${colors.primary500};
     }
 
-    ${theme.media.mobile} {
+    @media (max-width: 744px) {
         font-size: 1.75rem;
         margin-bottom: 1rem;
     }
@@ -79,7 +79,7 @@ export const Description = styled.p`
     margin: 0 auto;
     word-break: keep-all;
 
-    ${theme.media.mobile} {
+    @media (max-width: 744px) {
         font-size: ${fontSize.smaller};
         line-height: 1.5;
     }

@@ -1,6 +1,6 @@
 // /src/components/molecules/LinkSection.styles.ts
 import styled from "styled-components";
-import { colors, fontSize, theme } from "@/styles/theme";
+import { colors, fontSize } from "@/styles/theme";
 
 export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
     display: flex;
@@ -11,7 +11,7 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
     flex-direction: ${(props) => (props.$isEven ? "row-reverse" : "row")};
     text-align: ${(props) => (props.$isEven ? "right" : "left")};
 
-    ${theme.media.mobile} {
+    @media (max-width: 1279px) {
         flex-direction: column;
         text-align: center;
         gap: 2rem;
@@ -22,7 +22,7 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
         width: 36.75rem;
         height: 27.5625rem;
 
-        ${theme.media.mobile} {
+        @media (max-width: 1279px) {
             width: 100%;
             max-width: 25rem;
             height: auto;
@@ -44,7 +44,7 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
         /* PC 배치에 따른 정렬 */
         align-items: ${(props) => (props.$isEven ? "flex-end" : "flex-start")};
 
-        ${theme.media.mobile} {
+        @media (max-width: 1279px) {
             width: 100%;
             align-items: center;
             gap: 1rem;
@@ -56,7 +56,7 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
             font-weight: 700;
             margin: 0;
 
-            ${theme.media.mobile} {
+            @media (max-width: 1279px) {
                 font-size: 2.5rem;
             }
         }
@@ -67,7 +67,7 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
             margin: 0;
             span { color: ${colors.primary500}; }
 
-            ${theme.media.mobile} {
+            @media (max-width: 1279px) {
                 font-size: ${fontSize.h3};
             }
         }
@@ -81,7 +81,7 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
 
             white-space: pre-wrap;
 
-            ${theme.media.mobile} {
+            @media (max-width: 1279px) {
                 font-size: ${fontSize.smaller};
                 br { display: none; }
             }
@@ -98,9 +98,11 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
         border-radius: 0.5rem;
         padding: 0.75rem 1rem;
         cursor: pointer;
+        color: inherit;
+        text-decoration: none;
         transition: all 0.2s;
 
-        ${theme.media.mobile} {
+        @media (max-width: 1279px) {
             width: 100%;
             max-width: 15rem;
         }

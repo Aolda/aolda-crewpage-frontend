@@ -94,6 +94,11 @@ export const StyledProfile = styled.div`
             background-color: ${colors.primary600};
 
             color: ${colors.white600};
+
+            &:disabled {
+                cursor: not-allowed;
+                opacity: 0.65;
+            }
         }
     }
 

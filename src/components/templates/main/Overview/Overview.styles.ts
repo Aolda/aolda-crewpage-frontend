@@ -1,6 +1,6 @@
 // src/components/templates/main/Overview/Overview.styles.ts
 import styled from 'styled-components';
-import { colors, fontSize, theme } from '@/styles/theme';
+import { colors, fontSize } from '@/styles/theme';
 
 export const SinceText = styled.div`
     font-size: 1rem;
@@ -8,7 +8,7 @@ export const SinceText = styled.div`
     color: #9CA3AF;
     margin-bottom: 0.75rem;
 
-    ${theme.media.mobile} {
+    @media (max-width: 744px) {
         font-size: 0.875rem;
     }
 `;
@@ -29,8 +29,8 @@ export const SphereContainer = styled.div`
     justify-content: center;
     align-items: center;
 
-    ${theme.media.mobile} {
-        height: 20rem;
+    @media (max-width: 744px) {
+        height: 17rem;
     }
 `;
 
@@ -44,7 +44,7 @@ export const BgText = styled.div`
     pointer-events: none;
     user-select: none;
 
-    ${theme.media.mobile} {
+    @media (max-width: 744px) {
         width: 100%;
 
         img {
@@ -68,7 +68,7 @@ export const GlareEffect = styled.div`
     filter: blur(4rem);
     z-index: 1;
 
-    ${theme.media.mobile} {
+    @media (max-width: 744px) {
         width: 20rem;
         height: 10rem;
     }
@@ -83,7 +83,7 @@ export const ShadowWrapper = styled.div`
     width: 20rem;
     height: auto;
     
-    ${theme.media.mobile} {
+    @media (max-width: 744px) {
         width: 12rem;
         top: 65%;
     }
@@ -103,9 +103,9 @@ export const SphereImage = styled.div`
     width: 24rem;
     height: 24rem;
 
-    ${theme.media.mobile} {
-        width: 14rem;
-        height: 14rem;
+    @media (max-width: 744px) {
+        width: 12rem;
+        height: 12rem;
     }
     
     img {
@@ -128,8 +128,8 @@ export const DashedLine = styled.div`
     mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
 
-    ${theme.media.mobile} {
-        margin-top: -5rem;
+    @media (max-width: 744px) {
+        margin-top: -4rem;
         mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
         -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
     }
@@ -156,7 +156,7 @@ export const InfoCard = styled.div`
             display: none;
         }
 
-    ${theme.media.mobile} {
+    @media (max-width: 744px) {
         border: none;
         flex-direction: column;
         height: auto;
@@ -195,7 +195,7 @@ export const CardText = styled.div`
         word-break: keep-all;
     }
 
-    ${theme.media.mobile} {
+    @media (max-width: 744px) {
         gap: 1.5rem;
         
         h3 {
@@ -208,12 +208,16 @@ export const CardText = styled.div`
 `;
 
 export const CardIllustration = styled.div`
+    flex: 0 0 20rem;
+    width: 20rem;
+    max-width: 34%;
+
     img {
         width: 100%;
         height: auto;
     }
 
-    ${theme.media.mobile} {
+    @media (max-width: 744px) {
         display: none;
     }
 `;

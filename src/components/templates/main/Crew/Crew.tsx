@@ -69,16 +69,20 @@ const Crew = ({ crews, onCrewClick }: CrewProps) => {
                 </S.GenerationPagination>
 
                 {/* 정렬된 크루 그리드 */}
-                <S.CrewGrid>
-                {displayCrews.map((member) => (
-                    <CrewBlock 
-                        key={member.crewId} 
-                        member={member} 
-                        isCrewpage={false} 
-                        onDetailClick={onCrewClick}
-                    />
-                ))}
-                </S.CrewGrid>
+                {displayCrews.length > 0 ? (
+                    <S.CrewGrid>
+                    {displayCrews.map((member) => (
+                        <CrewBlock
+                            key={member.crewId}
+                            member={member}
+                            isCrewpage={false}
+                            onDetailClick={onCrewClick}
+                        />
+                    ))}
+                    </S.CrewGrid>
+                ) : (
+                    <S.EmptyState role="status">해당 기수에 등록된 크루가 없습니다.</S.EmptyState>
+                )}
             </S.CrewSection>
         </MainSection>
     );

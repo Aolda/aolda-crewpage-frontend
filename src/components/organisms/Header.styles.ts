@@ -1,12 +1,11 @@
 // src/components/organisms/Header.styles.ts
 import styled from "styled-components"
-import { pxToRem } from "@/styles/utils";
-import { fontSize, colors, theme } from "@/styles/theme";
+import { fontSize, colors } from "@/styles/theme";
 
 
 export const StyledHeader = styled.header`
     display: flex;
-    width: calc(100% - 20rem);
+    width: calc(100% - 5rem);
     height: 4.5rem;
     justify-content: space-between;
     align-items: center;
@@ -25,7 +24,7 @@ export const StyledHeader = styled.header`
     box-sizing: border-box;
 
     /* 모바일 대응: 상단 고정 및 풀사이즈 */
-    ${theme.media.mobile} {
+    @media (max-width: 744px) {
         width: 100%;
         top: 0;
         left: 0;
@@ -52,7 +51,7 @@ export const StyledHeader = styled.header`
         .logoText {
             display: none;
             
-            ${theme.media.mobile} {
+            @media (max-width: 744px) {
                 display: block;
                 font-size: 1.25rem;
                 font-weight: 700;
@@ -68,19 +67,19 @@ export const StyledHeader = styled.header`
         align-items: center;
         height: 2.5rem;
 
-        ${theme.media.mobile} { display: none; }
+        @media (max-width: 744px) { display: none; }
     }
 
     .mobile-only {
         display: none;
-        ${theme.media.mobile} { display: flex; align-items: center; }
+        @media (max-width: 744px) { display: flex; align-items: center; }
     }
 
     .iconSection.pc-only {
         width: 2.25rem;
         height: 2.25rem;
 
-        ${theme.media.mobile} { display: none; }
+        @media (max-width: 744px) { display: none; }
     }
 
     .mobileMenuIcon {
@@ -140,7 +139,7 @@ export const NavLink = styled.span<{ $isActive: boolean }>`
 /* 배경 오버레이: 메뉴가 열릴 때 화면을 어둡게 만듭니다 */
 export const MobileMenuOverlay = styled.div<{ $isOpen: boolean }>`
     display: none;
-    ${theme.media.mobile} {
+    @media (max-width: 744px) {
         display: block;
         position: fixed;
         top: 0;
@@ -158,7 +157,7 @@ export const MobileMenuOverlay = styled.div<{ $isOpen: boolean }>`
 /* 사이드바 컨테이너: 오른쪽에서 등장하는 로직 */
 export const MobileMenuContainer = styled.div<{ $isOpen: boolean }>`
     display: none;
-    ${theme.media.mobile} {
+    @media (max-width: 744px) {
         display: block;
         position: fixed;
         top: 0;

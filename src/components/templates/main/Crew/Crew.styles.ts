@@ -1,6 +1,6 @@
 // /src/components/templates/main/Crew/Crew/styles/ts
 import styled from 'styled-components';
-import { fontSize, colors, theme } from '@/styles/theme';
+import { fontSize, colors } from '@/styles/theme';
 
 export const CrewSection = styled.div`
     display: flex;
@@ -17,7 +17,7 @@ export const GenerationPagination = styled.div`
     width: 100%;
     max-width: 75rem;
 
-    ${theme.media.mobile} {
+    @media (max-width: 744px) {
         margin-bottom: 2rem;
         /* 기수가 많아질 경우를 대비해 가로 스크롤 허용 */
         overflow-x: auto;
@@ -46,7 +46,7 @@ export const GenButton = styled.button<{ $isActive: boolean }>`
     cursor: pointer;
     transition: all 0.2s ease;
 
-    ${theme.media.mobile} {
+    @media (max-width: 744px) {
         font-size: ${fontSize.smaller};
         padding: 0.5rem 1rem; // 모바일에서 터치 영역 확보 및 간격 조정
     }
@@ -64,7 +64,7 @@ export const CrewGrid = styled.div`
     max-width: 75rem;
     margin: 0 auto;
 
-    ${theme.media.mobile} {
+    @media (max-width: 744px) {
         grid-template-columns: repeat(3, 1fr);
         justify-items: center;
         gap: 1rem;
@@ -75,4 +75,19 @@ export const CrewGrid = styled.div`
         box-sizing: border-box !important;
         flex-shrink: 0;
     }
+`;
+
+export const EmptyState = styled.div`
+    width: 100%;
+    max-width: 75rem;
+    min-height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border: 1px solid ${colors.border};
+    border-radius: 1rem;
+    color: ${colors.gray600};
+    background: #ffffff;
+    font-size: ${fontSize.base};
 `;
