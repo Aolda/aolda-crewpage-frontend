@@ -25,7 +25,8 @@ const LinkSection: React.FC<LinkSectionProps> = ({
 	src,
 	index,
 	title,
-	description
+	description,
+	to,
 }) => {
 	const isEven = index % 2 === 1;
 
@@ -43,9 +44,9 @@ const LinkSection: React.FC<LinkSectionProps> = ({
                     </h1>
                 </section>
                 <p>{description}</p>
-                <button className="linkButton">
+                <a className="linkButton" href={to} target="_blank" rel="noopener noreferrer">
                     아올다 {title} 이동하기
-                </button>
+                </a>
             </section>
         </StyledLinkSection>
     );

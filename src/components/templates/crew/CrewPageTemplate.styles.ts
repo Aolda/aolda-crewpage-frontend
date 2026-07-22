@@ -10,8 +10,8 @@ export const HeaderBackground = styled.header`
     display: flex;
     align-items: end;
 
-    padding-left: 15.9375rem;
-    padding-right: 15.9375rem;
+    padding-left: max(2.5rem, calc((100% - 75rem) / 2));
+    padding-right: max(2.5rem, calc((100% - 75rem) / 2));
     padding-bottom: 3.75rem;
 
     ${theme.media.desktopSm} {

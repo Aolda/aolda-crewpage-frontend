@@ -212,3 +212,22 @@ export const CardList = styled.div<{ $count: number }>`
 
     padding-right: 1.5rem;
 `;
+
+export const EmptyState = styled.div`
+    width: 100%;
+    min-height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border: 1px solid ${semanticColors.border.default};
+    border-radius: ${radius.lg};
+    color: ${semanticColors.text.secondary};
+    background: ${semanticColors.background.card};
+    font-size: ${fontSize.base};
+
+    ${theme.media.mobile} {
+        min-height: 6rem;
+        font-size: ${fontSize.smaller};
+    }
+`;

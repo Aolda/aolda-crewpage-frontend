@@ -145,6 +145,7 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
         cursor: pointer;
         transition: all 0.2s;
         color: ${semanticColors.text.primary};
+        text-decoration: none;
         ${typography('Button1')};
 
         ${theme.media.tablet} {

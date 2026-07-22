@@ -6,7 +6,7 @@ import { radius, semanticColors } from "@/styles/tokens";
 
 export const StyledHeader = styled.header`
     display: flex;
-    width: calc(100% - 10rem);
+    width: calc(100% - 5rem);
     height: 4.5rem;
     justify-content: space-between;
     align-items: center;

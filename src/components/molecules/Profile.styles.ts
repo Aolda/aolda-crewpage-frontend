@@ -162,6 +162,11 @@ export const StyledProfile = styled.div`
                     border: none;
                     cursor: pointer;
                     flex-shrink: 0;
+
+                    &:disabled {
+                        cursor: not-allowed;
+                        opacity: 0.65;
+                    }
                 }
             }
 
@@ -198,6 +203,11 @@ export const StyledProfile = styled.div`
             background-color: ${colors.primary600};
 
             color: ${colors.white600};
+
+            &:disabled {
+                cursor: not-allowed;
+                opacity: 0.65;
+            }
         }
 
         ${theme.media.tablet} {

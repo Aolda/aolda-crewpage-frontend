@@ -43,6 +43,7 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
         department: "",
     });
     const [currentPage, setCurrentPage] = useState(1);
+    const [generationWasChosen, setGenerationWasChosen] = useState(false);
     const isMobile = useSyncExternalStore(
         subscribeToMobileQuery,
         getMobileSnapshot,
@@ -64,6 +65,14 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
         Array.from(new Set(crewList.map(c => `${c.joinedGen}기`))).sort(),
         [crewList]
     );
+    const latestGeneration = useMemo(() => {
+        if (crewList.length === 0) return '';
+
+        return `${Math.max(...crewList.map((crew) => crew.joinedGen))}기`;
+    }, [crewList]);
+    const selectedGeneration = isMobile && !generationWasChosen
+        ? latestGeneration
+        : filters.generation;
 
     // 부서 필터 옵션 — API에서 받은 departments 사용, 더미 코드 제외
     const roleOptions = useMemo(() =>
@@ -86,13 +95,13 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
             const currentRoleName = departments[member.crewLog[0]?.department] ?? '';
 
             const matchesSearch = member.crewName.toLowerCase().includes(searchValue.toLowerCase());
-            const matchesGen = !filters.generation || `${member.joinedGen}기` === filters.generation;
+            const matchesGen = !selectedGeneration || `${member.joinedGen}기` === selectedGeneration;
             const matchesRole = !filters.role || currentRoleName === filters.role;
             const matchesDept = !filters.department || member.univDepartment === filters.department;
 
             return matchesSearch && matchesGen && matchesRole && matchesDept;
         }).sort((a, b) => a.crewId - b.crewId); // position 대신 crewId로 정렬
-    }, [crewList, departments, searchValue, filters]);
+    }, [crewList, departments, searchValue, filters, selectedGeneration]);
 
     // 현재 페이지에 맞게 슬라이싱
     const displayedCrew = useMemo(() => {
@@ -106,6 +115,7 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
 
     //필터링 초기화
     const resetFilters = () => {
+        setGenerationWasChosen(true);
         setFilters({ generation: "", role: "", department: "" });
         setSearchValue("");
         setCurrentPage(1);
@@ -127,7 +137,7 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
             <S.ContentContainer>
                 <S.FilterBar>
                     <S.AllButton 
-                        $isActive={!filters.generation && !filters.role && !filters.department && !searchValue}
+                        $isActive={!selectedGeneration && !filters.role && !filters.department && !searchValue}
                         onClick={resetFilters}
                     >
                         #전체
@@ -136,9 +146,12 @@ const CrewPageTemplate: React.FC<CrewPageTemplateProps> = ({
                     <Select 
                         label="generation" 
                         options={genOptions} 
-                        selectedValue={filters.generation}
+                        selectedValue={selectedGeneration}
                         clearOptionLabel="전체 기수"
-                        onSelectChange={(val) => handleFilterChange('generation', val)}
+                        onSelectChange={(val) => {
+                            setGenerationWasChosen(true);
+                            handleFilterChange('generation', val);
+                        }}
                     />
                     <Select 
                         label="role" 
