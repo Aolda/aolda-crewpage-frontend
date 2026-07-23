@@ -57,8 +57,8 @@ export const ContentSection = styled.section`
     flex-direction: column;
 
     ${theme.media.desktopSm} {
-        flex-grow: 0;
-        width: 44rem;
+        min-width: 0;
+        width: auto;
     }
 
     ${theme.media.tablet} {

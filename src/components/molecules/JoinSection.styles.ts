@@ -141,4 +141,9 @@ export const OutlineButton = styled(PrimaryButton)`
     background: ${semanticColors.background.card};
     color: ${semanticColors.text.primary};
     border: 1px solid ${semanticColors.border.strong};
+
+    &[aria-disabled='true'] {
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
 `;

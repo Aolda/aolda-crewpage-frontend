@@ -7,6 +7,7 @@ import { CrewDetailResponse, CREW_ROLE } from "@/types/crew";
 import { StyledProfile } from "./Profile.styles";
 import Badge from "../atoms/Badge";
 import { fontSize } from "@/styles/theme";
+import ProfileImage from "./ProfileImage";
 
 interface ProfileProps {
     member: CrewDetailResponse;
@@ -20,7 +21,13 @@ const Profile: React.FC<ProfileProps> = ({
     return (
         <StyledProfile>
             <section className="imgSection">
-                <Image src={member.profile.url} alt="crew image" width={320} height={320}/>
+                <ProfileImage
+                    key={member.profile.url}
+                    src={member.profile.url}
+                    alt={`${member.crewName} 프로필`}
+                    width={320}
+                    height={320}
+                />
             </section>
             <section className="infoSection">
                 <section className="nameInfo">
@@ -30,8 +37,14 @@ const Profile: React.FC<ProfileProps> = ({
                             {member.isActive ? "활동중" : "비활동"}
                         </Badge>
                     </div>
-                    <button className="followBtnMobile">
-                        {member.connections.isFollowing ? 'Unfollow' : 'Follow'}
+                    <button
+                        className="followBtnMobile"
+                        type="button"
+                        disabled
+                        title="팔로우 기능을 준비 중입니다."
+                        aria-label="팔로우 기능 준비 중"
+                    >
+                        준비 중
                     </button>
                 </section>
                 <section className="positionInfo">
@@ -42,7 +55,14 @@ const Profile: React.FC<ProfileProps> = ({
                 </section>
             </section>
             <section className="buttonSection">
-                <button>{member.connections.isFollowing ? 'unfollow' : 'Follow'}</button>
+                <button
+                    type="button"
+                    disabled
+                    title="팔로우 기능을 준비 중입니다."
+                    aria-label="팔로우 기능 준비 중"
+                >
+                    팔로우 준비 중
+                </button>
             </section>
             <section className="descriptionSection">
                 <p>{member.description}</p>

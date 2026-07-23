@@ -28,7 +28,7 @@ export const OverviewWrapper = styled.div`
     width: 100%;
 
     ${theme.media.mobile} {
-        margin-top: 5.5rem;
+        margin-top: 2rem;
     }
 `;
 
@@ -50,7 +50,7 @@ export const MobileBgTextGrid = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: 1rem;
+        gap: 0.5rem;
         position: absolute;
         top: 0;
         bottom: 0;
@@ -190,7 +190,7 @@ export const MobileOverviewHeader = styled.div`
         display: flex;
         flex-direction: column;
         width: 100%;
-        padding-top: 3.5rem;
+        padding-top: 2.5rem;
         margin-bottom: 2rem;
 
         h2 {
@@ -273,6 +273,7 @@ export const InfoCard = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 3rem;
     text-align: left;
 
     br.pc-only {
@@ -325,6 +326,8 @@ export const InfoCard = styled.div`
 export const CardText = styled.div`
     display: flex;
     flex-direction: column;
+    flex: 1 1 auto;
+    min-width: 0;
     gap: 3rem;
 
     span {
@@ -379,7 +382,13 @@ export const CardText = styled.div`
 `;
 
 export const CardIllustration = styled.div`
+    flex: 0 0 20rem;
+    width: 20rem;
+    min-width: 18rem;
+    max-width: 34%;
+
     img {
+        display: block;
         width: 100%;
         height: auto;
     }

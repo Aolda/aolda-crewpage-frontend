@@ -151,11 +151,11 @@ export const PageHeader = styled.div`
     }
 
     ${theme.media.tablet} {
-        padding-top: 7.5rem;
+        padding-top: 5rem;
     }
 
     ${theme.media.mobile} {
-        padding-top: 8rem;
+        padding-top: 5rem;
 
         h2 { font-size: 1.5rem; }
     }
@@ -181,13 +181,13 @@ export const LinkWrapper = styled.main`
     ${theme.media.tablet} {
         padding-left: 4.75rem;
         padding-right: 4.75rem;
-        padding-top: 5rem;
+        padding-top: 2.5rem;
         gap: 2rem;
     }
 
     ${theme.media.mobile} {
         width: 100%;
-        padding: 5rem 1.25rem 0;
+        padding: 2.5rem 1.25rem 0;
         gap: 4rem;
     }
 `;

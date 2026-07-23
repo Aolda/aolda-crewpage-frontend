@@ -21,9 +21,13 @@ const JoinSection = () => {
                 
                 <div className="btn-wrapper">
                     <span>아올다를 <br className='not-mobile'/>함께 만들어가고 싶다면?</span>
-                    <S.OutlineButton href="#">
+                    <S.OutlineButton
+                        as="span"
+                        aria-disabled="true"
+                        title="합류 신청 페이지 준비 중"
+                    >
                         <Image src="/images/aoldaIcon.svg" alt="icon" width={18} height={18} />
-                        팀 아올다 합류
+                        팀 아올다 합류 준비 중
                     </S.OutlineButton>
                 </div>
             </S.ButtonGrid>
