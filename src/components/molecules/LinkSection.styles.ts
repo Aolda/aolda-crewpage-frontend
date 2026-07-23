@@ -153,6 +153,8 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
             border: 1px solid ${semanticColors.border.default};
             font-size: ${fontSize.smaller};
             padding: 1rem;
+            align-self: center;
+            text-align: center;
         }
 
         ${theme.media.mobile} {
