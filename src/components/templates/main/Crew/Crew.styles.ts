@@ -26,6 +26,7 @@ export const CrewGridWrapper = styled.div`
         position: relative;
         padding: 1.25rem 1rem;
         width: calc(100% + 2rem);
+        overflow: hidden;
     }
 `;
 
@@ -175,7 +176,7 @@ export const CrewGrid = styled.div`
     ${theme.media.mobile} {
         position: relative;
         grid-template-columns: repeat(2, 1fr);
-        height: 21.4375rem;
+        height: auto;
         align-content: flex-start;
         align-items: flex-start;
         justify-items: stretch;
@@ -202,5 +203,26 @@ export const CrewGrid = styled.div`
     & > * {
         box-sizing: border-box !important;
         flex-shrink: 0;
+    }
+`;
+
+export const EmptyState = styled.div`
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border: 1px solid ${semanticColors.border.default};
+    border-radius: 1rem;
+    color: ${semanticColors.text.secondary};
+    background: ${semanticColors.background.card};
+    font-size: ${fontSize.base};
+
+    ${theme.media.mobile} {
+        min-height: 6rem;
+        font-size: ${fontSize.smaller};
     }
 `;

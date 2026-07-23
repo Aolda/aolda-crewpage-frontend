@@ -12,6 +12,7 @@ interface ActivityProps {
 }
 
 const Activity = ({ activities }: ActivityProps) => {
+    const hasActivities = activities.length > 0;
     const duplicatedActivities = Array(10).fill(activities).flat();
     const mobileActivities = activities.slice(0, 6);
 
@@ -37,8 +38,9 @@ const Activity = ({ activities }: ActivityProps) => {
                     </S.Tab>
                 </S.TabContainer>
                 {/* 데스크탑/태블릿: 수평 무한 스크롤 */}
-                <S.HorizontalScrollArea>
-                    <S.CardList $count={activities.length}>
+                {hasActivities && (
+                    <S.HorizontalScrollArea>
+                        <S.CardList $count={activities.length}>
                         {duplicatedActivities.map((item, index) => (
                             <ActivityBlock
                                 key={`${item.activityNames.en}-${index}`}
@@ -49,23 +51,28 @@ const Activity = ({ activities }: ActivityProps) => {
                                 description={item.description}
                             />
                         ))}
-                    </S.CardList>
-                </S.HorizontalScrollArea>
+                        </S.CardList>
+                    </S.HorizontalScrollArea>
+                )}
 
                 {/* 모바일: 최대 6개 그리드 + 더보기 링크 */}
-                <S.MobileActivityGrid>
-                    {mobileActivities.map((item, index) => (
-                        <ActivityBlock
-                            key={`mobile-${item.activityNames.en}-${index}`}
-                            status={item.status}
-                            date={item.startedAt}
-                            title={item.activityNames.brief ? item.activityNames.brief : item.activityNames.ko}
-                            subtitle={item.activityNames.en}
-                            description={item.description}
-                        />
-                    ))}
-                </S.MobileActivityGrid>
-                <S.MoreLink href="/activity">활동 더보기</S.MoreLink>
+                {hasActivities ? (
+                    <S.MobileActivityGrid>
+                        {mobileActivities.map((item, index) => (
+                            <ActivityBlock
+                                key={`mobile-${item.activityNames.en}-${index}`}
+                                status={item.status}
+                                date={item.startedAt}
+                                title={item.activityNames.brief ? item.activityNames.brief : item.activityNames.ko}
+                                subtitle={item.activityNames.en}
+                                description={item.description}
+                            />
+                        ))}
+                    </S.MobileActivityGrid>
+                ) : (
+                    <S.EmptyState role="status">아직 등록된 활동이 없습니다.</S.EmptyState>
+                )}
+                {hasActivities && <S.MoreLink href="/activity">활동 더보기</S.MoreLink>}
             </S.ActivityWrapper>
         </MainSection>
     );

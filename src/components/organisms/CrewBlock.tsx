@@ -7,6 +7,7 @@ import { StyledCrewBlock } from "./CrewBlock.styles";
 import Badge from "../atoms/Badge";
 import { CrewMember, CREW_ROLE } from "@/types/crew"; 
 import { useRouter } from "next/navigation";
+import ProfileImage from "../molecules/ProfileImage";
 /*
 * CrewBook page 크루원의 정보를 보여주는 block
 * @params {Member} member 크루 정보를 담은 객체
@@ -44,7 +45,13 @@ const CrewBlock: React.FC<CrewBlockProps> = ({
             style={{ cursor: 'pointer' }}
         >
             <section className="imageSection">
-                <Image src={member.profile.url} alt={`${member.crewName} profile`} fill style={{ objectFit: 'cover' }} />
+                <ProfileImage
+                    key={member.profile.url}
+                    src={member.profile.url}
+                    alt={`${member.crewName} 프로필`}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                />
             </section>
 
             <section className="textSection">

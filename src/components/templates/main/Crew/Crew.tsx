@@ -82,22 +82,28 @@ const Crew = ({ crews, onCrewClick }: CrewProps) => {
                         <S.Rectangle3 />
                     </S.RectangleWrapper>
 
-                    <S.CrewGrid>
-                        {displayCrews.map((member) => (
-                            <CrewBlock
-                                key={member.crewId}
-                                member={member}
-                                isCrewpage={false}
-                                onDetailClick={onCrewClick}
-                            />
-                        ))}
-                    </S.CrewGrid>
+                    {displayCrews.length > 0 ? (
+                        <S.CrewGrid>
+                            {displayCrews.map((member) => (
+                                <CrewBlock
+                                    key={member.crewId}
+                                    member={member}
+                                    isCrewpage={false}
+                                    onDetailClick={onCrewClick}
+                                />
+                            ))}
+                        </S.CrewGrid>
+                    ) : (
+                        <S.EmptyState role="status">해당 기수에 등록된 크루가 없습니다.</S.EmptyState>
+                    )}
 
                 </S.CrewGridWrapper>
 
-                <Link href="/crew" passHref legacyBehavior>
-                    <S.CrewMoreLink>크루 더보기</S.CrewMoreLink>
-                </Link>
+                {displayCrews.length > 0 && (
+                    <Link href="/crew" passHref legacyBehavior>
+                        <S.CrewMoreLink>크루 더보기</S.CrewMoreLink>
+                    </Link>
+                )}
             </S.CrewSection>
         </MainSection>
     );
