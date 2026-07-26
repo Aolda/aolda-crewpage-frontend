@@ -1,19 +1,67 @@
 import type { NextConfig } from "next";
 
+const backendBaseUrl = (process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:8001').replace(/\/$/, '');
+const backendImagePattern = (() => {
+  try {
+    const url = new URL(backendBaseUrl);
+    return {
+      protocol: url.protocol.replace(':', '') as 'http' | 'https',
+      hostname: url.hostname,
+      port: url.port,
+      pathname: '/assets/profile-images/**',
+    };
+  } catch {
+    return null;
+  }
+})();
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'cdn.aolda.io', // 에러 메시지에 표시된 호스트네임 등록
+        hostname: 'cdn.aolda.io',
         port: '',
-        pathname: '/**', // 해당 도메인의 모든 경로 허용
+        pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'dummy.aolda.local',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.amazonaws.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '8001',
+        pathname: '/assets/profile-images/**',
+      },
+      {
+        protocol: 'http',
+        hostname: '127.0.0.1',
+        port: '8001',
+        pathname: '/assets/profile-images/**',
+      },
+      ...(backendImagePattern ? [backendImagePattern] : []),
     ],
   },
   compiler: {
     styledComponents: true, 
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/assets/profile-images/:path*',
+        destination: `${backendBaseUrl}/assets/profile-images/:path*`,
+      },
+    ];
   },
 };
 

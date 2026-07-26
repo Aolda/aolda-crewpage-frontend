@@ -12,7 +12,7 @@ const JoinSection = () => {
             
             <S.ButtonGrid>
                 <div className="btn-wrapper">
-                    <span>아올다로<br/>꿈을 담아내고 싶다면?</span>
+                    <span>아올다로 <br className='not-mobile'/>꿈을 담아내고 싶다면?</span>
                     <S.PrimaryButton href="https://console.aoldacloud.com/auth/login?referer=/">
                         <Image src="/images/consoleIcon.png" alt="icon" width={18} height={18} />
                         콘솔로 이동
@@ -20,10 +20,14 @@ const JoinSection = () => {
                 </div>
                 
                 <div className="btn-wrapper">
-                    <span>아올다를<br/>함께 만들어가고 싶다면?</span>
-                    <S.OutlineButton href="#">
+                    <span>아올다를 <br className='not-mobile'/>함께 만들어가고 싶다면?</span>
+                    <S.OutlineButton
+                        as="span"
+                        aria-disabled="true"
+                        title="합류 신청 페이지 준비 중"
+                    >
                         <Image src="/images/aoldaIcon.svg" alt="icon" width={18} height={18} />
-                        팀 아올다 합류
+                        팀 아올다 합류 준비 중
                     </S.OutlineButton>
                 </div>
             </S.ButtonGrid>

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { ActivityStatusKey } from "@/types/project";
-import { fontSize, colors } from '@/styles/theme';
+import { fontSize, colors, theme } from '@/styles/theme';
 
 interface HashTagProps {
     $status?: ActivityStatusKey,
@@ -18,6 +18,17 @@ export const StyledHashTag = styled.div<HashTagProps>`
     font-size: ${fontSize.smaller};
     font-family: var(--font-cjk);
 
+    ${theme.media.tablet} {
+        padding: 0;
+        background-color: transparent;
+        color: #777777;
+        font-size: 0.625rem;
+
+        [data-theme="dark"] & {
+            color: #EFEFEF;
+        }
+    }
+
     ${({ $date, $status }) => {
         // 1. 상태값(Status) 기반 스타일
         if ($status) {
@@ -32,15 +43,15 @@ export const StyledHashTag = styled.div<HashTagProps>`
                     }
                     return colors.gray600; // 기본 회색 (기획/준비 중)
                 }};
-                color: white;
+                color: #FEFEFE;
             `;
         }
 
         // 2. 날짜(Date) 기반 스타일
         if ($date) {
             return css`
-                background-color: black;
-                color: white;
+                background-color: #232527;
+                color: #FEFEFE;
             `;
         }
     }}

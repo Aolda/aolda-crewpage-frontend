@@ -4,33 +4,50 @@ import { colors, fontSize, theme } from '@/styles/theme';
 export const HeaderBackground = styled.header`
     width: 100%;
     height: 30rem;
-    background: linear-gradient(108deg, #E0F2FE 0%, #DBEAFE 100%);
+    background:
+        url('/images/crew/crewbookBG.png') right bottom / auto 108% no-repeat,
+        linear-gradient(to top right, #F1F7FC 0%, #FCFFFF 100%);
     display: flex;
     align-items: end;
 
-    padding-left: 15.9375rem;
-    padding-right: 15.9375rem;
+    padding-left: max(2.5rem, calc((100% - 75rem) / 2));
+    padding-right: max(2.5rem, calc((100% - 75rem) / 2));
     padding-bottom: 3.75rem;
-    
-    background-image: url('/images/crew/crewbookBG.png');
-    background-repeat: no-repeat;
-    background-position: right bottom;
-    background-size: contain;
+
+    ${theme.media.desktopSm} {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+
+    ${theme.media.tablet} {
+        height: 25rem;
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
 
     ${theme.media.mobile} {
-        position: relative;
-        height: 22rem;
-        padding: 0 1.25rem 2.5rem;
-        background-size: 40%;
-        align-items: center;
+        height: auto;
+        padding: 5rem 1rem 1rem;
+        align-items: flex-start;
+        background: #ffffff;
+    }
+
+    [data-theme="dark"] & {
+        background:
+            url('/images/crew/crewbookBG.png') right bottom / auto 108% no-repeat,
+            linear-gradient(to top, #32383D 0%, #3B3F3F 100%);
+    }
+
+    ${theme.media.mobile} {
+        [data-theme="dark"] & {
+            background: #2A2A2A;
+        }
     }
 `;
 
 export const HeaderContent = styled.div`
-
     ${theme.media.mobile} {
-        position: absolute;
-        bottom: 2.5rem;
+        width: 100%;
     }
 
     h1 {
@@ -40,8 +57,17 @@ export const HeaderContent = styled.div`
         margin-bottom: 1.5rem;
         span { color: ${colors.primary500}; }
 
+        ${theme.media.tablet} {
+            font-size: ${fontSize.h3};
+        }
+
         ${theme.media.mobile} {
-            font-size: 1.5rem;
+            font-size: ${fontSize.base};
+            margin-bottom: 0.625rem;
+        }
+
+        [data-theme="dark"] & {
+            color: ${colors.primary500};
         }
     }
 `;
@@ -54,8 +80,13 @@ export const ContentContainer = styled.main`
     margin: 0 auto;
     padding-top: 4.5rem;
 
+    ${theme.media.tablet} {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
     ${theme.media.mobile} {
-        padding: 2.5rem 1.25rem;
+        padding: 0 1.25rem;
     }
 `;
 
@@ -65,10 +96,13 @@ export const FilterBar = styled.section`
     margin-bottom: 2rem;
     align-items: center;
 
+    ${theme.media.tablet} {
+        margin-bottom: 1.5rem;
+    }
+
     ${theme.media.mobile} {
-        overflow-x: auto;
         white-space: nowrap;
-        padding-bottom: 12rem;
+        padding-bottom: 11rem;
         margin-bottom: -10rem;
         
         &::-webkit-scrollbar { display: none; }
@@ -78,12 +112,11 @@ export const FilterBar = styled.section`
 export const AllButton = styled.button<{ $isActive: boolean }>`
     width: 4.4375rem;
     height: 2.9375rem;
-    padding: 0.75rem 1rem;
     border-radius: 0.5rem;
     border: none;
-    background-color: ${props => props.$isActive ? '#111827' : '#E5E7EB'};
-    color: ${props => props.$isActive ? 'white' : '#6B7280'};
-    font-weight: 600;
+    background-color: ${props => props.$isActive ? '#181818' : '#444444'};
+    color: ${props => props.$isActive ? 'white' : '#777777'};
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.2s ease;
 
@@ -91,10 +124,19 @@ export const AllButton = styled.button<{ $isActive: boolean }>`
         background-color: ${props => props.$isActive ? '#111827' : '#D1D5DB'};
     }
 
-    ${theme.media.mobile} {
-        height: 2.5rem;
-        padding: 0.5rem 0.75rem;
+    ${theme.media.tablet} {
+        width: 3.875rem;
+        height: 1.9375rem;
         font-size: ${fontSize.smaller};
+    }
+
+    ${theme.media.mobile} {
+        display: none;
+    }
+
+    [data-theme="dark"] & {
+        background-color: ${props => props.$isActive ? '#181818' : '#444444'};
+        color: ${props => props.$isActive ? '#FFFFFF' : '#9CA3AF'};
     }
 `;
 
@@ -102,6 +144,12 @@ export const CrewList = styled.section`
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
+    ${theme.media.mobile} {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 0.5rem;
+    }
 `;
 
 export const EmptyState = styled.div`

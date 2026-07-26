@@ -2,7 +2,6 @@
 'use client';
 
 import React from 'react';
-import { useRouter, useParams } from 'next/navigation';
 import { CrewDetailResponse } from '@/types/crew';
 import Profile from '@/components/molecules/Profile';
 import * as S from './CrewDetailPageTemplate.styles';
@@ -11,18 +10,11 @@ import Image from 'next/image';
 interface CrewDetailPageTemplateProps {
     member: CrewDetailResponse;
     activeTab: '활동' | '블로깅';
-    children: React.ReactNode; // MenuItem 리스트가 들어올 자리
+    onTabChange: (tab: '활동' | '블로깅') => void;
+    children: React.ReactNode;
 }
 
-const CrewDetailPageTemplate = ({ member, activeTab, children }: CrewDetailPageTemplateProps) => {
-    const router = useRouter();
-    const { id } = useParams();
-
-    // 탭 클릭 시 해당 페이지로 경로 이동
-    const handleTabClick = (tab: '활동' | '블로깅') => {
-        const path = tab === '활동' ? 'activity' : 'blog';
-        router.push(`/crew/${id}/${path}`);
-    };
+const CrewDetailPageTemplate = ({ member, activeTab, onTabChange, children }: CrewDetailPageTemplateProps) => {
 
     return (
         <>
@@ -38,7 +30,7 @@ const CrewDetailPageTemplate = ({ member, activeTab, children }: CrewDetailPageT
                     <S.TabWrapper>
                         <S.TabButton 
                             $isActive={activeTab === '활동'} 
-                            onClick={() => handleTabClick('활동')}
+                            onClick={() => onTabChange('활동')}
                         >
                             <Image
                                 src={activeTab === '활동' 
@@ -49,7 +41,7 @@ const CrewDetailPageTemplate = ({ member, activeTab, children }: CrewDetailPageT
                         </S.TabButton>
                         <S.TabButton 
                             $isActive={activeTab === '블로깅'} 
-                            onClick={() => handleTabClick('블로깅')}
+                            onClick={() => onTabChange('블로깅')}
                         >
                             <Image
                                 src={activeTab === '블로깅' 

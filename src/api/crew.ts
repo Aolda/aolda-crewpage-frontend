@@ -1,5 +1,5 @@
 import { axiosInstance } from './instance';
-import { CrewListResponse, CrewDetailResponse } from '@/types/crew';
+import { CrewListResponse, CrewDetailResponse, DepartmentMap, DepartmentResponse } from '@/types/crew';
 
 export interface CrewQueryParams {
     generation?: number;
@@ -27,4 +27,13 @@ export const getCrewList = async (params?: CrewQueryParams) => {
 export const getCrewDetail = async (id: string | number) => {
     const response = await axiosInstance.get<CrewDetailResponse>(`/team/crew/${id}`);
     return response.data;
+};
+
+/**
+ * 크루 부서 key-value 목록 조회
+ * 반환: { "DEPARTMENT_TYPE/DEV": "개발팀", ... }
+ */
+export const getDepartmentList = async (): Promise<DepartmentMap> => {
+    const response = await axiosInstance.get<DepartmentResponse>('/team/department');
+    return response.data.data;
 };

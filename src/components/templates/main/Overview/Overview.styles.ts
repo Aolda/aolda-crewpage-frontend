@@ -1,16 +1,24 @@
 // src/components/templates/main/Overview/Overview.styles.ts
 import styled from 'styled-components';
-import { colors, fontSize, theme } from '@/styles/theme';
+import { fontSize, theme } from '@/styles/theme';
+import { radius, semanticColors, typography } from '@/styles/tokens';
 
 export const SinceText = styled.div`
-    font-size: 1rem;
-    font-weight: normal;
-    color: #9CA3AF;
+    font-size: ${fontSize.base};
+    font-weight: 300;
+    color: ${semanticColors.text.secondary};
     margin-bottom: 0.75rem;
+
+    ${theme.media.tablet} {
+        font-size: ${fontSize.smaller};
+        margin-bottom: 0.5rem;
+    }
 
     ${theme.media.mobile} {
         font-size: 0.875rem;
+        margin-bottom: 0;
     }
+
 `;
 
 export const OverviewWrapper = styled.div`
@@ -18,19 +26,56 @@ export const OverviewWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
+
+    ${theme.media.mobile} {
+        margin-top: 2rem;
+    }
 `;
 
 /* 상단: 구체 및 배경 텍스트 영역 */
 export const SphereContainer = styled.div`
     position: relative;
     width: 100%;
-    height: 31.25rem; /* 500px */
+    // height: 31.25rem; /* 500px */
     display: flex;
     justify-content: center;
     align-items: center;
+`;
+
+/* 모바일 전용: 배경 글씨 4개 세로 배열 */
+export const MobileBgTextGrid = styled.div`
+    display: none;
 
     ${theme.media.mobile} {
-        height: 20rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.5rem;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100vw;
+        z-index: 0;
+        pointer-events: none;
+        user-select: none;
+    }
+`;
+
+export const MobileBgTextRow = styled.div<{ $shifted?: boolean }>`
+    display: none;
+
+    ${theme.media.mobile} {
+        display: block;
+        opacity: 0.15;
+        transform: ${(props) => props.$shifted ? 'translateX(-18%)' : 'translateX(0)'};
+
+        img {
+            width: 60rem;
+            max-width: unset;
+            height: auto;
+        }
     }
 `;
 
@@ -45,15 +90,17 @@ export const BgText = styled.div`
     user-select: none;
 
     ${theme.media.mobile} {
-        width: 100%;
+        display: none;
+    }
 
-        img {
-            width: 63rem;
-        }
+    ${theme.media.tablet} {
+        width: 100vw;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     img {
-        max-width: unset;
+        min-width: 66.5rem;
         position: relative;
         left: 50%;
         transform: translateX(-50%);
@@ -68,9 +115,18 @@ export const GlareEffect = styled.div`
     filter: blur(4rem);
     z-index: 1;
 
-    ${theme.media.mobile} {
+    ${theme.media.tablet} {
         width: 20rem;
         height: 10rem;
+        background: rgba(26, 142, 229, 0.3);
+        filter: blur(4rem);
+    }
+
+    ${theme.media.mobile} {
+        width: 20rem;
+        height: 7.5rem;
+        background: rgba(26, 142, 229, 0.5);
+        filter: blur(4rem);
     }
 `;
 
@@ -82,6 +138,11 @@ export const ShadowWrapper = styled.div`
     
     width: 20rem;
     height: auto;
+    
+    ${theme.media.tablet} {
+        top: 75%;
+        width: 10rem;
+    }
     
     ${theme.media.mobile} {
         width: 12rem;
@@ -107,7 +168,12 @@ export const SphereImage = styled.div`
         width: 14rem;
         height: 14rem;
     }
-    
+
+    ${theme.media.tablet} {
+        width: 12rem;
+        height: 12rem;
+    }
+
     img {
         width: 100%;
         height: 100%;
@@ -116,22 +182,83 @@ export const SphereImage = styled.div`
     }
 `;
 
-/* 중앙: 연결 점선 */
-export const DashedLine = styled.div`
-    background: url("/images/main/dashedLine.png");
-    width: 1rem;
-    height: 11rem;
-    margin-bottom: 2rem;
-    background-repeat: no-repeat;
-    background-size: contain;
-
-    mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
+/* 모바일 전용: sphere 아래 타이틀 영역 */
+export const MobileOverviewHeader = styled.div`
+    display: none;
 
     ${theme.media.mobile} {
-        margin-top: -5rem;
-        mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
-        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding-top: 2.5rem;
+        margin-bottom: 2rem;
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 120%;
+            color: ${semanticColors.text.primary};
+            word-break: keep-all;
+            margin-bottom: 0.75rem;
+
+            span { color: ${semanticColors.text.brand}; }
+        }
+
+        p {
+            font-size: 0.625rem;
+            color: ${semanticColors.text.secondary};
+            word-break: keep-all;
+        }
+    }
+`;
+
+/* 중앙: 연결 점선 */
+export const DashedLine = styled.div`
+    position: relative;
+    width: 0.1875rem;
+    height: 10rem;
+    margin: 0.5rem 0 2.25rem;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, #76BBEF 0%, rgba(118, 187, 239, 0.2) 100%);
+        mask-image: repeating-linear-gradient(
+            to bottom,
+            #000 0,
+            #000 0.375rem,
+            transparent 0.375rem,
+            transparent 0.75rem
+        );
+        -webkit-mask-image: repeating-linear-gradient(
+            to bottom,
+            #000 0,
+            #000 0.375rem,
+            transparent 0.375rem,
+            transparent 0.75rem
+        );
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 1rem;
+        height: 1rem;
+        background: #76BBEF;
+        border-radius: 50%;
+        transform: translate(-50%, 50%);
+    }
+
+    ${theme.media.tablet} {
+        height: 5.5rem;
+        margin: 0.25rem 0 1.5rem;
+    }
+
+    ${theme.media.mobile} {
+        display: none;
     }
 `;
 
@@ -140,29 +267,28 @@ export const InfoCard = styled.div`
     width: 100%;
     height: 23.5rem;
     max-width: 75rem;
-    background: #FFFFFF;
-    border: 2px solid rgba(226, 226, 226, 1); /* 1px */
-    border-radius: 1.5rem;
+    border: 2px solid ${semanticColors.border.default};
+    border-radius: ${radius.xl};
     padding: 3.75rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 3rem;
     text-align: left;
 
     br.pc-only {
-            display: flex;
-        }
-        br.mobile-only {
-            display: none;
-        }
+        display: flex;
+    }
+    br.mobile-only {
+        display: none;
+    }
 
-    ${theme.media.mobile} {
+    ${theme.media.tablet} {
         border: none;
         flex-direction: column;
         height: auto;
-        padding: 2.5rem 1.5rem;
+        padding: 2.5rem 3.75rem;
         text-align: center;
-        gap: 2.5rem;
 
         br.pc-only {
             display: none;
@@ -171,49 +297,103 @@ export const InfoCard = styled.div`
             display: flex;
         }
     }
+
+    ${theme.media.mobile} {
+        border: none;
+        flex-direction: column;
+        height: auto;
+        padding: 0;
+        text-align: left;
+        align-items: flex-start;
+
+        br.pc-only {
+            display: none;
+        }
+        br.mobile-only {
+            display: flex;
+        }
+    }
+
+    [data-theme="dark"] & {
+        border-color: ${semanticColors.border.default};
+
+        ${theme.media.mobile} {
+            background: transparent;
+        }
+    }
 `;
 
 export const CardText = styled.div`
     display: flex;
     flex-direction: column;
+    flex: 1 1 auto;
+    min-width: 0;
     gap: 3rem;
-    
+
     span {
-            color: ${colors.primary500};
+        color: ${semanticColors.text.brand};
     }
     h3 {
-        font-size: ${fontSize.h2};
+        ${typography('Heading2')};
         font-weight: 700;
-        line-height: 1.4;
-        color: #111827;
+        line-height: 1.2;
+        color: ${semanticColors.text.primary};
         word-break: keep-all;
     }
-    p {
-        font-size: ${fontSize.base};
-        line-height: 1.6;
-        color: ${colors.gray500};
-        word-break: keep-all;
+    p.not-mobile {
+        display: block
+        ${typography('Body2')};
+        color: ${semanticColors.text.secondary};
+    }
+
+    p.mobile-only {
+        display: none;
+    }
+
+    ${theme.media.tablet} {
+        gap: 0.75rem;
+
+        h3 {
+            font-size: ${fontSize.h3};
+        }
+        p.not-mobile {
+            font-size: ${fontSize.smaller};
+        }
     }
 
     ${theme.media.mobile} {
-        gap: 1.5rem;
-        
+        gap: 0.75rem;
+        text-align: left;
+
         h3 {
-            font-size: 1.5rem;
+            font-size: ${fontSize.body1};
         }
-        p {
-            font-size: ${fontSize.smaller};
+
+        p.not-mobile {
+            display: none;
+        }
+
+        p.mobile-only {
+            display: block;
+            font-size: 0.625rem;
+            color: ${semanticColors.text.secondary};
         }
     }
 `;
 
 export const CardIllustration = styled.div`
+    flex: 0 0 20rem;
+    width: 20rem;
+    min-width: 18rem;
+    max-width: 34%;
+
     img {
+        display: block;
         width: 100%;
         height: auto;
     }
 
-    ${theme.media.mobile} {
+    ${theme.media.tabletDown} {
         display: none;
     }
 `;

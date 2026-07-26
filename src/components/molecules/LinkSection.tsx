@@ -1,10 +1,9 @@
 // /src/components/molecules/LinkSection.tsx
 'use client';
 
-import React, {type CSSProperties} from "react";
+import React from "react";
 import Image from "next/image";
 import { StyledLinkSection } from "./LinkSection.styles";
-import { colors } from "@/styles/theme";
 
 /*
 * 주요링크 페이지의 항목별 섹션
@@ -27,7 +26,7 @@ const LinkSection: React.FC<LinkSectionProps> = ({
 	index,
 	title,
 	description,
-	to
+	to,
 }) => {
 	const isEven = index % 2 === 1;
 
@@ -37,15 +36,17 @@ const LinkSection: React.FC<LinkSectionProps> = ({
                 <Image src={src} alt={title} width={588} height={441} layout="responsive" />
             </section>
             <section className="textSection">
-                <h1 className="indexNumber">0{index + 1}</h1>
-                <h1 className="title">
-                    <span>아올다 </span>
-                    {title}
-                </h1>
+                <section className="titleSection">
+                    <h1 className="indexNumber">0{index + 1}</h1>
+                    <h1 className="title">
+                        <span>아올다 </span>
+                        {title}
+                    </h1>
+                </section>
                 <p>{description}</p>
-                <button className="linkButton">
+                <a className="linkButton" href={to} target="_blank" rel="noopener noreferrer">
                     아올다 {title} 이동하기
-                </button>
+                </a>
             </section>
         </StyledLinkSection>
     );

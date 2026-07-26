@@ -1,30 +1,43 @@
 // /src/components/molecules/LinkSection.styles.ts
 import styled from "styled-components";
-import { colors, fontSize, theme } from "@/styles/theme";
+import { fontSize, theme } from "@/styles/theme";
+import { radius, semanticColors, typography } from "@/styles/tokens";
 
 export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
     display: flex;
-    align-items: center;
-    gap: 7.5rem;
+    align-items: flex-start;
+    gap: 1.5rem;
 
     /* PC: 인덱스에 따라 좌우 교차 배치 */
     flex-direction: ${(props) => (props.$isEven ? "row-reverse" : "row")};
     text-align: ${(props) => (props.$isEven ? "right" : "left")};
 
+    ${theme.media.tablet} {
+        flex-direction: column;
+        text-align: left;
+        gap: 0.75rem;
+        width: 100%;
+    }
+
     ${theme.media.mobile} {
+        align-items: center;
         flex-direction: column;
         text-align: center;
-        gap: 2rem;
+        gap: 0.75rem;
         width: 100%;
     }
 
     .imgSection {
-        width: 36.75rem;
+        width: 37rem;
         height: 27.5625rem;
+
+        ${theme.media.tablet} {
+            width: 100%;
+            height: auto;
+        }
 
         ${theme.media.mobile} {
             width: 100%;
-            max-width: 25rem;
             height: auto;
         }
 
@@ -38,23 +51,41 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
     .textSection {
         display: flex;
         flex-direction: column;
-        width: 36.75rem;
+        width: 36.5rem;
         gap: 2rem;
 
         /* PC 배치에 따른 정렬 */
         align-items: ${(props) => (props.$isEven ? "flex-end" : "flex-start")};
 
+        ${theme.media.tablet} {
+            width: 100%;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
         ${theme.media.mobile} {
             width: 100%;
-            align-items: center;
+            align-items: flex-start;
             gap: 1rem;
         }
 
+        .titleSection {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+
+            ${theme.media.mobile} {
+                align-items: flex-start;
+            }
+        }
+
         .indexNumber {
+            font-family: var(--font-pretendard);
             font-size: ${fontSize.display1};
-            color: ${colors.primary500};
+            color: ${semanticColors.text.brand};
             font-weight: 700;
             margin: 0;
+            line-height: 1;
 
             ${theme.media.mobile} {
                 font-size: 2.5rem;
@@ -62,10 +93,11 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
         }
 
         .title {
-            font-size: ${fontSize.h2};
+            ${typography('Heading2')};
             font-weight: 700;
             margin: 0;
-            span { color: ${colors.primary500}; }
+            color: ${semanticColors.text.primary};
+            span { color: ${semanticColors.text.brand}; }
 
             ${theme.media.mobile} {
                 font-size: ${fontSize.h3};
@@ -74,39 +106,83 @@ export const StyledLinkSection = styled.section<{ $isEven: boolean }>`
 
         p {
             margin: 0;
-            color: #777777;
-            font-size: ${fontSize.body1};
-            font-weight: 400;
-            line-height: 1.5;
+            ${typography('Body1')};
+            color: ${semanticColors.text.secondary};
 
-            white-space: pre-wrap;
+            // white-space: pre-wrap;
+
+            ${theme.media.tablet} {
+                width: 100%;
+                font-size: ${fontSize.base};
+                text-align: left;
+
+                .pc-br {
+                    display: none;
+                }
+            }
 
             ${theme.media.mobile} {
                 font-size: ${fontSize.smaller};
                 br { display: none; }
+                text-align: left;
+
+                .pc-br {
+                    display: none;
+                }
             }
 
             span {
-                color: ${colors.primary500};
+                color: ${semanticColors.text.brand};
             }
         }
     }
 
     .linkButton {
         background: none;
-        border: solid 1px #777777;
-        border-radius: 0.5rem;
+        border: solid 1px ${semanticColors.border.strong};
+        border-radius: ${radius.md};
         padding: 0.75rem 1rem;
         cursor: pointer;
         transition: all 0.2s;
+        color: ${semanticColors.text.primary};
+        text-decoration: none;
+        ${typography('Button1')};
+
+        ${theme.media.tablet} {
+            width: 100%;
+            border: 1px solid ${semanticColors.border.default};
+            font-size: ${fontSize.smaller};
+            padding: 1rem;
+            align-self: center;
+            text-align: center;
+        }
 
         ${theme.media.mobile} {
             width: 100%;
-            max-width: 15rem;
+            border: 1px solid ${semanticColors.border.default};
+            font-size: ${fontSize.smaller};
+            padding: 0.75rem 1rem;
         }
 
         &:hover {
-            background-color: #FAFAFA;
+            background-color: ${semanticColors.background.elevated};
+        }
+
+        [data-theme="dark"] & {
+            border-color: ${semanticColors.border.strong};
+            color: ${semanticColors.text.primary};
+
+            ${theme.media.tablet} {
+                border-color: ${semanticColors.border.default};
+            }
+
+            ${theme.media.mobile} {
+                border-color: ${semanticColors.border.default};
+            }
+
+            &:hover {
+                background-color: ${semanticColors.background.elevated};
+            }
         }
     }
 `;

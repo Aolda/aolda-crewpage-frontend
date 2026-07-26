@@ -10,10 +10,11 @@ const Overview = () => {
     return (
         <MainSection
             label="Overview"
+            hideHeaderOnMobile
             title={
                 <>
                     <S.SinceText>since 2023</S.SinceText>
-                    아주대 유일무이 <span>클라우드 개발/운영 소학회</span>
+                    아주대 유일무이 <br className="mobile-only" /><span>클라우드 개발/운영 소학회</span>
                 </>
             }
             description={
@@ -30,6 +31,22 @@ const Overview = () => {
                     <S.BgText>
                         <Image src="/images/main/bgText.png" alt="bgtext" width={2128} height={120}/>
                     </S.BgText>
+
+                    {/* 모바일 전용: 배경 글씨 4개 (1,3 정위치 / 2,4 왼쪽 이동) */}
+                    <S.MobileBgTextGrid>
+                        <S.MobileBgTextRow $shifted={false}>
+                            <Image src="/images/main/bgText.png" alt="" width={2128} height={120} />
+                        </S.MobileBgTextRow>
+                        <S.MobileBgTextRow $shifted={true}>
+                            <Image src="/images/main/bgText.png" alt="" width={2128} height={120} />
+                        </S.MobileBgTextRow>
+                        <S.MobileBgTextRow $shifted={false}>
+                            <Image src="/images/main/bgText.png" alt="" width={2128} height={120} />
+                        </S.MobileBgTextRow>
+                        <S.MobileBgTextRow $shifted={true}>
+                            <Image src="/images/main/bgText.png" alt="" width={2128} height={120} />
+                        </S.MobileBgTextRow>
+                    </S.MobileBgTextGrid>
 
                     <S.GlareEffect />
 
@@ -69,15 +86,33 @@ const Overview = () => {
                 {/* 연결부 */}
                 <S.DashedLine />
 
+                {/* 모바일 전용: since 2023 + 타이틀 + 설명 */}
+                <S.MobileOverviewHeader>
+                    <S.SinceText>since 2023</S.SinceText>
+                    <h2>아주대 유일무이<br /><span>클라우드 개발/운영 소학회</span></h2>
+                    <p>
+                        아올다는 클라우드 인프라에 관심 있는 아주대학교 학생들이<br />
+                        단순한 호기심에서 시작하여 현재까지<br />
+                        함께 학습하고 프로젝트를 진행하며 성장하는 소학회입니다.
+                    </p>
+                </S.MobileOverviewHeader>
+
                 {/* 하단 카드 영역 */}
                 <S.InfoCard>
                     <S.CardText>
-                        <h3>아올다는<br className="pc-only" />목표를 향한<br className="mobile-only" />
+                        <h3>아올다는<br className="pc-only" />목표를 향한 <br className="mobile-only" />
                         <span>도전 속 새로운 배움</span>을 위해<br />나아가고 있습니다</h3>
-                        <p>
+                        <p className="not-mobile">
                             <span>아올다</span>는 클라우드 개발과 운영 중 발생하는 문제들을 해결하고,<br />
                             불편한 기능과 환경을 새롭게 개발/개선하는 과정을 통해<br />
                             팀원 개개인의 목표를 향한 역량을 기르고 배움을 얻고자 노력합니다.
+                        </p>
+                        <p className="mobile-only">
+                            아올다는 클라우드 인프라에 관심있는 아주대학교 학생들이 단순한 <br />
+                            호기심에서 시작하여 현재까지 아올다는 클라우드 개발과 운영 중 <br />
+                            발생하는 문제들을 해결하고, 불편한 기능과 환경을 새롭게 개발/개선하는 <br />
+                            과정을 통해 팀원 개개인의 목표를 향한 역량을 기르고 배움을 얻고자 <br />
+                            노력합니다.
                         </p>
                     </S.CardText>
                     <S.CardIllustration>

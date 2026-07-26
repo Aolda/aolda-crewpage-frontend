@@ -24,8 +24,8 @@ const Header = () => {
             <S.StyledHeader>
                 <section className="iconSection">
                     <Link href="/" className='logoWrapper'>
-                        <Image src="/images/aoldaIcon.svg" alt="icon" width={35} height={36}/>
-                        <span className="logoText">Aolda</span>
+                        <Image src="/images/aoldaIcon.svg" alt="icon" width={28} height={28} className="logoIcon"/>
+                        <span className="logoText">AOLDA</span>
                     </Link>
                 </section>
 

@@ -10,8 +10,10 @@ import { getProjectDetail } from '@/api/project';
 
 import { ProjectDetailResponse } from '@/types/project';
 import ProjectDetailPageTemplate from '@/components/templates/ProjectDetail/ProjectDetailPageTemplate';
+import { MOCK_PROJECT_DETAIL } from '@/mocks/projectData';
+import LoadingScreen from '@/components/atoms/LoadingScreen';
 
-const USE_MOCK = false;
+const USE_MOCK = true;
 
 export default function ProjectPage() {
     const params = useParams();
@@ -28,15 +30,20 @@ export default function ProjectPage() {
                 setIsLoading(true);
                 setHasError(false);
 
+                if (USE_MOCK) {
+                    setProject(MOCK_PROJECT_DETAIL);
+                    return;
+                }
+
                 // API 호출
                 const response = await getProjectDetail(activityId);
-                setProject(response as any); 
-                
-            } catch (err: any) {
+                setProject(response);
+
+            } catch (err: unknown) {
                 setHasError(true);
                 // 명세에 정의된 403, 404, 503 에러 코드를 핸들러로 전달합니다
                 if (isAxiosError(err) && err.response?.data?.code) {
-                    handleError(err.response.data.code);
+                    handleError(String(err.response.data.code));
                 } else {
                     console.error('Project Detail Fetch Error:', err);
                 }
@@ -49,11 +56,7 @@ export default function ProjectPage() {
     }, [activityId, handleError]);
 
     if (isLoading) {
-        return (
-            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                데이터를 불러오는 중...
-            </div>
-        )
+        return <LoadingScreen />;
     };
     if (hasError || !project) return null;
     

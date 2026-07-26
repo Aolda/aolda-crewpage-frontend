@@ -3,16 +3,7 @@
 import React from "react";
 import HashTag from "../atoms/HashTag";
 import { StyledActivityBlock } from "./ActivityBlock.styles";
-import { ActivityStatusKey } from "@/types/project";
-
-/*
-* Home page Activity Section의 block(내부 요소로는 Badge, 텍스트)
-* @params {boolean} [completed] 활동 완료 여부(완료가 아닐때는 어떤지 디자인팀에게 물어보기)
-* @params {string} [date] 활동 시작 날짜
-* @params {string} title 제목(variant='h3' color='balck')
-* @params {string} subtitle 부제목(variant='body' color='gray')
-* @params {string} description 설명(variant='body' color='gray')
-*/
+import { ActivityStatusKey, ACTIVITY_STATUS } from "@/types/project";
 
 interface ActivityBlockProps {
     status: ActivityStatusKey;
@@ -38,12 +29,13 @@ const ActivityBlock: React.FC<ActivityBlockProps> = ({
                 </section>
 			    <section className="titleSection">
                     <h2>{title}</h2>
-			        <span style={{"color":"#777777"}}>{subtitle}</span>
+			        <span>{subtitle}</span>
                 </section>
             </section>
 			<section className="bottomSection">
-                <p style={{"color":"#777777"}}>{description}</p>
+                <p>{description}</p>
             </section>
+            <span className="mobileStatus">{ACTIVITY_STATUS[status]}</span>
 		</StyledActivityBlock>
 	);
 };

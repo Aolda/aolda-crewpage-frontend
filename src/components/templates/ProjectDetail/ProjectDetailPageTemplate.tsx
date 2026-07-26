@@ -8,7 +8,6 @@ import BreadCrumb from '@/components/molecules/BreadCrump';
 import SolutionCard from '@/components/molecules/SolutionCard';
 import CrewBlock from '@/components/organisms/CrewBlock';
 import Link from 'next/link';
-import { CrewMember } from '@/types/crew';
 import { ProjectDetailResponse, PROJECT_TYPE } from '@/types/project';
 
 interface ProjectDetailPageTemplateProps {
@@ -23,7 +22,7 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
     const breadcrumbItems = [
         { label: '홈', href: '/' },
         { label: '주요 활동', href: '/activity' },
-        { label: project.activityNames.ko, href: '#' },
+        { label: project.activityNames.brief, href: '#' },
     ];
 
     return (
@@ -38,50 +37,53 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
                 <S.HeaderSection>
                     <BreadCrumb items={breadcrumbItems} />
                     <div className="titleGroup">
-                        <h1>{project.activityNames.en}</h1>
-                        <p>{project.activityNames.ko}</p>
+                        <h1>{project.activityNames.brief}</h1>
+                        <p>{project.activityNames.en}</p>
                     </div>
                 </S.HeaderSection>
             </S.HeaderBackground>
             <S.PageWrapper>
-                {/* 2. 헤더 섹션 */}
+                {/* 모바일 전용 타이틀 */}
+                <S.MobileTitle>
+                    <h1>{project.activityNames.en}</h1>
+                    <p>{project.activityNames.ko}</p>
+                </S.MobileTitle>
 
-                {/* 3. 기획 정보 섹션 */}
-                <S.Section>
-                    <S.SectionTitle>
-                        <Image 
-                            src='/images/project/detail/designIcon.png'
-                            alt="design"
-                            width={30}
-                            height={30}/>
-                        기획 정보
-                    </S.SectionTitle>
-                    <p style={{
-                        fontSize: "1rem", 
-                        whiteSpace: "pre-wrap" // \n, \t 처리를 위해 필수
-                    }}>
-                        {project.contents.ideaBackground}
-                    </p>
-                </S.Section>
+                <S.InfoSectionGroup>
+                    {/* 3. 기획 정보 섹션 */}
+                    <S.Section $isCard className="planningInfoSection">
+                        <S.SectionTitle>
+                            <Image
+                                src='/images/project/detail/designIcon.png'
+                                alt="design"
+                                width={30}
+                                height={30}/>
+                            기획 정보
+                        </S.SectionTitle>
+                        <p>
+                            {project.contents.ideaBackground}
+                        </p>
+                    </S.Section>
 
-                {/* 4. 활동 정보 섹션 */}
-                <S.Section>
-                    <S.SectionTitle>
-                        <Image 
-                            src='/images/project/detail/activityIcon.png'
-                            alt="design"
-                            width={30}
-                            height={30}/>
-                        활동 정보
-                    </S.SectionTitle>
-                    <S.InfoGrid>
-                        <SolutionCard title="진행 학기" description={semesterText} />
-                        <SolutionCard title="프로젝트 유형" description={projectTypeText} />
-                        <SolutionCard title="활동 진행회차" description={`${project.contents.activityInfo.activityCounts}회 진행`} />
-                        <SolutionCard title="활동 블로깅" description={`${project.contents.activityInfo.bloggingCounts}개`} />
-                        <SolutionCard title="활동 사진" description={`${project.gallery.length}개`} />
-                    </S.InfoGrid>
-                </S.Section>
+                    {/* 4. 활동 정보 섹션 */}
+                    <S.Section $isCard>
+                        <S.SectionTitle>
+                            <Image
+                                src='/images/project/detail/activityIcon.png'
+                                alt="design"
+                                width={30}
+                                height={30}/>
+                            활동 정보
+                        </S.SectionTitle>
+                        <S.InfoGrid>
+                            <SolutionCard title="진행 학기" description={semesterText} />
+                            <SolutionCard title="프로젝트 유형" description={projectTypeText} />
+                            <SolutionCard title="활동 진행회차" description={`${project.contents.activityInfo.activityCounts}회 진행`} />
+                            <SolutionCard title="활동 블로깅" description={`${project.contents.activityInfo.bloggingCounts}개`} />
+                            <SolutionCard title="활동 사진" description={`${project.gallery.length}개`} />
+                        </S.InfoGrid>
+                    </S.Section>
+                </S.InfoSectionGroup>
 
                 {/* 5. 주요블로깅 섹션 */}
                 <S.Section>

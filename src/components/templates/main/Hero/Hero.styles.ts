@@ -1,6 +1,7 @@
 // /src/components/templates/main/Hero/Hero.styles.ts
 import styled from 'styled-components';
-import { fontSize, colors, theme } from '@/styles/theme';
+import { fontSize, theme } from '@/styles/theme';
+import { semanticColors } from '@/styles/tokens';
 
 export const HeroWrapper = styled.section`
     width: 100%;
@@ -12,7 +13,9 @@ export const HeroWrapper = styled.section`
     align-items: center;
     text-align: center;
 
-    overflow: hidden; 
+    overflow: hidden;
+
+
 
     /* 배경 전용 가상 요소 */
     &::before {
@@ -29,19 +32,23 @@ export const HeroWrapper = styled.section`
         background-position: center;
         background-repeat: no-repeat;
         
-        transform: translate(-20rem, -12rem) scale(1.8); 
+        transform: scale(2.0);
+        transform-origin: center center;
 
         /* 배경 투명도 유지*/
-        opacity: 0.15; 
+        opacity: 0.15;
         z-index: 0;
 
-        /* 모바일 배경 이미지 구도 조정 */
-        ${theme.media.mobile} {
-            transform: translate(-5rem, -3rem) scale(1.8);
+        ${theme.media.tablet} {
+            transform: scale(2.3);
         }
     }
     
     ${theme.media.mobile} {
+        display: none;
+    }
+
+    ${theme.media.tablet} {
         height: 25rem;
     }
 `;
@@ -49,46 +56,55 @@ export const HeroWrapper = styled.section`
 export const HeroContent = styled.div`
     position: relative;
     z-index: 1;
-    
+
     h1 {
         font-size: ${fontSize.h3};
         font-weight: 700;
         line-height: 1.4;
-        color: ${colors.black600};
+        color: ${semanticColors.text.primary};
         margin-bottom: 2rem;
         word-break: keep-all;
+
+        ${theme.media.tablet} {
+            font-size: ${fontSize.base};
+            margin-bottom: 0.75rem;
+        }
 
         ${theme.media.mobile} {
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
         }
+
     }
 
     .team-name {
-        font-size: 3.75rem;
-        font-weight: 700;
-        color: ${colors.primary500};
-
-        ${theme.media.mobile} {
-            font-size: 2.5rem;
-        }
-        
-        span:not(.font-cjk) {
+        span:not(.font-paperlogy) {
             font-size: ${fontSize.h3};
-            color: ${colors.black600};
+            font-weight: 700;
+            color: ${semanticColors.text.primary};
             margin-right: 1rem;
+
+            ${theme.media.tablet} {
+                font-size: ${fontSize.base};
+            }
 
             ${theme.media.mobile} {
                 font-size: 1.5rem;
                 margin-right: 0.5rem;
             }
+
         }
 
-        .font-cjk {
-            font-family: var(--font-cjk); 
+        .font-paperlogy {
+            font-family: var(--font-paperlogy);
+            color: ${semanticColors.text.brand};
             font-size: 3.75rem;
             font-weight: 700;
             line-height: 1;
+
+            ${theme.media.tablet} {
+                font-size: ${fontSize.h2};
+            }
 
             ${theme.media.mobile} {
                 font-size: 2.5rem;

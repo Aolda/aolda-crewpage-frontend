@@ -6,6 +6,7 @@ export const CREW_ROLE = {
     'CREW_ROLE/CREW': '크루원',
 } as const;
 
+/** @deprecated 하드코딩된 부서 목록. /team/department API로 대체됨 */
 export const DEPARTMENT_TYPE = {
     'DEPARTMENT_TYPE/CLEVEL': '임원진',
     'DEPARTMENT_TYPE/DEV': '개발팀',
@@ -14,10 +15,16 @@ export const DEPARTMENT_TYPE = {
     'DEPARTMENT_TYPE/DESIGN': '디자인팀',
 } as const;
 
+// /team/department API 응답 타입 — { data: { "DEPARTMENT_TYPE/DEV": "개발팀", ... } }
+export type DepartmentMap = Record<string, string>;
+export interface DepartmentResponse {
+    data: DepartmentMap;
+}
+
 export interface CrewLog {
     generation: number;
     type: keyof typeof CREW_ROLE;
-    department: keyof typeof DEPARTMENT_TYPE;
+    department: string; // 동적 부서 코드 (예: "DEPARTMENT_TYPE/INFRA_DEV")
 }
 
 // 서버 응답 기반의 크루 데이터 타입

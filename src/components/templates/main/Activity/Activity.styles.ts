@@ -1,12 +1,17 @@
 // /src/components/templates/main/Activity/Activity.styles.ts
 import styled, { keyframes } from 'styled-components';
-import { colors, fontSize, theme } from '@/styles/theme';
+import Link from 'next/link';
+import { fontSize, theme } from '@/styles/theme';
+import { radius, semanticColors, typography } from '@/styles/tokens';
 
 export const ActivityWrapper = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    // align-items: center;
+
+    ${theme.media.mobile} {
+        align-items: center;
+    }
 `;
 
 /* 탭 메뉴 스타일 */
@@ -14,11 +19,19 @@ export const TabContainer = styled.div`
     display: flex;
     gap: 1.5rem;
     margin-bottom: 2.25rem;
+    justify-content: center;
 
     ${theme.media.mobile} {
         flex-direction: column;
         width: 100%;
-        gap: 1rem;
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+    }
+
+    ${theme.media.tablet} {
+        flex-direction: row;
+        width: 100%;
+        gap: 1.25rem;
     }
 `;
 
@@ -28,46 +41,95 @@ export const Tab = styled.div`
     height: 7.5rem;
 
     padding: 1.5rem 2.25rem;
-    background: #FFFFFF;
-    border: 2px solid #E2E2E2;
-    border-radius: 1rem;
+    border: 2px solid ${semanticColors.border.default};
+    border-radius: ${radius.lg};
 
     justify-content: space-between;
     text-align: left;
+
+    [data-theme="dark"] & {
+        border-color: ${semanticColors.border.default};
+    }
 
     ${theme.media.mobile} {
         width: 100%;
         height: auto;
         flex-direction: column;
+        align-items: flex-start;
+        border: 1px solid ${semanticColors.border.default};
+        border-radius: ${radius.md};
+        text-align: left;
+        padding: 0.75rem;
+        gap: 0.25rem;
+        font-size: 0.625rem;
+
+        br {
+            display: none;
+        }
+    }
+
+    ${theme.media.tablet} {
+        flex: 1;
+        width: auto;
+        height: auto;
+        flex-direction: column;
         align-items: center;
-        text-align: center;
-        padding: 1.5rem;
+        justify-content: center;
+        text-align: left;
+        padding: 1rem 1.25rem;
         gap: 1rem;
     }
 
-    h4 {
-        font-size: ${fontSize.body1};
+    h2 {
+        ${typography('Title1')};
         font-weight: 700;
-        color: ${colors.primary500};
+        color: ${semanticColors.text.brand};
         margin: 0;
+
+        ${theme.media.tablet} {
+            font-size: ${fontSize.base};
+        }
+
+        ${theme.media.mobile} {
+            font-size: ${fontSize.smaller};
+        }
     }
 
     p {
         margin: 0;
         font-size: ${fontSize.smaller};
-        color: #6B7280;
+        color: ${semanticColors.text.secondary};
         line-height: 1.5;
         text-align: right;
         font-weight: 400;
 
         ${theme.media.mobile} {
-            text-align: center;
+            text-align: left;
             word-break: keep-all;
+            font-size: 0.625rem;
+        }
+
+        ${theme.media.tablet} {
+            text-align: center;
+            font-size: ${fontSize.smaller};
         }
 
         span {
             font-weight: 700;
-            color: black;
+            color: ${semanticColors.text.primary};
+            ${theme.media.tabletDown} {
+                color: ${semanticColors.text.brand};
+            }
+
+            [data-theme="dark"] & {
+                color: ${semanticColors.text.brand};
+            }
+        }
+
+        br.pc-only {
+            ${theme.media.tablet} {
+                display: none;
+            }
         }
     }
 `;
@@ -93,7 +155,6 @@ export const HorizontalScrollArea = styled.div`
     overflow: hidden;
     pointer-events: none;
 
-    /* 양 끝이 자연스럽게 사라지는 페이드 효과 (선택 사항) */
     mask-image: linear-gradient(
         to right,
         rgba(0, 0, 0, 0) 0%,
@@ -103,22 +164,41 @@ export const HorizontalScrollArea = styled.div`
     );
 
     ${theme.media.mobile} {
-        width: 100%;
-        transform: none;
-        mask-image: linear-gradient(
-            to right,
-            rgba(0, 0, 0, 0) 0%,
-            rgba(0, 0, 0, 1) 5%,
-            rgba(0, 0, 0, 1) 95%,
-            rgba(0, 0, 0, 0) 100%
-        );
+        display: none;
     }
-    
+
     &::-webkit-scrollbar {
         display: none;
     }
     -ms-overflow-style: none;
     scrollbar-width: none;
+`;
+
+/* 모바일 전용 활동 그리드 */
+export const MobileActivityGrid = styled.div`
+    display: none;
+
+    ${theme.media.mobile} {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        width: 100%;
+    }
+`;
+
+export const MoreLink = styled(Link)`
+    display: none;
+
+    ${theme.media.mobile} {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        margin-top: 1.5rem;
+        font-size: ${fontSize.smaller};
+        font-weight: 600;
+        color: ${semanticColors.text.brand};
+        text-decoration: none;
+    }
 `;
 
 export const CardList = styled.div<{ $count: number }>`
@@ -131,4 +211,23 @@ export const CardList = styled.div<{ $count: number }>`
     animation: ${infiniteScroll} ${props => props.$count * 15}s linear infinite;
 
     padding-right: 1.5rem;
+`;
+
+export const EmptyState = styled.div`
+    width: 100%;
+    min-height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border: 1px solid ${semanticColors.border.default};
+    border-radius: ${radius.lg};
+    color: ${semanticColors.text.secondary};
+    background: ${semanticColors.background.card};
+    font-size: ${fontSize.base};
+
+    ${theme.media.mobile} {
+        min-height: 6rem;
+        font-size: ${fontSize.smaller};
+    }
 `;

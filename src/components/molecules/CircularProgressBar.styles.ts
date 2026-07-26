@@ -1,6 +1,6 @@
 // /src/components/molecules/CircularProgressBar.styles.ts
 import styled from 'styled-components';
-import { fontSize, colors, theme } from '@/styles/theme';
+import { colors, theme } from '@/styles/theme';
 
 export const Container = styled.div<{ $size: number }>`
     position: relative;
@@ -11,9 +11,14 @@ export const Container = styled.div<{ $size: number }>`
     align-items: center;
     justify-content: center;
 
+    ${theme.media.tablet} {
+        width: 3.0625rem;
+        height: 3.0625rem;
+    }
+
     ${theme.media.mobile} {
-        width: 3.5rem; 
-        height: 3.5rem;
+        width: 3.75rem;
+        height: 3.75rem;
     }
 `;
 
@@ -26,8 +31,12 @@ export const Svg = styled.svg`
 
 export const CircleBackground = styled.circle`
     fill: none;
-    stroke: #e5e7eb;
-    stroke-width: 16; 
+    stroke: #E2E2E2;
+    stroke-width: 16;
+
+    ${theme.media.tablet} { stroke-width: 12; }
+
+    ${theme.media.mobile} { stroke-width: 8; }
 `;
 
 export const CircleProgress = styled.circle<{ $offset: number; $circumference: number }>`
@@ -39,7 +48,9 @@ export const CircleProgress = styled.circle<{ $offset: number; $circumference: n
     stroke-dasharray: ${(props) => props.$circumference};
     stroke-dashoffset: ${(props) => props.$offset};
 
-    ${theme.media.mobile} { stroke-width: 12; }
+    ${theme.media.tablet} { stroke-width: 12; }
+
+    ${theme.media.mobile} { stroke-width: 8; }
 `;
 
 export const NumberLabel = styled.div`
@@ -48,7 +59,11 @@ export const NumberLabel = styled.div`
     font-weight: bold;
     color: ${colors.primary500};
 
+    ${theme.media.tablet} {
+        font-size: 1rem;
+    }
+
     ${theme.media.mobile} {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
 `;

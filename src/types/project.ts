@@ -1,8 +1,9 @@
 //
 export const ACTIVITY_STATUS = {
-    'ACTIVITY_STATUS/RECRIUTING': '모집중',
     'ACTIVITY_STATUS/ONBOARDING': '진행중',
     'ACTIVITY_STATUS/COMPLETED': '완료',
+    'ACTIVITY_STATUS/CANCELLED': '취소',
+    'ACTIVITY_STATUS/STANDBY': '보류',
 } as const;
 
 export const ACTIVITY_TYPE_LABEL = {

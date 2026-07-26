@@ -1,6 +1,7 @@
 // /src/components/templates/ProjectDetail/ProjectDetailPageTemplate.styles.ts
-import styled from 'styled-components';
-import { colors, fontSize, theme } from '@/styles/theme';
+import styled, { css } from 'styled-components';
+import { fontSize, theme } from '@/styles/theme';
+import { radius, semanticColors, typography } from '@/styles/tokens';
 
 export const PageWrapper = styled.div`
     max-width: 90rem;
@@ -8,46 +9,89 @@ export const PageWrapper = styled.div`
     margin: 0 auto;
     padding: 3.75rem 7.5rem;
 
+    ${theme.media.desktopSm} {
+        padding: 3.75rem 2rem;
+    }
+
+    ${theme.media.tablet} {
+        padding: 2rem;
+    }
+
     ${theme.media.mobile} {
         width: 100%;
-        padding: 2.5rem 1.25rem;
+        padding: 1.5rem 1.5rem 2.5rem;
+    }
+`;
+
+/* 모바일 전용 타이틀 블록 */
+export const MobileTitle = styled.div`
+    display: none;
+
+    ${theme.media.mobile} {
+        display: block;
+        margin-bottom: 1.25rem;
+
+        h1 {
+            ${typography('Body1')};
+            font-weight: 700;
+            color: ${semanticColors.text.primary};
+            margin: 0 0 0.25rem;
+
+            [data-theme="dark"] & {
+                color: ${semanticColors.text.brand};
+            }
+        }
+
+        p {
+            ${typography('Caption2')};
+            color: ${semanticColors.text.secondary};
+            margin: 0;
+        }
     }
 `;
 
 export const HeaderSection = styled.header`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: flex-start;
 
     max-width: 75rem;
     width: 100%;
-    height: 100%;
 
     margin: 0 auto;
-    padding: 4rem 1rem 2rem 1rem;
+    padding: 13.5625rem 1rem 3.875rem 1rem;
 
     .titleGroup {
         display: flex;
         flex-direction: column;
         gap: 0.25rem;
     }
-    
+
     h1 {
         font-size: 2.25rem;
         font-weight: 700;
-        color: #FFFFFF;
-        margin: 0.5rem 0;
+        color: ${semanticColors.text.inverse};
+        margin: 0.75rem 0;
     }
-    
+
     p {
-        color: ${colors.white600};
+        color: ${semanticColors.text.inverse};
         font-size: ${fontSize.base};
+        font-weight: 400;
+    }
+
+    ${theme.media.tablet} {
+        justify-content: center;
+        padding: 13.5625rem 2rem 3.875rem 2rem;
+        width: 100%;
+        .titleGroup { gap: 0.125rem; }
     }
 
     ${theme.media.mobile} {
-        width: 100%;
-        .titleGroup { gap: 0.125rem; }
+        padding: 0;
+        /* 헤더 내부 콘텐츠 전부 숨김 — 타이틀은 MobileTitle로 이동 */
+        & > * { display: none !important; }
     }
 `;
 
@@ -72,40 +116,114 @@ export const HeaderBackground = styled.div<{ $bgColor: string }>`
         height: auto;
 
         ${theme.media.mobile} {
-            width: 12rem;
-            opacity: 0.3;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            object-fit: cover;
+            object-position: center;
+            opacity: 1;
         }
     }
 
     ${theme.media.mobile} {
-        height: 18rem;
+        margin-top: 4.25rem;
+        height: 17.5rem;
+        overflow: hidden;
     }
 `;
 
-export const Section = styled.section`
-    margin-bottom: 8rem;
+export const Section = styled.section<{ $isCard?: boolean }>`
+    margin-bottom: 3.75rem;
+
     p {
-        color: ${colors.gray500};
-        line-height: 1;
+        color: ${semanticColors.text.secondary};
+        line-height: 1.5;
+        font-weight: 400;
+    }
+
+    [data-theme="dark"] & {
+        ${props => props.$isCard && css`
+            border-color: ${semanticColors.border.default};
+        `}
+    }
+
+    ${theme.media.tablet} {
+        margin-bottom: 2rem;
     }
 
     ${theme.media.mobile} {
-        margin-bottom: 4rem;
+        margin-bottom: 1.25rem;
+        p {
+            color: ${semanticColors.text.primary};
+            font-size: 0.625rem;
+        }
+
+        &.planningInfoSection {
+            p {
+                [data-theme="dark"] & {
+                    color: ${semanticColors.text.brand};
+                }
+            }
+        }
+
+        ${props => props.$isCard && css`
+            border: 1px solid ${semanticColors.border.default};
+            border-radius: 0.5rem;
+            padding: 1rem 0.75rem;
+        `}
+    }
+`;
+
+export const InfoSectionGroup = styled.section`
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3.75rem;
+
+    ${Section} {
+        margin-bottom: 0;
+    }
+
+    ${theme.media.tablet} {
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    ${theme.media.mobile} {
+        gap: 1.25rem;
+        margin-bottom: 1.25rem;
     }
 `;
 
 export const SectionTitle = styled.h2`
     display: flex;
     align-items: center;
-    gap: 1rem;
-    font-size: ${fontSize.h3};
-    font-weight: 700;
+    gap: 0.75rem;
+    ${typography('Title1')};
     margin-bottom: 1.25rem;
-    color: ${colors.black600};
+    color: ${semanticColors.text.primary};
 
-    ${theme.media.mobile} {
+    ${theme.media.tablet} {
         font-size: 1.25rem;
         img { width: 1.5rem; height: 1.5rem; }
+    }
+
+    ${theme.media.mobile} {
+        font-size: 0.75rem; /* 12px */
+        gap: 0.25rem;
+        margin-bottom: 0.5rem;
+        img { width: 1rem; height: 1rem; } /* 16px */
+    }
+
+    [data-theme="dark"] & {
+        color: ${semanticColors.text.primary};
+
+        ${theme.media.mobile} {
+            color: ${semanticColors.text.brand};
+        }
     }
 `;
 
@@ -126,29 +244,45 @@ export const InfoGrid = styled.div`
 
     ${theme.media.mobile} {
         grid-template-columns: 1fr;
-        gap: 0.75rem;
+        gap: 0;
         & > * { grid-column: span 1 !important; }
     }
 `;
 
 export const BlogGrid = styled.div`
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
-    margin-top: 1.5rem;
+
+    ${theme.media.tabletDown} {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+
+        & > *:nth-child(n + 5) {
+            display: none;
+        }
+    }
 
     ${theme.media.mobile} {
-        grid-template-columns: 1fr;
+        gap: 0.5rem;
     }
 `;
 
 export const BlogCard = styled.div`
-    background: #FFFFFF;
-    border: 1px solid #E5E7EB; // 연한 회색 테두리
-    border-radius: 0.75rem;
-    padding: 1.5rem;
+    background: ${semanticColors.background.card};
+    border: 1px solid ${semanticColors.border.default};
+    border-radius: ${radius.lg};
+    padding: 1.25rem 1.5rem;
     cursor: pointer;
     transition: transform 0.2s;
+
+    ${theme.media.tablet} {
+        padding: 0.75rem 1rem;
+    }
+
+    ${theme.media.mobile} {
+        padding: 0.5rem 0.75rem;
+    }
 
     &:hover {
         transform: translateY(-4px);
@@ -156,40 +290,74 @@ export const BlogCard = styled.div`
     }
 
     h3 {
-        font-size: 1.125rem;
+        ${typography('Body2')};
         font-weight: 700;
         margin-bottom: 0.5rem;
-        color: #111827;
+        color: ${semanticColors.text.primary};
+
+        ${theme.media.tablet} {
+            font-size: ${fontSize.base};
+        }
+
+        ${theme.media.mobile} {
+            font-size: ${fontSize.smaller};
+            margin-bottom: 0.25rem;
+        }
+
     }
 
     .meta {
-        font-size: 0.875rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        ${typography('Body2')};
         margin-bottom: 1rem;
-        
-        .author {
-            color: #4B5563;
-            margin-right: 0.75rem;
+
+        ${theme.media.tablet} {
+            font-size: ${fontSize.smaller};
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
         }
-        
+
+        ${theme.media.mobile} {
+            font-size: 0.625rem;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .author {
+            color: ${semanticColors.text.primary};
+        }
+
         .date {
-            color: #9CA3AF;
+            color: ${semanticColors.text.secondary};
         }
     }
 
     .preview {
-        font-size: 0.875rem;
-        color: #6B7280;
-        line-height: 1.5;
-        /* 두 줄 이상일 때 말줄임표 처리 */
+        ${typography('Body2')};
+        color: ${semanticColors.text.secondary};
         display: -webkit-box;
-        -webkit-line-clamp: 1; 
+        -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
         overflow: hidden;
+
+        ${theme.media.tablet} {
+            font-size: ${fontSize.smaller};
+        }
+
+        ${theme.media.mobile} {
+            font-size: 0.625rem;
+
+            [data-theme="dark"] & {
+                color: ${semanticColors.text.primary};
+            }
+        }
     }
 
-    ${theme.media.mobile} {
-        padding: 1.25rem;
-        h3 { font-size: 1rem; }
+    [data-theme="dark"] & {
+        background: ${semanticColors.background.card};
+        border-color: ${semanticColors.border.default};
     }
 `;
 
@@ -198,10 +366,14 @@ export const CrewGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 1.5rem;
-    
+
+    ${theme.media.tablet} {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
     ${theme.media.mobile} {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
         justify-items: center;
     }
 `;
@@ -215,13 +387,13 @@ export const CardRow = styled.div`
 
 export const GalleryGrid = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.6rem;
     margin-top: 1.6rem;
 
     ${theme.media.mobile} {
-        grid-template-columns: repeat(2, 1fr); // 모바일에서 2열
-        gap: 0.75rem;
+        gap: 0.375rem;
+        margin-top: 0.75rem;
     }
 `;
 

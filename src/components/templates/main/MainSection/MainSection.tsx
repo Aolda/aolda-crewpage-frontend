@@ -3,6 +3,7 @@
 
 import React from 'react';
 import * as S from './MainSection.styles';
+import FadeInUp from '@/components/atoms/FadeInUp';
 
 interface MainSectionProps {
     label?: string;
@@ -10,26 +11,47 @@ interface MainSectionProps {
     description?: React.ReactNode;
     children: React.ReactNode;
     bgColor?: string;
+    hideHeaderOnMobile?: boolean;
 }
 
-const MainSection: React.FC<MainSectionProps> = ({ 
-    label, 
-    title, 
-    description, 
-    children, 
-    bgColor 
+const MainSection: React.FC<MainSectionProps> = ({
+    label,
+    title,
+    description,
+    children,
+    bgColor,
+    hideHeaderOnMobile,
 }) => {
     return (
         <S.SectionWrapper $bgColor={bgColor}>
-            <S.Header>
-                <S.GrayBar />
-                {label && <S.Label>{label}</S.Label>}
-                <S.Title>{title}</S.Title>
-                {description && <S.Description>{description}</S.Description>}
-            </S.Header>
-            <S.Content>
-                {children}
-            </S.Content>
+            {hideHeaderOnMobile ? (
+                <S.Header $hideOnMobile={hideHeaderOnMobile}>
+                    <S.GrayBar />
+                    {label && <S.Label>{label}</S.Label>}
+                    <S.Title>{title}</S.Title>
+                    {description && <S.Description>{description}</S.Description>}
+                </S.Header>
+            ) : (
+                <FadeInUp>
+                    <S.Header>
+                        <S.GrayBar />
+                        {label && <S.Label>{label}</S.Label>}
+                        <S.Title>{title}</S.Title>
+                        {description && <S.Description>{description}</S.Description>}
+                    </S.Header>
+                </FadeInUp>
+            )}
+            {hideHeaderOnMobile ? (
+                <S.Content>
+                    {children}
+                </S.Content>
+            ) : (
+                <FadeInUp delay={0.15}>
+                    <S.Content>
+                        {children}
+                    </S.Content>
+                </FadeInUp>
+            )}
         </S.SectionWrapper>
     );
 };

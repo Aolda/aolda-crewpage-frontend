@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import { pxToRem } from "@/styles/utils";
 import { colors, fontSize, theme } from "@/styles/theme";
 
 export const StyledFooter = styled.footer`
     display: flex;
-    flex-direction: column;
     width: 100%;
     height: 14.375rem;
+    align-items: center;
 
     background-color: #061C2C;
 
@@ -17,6 +16,10 @@ export const StyledFooter = styled.footer`
     gap: 0.75rem;
 
     font-family: var(--font-cjk);
+    
+    ${theme.media.desktopSm} {
+        padding-left: 2.5rem;
+    }
 
     ${theme.media.mobile} {
         height: auto;
@@ -24,52 +27,74 @@ export const StyledFooter = styled.footer`
         gap: 1.25rem;
     }
 
+    ${theme.media.tablet} {
+        padding-left: 3.5rem;
+        padding-right: 7.5rem;
+    }
+
+    .footerInner {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        width: 100%;
+        max-width: 75rem;
+    }
+
     .logoSection {
         display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        width: 16.3125rem;
-        height: 3.5rem;
-
-        gap: 0.25rem;
+        width: 2rem;
+        height: 2rem;
+        flex-shrink: 0;
 
         ${theme.media.mobile} {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        img {
             width: 100%;
-            height: auto;
+            height: 100%;
         }
+    }
 
-        .description {
-            padding-left: 2.5rem;
-            color: ${colors.primary500};
-            font-size: ${fontSize.smaller};
-            font-weight: 500;
+    .textSection {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        min-width: 0;
+    }
 
-            ${theme.media.mobile} {
-                padding-left: 0;
-                margin-top: 0.25rem;
-            }
-        }
+    .brandSection {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .brandName {
+        color: ${colors.white600};
+        font-family: var(--font-paperlogy);
+        font-size: ${fontSize.h2};
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    .description {
+        color: ${colors.primary500};
+        font-size: ${fontSize.smaller};
+        font-weight: 400;
+        line-height: 1.4;
     }
 
     .addressSection {
         display: flex;
         flex-direction: column;
-        width: 20rem;
-        height: 2.5625rem;
+        gap: 0.5rem;
 
         color: white;
-        padding-left: 2.5rem;
-
-        ${theme.media.mobile} {
-            width: 100%;
-            height: auto;
-            padding-left: 0;
-            gap: 0.5rem;
-        }
 
         .address {
             font-size: ${fontSize.smaller};
-            font-weight: 300;
+            font-weight: 400;
         }
 
         .managementSection {
@@ -77,18 +102,43 @@ export const StyledFooter = styled.footer`
             align-items: center;
             gap: 0.5rem;
             font-size: ${fontSize.smaller};
-            font-weight: 300;
+            font-weight: 400;
 
             ${theme.media.mobile} {
                 flex-wrap: wrap;
             }
 
             .divider {
-                width: 6px;
-                height: 0px;
-                border-width: 0.5px;
-                transform: rotate(-90deg);
+                width: 1px;
+                height: 4px;
+                background-color: ${colors.white600};
+                opacity: 0.7;
             }
+        }
+    }
+
+    ${theme.media.mobile} {
+        .footerInner {
+            gap: 1rem;
+        }
+
+        .logoSection {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .textSection {
+            gap: 1rem;
+        }
+
+        .brandName {
+            font-size: ${fontSize.h3};
+        }
+
+        .description,
+        .addressSection .address,
+        .addressSection .managementSection {
+            font-size: 0.625rem;
         }
     }
 `;

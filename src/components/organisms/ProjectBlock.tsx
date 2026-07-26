@@ -6,7 +6,6 @@ import Image from "next/image";
 import { StyledProjectBlock } from "./ProjectBlock.styles";
 import Badge from "../atoms/Badge";
 import { ProjectSummary, ACTIVITY_STATUS } from "@/types/project";
-import { fontSize } from "@/styles/theme";
 
 /*
 * 주요활동 페이지의 프로젝트 카드 컴포넌트
@@ -28,12 +27,18 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
 			onClick={() => onDetailClick?.(project.activityId)}
 		>
 			<section className="infoSection">
-                <section className="textSection">
-                    <span>{project.participantsCount}명 참여</span>
-                    <h1>{project.activityNames.brief}</h1>
-                    <span>{project.activityNames.en}</span>
-                </section>
-                <Badge variant="transparent" status={project.status}>{ACTIVITY_STATUS[project.status]}</Badge>
+				<section className="textSection">
+					<span className="countLine">
+						{project.participantsCount}명 참여
+					</span>
+					<section className="nameSection">
+						<h1>{project.activityNames.brief ? project.activityNames.brief : project.activityNames.en}</h1>
+						<span className="enName">{project.activityNames.en}</span>
+					</section>
+				</section>
+                <div className="badgeWrapper">
+                    <Badge variant="transparent" status={project.status}>{ACTIVITY_STATUS[project.status]}</Badge>
+                </div>
             </section>
 			<section className="imgSection">
 				<Image

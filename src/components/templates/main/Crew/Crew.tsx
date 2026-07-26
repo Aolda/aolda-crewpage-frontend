@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useMemo, useState } from 'react';
+import Link from 'next/link';
 import MainSection from '../MainSection/MainSection';
 import CrewBlock from '@/components/organisms/CrewBlock';
 import { CrewMember } from '@/types/crew';
@@ -27,8 +28,13 @@ const Crew = ({ crews, onCrewClick }: CrewProps) => {
         return gens.sort((a, b) => a - b);
     }, [crews]);
 
-    // 초기값 설정 (기수가 없을 경우를 대비한 방어 로직 추가)
-    const [activeGen, setActiveGen] = useState<number>(generations[0] || 0);
+    const defaultGen = useMemo(() => {
+        return generations.includes(0) ? 0 : (generations[0] || 0);
+    }, [generations]);
+
+    // 초기값 설정 (피그마 기준 0기를 우선 노출)
+    const [selectedGen, setSelectedGen] = useState<number | null>(null);
+    const activeGen = selectedGen !== null && generations.includes(selectedGen) ? selectedGen : defaultGen;
 
     // 3. 현재 기수의 크루들을 직책순으로 정렬하여 필터링
     const displayCrews = useMemo(() => {
@@ -58,27 +64,46 @@ const Crew = ({ crews, onCrewClick }: CrewProps) => {
                 {/* 기수 페이지네이션 */}
                 <S.GenerationPagination>
                     {generations.map((gen) => (
-                        <S.GenButton 
+                        <S.GenButton
                             key={gen}
                             $isActive={activeGen === gen}
-                            onClick={() => setActiveGen(gen)}
+                            onClick={() => setSelectedGen(gen)}
                         >
-                        {gen}기
+                            {gen}기
                         </S.GenButton>
                     ))}
                 </S.GenerationPagination>
 
-                {/* 정렬된 크루 그리드 */}
-                <S.CrewGrid>
-                {displayCrews.map((member) => (
-                    <CrewBlock 
-                        key={member.crewId} 
-                        member={member} 
-                        isCrewpage={false} 
-                        onDetailClick={onCrewClick}
-                    />
-                ))}
-                </S.CrewGrid>
+                {/* 크루 그리드 (모바일: 배경 이미지 래퍼) */}
+                <S.CrewGridWrapper>
+                    <S.RectangleWrapper>
+                        <S.Rectangle1 />
+                        <S.Rectangle2 />
+                        <S.Rectangle3 />
+                    </S.RectangleWrapper>
+
+                    {displayCrews.length > 0 ? (
+                        <S.CrewGrid>
+                            {displayCrews.map((member) => (
+                                <CrewBlock
+                                    key={member.crewId}
+                                    member={member}
+                                    isCrewpage={false}
+                                    onDetailClick={onCrewClick}
+                                />
+                            ))}
+                        </S.CrewGrid>
+                    ) : (
+                        <S.EmptyState role="status">해당 기수에 등록된 크루가 없습니다.</S.EmptyState>
+                    )}
+
+                </S.CrewGridWrapper>
+
+                {displayCrews.length > 0 && (
+                    <Link href="/crew" passHref legacyBehavior>
+                        <S.CrewMoreLink>크루 더보기</S.CrewMoreLink>
+                    </Link>
+                )}
             </S.CrewSection>
         </MainSection>
     );

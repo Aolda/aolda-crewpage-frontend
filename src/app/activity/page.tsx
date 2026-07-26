@@ -11,6 +11,7 @@ import { getProjectList } from '@/api/project';
 import { ProjectListResponse } from '@/types/project';
 
 import ProjectPageTemplate from '@/components/templates/project/ProjectPagetemplate';
+import LoadingScreen from '@/components/atoms/LoadingScreen';
 
 export default function ProjectsPage() {
     const router = useRouter();
@@ -46,11 +47,7 @@ export default function ProjectsPage() {
     }, [handleError]);
 
     if (isLoading) {
-        return (
-            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                주요 활동 목록을 불러오는 중...
-            </div>
-        )
+        return <LoadingScreen />;
     };
 
     // 에러 발생 시 UI 처리

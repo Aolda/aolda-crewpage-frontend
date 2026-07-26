@@ -4,7 +4,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import * as S from "./Select.styles";
 
-type LabelType = "generation" | "role" | "department" | "season";
+type LabelType = "generation" | "role" | "department" | "season" | "category";
 
 interface SelectProps {
     label: LabelType;
@@ -12,6 +12,8 @@ interface SelectProps {
     onSelectChange: (value: string) => void;
     // 현재 선택된 값을 보여주고 싶다면 추가 (선택사항)
     selectedValue?: string;
+    clearOptionLabel?: string;
+    className?: string;
 }
 
 const TITLE_MAP: Record<LabelType, string> = {
@@ -19,12 +21,16 @@ const TITLE_MAP: Record<LabelType, string> = {
     role: "역할",
     department: "학과",
     season: "전체 기간",
+    category: "카테고리",
 };
 
-const Select: React.FC<SelectProps> = ({ label, options, onSelectChange, selectedValue }) => {
+const Select: React.FC<SelectProps> = ({ label, options, onSelectChange, selectedValue, clearOptionLabel, className }) => {
     const title = TITLE_MAP[label];
     const [isOpen, setIsOpen] = useState(false);
     const selectRef = useRef<HTMLDivElement>(null);
+    const optionItems = clearOptionLabel
+        ? [{ label: clearOptionLabel, value: "" }, ...options.map((option) => ({ label: option, value: option }))]
+        : options.map((option) => ({ label: option, value: option }));
 
     // 외부 클릭 시 닫기 로직
     useEffect(() => {
@@ -38,27 +44,27 @@ const Select: React.FC<SelectProps> = ({ label, options, onSelectChange, selecte
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
-    const handleSelect = (option: string) => {
-        onSelectChange(option);
+    const handleSelect = (value: string) => {
+        onSelectChange(value);
         setIsOpen(false); // 선택 후 메뉴 닫기
     };
 
     return (
-        <S.SelectContainer ref={selectRef}>
-            <S.SelectHeader onClick={() => setIsOpen(!isOpen)}>
-                <S.LabelText>{selectedValue || title}</S.LabelText>
-                <S.ArrowIcon $isOpen={isOpen} />
+        <S.SelectContainer ref={selectRef} className={className}>
+            <S.SelectHeader onClick={() => setIsOpen(!isOpen)} $isSelected={!!selectedValue} className="select">
+                <S.LabelText $isSelected={!!selectedValue} className="select-title">{selectedValue || title}</S.LabelText>
+                <S.ArrowIcon $isOpen={isOpen} $isSelected={!!selectedValue} className="select-arrow"/>
             </S.SelectHeader>
 
             {isOpen && (
                 <S.OptionsList>
-                    {options.map((option, index) => (
+                    {optionItems.map((option, index) => (
                         <S.OptionItem 
                             key={index} 
-                            onClick={() => handleSelect(option)}
-                            $isSelected={selectedValue === option}
+                            onClick={() => handleSelect(option.value)}
+                            $isSelected={selectedValue === option.value}
                         >
-                            {option}
+                            {option.label}
                         </S.OptionItem>
                     ))}
                 </S.OptionsList>

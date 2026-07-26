@@ -1,12 +1,13 @@
 // /src/components/templates/link/LinkPageTempalte.styles.ts
 import styled from "styled-components";
-import { fontSize, colors, theme } from "@/styles/theme";
+import { theme } from "@/styles/theme";
+import { semanticColors, typography } from "@/styles/tokens";
 
 export const PageWrapper = styled.div`
     position: relative;
     width: 100%;
     overflow: hidden;
-    background: #FFFFFF;
+    background: ${semanticColors.background.page};
 `;
 
 /* 배경 원형 그래픽 요소들 */
@@ -143,15 +144,18 @@ export const PageHeader = styled.div`
     text-align: center;
 
     h2 {
-        font-size: ${fontSize.h2};
+        ${typography('Heading2')};
         font-weight: 700;
-        line-height: 1.4;
-        color: #111827;
-        strong { color: ${colors.primary500}; }
+        color: ${semanticColors.text.primary};
+        strong { color: ${semanticColors.text.brand}; }
+    }
+
+    ${theme.media.tablet} {
+        padding-top: 5rem;
     }
 
     ${theme.media.mobile} {
-        padding-top: 8rem;
+        padding-top: 5rem;
 
         h2 { font-size: 1.5rem; }
     }
@@ -168,15 +172,22 @@ export const LinkWrapper = styled.main`
     gap: 7.5rem;
     max-width: 90rem;
     width: 100%;
-    
+
     padding-top: 10rem;
-    paddinf-left: 7.5rem;
-    paddinf-right: 7.5rem;
+    padding-left: 7.5rem;
+    padding-right: 7.5rem;
     margin: 0 auto;
+
+    ${theme.media.tablet} {
+        padding-left: 4.75rem;
+        padding-right: 4.75rem;
+        padding-top: 2.5rem;
+        gap: 2rem;
+    }
 
     ${theme.media.mobile} {
         width: 100%;
-        padding: 5rem 1.25rem 0;
+        padding: 2.5rem 1.25rem 0;
         gap: 4rem;
     }
 `;
@@ -195,6 +206,11 @@ export const UnderSection = styled.section`
     margin: 0 auto;
     padding: 12.5rem 7.5rem 0;
 
+    ${theme.media.tablet} {
+        width: 100%;
+        padding: 2rem 2rem 0 2rem;
+    }
+
     ${theme.media.mobile} {
         width: 100%;
         padding: 6rem 1.25rem 0;
@@ -202,6 +218,10 @@ export const UnderSection = styled.section`
 
     .img-container {
         width: 65.8rem;
+        ${theme.media.tablet} {
+            width: 100%;
+            padding: 5rem 2.75rem 0;
+        }
         ${theme.media.mobile} {
             width: 100%;
         }
@@ -210,11 +230,9 @@ export const UnderSection = styled.section`
     h2 {
         margin-top: 3.75rem;
         text-align: center;
-        font-size: ${fontSize.h2};
-        font-weight: 700;
-        line-height: 1.4;
-        color: #111827;
-        span { color: ${colors.primary500}; }
+        ${typography('Heading2')};
+        color: ${semanticColors.text.primary};
+        span { color: ${semanticColors.text.brand}; }
 
         ${theme.media.mobile} {
             font-size: 1.25rem;
