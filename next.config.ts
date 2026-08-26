@@ -1,19 +1,10 @@
 import type { NextConfig } from "next";
 
-const backendBaseUrl = (process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:8001').replace(/\/$/, '');
-const backendImagePattern = (() => {
-  try {
-    const url = new URL(backendBaseUrl);
-    return {
-      protocol: url.protocol.replace(':', '') as 'http' | 'https',
-      hostname: url.hostname,
-      port: url.port,
-      pathname: '/assets/profile-images/**',
-    };
-  } catch {
-    return null;
-  }
-})();
+/**
+ * The browser always calls the Next.js application on the same origin. This
+ * avoids exposing an HTTP backend URL to pages served over HTTPS.
+ */
+const backendInternalUrl = (process.env.BACKEND_INTERNAL_URL ?? 'http://localhost:8001').replace(/\/$/, '');
 
 /** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
@@ -49,7 +40,6 @@ const nextConfig: NextConfig = {
         port: '8001',
         pathname: '/assets/profile-images/**',
       },
-      ...(backendImagePattern ? [backendImagePattern] : []),
     ],
   },
   compiler: {
@@ -58,8 +48,12 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
+        source: '/api/:path*',
+        destination: `${backendInternalUrl}/:path*`,
+      },
+      {
         source: '/assets/profile-images/:path*',
-        destination: `${backendBaseUrl}/assets/profile-images/:path*`,
+        destination: `${backendInternalUrl}/assets/profile-images/:path*`,
       },
     ];
   },
