@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aolda Crew Page Frontend
 
-## Getting Started
+Next.js frontend for the Aolda crew page.
 
-First, run the development server:
+## API proxy
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+The browser calls the backend through the same origin at `/api`. Next.js
+forwards those requests server-side to `BACKEND_INTERNAL_URL`. This is required
+when the page is served over HTTPS: a browser blocks direct calls from
+`https://homepage.ajou.app` to an `http://` backend as mixed content.
+
+Profile images returned as `/assets/profile-images/...` are also forwarded to
+the backend. The existing `/_next/image` proxy remains as a compatibility path
+for local direct backend image URLs.
+
+Copy `.env.example` to `.env.local` and choose the backend address for the
+environment:
+
+```dotenv
+# Browser-visible setting: use the same-origin rewrite
+NEXT_PUBLIC_BASE_URL=/api
+
+# Local development
+BACKEND_INTERNAL_URL=http://localhost:8001
+
+# k3s deployment (example namespace and Service name)
+# BACKEND_INTERNAL_URL=http://ahp-backend.ahp.svc.cluster.local:8001
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`BACKEND_INTERNAL_URL` is server-only and must not use the public frontend
+domain. It is read when Next.js starts/builds, so rebuild or restart the
+frontend after changing it.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+cp .env.example .env.local
+npm run dev
+```
 
-## Learn More
+Open [http://localhost:3000](http://localhost:3000). API requests such as
+`/team/crew` are sent by the browser to `/api/team/crew` and forwarded to the
+local backend.
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+For `https://homepage.ajou.app`, configure the frontend workload with:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```dotenv
+NEXT_PUBLIC_BASE_URL=/api
+BACKEND_INTERNAL_URL=http://ahp-backend.ahp.svc.cluster.local:8001
+```
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Use the Service DNS that is valid in the frontend Pod's namespace. With this
+configuration no browser CORS rule is needed for the frontend domain because
+the browser only communicates with `homepage.ajou.app`.
