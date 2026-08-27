@@ -36,6 +36,7 @@ export const StyledBadge = styled.span<{ $variant: BadgeVariant; $status?: Activ
                 return $status ? colors.primary500 : colors.gray600;
             }
             switch ($status) {
+                case 'ACTIVITY_STATUS/RECRUITING':
                 case 'ACTIVITY_STATUS/RECRIUTING':
                 case 'ACTIVITY_STATUS/ONBOARDING':
                     return colors.primary500;

@@ -8,6 +8,14 @@ import ActivityErrorState from '../src/components/molecules/ActivityErrorState';
 import { getProjectDetail } from '../src/api/project';
 import { axiosInstance } from '../src/api/instance';
 import { AxiosError } from 'axios';
+import { ServerStyleSheet } from 'styled-components';
+import Badge from '../src/components/atoms/Badge';
+import Activity from '../src/components/templates/main/Activity/Activity';
+import { GrayBar } from '../src/components/templates/main/MainSection/MainSection.styles';
+import { MOCK_ACTIVITY_RESPONSE } from '../src/mocks/activityData';
+import { ACTIVITY_STATUS } from '../src/types/project';
+import { colors } from '../src/styles/theme';
+import { radius } from '../src/styles/tokens';
 import type { ProjectDetailResponse, ProjectSummary } from '../src/types/project';
 import {
     DEFAULT_PROJECT_IMAGE, getProjectImage, parseProjectId, projectDetailPath, projectLoadErrorMessage,
@@ -33,6 +41,44 @@ const detail: ProjectDetailResponse = {
     participants: [],
     gallery: [],
 };
+
+test('canonical and backend legacy recruiting statuses keep their label and badge color', () => {
+    assert.equal(ACTIVITY_STATUS['ACTIVITY_STATUS/PREPARING'], '준비중');
+    for (const status of ['ACTIVITY_STATUS/RECRUITING', 'ACTIVITY_STATUS/RECRIUTING'] as const) {
+        const sheet = new ServerStyleSheet();
+        try {
+            const html = renderToStaticMarkup(sheet.collectStyles(<Badge status={status}>{ACTIVITY_STATUS[status]}</Badge>));
+            assert.match(html, /모집중/);
+            assert.ok(sheet.getStyleTags().includes(`background-color:${colors.primary500}`));
+        } finally {
+            sheet.seal();
+        }
+    }
+});
+
+test('homepage activity supports API brief names and legacy fixtures without brief names', () => {
+    const fixture = MOCK_ACTIVITY_RESPONSE.data[0];
+    const html = renderToStaticMarkup(<Activity activities={[
+        fixture,
+        { ...fixture, activityNames: { ko: '두 번째 활동', en: 'Second Activity', brief: '약칭 테스트' } },
+    ]} />);
+    assert.ok(html.includes(fixture.activityNames.ko));
+    assert.match(html, /약칭 테스트/);
+    for (const activity of MOCK_ACTIVITY_RESPONSE.data) {
+        assert.equal(typeof activity.background.url, 'string');
+        assert.ok(ACTIVITY_STATUS[activity.status]);
+    }
+});
+
+test('homepage section divider uses a defined radius token', () => {
+    const sheet = new ServerStyleSheet();
+    try {
+        renderToStaticMarkup(sheet.collectStyles(<GrayBar />));
+        assert.ok(sheet.getStyleTags().includes(`border-radius:${radius.sm}`));
+    } finally {
+        sheet.seal();
+    }
+});
 
 test('UUID route IDs remain strings all the way to the detail endpoint', () => {
     assert.equal(parseProjectId(id), id);

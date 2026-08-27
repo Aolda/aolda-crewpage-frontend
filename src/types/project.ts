@@ -1,5 +1,9 @@
 //
 export const ACTIVITY_STATUS = {
+    'ACTIVITY_STATUS/PREPARING': '준비중',
+    'ACTIVITY_STATUS/RECRUITING': '모집중',
+    // The backend's existing Notion mapping uses this legacy spelling.
+    'ACTIVITY_STATUS/RECRIUTING': '모집중',
     'ACTIVITY_STATUS/ONBOARDING': '진행중',
     'ACTIVITY_STATUS/COMPLETED': '완료',
     'ACTIVITY_STATUS/CANCELLED': '취소',
@@ -21,6 +25,7 @@ export interface ActivitySummary {
     activityNames: {
         ko: string;
         en: string;
+        brief?: string | null;
     };
     background: {
         url: string, // 활동 배경이미지
