@@ -1,6 +1,8 @@
 // /src/components/molecules/Profile.tsx
 'use client';
 
+import { formatCrewAcademicInfo } from "@/utils/crewAcademicInfo";
+
 import React from "react";
 import Image from "next/image";
 import { CrewDetailResponse, CREW_ROLE } from "@/types/crew";
@@ -82,7 +84,7 @@ const Profile: React.FC<ProfileProps> = ({
                 </section>
                 <section className="statContainer">
                     <Image src="/images/crew/ajouIcon.svg" alt="ajou logo" width={20} height={20}/>
-                    <span>{`${member.univDepartment} ${member.univJoinedYear}학번`}</span>
+                    <span>{formatCrewAcademicInfo(member.univDepartment, member.univJoinedYear)}</span>
                 </section>
                 <section className="statContainer">
                     <Image src="/images/crew/googleIcon.svg" alt="gmail logo" width={20} height={20}/>

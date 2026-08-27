@@ -8,6 +8,7 @@ import Badge from "../atoms/Badge";
 import { CrewMember, CREW_ROLE } from "@/types/crew"; 
 import { useRouter } from "next/navigation";
 import ProfileImage from "../molecules/ProfileImage";
+import { formatCrewAcademicInfo } from "@/utils/crewAcademicInfo";
 /*
 * CrewBook page 크루원의 정보를 보여주는 block
 * @params {Member} member 크루 정보를 담은 객체
@@ -66,14 +67,14 @@ const CrewBlock: React.FC<CrewBlockProps> = ({
                             <Badge variant="solid" status={member.isActive}>{member.isActive ? "활동중" : "비활동"}</Badge>
                             <Badge variant="outline">{member.joinedGen}기</Badge>
                             <span className="departmentBadgeLine">
-                                <Badge variant="outline">{`${member.univDepartment} ${member.univJoinedYear.slice(-2)}학번`}</Badge>
+                                <Badge variant="outline">{formatCrewAcademicInfo(member.univDepartment, member.univJoinedYear)}</Badge>
                             </span>
                         </section>
                     )}
                 </section>
 
                 {!isCrewpage ? (
-                    <h4 className="majorInfo">{member.univDepartment} {member.univJoinedYear.slice(-2)}</h4>
+                    <h4 className="majorInfo">{formatCrewAcademicInfo(member.univDepartment, member.univJoinedYear, false)}</h4>
                 ) : (
                     <section className="statsSection">
                         <section style={{"display":"inline-flex", "gap":"0.75rem", "alignItems":"center"}}>
