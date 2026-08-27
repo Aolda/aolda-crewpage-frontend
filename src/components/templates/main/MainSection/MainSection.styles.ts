@@ -65,7 +65,7 @@ export const GrayBar = styled.div`
     width: 3rem;
     height: 0;
     border: solid 1.5px ${semanticColors.border.strong};
-    border-radius: ${radius.xs};
+    border-radius: ${radius.sm};
     margin-bottom: 0.5rem;
 
     ${theme.media.tablet} {

@@ -22,7 +22,7 @@ export const MOCK_PROJECT_RESPONSE: ProjectListResponse = {
         },
         projects: [
             {
-                activityId: 101,
+                activityId: '00000000-0000-4000-8000-000000000101',
                 status: "ACTIVITY_STATUS/ONBOARDING",
                 startedAt: "2025-1",
                 activityNames: {
@@ -35,7 +35,7 @@ export const MOCK_PROJECT_RESPONSE: ProjectListResponse = {
                 backgroundImage: { url: "/images/project/aas.png" }
             },
             {
-                activityId: 102,
+                activityId: '00000000-0000-4000-8000-000000000102',
                 status: "ACTIVITY_STATUS/COMPLETED",
                 startedAt: "2024-2",
                 participantsCount: 4,

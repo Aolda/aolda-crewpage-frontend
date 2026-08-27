@@ -1,5 +1,9 @@
 //
 export const ACTIVITY_STATUS = {
+    'ACTIVITY_STATUS/PREPARING': '준비중',
+    'ACTIVITY_STATUS/RECRUITING': '모집중',
+    // The backend's existing Notion mapping uses this legacy spelling.
+    'ACTIVITY_STATUS/RECRIUTING': '모집중',
     'ACTIVITY_STATUS/ONBOARDING': '진행중',
     'ACTIVITY_STATUS/COMPLETED': '완료',
     'ACTIVITY_STATUS/CANCELLED': '취소',
@@ -21,6 +25,7 @@ export interface ActivitySummary {
     activityNames: {
         ko: string;
         en: string;
+        brief?: string | null;
     };
     background: {
         url: string, // 활동 배경이미지
@@ -50,21 +55,21 @@ export interface ProjectStatistics {
 
 // 프로젝트 요약 정보 (리스트용)
 export interface ProjectSummary {
-    activityId: number;
+    activityId: string;
     status: ActivityStatusKey;
     startedAt: string;
     activityNames: {
         ko: string;
         en: string;
-        brief: string;
+        brief?: string | null;
     };
-    backgroundImage: {
-        url: string;
-    };
-    background: {
-        url: string;
+    backgroundImage?: {
+        url: string | null;
+    } | null;
+    background?: {
+        url: string | null;
         color: string;
-    };
+    } | null;
     participantsCount: number;
 }
 
@@ -99,14 +104,15 @@ export interface ProjectDetailResponse {
     activityNames: {
         ko: string;
         en: string;
+        brief?: string | null;
     };
-    background: {
-        url: string;
+    background?: {
+        url: string | null;
         color: string;
-    };
-    backgroundImage: {
-        url: string;
-    };
+    } | null;
+    backgroundImage?: {
+        url: string | null;
+    } | null;
     contents: {
         ideaBackground: string; // 기획배경 (\n, \t 포함)
         activityInfo: {

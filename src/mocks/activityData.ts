@@ -15,6 +15,7 @@ export const MOCK_ACTIVITY_RESPONSE: ActivityListResponse = {
     data: [
         {
             status: "ACTIVITY_STATUS/ONBOARDING", // 진행중
+            background: { url: '', color: '#1A8EE5' },
             startedAt: "2025-1",
             activityNames: {
                 ko: "아올다 공식 홈페이지 개발",
@@ -25,6 +26,7 @@ export const MOCK_ACTIVITY_RESPONSE: ActivityListResponse = {
         },
         {
             status: "ACTIVITY_STATUS/RECRIUTING", // 모집중
+            background: { url: '', color: '#1A8EE5' },
             startedAt: "2025-1",
             activityNames: {
                 ko: "Kubernetes 실전 아키텍처 스터디",
@@ -35,6 +37,7 @@ export const MOCK_ACTIVITY_RESPONSE: ActivityListResponse = {
         },
         {
             status: "ACTIVITY_STATUS/COMPLETED", // 완료
+            background: { url: '', color: '#1A8EE5' },
             startedAt: "2024-2",
             activityNames: {
                 ko: "AWS 자격증(SAA) 취득 챌린지",
@@ -45,6 +48,7 @@ export const MOCK_ACTIVITY_RESPONSE: ActivityListResponse = {
         },
         {
             status: "ACTIVITY_STATUS/ONBOARDING", // 진행중
+            background: { url: '', color: '#1A8EE5' },
             startedAt: "2024-2",
             activityNames: {
                 ko: "클라우드 비용 최적화 프로젝트",

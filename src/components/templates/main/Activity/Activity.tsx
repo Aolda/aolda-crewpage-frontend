@@ -13,7 +13,7 @@ interface ActivityProps {
 
 const Activity = ({ activities }: ActivityProps) => {
     const hasActivities = activities.length > 0;
-    const duplicatedActivities = Array(10).fill(activities).flat();
+    const duplicatedActivities = Array.from({ length: 10 }, () => activities).flat();
     const mobileActivities = activities.slice(0, 6);
 
     return (

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { StyledProjectBlock } from "./ProjectBlock.styles";
 import Badge from "../atoms/Badge";
 import { ProjectSummary, ACTIVITY_STATUS } from "@/types/project";
+import { getProjectImage } from '@/utils/projectPresentation';
 
 /*
 * 주요활동 페이지의 프로젝트 카드 컴포넌트
@@ -14,7 +15,7 @@ import { ProjectSummary, ACTIVITY_STATUS } from "@/types/project";
 */
 interface ProjectBlockProps {
     project: ProjectSummary;
-	onDetailClick?: (id: number) => void;
+	onDetailClick?: (id: string) => void;
 }
 
 const ProjectBlock: React.FC<ProjectBlockProps> = ({
@@ -42,7 +43,7 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
             </section>
 			<section className="imgSection">
 				<Image
-					src={project.background?.url || project.backgroundImage.url || "#"}
+					src={getProjectImage(project)}
 					alt="projectBlock img"
 					width={300}
 					height={300}
