@@ -50,21 +50,21 @@ export interface ProjectStatistics {
 
 // 프로젝트 요약 정보 (리스트용)
 export interface ProjectSummary {
-    activityId: number;
+    activityId: string;
     status: ActivityStatusKey;
     startedAt: string;
     activityNames: {
         ko: string;
         en: string;
-        brief: string;
+        brief?: string | null;
     };
-    backgroundImage: {
-        url: string;
-    };
-    background: {
-        url: string;
+    backgroundImage?: {
+        url: string | null;
+    } | null;
+    background?: {
+        url: string | null;
         color: string;
-    };
+    } | null;
     participantsCount: number;
 }
 
@@ -99,14 +99,15 @@ export interface ProjectDetailResponse {
     activityNames: {
         ko: string;
         en: string;
+        brief?: string | null;
     };
-    background: {
-        url: string;
+    background?: {
+        url: string | null;
         color: string;
-    };
-    backgroundImage: {
-        url: string;
-    };
+    } | null;
+    backgroundImage?: {
+        url: string | null;
+    } | null;
     contents: {
         ideaBackground: string; // 기획배경 (\n, \t 포함)
         activityInfo: {

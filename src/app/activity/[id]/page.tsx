@@ -1,65 +1,55 @@
-//src/app/project/[id]/page.tsx
 'use client';
 
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { isAxiosError } from "axios"; // 추가
-
-import { useErrorHandler } from "@/hooks/useErrorHandler";
+import { isAxiosError } from 'axios';
 import { getProjectDetail } from '@/api/project';
 
 import { ProjectDetailResponse } from '@/types/project';
 import ProjectDetailPageTemplate from '@/components/templates/ProjectDetail/ProjectDetailPageTemplate';
-import { MOCK_PROJECT_DETAIL } from '@/mocks/projectData';
 import LoadingScreen from '@/components/atoms/LoadingScreen';
-
-const USE_MOCK = true;
+import ActivityErrorState from '@/components/molecules/ActivityErrorState';
+import { parseProjectId, projectLoadErrorMessage } from '@/utils/projectPresentation';
 
 export default function ProjectPage() {
     const params = useParams();
-    const activityId = Number(params.id);
-    const { handleError } = useErrorHandler();
-
-    const [project, setProject] = useState<ProjectDetailResponse | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [hasError, setHasError] = useState(false);
+    const activityId = parseProjectId(params.id);
+    const [attempt, setAttempt] = useState(0);
+    const [result, setResult] = useState<{
+        id: string;
+        attempt: number;
+        project?: ProjectDetailResponse;
+        error?: string;
+    } | null>(null);
 
     useEffect(() => {
-        const fetchProject = async () => {
-            try {
-                setIsLoading(true);
-                setHasError(false);
+        if (!activityId) return;
+        let active = true;
 
-                if (USE_MOCK) {
-                    setProject(MOCK_PROJECT_DETAIL);
-                    return;
-                }
+        getProjectDetail(activityId).then(
+            (project) => {
+                if (active) setResult({ id: activityId, attempt, project });
+            },
+            (error: unknown) => {
+                if (active) setResult({
+                    id: activityId,
+                    attempt,
+                    error: projectLoadErrorMessage(isAxiosError(error) ? error.response?.status : undefined),
+                });
+            },
+        );
 
-                // API 호출
-                const response = await getProjectDetail(activityId);
-                setProject(response);
+        // Ignore stale responses after navigation or a retry.
+        return () => { active = false; };
+    }, [activityId, attempt]);
 
-            } catch (err: unknown) {
-                setHasError(true);
-                // 명세에 정의된 403, 404, 503 에러 코드를 핸들러로 전달합니다
-                if (isAxiosError(err) && err.response?.data?.code) {
-                    handleError(String(err.response.data.code));
-                } else {
-                    console.error('Project Detail Fetch Error:', err);
-                }
-            } finally {
-                setIsLoading(false);
-            }
-        };
+    if (!activityId) {
+        return <ActivityErrorState message="올바르지 않은 활동 주소입니다. 목록에서 활동을 다시 선택해 주세요." />;
+    }
+    if (result?.id !== activityId || result.attempt !== attempt) return <LoadingScreen />;
+    if (result.error || !result.project) {
+        return <ActivityErrorState message={result.error || projectLoadErrorMessage()} onRetry={() => setAttempt(value => value + 1)} />;
+    }
 
-        if (activityId) fetchProject();
-    }, [activityId, handleError]);
-
-    if (isLoading) {
-        return <LoadingScreen />;
-    };
-    if (hasError || !project) return null;
-    
-
-    return <ProjectDetailPageTemplate project={project} />;
+    return <ProjectDetailPageTemplate project={result.project} />;
 }

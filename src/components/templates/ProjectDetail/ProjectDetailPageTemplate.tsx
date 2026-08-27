@@ -9,6 +9,7 @@ import SolutionCard from '@/components/molecules/SolutionCard';
 import CrewBlock from '@/components/organisms/CrewBlock';
 import Link from 'next/link';
 import { ProjectDetailResponse, PROJECT_TYPE } from '@/types/project';
+import { getProjectImage } from '@/utils/projectPresentation';
 
 interface ProjectDetailPageTemplateProps {
     project: ProjectDetailResponse;
@@ -16,20 +17,21 @@ interface ProjectDetailPageTemplateProps {
 
 const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) => {
     const semesterText = project.contents.activityInfo.startedAt.join(', ');
+    const projectName = project.activityNames.brief || project.activityNames.en || project.activityNames.ko;
     // 예시 데이터 (실제로는 API나 Props로 받게 됩니다)
     const projectTypeText = PROJECT_TYPE[project.contents.activityInfo.projectType];
     // Breadcrumb 데이터
     const breadcrumbItems = [
         { label: '홈', href: '/' },
         { label: '주요 활동', href: '/activity' },
-        { label: project.activityNames.brief, href: '#' },
+        { label: projectName },
     ];
 
     return (
         <>
             <S.HeaderBackground $bgColor={project.background?.color || "#1A8EE5"}>
                 <Image
-                    src={project.background?.url || project.backgroundImage.url}
+                    src={getProjectImage(project)}
                     alt={project.activityNames.en}
                     width={400}
                     height={300}
@@ -37,7 +39,7 @@ const ProjectDetailPageTemplate = ({ project }: ProjectDetailPageTemplateProps) 
                 <S.HeaderSection>
                     <BreadCrumb items={breadcrumbItems} />
                     <div className="titleGroup">
-                        <h1>{project.activityNames.brief}</h1>
+                        <h1>{projectName}</h1>
                         <p>{project.activityNames.en}</p>
                     </div>
                 </S.HeaderSection>

@@ -13,7 +13,7 @@ import { ProjectListResponse } from '@/types/project';
 
 interface ProjectPageTemplateProps {
     data: ProjectListResponse; 
-    onProjectClick: (id: number) => void;
+    onProjectClick: (id: string) => void;
 }
 
 // 애니메이션 설정값

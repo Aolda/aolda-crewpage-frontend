@@ -12,6 +12,7 @@ import { ProjectListResponse } from '@/types/project';
 
 import ProjectPageTemplate from '@/components/templates/project/ProjectPagetemplate';
 import LoadingScreen from '@/components/atoms/LoadingScreen';
+import ActivityErrorState from '@/components/molecules/ActivityErrorState';
 
 export default function ProjectsPage() {
     const router = useRouter();
@@ -53,14 +54,14 @@ export default function ProjectsPage() {
     // 에러 발생 시 UI 처리
     if (hasError || !projectList) {
         return (
-            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <p>주요 활동 데이터를 불러올 수 없습니다.</p>
-                <button onClick={() => window.location.reload()}>다시 시도</button>
-            </div>
+            <ActivityErrorState
+                message="주요 활동 데이터를 불러올 수 없습니다. 잠시 후 다시 시도해 주세요."
+                onRetry={() => window.location.reload()}
+            />
         );
     }
 
-    const handleProjectNavigation = (id: number) => {
+    const handleProjectNavigation = (id: string) => {
         router.push(`/activity/${id}`);
     };
 
